@@ -1,0 +1,391 @@
+/**
+ * FASTag recharge page — scoped under .service-item-section.fastag-service-section
+ * (not the book-cylinder layout).
+ */
+
+.service-item-section.fastag-service-section {
+    background: #e8eef7;
+}
+
+.service-item-section.fastag-service-section .fastag-section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 980px;
+    padding-bottom: 0.5rem;
+}
+
+.fastag-card {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    margin-bottom: 0.9rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.fastag-card h2 {
+    color: #111827;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem;
+}
+
+.fastag-card p,
+.fastag-card li {
+    color: #334155;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.fastag-card p:last-child {
+    margin-bottom: 0;
+}
+
+.fastag-hero-card {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.9rem;
+    padding: 1rem 1.15rem;
+}
+
+.fastag-hero-card h1 {
+    color: #111827;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    font-weight: 700;
+    margin: 0 0 0.3rem;
+}
+
+.fastag-hero-card p {
+    color: #64748b;
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+.fastag-hero-card__icon {
+    align-items: center;
+    background: #eef6ff;
+    border-radius: 8px;
+    color: #0f5ea8;
+    display: flex;
+    flex: 0 0 40px;
+    font-size: 1.35rem;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+}
+
+.fastag-recharge-card h2 {
+    margin-bottom: 1rem;
+}
+
+.fastag-form-grid {
+    align-items: end;
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: minmax(180px, 1fr) minmax(220px, 1.2fr) auto;
+}
+
+.fastag-field {
+    display: block;
+    margin: 0;
+}
+
+.fastag-field span {
+    color: #475569;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.fastag-field input,
+.fastag-field select {
+    appearance: none;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 4px;
+    color: #0f172a;
+    font-size: 0.9rem;
+    min-height: 40px;
+    padding: 0.55rem 0.7rem;
+    width: 100%;
+}
+
+.fastag-field select {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #64748b 50%),
+        linear-gradient(135deg, #64748b 50%, transparent 50%);
+    background-position:
+        calc(100% - 16px) 17px,
+        calc(100% - 11px) 17px;
+    background-repeat: no-repeat;
+    background-size: 5px 5px;
+    padding-right: 2rem;
+}
+
+.fastag-field input:focus,
+.fastag-field select:focus {
+    border-color: #0f5ea8;
+    box-shadow: 0 0 0 3px rgba(15, 94, 168, 0.12);
+    outline: none;
+}
+
+.fastag-primary-btn {
+    background: #0b4f84;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    min-height: 40px;
+    padding: 0.55rem 1.4rem;
+    transition: background 0.2s ease;
+}
+
+.fastag-primary-btn:hover {
+    background: #083d66;
+}
+
+.fastag-operator-strip {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(7, minmax(82px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+}
+
+.fastag-operator {
+    align-items: center;
+    color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.74rem;
+    font-weight: 600;
+    gap: 0.45rem;
+    min-width: 82px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.fastag-operator:hover {
+    color: #0b4f84;
+}
+
+.fastag-operator__logo {
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 0.75rem;
+    font-weight: 800;
+    height: 42px;
+    justify-content: center;
+    width: 42px;
+}
+
+.fastag-operator__logo--sbi {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.fastag-operator__logo--icici {
+    background: linear-gradient(135deg, #f97316, #c2410c);
+}
+
+.fastag-operator__logo--hdfc {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.fastag-operator__logo--axis {
+    background: linear-gradient(135deg, #be123c, #881337);
+}
+
+.fastag-operator__logo--airtel {
+    background: linear-gradient(135deg, #ef4444, #991b1b);
+}
+
+.fastag-operator__logo--idfc {
+    background: linear-gradient(135deg, #dc2626, #7f1d1d);
+}
+
+.fastag-operator__logo--kotak {
+    background: linear-gradient(135deg, #1d4ed8, #172554);
+}
+
+.fastag-content-card h2 {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    padding-bottom: 0.65rem;
+}
+
+.fastag-steps,
+.fastag-check-list {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.fastag-steps li,
+.fastag-check-list li {
+    margin-bottom: 0.45rem;
+}
+
+.fastag-check-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.fastag-check-list li {
+    padding-left: 1.4rem;
+    position: relative;
+}
+
+.fastag-check-list li::before {
+    color: #16a34a;
+    content: "\2713";
+    font-weight: 800;
+    left: 0;
+    position: absolute;
+}
+
+.fastag-inline-heading {
+    align-items: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.65rem;
+}
+
+.fastag-inline-heading h2 {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.fastag-inline-heading span {
+    border: 1px solid #f59e0b;
+    border-radius: 999px;
+    color: #b45309;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+}
+
+.fastag-faq-card .accordion-item {
+    background: #eef3fb;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 4px !important;
+    margin-bottom: 0.55rem;
+    overflow: hidden;
+}
+
+.fastag-faq-card .accordion-button {
+    background: #eef3fb !important;
+    box-shadow: none !important;
+    color: #1e293b;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.85rem 1rem;
+}
+
+.fastag-faq-card .accordion-body {
+    background: #fff;
+    color: #475569;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.fastag-resource-grid,
+.fastag-video-grid {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fastag-resource-card,
+.fastag-video-card {
+    align-items: center;
+    color: #1e293b;
+    display: grid;
+    font-size: 0.86rem;
+    font-weight: 600;
+    gap: 0.75rem;
+    grid-template-columns: 96px 1fr;
+    text-decoration: none;
+}
+
+.fastag-resource-card:hover,
+.fastag-video-card:hover {
+    color: #0b4f84;
+}
+
+.fastag-resource-card__thumb,
+.fastag-video-card__thumb {
+    align-items: center;
+    background: linear-gradient(135deg, #1e293b, #64748b);
+    border-radius: 6px;
+    display: flex;
+    height: 58px;
+    justify-content: center;
+    width: 96px;
+}
+
+.fastag-resource-card__thumb--road {
+    background: linear-gradient(135deg, #334155 0%, #111827 48%, #f97316 49%, #f97316 52%, #475569 53%);
+}
+
+.fastag-resource-card__thumb--wallet {
+    background: linear-gradient(135deg, #f97316, #facc15);
+}
+
+.fastag-resource-card__thumb--car {
+    background: linear-gradient(135deg, #0369a1, #0f172a);
+}
+
+.fastag-video-card__thumb {
+    background: linear-gradient(135deg, #f97316, #ec4899);
+    color: #fff;
+    font-size: 1.7rem;
+}
+
+.fastag-video-card__thumb--blue {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+}
+
+.fastag-video-card__thumb--purple {
+    background: linear-gradient(135deg, #8b5cf6, #db2777);
+}
+
+.fastag-video-card__thumb--teal {
+    background: linear-gradient(135deg, #14b8a6, #0f766e);
+}
+
+@media (max-width: 767px) {
+    .fastag-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fastag-operator-strip {
+        grid-template-columns: repeat(7, 82px);
+    }
+
+    .fastag-resource-grid,
+    .fastag-video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .fastag-hero-card {
+        flex-direction: column;
+    }
+
+    .fastag-resource-card,
+    .fastag-video-card {
+        grid-template-columns: 82px 1fr;
+    }
+
+    .fastag-resource-card__thumb,
+    .fastag-video-card__thumb {
+        height: 52px;
+        width: 82px;
+    }
+}

@@ -1,0 +1,79 @@
+<%- contentFor('css') %>
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/slick.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/scrollbar.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/animate.css">
+
+<%- contentFor('body') %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-6 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Bar Chart</h5>
+        </div>
+        <div class="card-body chart-block">
+          <canvas id="myBarGraph"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Line Graph</h5>
+        </div>
+        <div class="card-body chart-block">
+          <canvas id="myGraph"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Radar Graph</h5>
+        </div>
+        <div class="card-body chart-block">
+          <canvas id="myRadarGraph"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Line Chart</h5>
+        </div>
+        <div class="card-body chart-block">
+          <canvas id="myLineCharts"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Doughnut Chart</h5>
+        </div>
+        <div class="card-body chart-block chart-vertical-center">
+          <canvas id="myDoughnutGraph"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Polar Chart</h5>
+        </div>
+        <div class="card-body chart-block chart-vertical-center">
+          <canvas id="myPolarGraph"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('script') %>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/slick/slick.min.js"></script>
+<script src="/assets/js/slick/slick.js"></script>
+<script src="/assets/js/header-slick.js"></script>
+<script src="/assets/js/chart/chartjs/chart.min.js"></script>
+<script src="/assets/js/chart/chartjs/chart.custom.js"></script>

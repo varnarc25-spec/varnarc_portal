@@ -1,0 +1,53 @@
+<%
+  var iosHref = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '#';
+  var androidHref = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '#';
+%>
+<section class="download-app-section" aria-labelledby="download-app-heading">
+  <div class="container download-app-section__inner">
+    <div class="row align-items-center g-4 g-lg-5">
+      <div class="col-lg-5 order-2 order-lg-1">
+        <div class="download-app-phone">
+          <div class="download-app-phone__device" role="img" aria-label="Varnarc app on a phone illustration">
+            <div class="download-app-phone__screen">
+              <div class="download-app-phone__logo-wrap">
+                <img src="/assets/images/logo/varnarclogo1.png" alt="" width="120" height="120" decoding="async">
+              </div>
+              <div class="download-app-phone__brand">Varnarc</div>
+            </div>
+            <div class="download-app-phone__home" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7 order-1 order-lg-2">
+        <div class="download-app-section__content">
+          <h2 id="download-app-heading" class="download-app-section__title">Download Our Varnarc Mobile App Now</h2>
+          <p class="download-app-section__lead">Download our app for the fastest, most convenient way to send recharge and pay bills.</p>
+          <p class="download-app-section__copy">Manage payments on the go with one secure login. Stay on top of your recharges and transactions with instant notifications and built-in safeguards.</p>
+          <ul class="download-app-section__list">
+            <li>Recharge</li>
+            <li>Bill Payment</li>
+            <li>Booking Online</li>
+            <li>and much more&hellip;.</li>
+          </ul>
+          <div class="download-app-badges">
+            <a href="<%= iosHref %>" class="download-app-badge-appstore" rel="noopener noreferrer" target="<%= iosHref !== '#' ? '_blank' : '_self' %>" aria-label="Download on the App Store">
+              <span class="download-app-badges__icon" aria-hidden="true"><i class="fab fa-apple"></i></span>
+              <span class="download-app-badges__badge-text">
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </span>
+            </a>
+            <a href="<%= androidHref %>" class="download-app-badge-googleplay" rel="noopener noreferrer" target="<%= androidHref !== '#' ? '_blank' : '_self' %>" aria-label="Get it on Google Play">
+              <span class="download-app-badges__icon download-app-badges__icon--play" aria-hidden="true"><i class="fab fa-google-play"></i></span>
+              <span class="download-app-badges__badge-text">
+                <small>GET IT ON</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

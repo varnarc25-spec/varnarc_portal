@@ -1,0 +1,30 @@
+<%- contentFor('css') %>
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/slick.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/scrollbar.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/animate.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/sticky.css">
+
+<%- contentFor('body') %>
+<div class="container-fluid">
+  <div class="row sticky-header-main">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Sticky Note <a class="btn btn-primary pull-right m-l-10" id="add_new" href="javascript:;">Add New Note</a></h5>
+        </div>
+        <div class="card-body">
+          <div class="sticky-note" id="board"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('script') %>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/jquery.ui.min.js"></script>
+<script src="/assets/js/slick/slick.min.js"></script>
+<script src="/assets/js/slick/slick.js"></script>
+<script src="/assets/js/header-slick.js"></script>
+<script src="/assets/js/sticky/sticky.js"></script>

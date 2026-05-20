@@ -1,0 +1,73 @@
+.legal-page .legal-document {
+  background: var(--background-color, #0f172a);
+  color: var(--default-color, #e2e8f0);
+  min-height: 50vh;
+}
+
+.legal-page .legal-document .container {
+  max-width: 800px;
+}
+
+.legal-page .legal-document h1 {
+  font-family: var(--heading-font, "Rubik", sans-serif);
+  color: var(--heading-color, #f8fafc);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .legal-document .legal-meta {
+  color: color-mix(in srgb, var(--default-color, #e2e8f0), transparent 35%);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.legal-page .legal-document h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading-color, #f8fafc);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-page .legal-document h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--heading-color, #f8fafc), transparent 8%);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .legal-document h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.legal-page .legal-document p,
+.legal-page .legal-document li {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--default-color, #e2e8f0), transparent 18%);
+  font-weight: 300;
+}
+
+.legal-page .legal-document ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.legal-page .legal-document a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.legal-page .legal-document a:hover {
+  text-decoration: underline;
+}
+
+.legal-page .legal-document strong {
+  color: color-mix(in srgb, var(--default-color, #e2e8f0), transparent 5%);
+  font-weight: 500;
+}

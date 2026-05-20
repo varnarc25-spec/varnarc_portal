@@ -1,0 +1,111 @@
+.title-style-2 .h2, .title-style-2 h2 {
+  color: rgba(var(--theme-body-font-color), 1);
+  margin-bottom: .9375rem;
+  margin-top: -.5rem;
+  padding-bottom: 1rem;
+  position: relative;
+  font-size: 2.5rem;
+}
+
+.title-style-2.text-center .h2:after, .title-style-2.text-center h2:after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title-style-2 .h2:after, .title-style-2 h2:after {
+  background-image: url(../images/shape/7.webp);
+  background-size: cover;
+  bottom: 0;
+  content: "";
+  height: .5625rem;
+  position: absolute;
+  width: 8rem;
+}
+
+.landing-jobs-section {
+  padding: 80px 0;
+}
+
+.job-box {
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(var(--service-shadow), .04), 0 8.69547px 6.95638px rgba(var(--service-shadow), .06), 0 4.6181px 3.69448px rgba(var(--service-shadow), .0484671), 0 1.9217px 1.53736px rgba(var(--service-shadow), .0337375);
+  transition: .5s;
+}
+
+.job-box h3 {
+  font-size: 1.125rem;
+}
+
+@media (max-width: 575.98px) {
+  .job-box h3 {
+    font-size: 1rem;
+  }
+}
+
+.job-box .job-top-content {
+  padding: 1.5625rem;
+}
+
+@media (max-width: 575.98px) {
+  .job-box .job-top-content {
+    padding: 1.25rem;
+  }
+}
+
+.job-box .job-top-content span.d-block {
+  padding-block: 0.625rem;
+}
+
+.job-box .job-top-content a svg {
+  font-size: 0.75rem;
+}
+
+.job-box .job-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+  padding: 0.9375rem 1.5625rem;
+  border-top: 1px solid rgba(var(--theme-body-sub-title-color), 0.1);
+}
+
+@media (max-width: 575.98px) {
+  .job-box .job-footer {
+    padding: 0.9375rem 1.25rem;
+  }
+}
+
+.job-box .job-footer .job-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9375rem;
+  height: 2.9375rem;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(var(--service-shadow), 0.04),
+    0 8.69547px 6.95638px rgba(var(--service-shadow), 0.06),
+    0 4.6181px 3.69448px rgba(var(--service-shadow), 0.0484671),
+    0 1.9217px 1.53736px rgba(var(--service-shadow), 0.0337375);
+}
+
+.job-box .job-footer h6 {
+  font-size: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .job-box .job-footer h6 {
+    font-size: 0.875rem;
+  }
+}
+
+.job-box .job-footer .job-details {
+  margin-bottom: -8px;
+}
+
+.job-box:hover {
+  transform: translateY(-5px);
+  transition: 0.5s;
+}
+
+.job-box:hover a .fa-arrow-right {
+  animation: left-right 5s infinite;
+}

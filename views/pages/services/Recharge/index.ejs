@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+
+<body class="landing-page service-section-page service-section-hub-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <% if (!hubNavEntries || !hubNavEntries.length) { %>
+  <%- include('../../../components/services/hub/section-empty') %>
+  <% } else { %>
+  <%- include('../../../components/services/hub/section-open') %>
+  <%- include('../../../components/services/hub/forms/mobile') %>
+  <%- include('../../../components/services/hub/forms/dth') %>
+  <%- include('../../../components/services/hub/forms/datacard') %>
+  <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'broadband', panelTitle: 'Pay your Broadband Bill', serviceIdLabel: 'Broadband Id' }) %>
+  <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'landline', panelTitle: 'Pay your Landline Bill', serviceIdLabel: 'Landline Id' }) %>
+  <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'cabletv', panelTitle: 'Pay your Cable TV Bill', serviceIdLabel: 'Cable TV Id' }) %>
+  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'electricity', panelTitle: 'Pay your Electricity Bill', includeState: true }) %>
+  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'metro', panelTitle: 'Pay your Metro Bill' }) %>
+  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'gas', panelTitle: 'Pay your Gas Bill' }) %>
+  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'water', panelTitle: 'Pay your Water Bill' }) %>
+  <%- include('../../../components/services/hub/forms/vehicle-recharge', { panelSlug: 'fastag', panelTitle: 'FASTag Recharge' }) %>
+  <%- include('../../../components/services/hub/forms/vehicle-recharge', { panelSlug: 'ev-recharge', panelTitle: 'EV Recharge' }) %>
+  <%- include('../../../components/services/hub/forms/subscription') %>
+  <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'get-sim', panelTitle: 'Get SIM', ctaText: 'Continue' }) %>
+  <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'apple-store', panelTitle: 'Apple Store', ctaText: 'Continue' }) %>
+  <%- include('../../../components/services/hub/section-close') %>
+  <% } %>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+</body>
+
+</html>

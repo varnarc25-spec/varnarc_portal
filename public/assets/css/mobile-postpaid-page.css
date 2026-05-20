@@ -1,0 +1,390 @@
+/**
+ * Mobile postpaid — scoped under .service-item-section.postpaid-service-section
+ */
+
+.service-item-section.postpaid-service-section {
+    background: #e8eef7;
+}
+
+.service-item-section.postpaid-service-section .postpaid-section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding-bottom: 0.5rem;
+}
+
+.postpaid-promo-wrap {
+    align-items: stretch;
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.postpaid-promo-nav {
+    align-self: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    color: #334155;
+    flex-shrink: 0;
+    height: 40px;
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+    width: 40px;
+}
+
+.postpaid-promo-nav:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.postpaid-promo-nav:focus-visible {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    outline: none;
+}
+
+.postpaid-promo-scroll {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex: 1;
+    gap: 0.85rem;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.75rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.postpaid-promo-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.postpaid-promo-scroll::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 99px;
+}
+
+.postpaid-promo-card {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    flex: 0 0 min(260px, 72vw);
+    min-height: 108px;
+    padding: 0.85rem 1rem;
+    scroll-snap-align: start;
+}
+
+.postpaid-promo-card--telco {
+    background: linear-gradient(135deg, #eff6ff 0%, #fff 55%);
+    border-color: rgba(37, 99, 235, 0.15);
+}
+
+.postpaid-promo-card--muted {
+    background: #f8fafc;
+}
+
+.postpaid-promo-card__title {
+    color: #0f172a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+}
+
+.postpaid-promo-operators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.55rem;
+}
+
+.postpaid-pill {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 6px;
+    color: #334155;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.45rem;
+}
+
+.postpaid-promo-card__btn {
+    background: #f97316;
+    border-radius: 8px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.postpaid-promo-card__btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.postpaid-pay-web {
+    margin-bottom: 1.5rem;
+}
+
+.postpaid-pay-web__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.85rem;
+}
+
+.postpaid-field-label {
+    color: #334155;
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.postpaid-mobile-input {
+    background-color: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    color: #0f172a;
+    display: block;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    padding: 0.7rem 0.95rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.postpaid-mobile-input::placeholder {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    letter-spacing: normal;
+}
+
+.postpaid-mobile-input:focus {
+    border-color: rgba(249, 115, 22, 0.65);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+    outline: none;
+}
+
+.postpaid-my-number {
+    margin-bottom: 1.5rem;
+}
+
+.postpaid-my-number__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.85rem;
+}
+
+.postpaid-saved-row {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    display: flex;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem;
+}
+
+.postpaid-saved-avatar {
+    align-items: center;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+}
+
+.postpaid-saved-num {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.postpaid-consent {
+    align-items: flex-start;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 10px;
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+    padding: 0.85rem 1rem;
+}
+
+.postpaid-consent__mark {
+    align-items: center;
+    background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    font-weight: 800;
+    height: 32px;
+    justify-content: center;
+    letter-spacing: 0.06em;
+    width: 32px;
+}
+
+.postpaid-consent__text {
+    color: #475569;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.postpaid-app-strip {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    padding: 1.25rem 1.35rem;
+}
+
+.postpaid-app-strip__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+}
+
+.postpaid-app-strip__sub {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.postpaid-download-btn {
+    align-items: center;
+    background: #f97316;
+    border-radius: 10px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.82rem;
+    font-weight: 800;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.postpaid-download-btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.postpaid-faq {
+    margin-top: 2.25rem;
+}
+
+.postpaid-faq > h2 {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+.postpaid-faq .accordion-item {
+    background: #eef2f7;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 10px !important;
+    margin-bottom: 0.65rem;
+    overflow: hidden;
+}
+
+.postpaid-faq .accordion-button {
+    background: #eef2f7 !important;
+    box-shadow: none !important;
+    color: #1e293b;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 1rem 1.1rem;
+}
+
+.postpaid-faq .accordion-button:not(.collapsed) {
+    background: #e2e8f0 !important;
+    color: #0f172a;
+}
+
+.postpaid-faq .accordion-body {
+    background: #fff;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding: 1rem 1.1rem 1.15rem;
+}
+
+.postpaid-query {
+    margin-top: 1.75rem;
+    text-align: center;
+}
+
+.postpaid-query > p {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.postpaid-query-card {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    color: #4f46e5 !important;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 0.65rem;
+    padding: 0.85rem 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.postpaid-query-card:hover {
+    border-color: rgba(79, 70, 229, 0.45);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.12);
+    color: #4338ca !important;
+}
+
+.postpaid-query-card i {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 575px) {
+    .service-item-section.postpaid-service-section .postpaid-section-inner {
+        max-width: 100%;
+    }
+
+    .postpaid-promo-nav {
+        display: none;
+    }
+}

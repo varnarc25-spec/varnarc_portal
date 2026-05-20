@@ -1,0 +1,306 @@
+/**
+ * Section hub — Quickai index-3 style (vertical tabs + form card + promos)
+ * https://harnishdesign.net/demo/html/quickai/index-3.html
+ */
+
+.quickai-section-hub {
+  background: #f6f7f8;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.quickai-section-hub .text-6 {
+  color: #0a2e52;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* —— Vertical tabs (resp-vtabs pattern) —— */
+.quickai-section-hub #verticalTab .resp-tabs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li {
+  align-items: center;
+  border-left: 3px solid transparent;
+  color: #4b5563;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.95rem;
+  font-weight: 500;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li span {
+  align-items: center;
+  color: #9ca3af;
+  display: inline-flex;
+  flex: 0 0 1.25rem;
+  font-size: 1rem;
+  justify-content: center;
+  width: 1.25rem;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li span img {
+  height: 1.1rem;
+  object-fit: contain;
+  width: 1.1rem;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li:hover {
+  color: #0071e3;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li:hover span {
+  color: #0071e3;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li.resp-tab-active,
+.quickai-section-hub #verticalTab .resp-tabs-list li.is-active {
+  background: #fff;
+  border-left-color: #0071e3;
+  color: #0071e3;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.quickai-section-hub #verticalTab .col-md-3 {
+  background: #eef0f2;
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.quickai-section-hub #verticalTab .col-md-9 .resp-tabs-container {
+  border-radius: 0 0.375rem 0.375rem 0;
+  margin-left: -1px;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li.resp-tab-active span,
+.quickai-section-hub #verticalTab .resp-tabs-list li.is-active span {
+  color: #0071e3;
+}
+
+.quickai-section-hub .resp-tabs-container {
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  min-height: 100%;
+  padding: 1.25rem !important;
+}
+
+.quickai-section-hub .resp-tabs-container .hub-tab-panel {
+  display: none;
+}
+
+.quickai-section-hub .resp-tabs-container .hub-tab-panel.is-active {
+  display: block;
+}
+
+.quickai-section-hub .resp-tabs-container .form-label {
+  color: #1f2937;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.quickai-section-hub .resp-tabs-container .form-control,
+.quickai-section-hub .resp-tabs-container .form-select {
+  border-color: #ced4da;
+  font-size: 0.95rem;
+  min-height: calc(2.25rem + 2px);
+}
+
+.quickai-section-hub .resp-tabs-container .form-control:focus,
+.quickai-section-hub .resp-tabs-container .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.quickai-section-hub .view-plans-link {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-left: 0;
+  border-radius: 0 0.375rem 0.375rem 0;
+  color: #0071e3 !important;
+  display: inline-flex;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.quickai-section-hub .view-plans-link:hover {
+  background: #f8fafc;
+  color: #005bb5 !important;
+}
+
+.quickai-section-hub .hub-amount-group .input-group-text {
+  background: #fff;
+  border-right: 0;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.quickai-section-hub .hub-amount-group .form-control {
+  border-left: 0;
+  border-radius: 0;
+}
+
+.quickai-section-hub .hub-amount-group .form-control:focus {
+  box-shadow: none;
+}
+
+.quickai-section-hub .hub-amount-group:focus-within {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+  border-radius: 0.375rem;
+}
+
+.quickai-section-hub .hub-amount-group:focus-within .input-group-text,
+.quickai-section-hub .hub-amount-group:focus-within .form-control,
+.quickai-section-hub .hub-amount-group:focus-within .view-plans-link {
+  border-color: #86b7fe;
+}
+
+.quickai-section-hub .btn-primary {
+  background-color: #0071e3;
+  border-color: #0071e3;
+  font-weight: 600;
+  padding: 0.65rem 1rem;
+}
+
+.quickai-section-hub .btn-primary:hover {
+  background-color: #005bb5;
+  border-color: #005bb5;
+}
+
+/* —— Right promo banners —— */
+.quickai-section-hub .hub-promo-col img {
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  width: 100%;
+}
+
+.quickai-section-hub .hub-promo-fallback {
+  background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #f9a8d4, #93c5fd) 1;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.06);
+  padding: 1rem;
+}
+
+.quickai-section-hub .hub-promo-fallback--dark {
+  background: linear-gradient(160deg, #0a3d62 0%, #1e5a8a 100%);
+  border: 0;
+  border-image: none;
+  color: #fff;
+  min-height: 140px;
+}
+
+.quickai-section-hub .hub-promo-fallback__badge {
+  align-items: center;
+  background: linear-gradient(145deg, #fecdd3, #bfdbfe);
+  border-radius: 50%;
+  color: #dc2626;
+  display: inline-flex;
+  font-size: 1.1rem;
+  font-weight: 800;
+  height: 3rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  width: 3rem;
+}
+
+.quickai-section-hub .hub-promo-fallback__text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin: 0 0 0.35rem;
+}
+
+.quickai-section-hub .hub-promo-fallback__code {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.quickai-section-hub .hub-promo-highlight {
+  color: #fde047;
+  font-weight: 800;
+}
+
+/* —— Trust strip —— */
+.quickai-section-hub .hub-trust-strip {
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  margin-top: 1.5rem;
+  padding: 1.25rem 1rem;
+}
+
+.quickai-section-hub .hub-trust-strip .col {
+  text-align: center;
+}
+
+.quickai-section-hub .hub-trust-strip i {
+  color: #0071e3;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.quickai-section-hub .hub-trust-strip h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.quickai-section-hub .hub-trust-strip p {
+  color: #6b7280;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.quickai-section-hub__empty {
+  color: #6b7280;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.quickai-section-hub__mobile-select {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 991.98px) {
+  .quickai-section-hub #verticalTab .resp-tabs-list {
+    display: none;
+  }
+
+  .quickai-section-hub .hub-promo-col {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+  }
+
+  .quickai-section-hub .hub-promo-col > div {
+    flex: 0 0 min(240px, 75vw);
+  }
+}
+
+@media (min-width: 992px) {
+  .quickai-section-hub #verticalTab .resp-tabs-list {
+    position: sticky;
+    top: 5.5rem;
+  }
+}

@@ -1,0 +1,107 @@
+.banner-style-3 .banner-box {
+    background-image: url(../images/job/bg-banner.webp);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(var(--service-shadow), .04), 0 8.69547px 6.95638px rgba(var(--service-shadow), .06), 0 4.6181px 3.69448px rgba(var(--service-shadow), .0484671), 0 1.9217px 1.53736px rgba(var(--service-shadow), .0337375);
+    padding: 1.875rem;
+    position: relative
+}
+
+.banner-style-3 .banner-box .h3,
+.banner-style-3 .banner-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: .625rem
+}
+
+@media (max-width:991.98px) {
+
+    .banner-style-3 .banner-box .h3,
+    .banner-style-3 .banner-box h3 {
+        font-size: 1rem
+    }
+}
+
+@media (max-width:575.98px) {
+    .banner-style-3 .banner-box {
+        padding: 1.25rem
+    }
+}
+
+.banner-style-3 .banner-list {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.0625rem;
+    margin-top: .9375rem
+}
+
+@media (max-width:575.98px) {
+    .banner-style-3 .banner-list {
+        gap: .5rem
+    }
+}
+
+.banner-style-3 .banner-list a svg {
+    font-size: .75rem
+}
+
+.banner-style-3 .right-image {
+    bottom: 0;
+    position: absolute;
+    right: 0
+}
+
+@media (max-width:991.98px) {
+    .banner-style-3 .right-image {
+        display: none
+    }
+}
+
+.list-box {
+    border: 1px solid rgba(48, 48, 85, .2);
+    border-radius: 3px;
+    padding: .3125rem 1rem
+}
+
+.list-box svg {
+    height: 1.125rem;
+    width: 1.125rem;
+    fill: rgba(var(--theme-body-sub-title-color), 1)
+}
+
+/* Landing page CTA strip (banner1.ejs) */
+.landing-page-cta .landing-page-cta__box {
+    padding: 2rem 1.875rem;
+}
+
+.landing-page-cta .landing-page-cta__title {
+    font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+}
+
+.landing-page-cta .landing-page-cta__subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.92;
+}
+
+/* Rectangular CTAs with light corner rounding (not pills) */
+.landing-primary-cta-btn.btn {
+    border-radius: 10px;
+}
+
+.landing-page-cta .landing-page-cta__btn {
+    min-width: 10rem;
+    font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+    .landing-page-cta .landing-page-cta__box {
+        text-align: center;
+    }
+
+    .landing-page-cta .text-lg-end {
+        text-align: center !important;
+    }
+}

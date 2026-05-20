@@ -1,0 +1,457 @@
+/**
+ * Electricity bill payment landing — scoped to .service-electricity-bill-page
+ */
+
+.service-electricity-bill-page {
+    --elec-navy: #0a2342;
+    --elec-navy-soft: #123a5c;
+    --elec-orange: #ea580c;
+    --elec-orange-hover: #c2410c;
+    --elec-panel: #f1f5f9;
+    --elec-card-border: #e2e8f0;
+    --elec-faq-bar: #e0f2fe;
+    background-color: var(--elec-panel);
+}
+
+.service-electricity-bill-page .elec-hero {
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.service-electricity-bill-page .elec-hero__title-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.service-electricity-bill-page .elec-hero__icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fff7ed, #ffedd5);
+    border: 2px solid var(--elec-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--elec-orange);
+    font-size: 1.35rem;
+    margin-top: 0.15rem;
+}
+
+.service-electricity-bill-page .elec-hero h1 {
+    font-family: var(--nav-font, "Rubik", sans-serif);
+    font-weight: 800;
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+    color: #0f172a;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.service-electricity-bill-page .elec-hero__lead {
+    max-width: 42rem;
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.service-electricity-bill-page .elec-form-card {
+    background: #fff;
+    border: 1px solid var(--elec-card-border);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+    padding: 1.5rem 1.35rem 1.75rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    .service-electricity-bill-page .elec-form-card {
+        padding: 1.75rem 2rem 2rem;
+    }
+}
+
+.service-electricity-bill-page .elec-form-card .form-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #334155;
+}
+
+.service-electricity-bill-page .elec-form-card .form-select {
+    border-radius: 10px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-color: #cbd5e1;
+    font-size: 1rem;
+}
+
+.service-electricity-bill-page .elec-form-card .form-select:focus {
+    border-color: var(--elec-orange);
+    box-shadow: 0 0 0 0.2rem rgba(234, 88, 12, 0.18);
+}
+
+.service-electricity-bill-page .elec-quick-picks {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--elec-card-border);
+}
+
+.service-electricity-bill-page .elec-quick-picks__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.service-electricity-bill-page .elec-quick-picks__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    justify-content: flex-start;
+}
+
+.service-electricity-bill-page .elec-quick-pick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: inherit;
+    text-align: center;
+    min-width: 4.5rem;
+}
+
+.service-electricity-bill-page .elec-quick-pick:focus-visible {
+    outline: 2px solid var(--elec-orange);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+.service-electricity-bill-page .elec-quick-pick__circle {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.65rem;
+    color: var(--elec-navy);
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.service-electricity-bill-page .elec-quick-pick.is-active .elec-quick-pick__circle,
+.service-electricity-bill-page .elec-quick-pick:hover .elec-quick-pick__circle {
+    border-color: var(--elec-orange);
+    background: #fff7ed;
+    color: var(--elec-orange-hover);
+}
+
+.service-electricity-bill-page .elec-quick-pick__name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #475569;
+    max-width: 5.5rem;
+    line-height: 1.2;
+}
+
+.service-electricity-bill-page .btn-electricity-continue {
+    margin-top: 1.25rem;
+    width: 100%;
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(180deg, var(--elec-orange), var(--elec-orange-hover));
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.service-electricity-bill-page .btn-electricity-continue:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+    color: #fff;
+}
+
+.service-electricity-bill-page .btn-electricity-continue:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.service-electricity-bill-page .elec-form-feedback {
+    min-height: 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.service-electricity-bill-page .elec-section {
+    background: #fff;
+    border: 1px solid var(--elec-card-border);
+    border-radius: 14px;
+    padding: 1.5rem 1.35rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .service-electricity-bill-page .elec-section {
+        padding: 1.75rem 2rem;
+    }
+}
+
+.service-electricity-bill-page .elec-section h2 {
+    font-family: var(--nav-font, "Rubik", sans-serif);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.service-electricity-bill-page .elec-section p,
+.service-electricity-bill-page .elec-section li {
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.service-electricity-bill-page .elec-section a {
+    color: var(--elec-orange);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.service-electricity-bill-page .elec-section a:hover {
+    color: var(--elec-orange-hover);
+    text-decoration: underline;
+}
+
+.service-electricity-bill-page .elec-section--muted {
+    background: #f8fafc;
+}
+
+.service-electricity-bill-page .elec-link-grid__title {
+    font-family: var(--nav-font, "Rubik", sans-serif);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.service-electricity-bill-page .elec-link-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+}
+
+@media (min-width: 576px) {
+    .service-electricity-bill-page .elec-link-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .service-electricity-bill-page .elec-link-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.service-electricity-bill-page .elec-link-grid a {
+    color: var(--elec-orange);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.2rem 0;
+}
+
+.service-electricity-bill-page .elec-link-grid a:hover {
+    color: var(--elec-orange-hover);
+    text-decoration: underline;
+}
+
+.service-electricity-bill-page .elec-other-services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.service-electricity-bill-page .elec-other-services a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--elec-card-border);
+    background: #fff;
+    color: var(--elec-navy);
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.service-electricity-bill-page .elec-other-services a:hover {
+    border-color: var(--elec-orange);
+    color: var(--elec-orange);
+}
+
+.service-electricity-bill-page .elec-faq .accordion-item {
+    border: none;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.service-electricity-bill-page .elec-faq .accordion-button {
+    background: var(--elec-faq-bar);
+    color: var(--elec-navy);
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: none;
+    padding: 0.9rem 1rem;
+}
+
+.service-electricity-bill-page .elec-faq .accordion-button:not(.collapsed) {
+    background: #bae6fd;
+    color: var(--elec-navy);
+    box-shadow: none;
+}
+
+.service-electricity-bill-page .elec-faq .accordion-button::after {
+    filter: brightness(0.25);
+}
+
+.service-electricity-bill-page .elec-faq .accordion-body {
+    background: #fff;
+    border: 1px solid var(--elec-card-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 1rem 1.1rem;
+    color: #475569;
+    font-size: 0.92rem;
+}
+
+.service-electricity-bill-page .elec-articles__grid {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .service-electricity-bill-page .elec-articles__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.service-electricity-bill-page .elec-article-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    border: 1px solid var(--elec-card-border);
+    border-radius: 12px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.service-electricity-bill-page .elec-article-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    color: inherit;
+}
+
+.service-electricity-bill-page .elec-article-card__thumb {
+    flex-shrink: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e0f2fe, #fff7ed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--elec-orange);
+    font-size: 1.75rem;
+}
+
+.service-electricity-bill-page .elec-article-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.35rem;
+    line-height: 1.35;
+}
+
+.service-electricity-bill-page .elec-article-card p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.service-electricity-bill-page .elec-videos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (min-width: 992px) {
+    .service-electricity-bill-page .elec-videos__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.service-electricity-bill-page .elec-video-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-electricity-bill-page .elec-video-card__thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    background: linear-gradient(145deg, var(--elec-navy-soft), var(--elec-navy));
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.service-electricity-bill-page .elec-video-card__thumb .bi {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 3rem;
+    height: 3rem;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-electricity-bill-page .elec-video-card h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #334155;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.service-electricity-bill-page .elec-video-card:hover .elec-video-card__thumb {
+    filter: brightness(1.08);
+}
+
+.service-electricity-bill-page .elec-breadcrumb a {
+    color: var(--elec-orange);
+}
+
+.service-electricity-bill-page .elec-breadcrumb .breadcrumb-item.active {
+    color: #64748b;
+}

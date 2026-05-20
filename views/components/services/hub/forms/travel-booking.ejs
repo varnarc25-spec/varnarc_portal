@@ -1,0 +1,26 @@
+<%
+  var slug = typeof panelSlug !== 'undefined' ? String(panelSlug) : 'travel-flight';
+  var title = typeof panelTitle !== 'undefined' ? panelTitle : 'Book Flight';
+  var href = hubHrefForPanel(slug);
+  var active = panelIsActive(slug);
+%>
+<div class="hub-tab-panel<%= active ? ' is-active' : '' %>" data-hub-panel="<%= slug %>" id="hub-panel-<%= slug %>" role="tabpanel"<%= active ? '' : ' hidden' %>>
+  <h2 class="text-6 mb-4"><%= title %></h2>
+  <form class="hub-service-form" action="<%= href %>" method="get">
+    <div class="mb-3">
+      <label class="form-label" for="from-<%= slug %>">From</label>
+      <input type="text" class="form-control" id="from-<%= slug %>" placeholder="Departure city" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="to-<%= slug %>">To</label>
+      <input type="text" class="form-control" id="to-<%= slug %>" placeholder="Destination" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="date-<%= slug %>">Travel Date</label>
+      <input type="date" class="form-control" id="date-<%= slug %>" required />
+    </div>
+    <div class="d-grid mt-4">
+      <a class="btn btn-primary" href="<%= href %>">Continue to Book</a>
+    </div>
+  </form>
+</div>

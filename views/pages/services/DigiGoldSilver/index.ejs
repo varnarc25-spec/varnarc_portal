@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+
+<body class="landing-page service-section-page service-section-hub-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <% if (!hubNavEntries || !hubNavEntries.length) { %>
+  <%- include('../../../components/services/hub/section-empty') %>
+  <% } else { %>
+  <%- include('../../../components/services/hub/section-open') %>
+  <%- include('../../../components/services/hub/forms/digigold') %>
+  <%- include('../../../components/services/hub/section-close') %>
+  <% } %>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+</body>
+
+</html>

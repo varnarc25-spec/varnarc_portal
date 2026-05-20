@@ -1,0 +1,275 @@
+<section class="section-space components-section cuba-demo-section pt-0" id="components">
+    <div class="container">
+        <ul class="decoration">
+            <li class="flower-gif">
+                <div class="mesh-loader">
+                    <div class="set-one">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="set-two">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col-sm-12 wow pulse">
+                <div class="cuba-demo-content">
+                    <div class="couting">
+                        <% 
+                            var rawTabs = Array.isArray(landingMenuTabs) ? landingMenuTabs : [];
+                            var menuItems = [];
+                            rawTabs.forEach(function(tab) {
+                                var section = tab.section || {};
+                                var items = Array.isArray(tab.items) ? tab.items : [];
+                                items.forEach(function(item) {
+                                    menuItems.push({ section: section, item: item || {} });
+                                });
+                            });
+                        %>
+                        <h2><%= menuItems.length %>+</h2>
+                    </div>
+                    <div class="landing-title">
+                        <h5 class="sub-title">Live Services</h5>
+                        <h2><span class="gradient-8">All Services </span> we are offering</h2>
+                        <p>Browse available recharge and bill payment menu items across all service sections.</p>
+                    </div>
+                </div>
+                <div class="vector-image"> <img src="/assets/images/landing/vectors/3.svg" alt="vector women"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid overflow-hidden">
+        <% 
+            var chunkSize = 6;
+            var rowOffsets = ['0 100', '0 -150', '0 100', '0 -150'];
+        %>
+        <% if (!menuItems.length) { %>
+            <div class="row component_responsive g-3">
+                <div class="col-12 text-center text-muted">No menu items available yet.</div>
+            </div>
+        <% } %>
+        <% for (var i = 0; i < menuItems.length; i += chunkSize) { 
+            var rowItems = menuItems.slice(i, i + chunkSize);
+            var rowIdx = Math.floor(i / chunkSize);
+            var rowOffset = rowOffsets[rowIdx % rowOffsets.length];
+        %>
+            <div class="row component_responsive g-3 <%= (i + chunkSize) < menuItems.length ? 'mb-3' : '' %>" data-jarallax-element="<%= rowOffset %>">
+                <% rowItems.forEach(function(entry) { 
+                    var item = entry.item || {};
+                    var section = entry.section || {};
+                %>
+                    <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                        <div class="component-hover-effect">
+                            <% if (item.icon_url) { %>
+                                <img src="<%= item.icon_url %>" alt="<%= item.name || 'menu item' %>">
+                            <% } else { %>
+                                <img src="/assets/images/landing/icon/1.svg" alt="<%= item.name || 'menu item' %>">
+                            <% } %>
+                            <h6 class="m-0"><%= item.name || 'Unnamed item' %></h6>
+                            <small class="f-light d-block mt-1"><%= section.name || 'General' %></small>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</section>
+<!-- <section class="section-space components-section cuba-demo-section pt-0" id="components">
+    <div class="container">
+        <ul class="decoration">
+            <li class="flower-gif">
+                <div class="mesh-loader">
+                    <div class="set-one">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="set-two">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col-sm-12 wow pulse">
+                <div class="cuba-demo-content">
+                    <div class="couting">
+                        <h2>90+</h2>
+                    </div>
+                    <div class="landing-title">
+                        <h5 class="sub-title">Usable Components</h5>
+                        <h2><span class="gradient-8">UI components </span> is first class</h2>
+                        <p>The UI components will facilitate you in developing the most user-friendly,
+                            interactive websites and applications with cutting-edge design features.</p>
+                    </div>
+                </div>
+                <div class="vector-image"> <img src="/assets/images/landing/vectors/3.svg" alt="vector women"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid overflow-hidden">
+        <div class="row component_responsive g-3 mb-3" data-jarallax-element="0 100">
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/1.svg" alt="">
+                    <h6 class="m-0 Pt-4">SweetAlert2</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/2.svg" alt="">
+                    <h6 class="m-0">Avatar</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/3.svg" alt="">
+                    <h6 class="m-0">Scrollable</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/4.svg" alt="">
+                    <h6 class="m-0">Tree view</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/5.svg" alt="">
+                    <h6 class="m-0">Bootstrap notify</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/6.svg" alt="">
+                    <h6 class="m-0">Rating </h6>
+                </div>
+            </div>
+        </div>
+        <div class="row component_responsive g-3 mb-3" data-jarallax-element="0 -150">
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/7.svg" alt="">
+                    <h6 class="m-0">Dropzone</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/8.svg" alt="">
+                    <h6 class="m-0">Tour</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/9.svg" alt="">
+                    <h6 class="m-0">Animated modal</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/10.svg" alt="">
+                    <h6 class="m-0">Owl Carousel</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/11.svg" alt="">
+                    <h6 class="m-0">Ribbons </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/12.svg" alt="">
+                    <h6 class="m-0">Pagination </h6>
+                </div>
+            </div>
+        </div>
+        <div class="row component_responsive g-3 mb-3" data-jarallax-element="0 100">
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/13.svg" alt="">
+                    <h6 class="m-0">Steps </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/14.svg" alt="">
+                    <h6 class="m-0">Breadcrumb </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/15.svg" alt="">
+                    <h6 class="m-0">Range Slider </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/16.svg" alt="">
+                    <h6 class="m-0">image cropper </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/17.svg" alt="">
+                    <h6 class="m-0">Sticky </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/18.svg" alt="">
+                    <h6 class="m-0">Progress </h6>
+                </div>
+            </div>
+        </div>
+        <div class="row component_responsive g-3 mb-3" data-jarallax-element="0 -150">
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/19.svg" alt="">
+                    <h6 class="m-0">Tooltip </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/20.svg" alt="">
+                    <h6 class="m-0">Spinners </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/21.svg" alt="">
+                    <h6 class="m-0">Dropdown </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/22.svg" alt="">
+                    <h6 class="m-0">Tabs </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/23.svg" alt="">
+                    <h6 class="m-0">Accordion </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/24.svg" alt="">
+                    <h6 class="m-0">Navs</h6>
+                </div>
+            </div>
+        </div>
+        <div class="row component_responsive g-3" data-jarallax-element="0 100">
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/25.svg" alt="">
+                    <h6 class="m-0">Shadow</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/26.svg" alt="">
+                    <h6 class="m-0">state color</h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/27.svg" alt="">
+                    <h6 class="m-0">List </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/28.svg" alt="">
+                    <h6 class="m-0">Grid </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/29.svg" alt="">
+                    <h6 class="m-0">Helper classes </h6>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-lg-3 col-md-4 col-6 component-col-set">
+                <div class="component-hover-effect"><img src="/assets/images/landing/icon/30.svg" alt="">
+                    <h6 class="m-0">Typography</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->

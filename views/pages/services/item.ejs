@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../../components/landing/head") %>
+
+<body class="landing-page service-item-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include("../../components/landing/header") %></div>
+  </div>
+
+  <% var ctx = typeof servicePageCtx !== "undefined" ? servicePageCtx : null; %>
+  <% var row = ctx && ctx.item ? ctx.item : {}; %>
+  <% var sec = ctx && ctx.section ? ctx.section : {}; %>
+  <% var cat = ctx && ctx.category ? ctx.category : {}; %>
+  <% var sub = ctx && ctx.subcategory ? ctx.subcategory : null; %>
+
+  <section class="section-space service-item-section">
+    <div class="container text-start py-4">
+      <div class="row align-items-start g-4">
+        <% if (row.icon_url) { %>
+          <div class="col-auto">
+            <img src="<%= row.icon_url %>" alt="" class="rounded-3 service-item-icon" style="width:72px;height:72px;object-fit:contain;">
+          </div>
+        <% } %>
+        <div class="col">
+          <h1 class="h2 mb-3"><%= row.name || "Service" %></h1>
+          <% if (row.description) { %>
+            <p class="lead text-muted mb-0"><%= row.description %></p>
+          <% } else { %>
+            <p class="text-muted mb-0">Details for this service will appear here. Manage copy in your CMS or API.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include("../../components/landing/footer") %>
+  <%- include("../../components/landing/scripts") %>
+</body>
+
+</html>

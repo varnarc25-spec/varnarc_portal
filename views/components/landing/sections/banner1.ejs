@@ -1,0 +1,50 @@
+<% 
+  const title = (typeof ctaTitle !== 'undefined' && ctaTitle) ? ctaTitle : 'Start Managing Your Money Smarter Today';
+  const subtitle = (typeof ctaSubtitle !== 'undefined')
+    ? ctaSubtitle
+    : 'One app for payments, bills, investments, and insurance—secure and built for speed.';
+  const buttonLabel = (typeof ctaButtonText !== 'undefined' && ctaButtonText) ? ctaButtonText : 'Get Started';
+  const linkHref = (typeof ctaHref !== 'undefined' && ctaHref) ? ctaHref : '#';
+  const resolvedBackgroundType = (typeof backgroundType !== 'undefined' && backgroundType) ? backgroundType : 'color';
+  const resolvedBackgroundColor = (typeof backgroundColor !== 'undefined' && backgroundColor) ? backgroundColor : '#7366ff';
+  const resolvedBackgroundImage = (typeof backgroundImage !== 'undefined' && backgroundImage) ? backgroundImage : '';
+  const resolvedVectorImage = (typeof vectorImage !== 'undefined' && vectorImage) ? vectorImage : '';
+  const resolvedVectorPosition = (typeof vectorPosition !== 'undefined' && vectorPosition === 'left') ? 'left' : 'right';
+%>
+<section class="section-space banner-style-3 landing-page-cta mt-3" aria-label="Call to action">
+    <div class="container">
+        <div class="banner-box landing-page-cta__box position-relative overflow-hidden">
+            <% if (resolvedBackgroundType === 'image' && resolvedBackgroundImage) { %>
+            <img class="position-absolute top-0 start-0 w-100 h-100" src="<%= resolvedBackgroundImage %>" alt="banner background" style="object-fit:cover;z-index:0;">
+            <% } %>
+            <% if (resolvedVectorImage) { %>
+            <% if (resolvedVectorPosition === 'left') { %>
+            <img
+              class="position-absolute d-none d-lg-block"
+              src="<%= resolvedVectorImage %>"
+              alt="banner vector"
+              style="top:50%;transform:translateY(-50%);max-height:90%;left:16px;"
+            />
+            <% } else { %>
+            <img
+              class="position-absolute d-none d-lg-block"
+              src="<%= resolvedVectorImage %>"
+              alt="banner vector"
+              style="top:50%;transform:translateY(-50%);max-height:90%;right:16px;"
+            />
+            <% } %>
+            <% } %>
+            <div class="row align-items-center gy-3 text-center text-lg-start position-relative" style="z-index:1;">
+                <div class="col-lg-8">
+                    <h3 class="landing-page-cta__title mb-2"><%= title %></h3>
+                    <% if (subtitle) { %>
+                    <p class="txt-dark landing-page-cta__subtitle mb-0"><%= subtitle %></p>
+                    <% } %>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="<%= linkHref %>" class="btn btn-primary btn-lg px-4 landing-primary-cta-btn landing-page-cta__btn" <% if (resolvedBackgroundType !== 'image') { %>style="background-color:<%= resolvedBackgroundColor %>;border-color:<%= resolvedBackgroundColor %>;"<% } %>><%= buttonLabel %></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+<section class="faq-section section-space" id="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="landing-title text-center">
+                    <h5 class="sub-title">Frequently Ask Question</h5>
+                    <h2>Do you have <span class="gradient-11">any Question? </span> Look Here</h2>
+                    <p>You can freely reach out to us at any time with any questions! We'd always be happy to serve you.
+                    </p>
+                </div>
+                <div class="vector-image"> <img src="/assets/images/landing/vectors/4.svg" alt="vector women"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="accordion" id="faqaccordion">
+                    <% 
+                      var faqGroups = Array.isArray(publicFaqs) ? publicFaqs : [];
+                      var flatFaqs = [];
+                      faqGroups.forEach(function(group) {
+                        var groupFaqs = Array.isArray(group.faqs) ? group.faqs : [];
+                        groupFaqs.forEach(function(item) {
+                          flatFaqs.push({
+                            category: group.category || "General",
+                            question: item.question || "",
+                            answer: item.answer || ""
+                          });
+                        });
+                      });
+                      flatFaqs = flatFaqs.slice(0, 10);
+                    %>
+
+                    <% if (!flatFaqs.length) { %>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq-fallback-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-fallback" aria-expanded="true" aria-controls="faq-fallback">
+                            FAQs are being updated
+                          </button>
+                        </h2>
+                        <div class="accordion-collapse collapse show" id="faq-fallback" aria-labelledby="faq-fallback-header" data-bs-parent="#faqaccordion">
+                          <div class="accordion-body f-light">
+                            We're updating our frequently asked questions. Please check back shortly.
+                          </div>
+                        </div>
+                      </div>
+                    <% } %>
+
+                    <% flatFaqs.forEach(function(faq, idx) { 
+                      var headerId = "faq-header-" + idx;
+                      var collapseId = "faq-collapse-" + idx;
+                    %>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="<%= headerId %>">
+                          <button class="accordion-button <%= idx === 0 ? '' : 'collapsed' %>" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#<%= collapseId %>"
+                            aria-expanded="<%= idx === 0 ? 'true' : 'false' %>" aria-controls="<%= collapseId %>">
+                            <%= faq.question %>
+                          </button>
+                        </h2>
+                        <div class="accordion-collapse collapse <%= idx === 0 ? 'show' : '' %>" id="<%= collapseId %>"
+                          aria-labelledby="<%= headerId %>" data-bs-parent="#faqaccordion">
+                          <div class="accordion-body f-light">
+                            <strong><%= faq.category %>:</strong> <%= faq.answer %>
+                          </div>
+                        </div>
+                      </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,146 @@
+<% var pageTitle = 'Municipal Tax Payment'; %>
+<% var pageDescription = 'Pay property and municipal taxes online for corporations and nagar nigams across India on Varnarc.'; %>
+<% 
+  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
+  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
+  var downloadHref = _play || _ios || '#';
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/municipal-tax-page.css" />
+
+<body class="landing-page service-item-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <section class="section-space service-item-section municipal-service-section">
+    <div class="container text-start py-4">
+      <div class="municipal-section-inner">
+        <div class="municipal-promo-wrap">
+          <div class="municipal-promo-scroll" tabindex="0" role="region" aria-label="Offers and shortcuts">
+            <article class="municipal-promo-card municipal-promo-card--accent">
+              <p class="municipal-promo-card__title">Pay your EMIs with multiple payment options</p>
+              <a href="/services/FinancialHub/index" class="municipal-promo-card__btn">Pay now</a>
+            </article>
+            <article class="municipal-promo-card municipal-promo-card--muted">
+              <p class="municipal-promo-card__title">Agent collection billers — explore supported categories and billers</p>
+              <a href="/services/FinancialHub/index" class="municipal-promo-card__btn">Explore now</a>
+            </article>
+            <article class="municipal-promo-card municipal-promo-card--muted">
+              <p class="municipal-promo-card__title">Insta EMI Card — get cashback on your first eligible transaction</p>
+              <a href="/services/FinancialHub/index" class="municipal-promo-card__btn">Get it now</a>
+            </article>
+            <article class="municipal-promo-card municipal-promo-card--muted">
+              <p class="municipal-promo-card__title">Personal loan — higher limits with quick disbursal where eligible</p>
+              <a href="/services/FinancialHub/investments" class="municipal-promo-card__btn">Apply now</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="municipal-pay-web">
+          <label class="municipal-pay-web__title" for="municipalProviderSearch">Pay on Web</label>
+          <input type="search" id="municipalProviderSearch" class="municipal-search-input" placeholder="Search your provider" autocomplete="off" aria-label="Search your municipal tax provider" />
+        </div>
+
+        <section aria-labelledby="municipal-all-heading">
+          <h2 id="municipal-all-heading" class="municipal-section-title">All service providers</h2>
+          <ul class="municipal-providers list-unstyled mb-0" id="municipalBillerList">
+            <li data-provider="agartala municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c0" aria-hidden="true">AG</span><span class="fw-semibold">Agartala Municipal Corporation</span></li>
+            <li data-provider="ajmer nagar nigam"><span class="municipal-biller-logo municipal-biller-logo--c1" aria-hidden="true">AN</span><span class="fw-semibold">Ajmer Nagar Nigam</span></li>
+            <li data-provider="bhiwandi nizampur city municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c2" aria-hidden="true">BN</span><span class="fw-semibold">Bhiwandi Nizampur City Municipal Corporation</span></li>
+            <li data-provider="bhubaneswar municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c3" aria-hidden="true">BB</span><span class="fw-semibold">Bhubaneswar Municipal Corporation</span></li>
+            <li data-provider="ahmedabad municipal corporation amc"><span class="municipal-biller-logo municipal-biller-logo--c4" aria-hidden="true">AH</span><span class="fw-semibold">Ahmedabad Municipal Corporation</span></li>
+            <li data-provider="pune municipal corporation pmc"><span class="municipal-biller-logo municipal-biller-logo--c5" aria-hidden="true">PM</span><span class="fw-semibold">Pune Municipal Corporation</span></li>
+            <li data-provider="greater mumbai municipal corporation bmc"><span class="municipal-biller-logo municipal-biller-logo--c6" aria-hidden="true">MC</span><span class="fw-semibold">Brihanmumbai Municipal Corporation (BMC)</span></li>
+            <li data-provider="noida authority"><span class="municipal-biller-logo municipal-biller-logo--c7" aria-hidden="true">NA</span><span class="fw-semibold">NOIDA Authority</span></li>
+            <li data-provider="ghaziabad nagar nigam"><span class="municipal-biller-logo municipal-biller-logo--c0" aria-hidden="true">GN</span><span class="fw-semibold">Ghaziabad Nagar Nigam</span></li>
+            <li data-provider="indore municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c1" aria-hidden="true">IM</span><span class="fw-semibold">Indore Municipal Corporation</span></li>
+            <li data-provider="nagpur municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c2" aria-hidden="true">NM</span><span class="fw-semibold">Nagpur Municipal Corporation</span></li>
+            <li data-provider="hyderabad municipal corporation ghmc"><span class="municipal-biller-logo municipal-biller-logo--c3" aria-hidden="true">GH</span><span class="fw-semibold">Greater Hyderabad Municipal Corporation (GHMC)</span></li>
+            <li data-provider="chennai corporation"><span class="municipal-biller-logo municipal-biller-logo--c4" aria-hidden="true">CC</span><span class="fw-semibold">Greater Chennai Corporation</span></li>
+            <li data-provider="kolkata municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c5" aria-hidden="true">KM</span><span class="fw-semibold">Kolkata Municipal Corporation</span></li>
+            <li data-provider="jaipur municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c6" aria-hidden="true">JM</span><span class="fw-semibold">Jaipur Municipal Corporation</span></li>
+            <li data-provider="vadodara municipal corporation"><span class="municipal-biller-logo municipal-biller-logo--c7" aria-hidden="true">VM</span><span class="fw-semibold">Vadodara Municipal Corporation</span></li>
+          </ul>
+        </section>
+
+        <section class="municipal-app-strip" aria-labelledby="municipal-app-heading">
+          <div>
+            <h2 id="municipal-app-heading" class="municipal-app-strip__title">Continue on the app</h2>
+            <p class="municipal-app-strip__sub">Download the app to redeem your rewards</p>
+            <% if (_play && _ios) { %>
+            <p class="small text-muted mb-0 mt-2">
+              <a href="<%= _ios %>" class="link-secondary" rel="noopener noreferrer" target="_blank">App Store</a>
+              <span class="text-muted px-1">|</span>
+              <a href="<%= _play %>" class="link-secondary" rel="noopener noreferrer" target="_blank">Google Play</a>
+            </p>
+            <% } %>
+          </div>
+          <a class="municipal-download-btn" href="<%= downloadHref %>"<% if (downloadHref !== '#') { %> rel="noopener noreferrer" target="_blank"<% } %> aria-label="Download the Varnarc app">Download</a>
+        </section>
+
+        <section class="municipal-faq" aria-labelledby="municipal-faq-heading">
+          <h2 id="municipal-faq-heading">Frequently asked questions</h2>
+          <div class="accordion" id="municipalFaq">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#municipalFaq1" aria-expanded="false" aria-controls="municipalFaq1">
+                  Why is my municipal tax not reflecting even after successful payment?
+                </button>
+              </h3>
+              <div id="municipalFaq1" class="accordion-collapse collapse" data-bs-parent="#municipalFaq">
+                <div class="accordion-body">
+                  Municipal bodies often reconcile in batches. Allow 24–72 hours for the portal to update. Keep your transaction ID and receipt; if status stays unpaid after that window, contact the corporation with your assessment or property ID and Raise a request with us including those details.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#municipalFaq2" aria-expanded="false" aria-controls="municipalFaq2">
+                  How do I find my ward or assessment number?
+                </button>
+              </h3>
+              <div id="municipalFaq2" class="accordion-collapse collapse" data-bs-parent="#municipalFaq">
+                <div class="accordion-body">
+                  Check your last property tax receipt, the corporation&apos;s self-assessment portal, or your khata / property tax demand notice. Different cities use ward number, SAS property ID, or PTIN — use the exact label your municipality asks for on their bill.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="municipal-query">
+          <p>Still have a query?</p>
+          <a class="municipal-query-card" href="mailto:support@varnarc.com?subject=Municipal%20tax%20support">
+            <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+            Raise a request
+          </a>
+        </section>
+      </div>
+    </div>
+  </section>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+<script>
+(function () {
+  var input = document.getElementById("municipalProviderSearch");
+  var list = document.getElementById("municipalBillerList");
+  if (!input || !list) return;
+  input.addEventListener("input", function () {
+    var q = String(input.value || "").trim().toLowerCase();
+    var items = list.querySelectorAll("li");
+    for (var i = 0; i < items.length; i++) {
+      var li = items[i];
+      var key = (li.getAttribute("data-provider") || li.textContent || "").toLowerCase();
+      li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
+    }
+  });
+})();
+</script>
+</body>
+
+</html>

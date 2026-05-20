@@ -1,0 +1,337 @@
+/**
+ * Piped gas bill payment — scoped under .service-item-section.pipedgas-service-section
+ */
+
+.service-item-section.pipedgas-service-section {
+    background: #e8eef7;
+}
+
+.service-item-section.pipedgas-service-section .pipedgas-section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding-bottom: 0.5rem;
+}
+
+.pipedgas-promo-wrap {
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.pipedgas-promo-scroll {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    gap: 0.85rem;
+    margin: 0 -0.15rem;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.75rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.pipedgas-promo-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.pipedgas-promo-scroll::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 99px;
+}
+
+.pipedgas-promo-card {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    flex: 0 0 min(260px, 78vw);
+    min-height: 100px;
+    padding: 0.85rem 1rem;
+    scroll-snap-align: start;
+}
+
+.pipedgas-promo-card--lpg {
+    background: #fee2e2;
+    border-color: rgba(185, 28, 28, 0.22);
+}
+
+.pipedgas-promo-card--muted {
+    background: #f8fafc;
+}
+
+.pipedgas-promo-card__title {
+    color: #0f172a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.55rem;
+}
+
+.pipedgas-promo-card__btn {
+    background: #f97316;
+    border-radius: 8px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.pipedgas-promo-card__btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.pipedgas-pay-web {
+    margin-bottom: 1.5rem;
+}
+
+.pipedgas-pay-web__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.65rem;
+}
+
+.pipedgas-search-input {
+    background-color: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.65rem 0.9rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.pipedgas-search-input::placeholder {
+    color: #94a3b8;
+}
+
+.pipedgas-search-input:focus {
+    border-color: rgba(249, 115, 22, 0.65);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+    outline: none;
+}
+
+.pipedgas-section-title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+}
+
+.pipedgas-providers {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.pipedgas-providers li {
+    align-items: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    color: #1e293b;
+    cursor: default;
+    display: flex;
+    font-size: 0.95rem;
+    font-weight: 500;
+    gap: 0.85rem;
+    padding: 0.95rem 1.1rem;
+}
+
+.pipedgas-providers li:last-child {
+    border-bottom: none;
+}
+
+.pipedgas-providers li:hover {
+    background: #f8fafc;
+}
+
+.pipedgas-biller-logo {
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    height: 40px;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    width: 40px;
+}
+
+.pipedgas-biller-logo--c0 {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.pipedgas-biller-logo--c1 {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.pipedgas-biller-logo--c2 {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.pipedgas-biller-logo--c3 {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.pipedgas-biller-logo--c4 {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.pipedgas-biller-logo--c5 {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.pipedgas-biller-logo--c6 {
+    background: linear-gradient(135deg, #db2777, #9d174d);
+}
+
+.pipedgas-biller-logo--c7 {
+    background: linear-gradient(135deg, #475569, #334155);
+}
+
+.pipedgas-app-strip {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding: 1.25rem 1.35rem;
+}
+
+.pipedgas-app-strip__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+}
+
+.pipedgas-app-strip__sub {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.pipedgas-download-btn {
+    align-items: center;
+    background: #f97316;
+    border-radius: 10px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.82rem;
+    font-weight: 800;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.pipedgas-download-btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.pipedgas-faq {
+    margin-top: 2.25rem;
+}
+
+.pipedgas-faq > h2 {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+.pipedgas-faq .accordion-item {
+    background: #eef2f7;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 10px !important;
+    margin-bottom: 0.65rem;
+    overflow: hidden;
+}
+
+.pipedgas-faq .accordion-button {
+    background: #eef2f7 !important;
+    box-shadow: none !important;
+    color: #1e293b;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 1rem 1.1rem;
+}
+
+.pipedgas-faq .accordion-button:not(.collapsed) {
+    background: #e2e8f0 !important;
+    color: #0f172a;
+}
+
+.pipedgas-faq .accordion-body {
+    background: #fff;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding: 1rem 1.1rem 1.15rem;
+}
+
+.pipedgas-query {
+    margin-top: 1.75rem;
+    text-align: center;
+}
+
+.pipedgas-query > p {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.pipedgas-query-card {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    color: #4f46e5 !important;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 0.65rem;
+    padding: 0.85rem 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pipedgas-query-card:hover {
+    border-color: rgba(79, 70, 229, 0.45);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.12);
+    color: #4338ca !important;
+}
+
+.pipedgas-query-card i {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 575px) {
+    .service-item-section.pipedgas-service-section .pipedgas-section-inner {
+        max-width: 100%;
+    }
+}

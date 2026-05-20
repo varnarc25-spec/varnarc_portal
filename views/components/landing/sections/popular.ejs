@@ -1,0 +1,53 @@
+<section class="section-space premium-wrap job-style-1">
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="title-style-2 text-center">
+                        <h2>Popular Services</h2>
+                        <p>Quick access to the most-used services from our catalog.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 gy-4">
+                <% var items = Array.isArray(popularServices) ? popularServices : []; %>
+                <% if (items.length) { %>
+                    <% items.forEach(function(item) { %>
+                    <div class="col">
+                        <div class="job-box">
+                            <div class="job-top-content">
+                                <h3><%= item.name || 'Service' %></h3>
+                                <span class="txt-dark d-block">
+                                    <i class="fa-solid fa-hashtag me-2"></i>
+                                    <%= item.description|| 'service' %>
+                                </span>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="badge badge-light"><%= item.category || 'others' %></div>
+                                    <a href="#">Explore <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="job-footer">
+                                <div class="job-icon-box">
+                                    <% if (item.icon_url) { %>
+                                        <img src="<%= item.icon_url %>" alt="<%= item.name || 'service' %>">
+                                    <% } else { %>
+                                        <img src="/assets/images/social-icons/1.webp" alt="service">
+                                    <% } %>
+                                </div>
+                                <div class="job-details">
+                                    <h6><%= item.name || 'Service' %></h6>
+                                    <span class="txt-light"><%= item.description || (item.flow_type ? ('Flow: ' + item.flow_type) : 'Popular service') %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                    <div class="col-12">
+                        <div class="alert alert-light text-center mb-0">No popular services available right now.</div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>

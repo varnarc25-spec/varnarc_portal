@@ -1,0 +1,270 @@
+<% var pageTitle = 'Education Fee Payment'; %>
+<% var pageDescription = 'Pay school and college fees online by location and institute on Varnarc.'; %>
+<% 
+  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
+  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
+  var downloadHref = _play || _ios || '#';
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/education-fee-page.css" />
+
+<body class="landing-page service-item-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <section class="section-space service-item-section edu-fee-service-section">
+    <div class="container text-start py-4">
+      <div class="edu-fee-section-inner">
+        <div class="edu-fee-promo-wrap">
+          <button type="button" class="edu-fee-promo-nav edu-fee-promo-nav--prev" id="eduFeePromoPrev" aria-label="Scroll offers left">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="edu-fee-promo-scroll" id="eduFeePromoScroll" tabindex="0" role="region" aria-label="Offers and shortcuts">
+            <article class="edu-fee-promo-card edu-fee-promo-card--accent">
+              <p class="edu-fee-promo-card__title">Pay your EMIs with multiple payment options</p>
+              <a href="/services/FinancialHub/index" class="edu-fee-promo-card__btn">Pay now</a>
+            </article>
+            <article class="edu-fee-promo-card edu-fee-promo-card--muted">
+              <p class="edu-fee-promo-card__title">Agent collection billers — explore supported categories</p>
+              <a href="/services/FinancialHub/index" class="edu-fee-promo-card__btn">Explore now</a>
+            </article>
+            <article class="edu-fee-promo-card edu-fee-promo-card--muted">
+              <p class="edu-fee-promo-card__title">Insta EMI Card — get ₹500 cashback on your first eligible transaction</p>
+              <a href="/services/FinancialHub/index" class="edu-fee-promo-card__btn">Get it now</a>
+            </article>
+            <article class="edu-fee-promo-card edu-fee-promo-card--muted">
+              <p class="edu-fee-promo-card__title">Personal loan — up to higher limits with quick disbursal where eligible</p>
+              <a href="/services/FinancialHub/investments" class="edu-fee-promo-card__btn">Apply now</a>
+            </article>
+            <article class="edu-fee-promo-card edu-fee-promo-card--muted">
+              <p class="edu-fee-promo-card__title">Flat rewards on bill payments when you pay with supported modes</p>
+              <a href="/services/BillPayments/index" class="edu-fee-promo-card__btn">View bills</a>
+            </article>
+          </div>
+          <button type="button" class="edu-fee-promo-nav edu-fee-promo-nav--next" id="eduFeePromoNext" aria-label="Scroll offers right">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="edu-fee-pay-web">
+          <h2 class="edu-fee-pay-web__title">Pay on Web</h2>
+          <div class="edu-fee-form-stack">
+            <div class="edu-fee-form-field">
+              <label class="edu-fee-field-label" for="eduFeeState">Select State</label>
+              <select id="eduFeeState" class="edu-fee-select" autocomplete="address-level1">
+                <option value="">Select State</option>
+                <option value="andhra_pradesh">Andhra Pradesh</option>
+                <option value="arunachal_pradesh">Arunachal Pradesh</option>
+                <option value="assam">Assam</option>
+                <option value="bihar">Bihar</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="delhi">Delhi</option>
+                <option value="goa">Goa</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="haryana">Haryana</option>
+                <option value="himachal_pradesh">Himachal Pradesh</option>
+                <option value="jharkhand">Jharkhand</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="kerala">Kerala</option>
+                <option value="madhya_pradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="manipur">Manipur</option>
+                <option value="meghalaya">Meghalaya</option>
+                <option value="mizoram">Mizoram</option>
+                <option value="nagaland">Nagaland</option>
+                <option value="odisha">Odisha</option>
+                <option value="punjab">Punjab</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="sikkim">Sikkim</option>
+                <option value="tamil_nadu">Tamil Nadu</option>
+                <option value="telangana">Telangana</option>
+                <option value="tripura">Tripura</option>
+                <option value="uttar_pradesh">Uttar Pradesh</option>
+                <option value="uttarakhand">Uttarakhand</option>
+                <option value="west_bengal">West Bengal</option>
+                <option value="jammu_kashmir">Jammu and Kashmir</option>
+                <option value="ladakh">Ladakh</option>
+                <option value="puducherry">Puducherry</option>
+                <option value="chandigarh">Chandigarh</option>
+              </select>
+            </div>
+            <div class="edu-fee-form-field">
+              <label class="edu-fee-field-label" for="eduFeeCity">Select City</label>
+              <select id="eduFeeCity" class="edu-fee-select" disabled autocomplete="address-level2" aria-disabled="true">
+                <option value="">Select State first</option>
+              </select>
+            </div>
+            <div class="edu-fee-form-field">
+              <label class="edu-fee-field-label" for="eduFeeInstituteName">Institute name</label>
+              <input type="text" id="eduFeeInstituteName" class="edu-fee-input" placeholder="Enter school or college name" maxlength="200" autocomplete="organization" />
+            </div>
+            <div class="edu-fee-form-field">
+              <label class="edu-fee-field-label" for="eduFeeStudentId">Student ID</label>
+              <input type="text" id="eduFeeStudentId" class="edu-fee-input" placeholder="Admission / roll / student number" maxlength="80" autocomplete="off" spellcheck="false" />
+            </div>
+          </div>
+          <p class="edu-fee-form-hint" id="eduFeeFormHint">Choose your state and city, then enter your institute and student ID as shown on your fee slip.</p>
+        </div>
+
+        <section class="edu-fee-app-strip" aria-labelledby="eduFeeAppHeading">
+          <div>
+            <h2 id="eduFeeAppHeading" class="edu-fee-app-strip__title">Continue on the app</h2>
+            <p class="edu-fee-app-strip__sub">Download the app to redeem your rewards</p>
+            <% if (_play && _ios) { %>
+            <p class="small text-muted mb-0 mt-2">
+              <a href="<%= _ios %>" class="link-secondary" rel="noopener noreferrer" target="_blank">App Store</a>
+              <span class="text-muted px-1">|</span>
+              <a href="<%= _play %>" class="link-secondary" rel="noopener noreferrer" target="_blank">Google Play</a>
+            </p>
+            <% } %>
+          </div>
+          <a class="edu-fee-download-btn" href="<%= downloadHref %>"<% if (downloadHref !== '#') { %> rel="noopener noreferrer" target="_blank"<% } %> aria-label="Download the Varnarc app">Download</a>
+        </section>
+
+        <section class="edu-fee-faq" aria-labelledby="eduFeeFaqHeading">
+          <h2 id="eduFeeFaqHeading">Frequently asked questions</h2>
+          <div class="accordion" id="eduFeeFaq">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eduFeeFaq1" aria-expanded="false" aria-controls="eduFeeFaq1">
+                  What if my educational institute is not listed here?
+                </button>
+              </h3>
+              <div id="eduFeeFaq1" class="accordion-collapse collapse" data-bs-parent="#eduFeeFaq">
+                <div class="accordion-body">
+                  If you don&apos;t find your school or college, we may not have onboarded that biller yet. You can send the amount directly to the institute&apos;s bank account using <a href="/services/MoneyTransfer/to_bank_self_a_c">send to bank</a> where available, or use Raise a request with the institute name and city so we can track coverage.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eduFeeFaq2" aria-expanded="false" aria-controls="eduFeeFaq2">
+                  Should my institute be registered with Varnarc to receive education fee payments?
+                </button>
+              </h3>
+              <div id="eduFeeFaq2" class="accordion-collapse collapse" data-bs-parent="#eduFeeFaq">
+                <div class="accordion-body">
+                  No — your institute does not have to be registered with Varnarc for you to pay fees through supported billers. When a biller is listed, payment is routed per that biller&apos;s rules; otherwise use the alternatives above.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="edu-fee-query">
+          <p>Still have a query?</p>
+          <a class="edu-fee-query-card" href="mailto:support@varnarc.com?subject=Education%20fee%20support">
+            <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+            Raise a request
+          </a>
+        </section>
+      </div>
+    </div>
+  </section>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+<script>
+(function () {
+  var scrollEl = document.getElementById("eduFeePromoScroll");
+  var prev = document.getElementById("eduFeePromoPrev");
+  var next = document.getElementById("eduFeePromoNext");
+  if (scrollEl && prev && next) {
+    function step() {
+      var card = scrollEl.querySelector(".edu-fee-promo-card");
+      return card ? Math.min(card.getBoundingClientRect().width + 14, scrollEl.clientWidth * 0.85) : 280;
+    }
+    prev.addEventListener("click", function () {
+      scrollEl.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+    next.addEventListener("click", function () {
+      scrollEl.scrollBy({ left: step(), behavior: "smooth" });
+    });
+  }
+
+  var CITIES_BY_STATE = {
+    andhra_pradesh: ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Rajahmundry", "Kurnool"],
+    arunachal_pradesh: ["Itanagar", "Naharlagun", "Pasighat", "Tezu", "Ziro"],
+    assam: ["Guwahati", "Silchar", "Dibrugarh", "Jorhat", "Nagaon", "Tezpur"],
+    bihar: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga", "Purnia"],
+    chhattisgarh: ["Raipur", "Bhilai", "Bilaspur", "Korba", "Rajnandgaon"],
+    delhi: ["New Delhi", "Central Delhi", "Dwarka", "Rohini", "Vasant Kunj"],
+    goa: ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda"],
+    gujarat: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar"],
+    haryana: ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal", "Hisar"],
+    himachal_pradesh: ["Shimla", "Dharamshala", "Solan", "Mandi", "Kullu", "Manali"],
+    jharkhand: ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh"],
+    karnataka: ["Bengaluru", "Mysuru", "Mangaluru", "Hubballi", "Belagavi", "Kalaburagi"],
+    kerala: ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam", "Kannur"],
+    madhya_pradesh: ["Bhopal", "Indore", "Jabalpur", "Gwalior", "Ujjain", "Satna"],
+    maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Thane"],
+    manipur: ["Imphal", "Thoubal", "Bishnupur", "Churachandpur"],
+    meghalaya: ["Shillong", "Tura", "Jowai", "Nongstoin"],
+    mizoram: ["Aizawl", "Lunglei", "Champhai", "Serchhip"],
+    nagaland: ["Kohima", "Dimapur", "Mokokchung", "Tuensang"],
+    odisha: ["Bhubaneswar", "Cuttack", "Rourkela", "Puri", "Sambalpur", "Berhampur"],
+    punjab: ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda", "Mohali"],
+    rajasthan: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer"],
+    sikkim: ["Gangtok", "Namchi", "Mangan", "Gyalshing"],
+    tamil_nadu: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli"],
+    telangana: ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Khammam", "Mahbubnagar"],
+    tripura: ["Agartala", "Udaipur", "Dharmanagar", "Kailashahar"],
+    uttar_pradesh: ["Lucknow", "Kanpur", "Varanasi", "Agra", "Noida", "Ghaziabad"],
+    uttarakhand: ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Rishikesh", "Nainital"],
+    west_bengal: ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Darjeeling"],
+    jammu_kashmir: ["Srinagar", "Jammu", "Anantnag", "Baramulla", "Udhampur"],
+    ladakh: ["Leh", "Kargil", "Diskit"],
+    puducherry: ["Puducherry", "Karaikal", "Mahe", "Yanam"],
+    chandigarh: ["Chandigarh"],
+  };
+
+  var stateSelect = document.getElementById("eduFeeState");
+  var citySelect = document.getElementById("eduFeeCity");
+
+  function resetCitySelect() {
+    citySelect.innerHTML = "";
+    var opt = document.createElement("option");
+    opt.value = "";
+    opt.textContent = stateSelect.value ? "Select City" : "Select State first";
+    citySelect.appendChild(opt);
+    citySelect.disabled = !stateSelect.value;
+    citySelect.setAttribute("aria-disabled", citySelect.disabled ? "true" : "false");
+  }
+
+  function fillCitiesForState(stateKey) {
+    citySelect.innerHTML = "";
+    var placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Select City";
+    citySelect.appendChild(placeholder);
+    var list = CITIES_BY_STATE[stateKey] || [];
+    for (var i = 0; i < list.length; i++) {
+      var o = document.createElement("option");
+      o.value = list[i];
+      o.textContent = list[i];
+      citySelect.appendChild(o);
+    }
+    citySelect.disabled = false;
+    citySelect.setAttribute("aria-disabled", "false");
+  }
+
+  if (stateSelect && citySelect) {
+    resetCitySelect();
+    stateSelect.addEventListener("change", function () {
+      var key = String(stateSelect.value || "");
+      if (!key) {
+        resetCitySelect();
+        return;
+      }
+      fillCitiesForState(key);
+    });
+  }
+})();
+</script>
+</body>
+
+</html>

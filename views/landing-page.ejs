@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./components/landing/head") %>
+
+<body class="landing-page">
+  <%
+    const ctaBanners = Array.isArray(webBannersRows) ? webBannersRows : [];
+    function renderBannerAt(idx) {
+      const b = ctaBanners[idx];
+      if (!b) return;
+  %>
+    <%- include("./components/landing/sections/banner1", {
+      ctaTitle: b.title || "",
+      ctaSubtitle: b.subtitle || "",
+      ctaButtonText: b.cta_label || "Get Started",
+      ctaHref: b.cta_href || "#",
+      backgroundType: b.background_type || "color",
+      backgroundColor: b.background_color || "#7366ff",
+      backgroundImage: b.background_image || "",
+      vectorImage: b.vector_image || "",
+      vectorPosition: b.vector_position || "right"
+    }) %>
+  <%
+    }
+  %>
+  <%- include("./components/landing/sections/intro") %>
+  <%- include("./components/landing/sections/explore-products") %>
+  <%- include("./components/landing/sections/popular") %>
+  <!-- <%- include("./components/landing/sections/metric-card") %> -->
+  <%- include("./components/landing/sections/trust") %>
+  <!-- <%- include("./components/landing/sections/app-experience") %> -->
+  <%- include("./components/landing/sections/why-choose-us") %>
+  <% renderBannerAt(0); %>
+  <!-- <%- include("./components/landing/sections/section-7") %> -->
+  <%- include("./components/landing/sections/how-it-works") %>
+  <% renderBannerAt(1); %>
+  <%- include("./components/landing/sections/all-services") %>
+  <!-- <%- include("./components/landing/sections/section-10") %> -->
+  <%- include("./components/landing/sections/features") %>
+  <% renderBannerAt(2); %>
+  <!-- <%- include("./components/landing/sections/section-12") %> -->
+  <%- include("./components/landing/sections/section-13") %>
+  <%- include("./components/landing/sections/faq") %>
+  <!-- <%- include("./components/landing/sections/section-15") %> -->
+  <%- include("./components/security") %>
+  <% renderBannerAt(3); %>
+  <%- include("./components/landing/footer") %>
+  <%- include("./components/landing/scripts") %>
+</body>
+
+</html>

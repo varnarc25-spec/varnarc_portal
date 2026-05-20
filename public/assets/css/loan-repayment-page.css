@@ -1,0 +1,571 @@
+/**
+ * Loan repayment — scoped under .service-item-section.loanrep-service-section
+ */
+
+.service-item-section.loanrep-service-section {
+    background: #e8eef7;
+}
+
+.service-item-section.loanrep-service-section .loanrep-section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding-bottom: 0.5rem;
+}
+
+.loanrep-promo-wrap {
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.loanrep-promo-scroll {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    gap: 0.85rem;
+    margin: 0 -0.15rem;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.75rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.loanrep-promo-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.loanrep-promo-scroll::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 99px;
+}
+
+.loanrep-promo-card {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    flex: 0 0 min(260px, 78vw);
+    min-height: 100px;
+    padding: 0.85rem 1rem;
+    scroll-snap-align: start;
+}
+
+.loanrep-promo-card--accent {
+    background: #eff6ff;
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.loanrep-promo-card--muted {
+    background: #f8fafc;
+}
+
+.loanrep-promo-card__title {
+    color: #0f172a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.55rem;
+}
+
+.loanrep-promo-card__btn {
+    background: #f97316;
+    border-radius: 8px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.loanrep-promo-card__btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.loanrep-pay-web {
+    margin-bottom: 1.5rem;
+}
+
+.loanrep-pay-web__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.65rem;
+}
+
+.loanrep-search-input {
+    background-color: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.65rem 0.9rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.loanrep-search-input::placeholder {
+    color: #94a3b8;
+}
+
+.loanrep-search-input:focus {
+    border-color: rgba(249, 115, 22, 0.65);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+    outline: none;
+}
+
+.loanrep-section-title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+}
+
+.loanrep-providers-block {
+    margin-bottom: 0;
+}
+
+.loanrep-providers-block + .loanrep-providers-block {
+    margin-top: 1.75rem;
+}
+
+.loanrep-providers {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.loanrep-providers li {
+    align-items: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    color: #1e293b;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.95rem;
+    font-weight: 500;
+    gap: 0.85rem;
+    padding: 0.95rem 1.1rem;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.loanrep-providers li:last-child {
+    border-bottom: none;
+}
+
+.loanrep-providers li:hover {
+    background: #f8fafc;
+}
+
+.loanrep-providers li.is-selected {
+    background: #eff6ff;
+    box-shadow: inset 3px 0 0 #2563eb;
+}
+
+.loanrep-bill-panel {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 6px 22px rgba(15, 23, 42, 0.06);
+    display: none;
+    margin-top: 1.75rem;
+    padding: 1.35rem 1.25rem 1.5rem;
+}
+
+.loanrep-bill-panel.is-visible {
+    display: block;
+}
+
+.loanrep-bill-panel__head {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.loanrep-bill-panel__provider {
+    color: #0f172a;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.loanrep-change-provider {
+    background: none;
+    border: none;
+    color: #2563eb;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.loanrep-change-provider:hover {
+    color: #1d4ed8;
+}
+
+.loanrep-bill-panel__head--sub {
+    align-items: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    margin-bottom: 1.35rem;
+    padding-bottom: 1rem;
+}
+
+.loanrep-bill-panel__brand {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.loanrep-bill-panel__logo-mini {
+    align-items: center;
+    background: linear-gradient(145deg, #e0f2fe, #bae6fd);
+    border-radius: 50%;
+    color: #0369a1;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    height: 2.5rem;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    width: 2.5rem;
+}
+
+.loanrep-bill-panel__brand-name {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.loanrep-change-provider--accent {
+    color: #ea580c;
+    text-decoration: none;
+}
+
+.loanrep-change-provider--accent:hover {
+    color: #c2410c;
+    text-decoration: underline;
+}
+
+.loanrep-loan-field {
+    margin-bottom: 1.25rem;
+}
+
+.loanrep-loan-label {
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+}
+
+.loanrep-loan-input {
+    background: #f1f5f9;
+    border: 1px solid rgba(37, 99, 235, 0.45);
+    border-radius: 8px;
+    color: #0f172a;
+    display: block;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    padding: 0.7rem 0.95rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.loanrep-loan-input:focus {
+    background: #fff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+.loanrep-loan-input.loanrep-loan-input--invalid {
+    border-color: #dc2626;
+}
+
+.loanrep-loan-input.loanrep-loan-input--secondary {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.55);
+}
+
+.loanrep-loan-input.loanrep-loan-input--secondary:focus {
+    border-color: #0f172a;
+    box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.12);
+    outline: none;
+}
+
+select.loanrep-loan-input {
+    cursor: pointer;
+}
+
+select.loanrep-loan-input.loanrep-loan-input--secondary {
+    background-color: #fff;
+}
+
+.loanrep-loan-hint {
+    color: #64748b;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0.4rem 0 0;
+}
+
+.loanrep-consent {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+}
+
+.loanrep-consent input {
+    flex-shrink: 0;
+    height: 1.15rem;
+    margin-top: 0.2rem;
+    width: 1.15rem;
+}
+
+.loanrep-consent label {
+    color: #334155;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.loanrep-fetch-wrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.25rem;
+}
+
+.loanrep-fetch-btn {
+    background: linear-gradient(135deg, #ff8a4c 0%, #ff6700 45%, #fb923c 100%);
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    max-width: 100%;
+    padding: 0.9rem 2rem;
+    text-transform: uppercase;
+    transition: filter 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+    width: min(100%, 340px);
+}
+
+.loanrep-fetch-btn:hover:not(:disabled) {
+    filter: brightness(1.05);
+}
+
+.loanrep-fetch-btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.loanrep-fetch-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.loanrep-fetch-status {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin: 1rem 0 0;
+    min-height: 1.25rem;
+    text-align: center;
+}
+
+.loanrep-biller-logo {
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    height: 40px;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    width: 40px;
+}
+
+.loanrep-biller-logo--c0 {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.loanrep-biller-logo--c1 {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.loanrep-biller-logo--c2 {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.loanrep-biller-logo--c3 {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.loanrep-biller-logo--c4 {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.loanrep-biller-logo--c5 {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.loanrep-biller-logo--c6 {
+    background: linear-gradient(135deg, #db2777, #9d174d);
+}
+
+.loanrep-biller-logo--c7 {
+    background: linear-gradient(135deg, #475569, #334155);
+}
+
+.loanrep-app-strip {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding: 1.25rem 1.35rem;
+}
+
+.loanrep-app-strip__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+}
+
+.loanrep-app-strip__sub {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.loanrep-download-btn {
+    align-items: center;
+    background: #f97316;
+    border-radius: 10px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.82rem;
+    font-weight: 800;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.loanrep-download-btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.loanrep-faq {
+    margin-top: 2.25rem;
+}
+
+.loanrep-faq > h2 {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+.loanrep-faq .accordion-item {
+    background: #eef2f7;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 10px !important;
+    margin-bottom: 0.65rem;
+    overflow: hidden;
+}
+
+.loanrep-faq .accordion-button {
+    background: #eef2f7 !important;
+    box-shadow: none !important;
+    color: #1e293b;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 1rem 1.1rem;
+}
+
+.loanrep-faq .accordion-button:not(.collapsed) {
+    background: #e2e8f0 !important;
+    color: #0f172a;
+}
+
+.loanrep-faq .accordion-body {
+    background: #fff;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding: 1rem 1.1rem 1.15rem;
+}
+
+.loanrep-query {
+    margin-top: 1.75rem;
+    text-align: center;
+}
+
+.loanrep-query > p {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.loanrep-query-card {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    color: #4f46e5 !important;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 0.65rem;
+    padding: 0.85rem 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.loanrep-query-card:hover {
+    border-color: rgba(79, 70, 229, 0.45);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.12);
+    color: #4338ca !important;
+}
+
+.loanrep-query-card i {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 575px) {
+    .service-item-section.loanrep-service-section .loanrep-section-inner {
+        max-width: 100%;
+    }
+}

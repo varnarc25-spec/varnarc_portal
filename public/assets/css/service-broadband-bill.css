@@ -1,0 +1,100 @@
+/**
+ * Broadband / landline bill pay — extends service-mobile-recharge.css
+ * Scoped to .service-broadband-bill-page
+ */
+
+.service-broadband-bill-page .broadband-amount-only .form-control {
+    padding-right: 0.85rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.service-broadband-bill-page .service-recharge-banner .carousel-control-prev,
+.service-broadband-bill-page .service-recharge-banner .carousel-control-next {
+    background: rgba(15, 23, 42, 0.1);
+}
+
+.service-broadband-bill-page .service-recharge-banner .carousel-control-prev-icon,
+.service-broadband-bill-page .service-recharge-banner .carousel-control-next-icon {
+    filter: invert(0.65);
+}
+
+.service-broadband-bill-page .service-recharge-banner {
+    min-height: 300px;
+}
+
+.service-broadband-bill-page .broadband-promo-banner {
+    position: relative;
+    min-height: 300px;
+    border-radius: var(--recharge-card-radius, 12px);
+    overflow: hidden;
+    padding: 2rem 1.5rem 2.75rem;
+    background-color: #fef3f2;
+    background-image:
+        radial-gradient(circle at 1px 1px, rgba(244, 63, 94, 0.08) 1px, transparent 0),
+        radial-gradient(ellipse 100% 80% at 80% 20%, rgba(125, 211, 252, 0.35) 0%, transparent 50%),
+        linear-gradient(165deg, #fdf2f8 0%, #fce7f3 35%, #e0f2fe 90%, #f0fdf4 100%);
+    background-size: 22px 22px, auto, auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.07);
+}
+
+.service-broadband-bill-page .broadband-promo-banner__text {
+    position: relative;
+    z-index: 1;
+    font-family: var(--nav-font, "Rubik", sans-serif);
+    font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.55;
+    text-align: center;
+    max-width: 26rem;
+    margin: 0;
+    color: #1e293b;
+}
+
+.service-broadband-bill-page .broadband-promo-banner__accent {
+    color: #db2777;
+    font-weight: 800;
+}
+
+.service-broadband-bill-page .broadband-promo-banner__win {
+    display: inline-block;
+    margin: 0 0.2rem;
+    padding: 0.2rem 0.65rem 0.25rem;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #bae6fd 0%, #7dd3fc 100%);
+    color: #0c4a6e;
+    font-weight: 900;
+    font-size: 0.95em;
+    box-shadow: 0 2px 6px rgba(14, 116, 179, 0.2);
+    vertical-align: middle;
+}
+
+.service-broadband-bill-page .broadband-promo-banner__foot {
+    margin-top: 1.35rem;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.service-broadband-bill-page .service-recharge-banner .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(219, 39, 119, 0.35);
+}
+
+.service-broadband-bill-page .service-recharge-banner .carousel-indicators .active {
+    background-color: #db2777;
+}
+
+@media (max-width: 991.98px) {
+    .service-broadband-bill-page .broadband-promo-banner {
+        min-height: 260px;
+        padding: 1.5rem 1.25rem 2.25rem;
+    }
+}

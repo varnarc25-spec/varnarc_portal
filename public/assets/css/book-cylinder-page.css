@@ -1,0 +1,521 @@
+/**
+ * Book LPG / cylinder service — views/pages/services/BillPayments/book_cylinder.ejs
+ */
+
+.book-cylinder-page {
+    --bc-navy: #0b1f3a;
+    --bc-navy-deep: #071426;
+    --bc-orange: #f97316;
+    --bc-orange-hover: #ea580c;
+    --bc-surface: #f4f6f9;
+    --bc-card-border: rgba(15, 23, 42, 0.08);
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+.book-cylinder-page .sticky-header {
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+}
+
+.book-cylinder-panel {
+    /* background: var(--bc-surface); */
+    /* border-radius: 14px; */
+    /* padding: clamp(1.25rem, 3vw, 1.75rem); */
+    margin-top: 1rem;
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.book-cylinder-toolbar {
+    background: linear-gradient(180deg, var(--bc-navy) 0%, var(--bc-navy-deep) 100%);
+    color: #fff;
+    padding: 0.65rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(7, 20, 38, 0.18);
+}
+
+.book-cylinder-toolbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.book-cylinder-toolbar__left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.book-cylinder-toolbar__mark {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+}
+
+@media (min-width: 400px) {
+    .book-cylinder-toolbar__mark {
+        display: flex;
+    }
+}
+
+.book-cylinder-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.book-cylinder-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.book-cylinder-toolbar__title {
+    flex: 1;
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin: 0;
+}
+
+.book-cylinder-toolbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.book-cylinder-toolbar__brand img {
+    height: 28px;
+    width: auto;
+    display: block;
+}
+
+.book-cylinder-toolbar__partner {
+    display: none;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #e2e8f0;
+}
+
+@media (min-width: 576px) {
+    .book-cylinder-toolbar__partner {
+        display: inline-block;
+    }
+}
+
+/* Promo carousel */
+.book-cylinder-promo-wrap {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.book-cylinder-promo-scroll {
+    display: flex;
+    gap: 0.85rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0.25rem 0 0.75rem;
+    margin: 0 -0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.book-cylinder-promo-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.book-cylinder-promo-scroll::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 99px;
+}
+
+.book-cylinder-promo-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bc-orange);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.45);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.book-cylinder-promo-arrow:hover {
+    background: var(--bc-orange-hover);
+}
+
+.book-cylinder-promo-arrow:active {
+    transform: translateY(-50%) scale(0.96);
+}
+
+.book-cylinder-promo-arrow--prev {
+    left: -6px;
+}
+
+.book-cylinder-promo-arrow--next {
+    right: -6px;
+}
+
+@media (max-width: 575px) {
+    .book-cylinder-promo-arrow {
+        display: none;
+    }
+}
+
+.book-cylinder-promo-card {
+    flex: 0 0 min(280px, 85vw);
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--bc-card-border);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    padding: 1rem 1rem 1rem 1.1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    min-height: 118px;
+}
+
+.book-cylinder-promo-card__badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--bc-orange);
+    background: rgba(249, 115, 22, 0.12);
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+    margin-bottom: 0.35rem;
+}
+
+.book-cylinder-promo-card__title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #0f172a;
+    margin: 0 0 0.6rem;
+}
+
+.book-cylinder-promo-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: var(--bc-orange);
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.book-cylinder-promo-card__btn:hover {
+    background: var(--bc-orange-hover);
+    color: #fff;
+}
+
+.book-cylinder-promo-card__visual {
+    justify-self: end;
+}
+
+.book-cylinder-promo-card__visual svg {
+    display: block;
+}
+
+.book-cylinder-promo-card--muted .book-cylinder-promo-card__title {
+    font-size: 0.88rem;
+}
+
+/* Providers */
+.book-cylinder-section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 1rem;
+}
+
+.book-cylinder-providers {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--bc-card-border);
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.book-cylinder-providers li {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.95rem 1.1rem;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1e293b;
+    cursor: default;
+}
+
+.book-cylinder-providers li:last-child {
+    border-bottom: none;
+}
+
+.book-cylinder-provider-logo {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #fff;
+}
+
+.book-cylinder-provider-logo--bpcl {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.book-cylinder-provider-logo--bpcl-com {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.book-cylinder-provider-logo--hp {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.book-cylinder-provider-logo--ioc {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* Broadband / landline provider initials */
+.book-cylinder-provider-logo--bb-act {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+.book-cylinder-provider-logo--bb-airtel {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+.book-cylinder-provider-logo--bb-alliance {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.book-cylinder-provider-logo--bb-hathway {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.book-cylinder-provider-logo--bb-netplus {
+    background: linear-gradient(135deg, #059669, #047857);
+}
+
+.book-cylinder-provider-logo--bb-777 {
+    background: linear-gradient(135deg, #475569, #334155);
+}
+
+.book-cylinder-provider-logo--bb-aaa {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.book-cylinder-provider-logo--bb-acns {
+    background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+/* Pay on Web — broadband search */
+.book-cylinder-pay-web {
+    margin-bottom: 1.75rem;
+}
+
+.book-cylinder-pay-web__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.65rem;
+}
+
+.book-cylinder-search-input {
+    display: block;
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #0f172a;
+    background-color: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book-cylinder-search-input::placeholder {
+    color: #94a3b8;
+}
+
+.book-cylinder-search-input:focus {
+    outline: none;
+    border-color: rgba(249, 115, 22, 0.65);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.book-cylinder-providers-spaced {
+    margin-top: 1.75rem;
+}
+
+/* App strip */
+.book-cylinder-app-strip {
+    margin-top: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--bc-card-border);
+    padding: 1.25rem 1.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.book-cylinder-app-strip__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+    color: #0f172a;
+}
+
+.book-cylinder-app-strip__sub {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.book-cylinder-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #fff !important;
+    background: var(--bc-orange);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.book-cylinder-download-btn:hover {
+    background: var(--bc-orange-hover);
+    color: #fff !important;
+}
+
+/* FAQ */
+.book-cylinder-faq {
+    margin-top: 2.25rem;
+}
+
+.book-cylinder-faq .accordion-item {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 10px !important;
+    margin-bottom: 0.65rem;
+    overflow: hidden;
+    background: #eef2f7;
+}
+
+.book-cylinder-faq .accordion-button {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1e293b;
+    background: #eef2f7 !important;
+    box-shadow: none !important;
+    padding: 1rem 1.1rem;
+}
+
+.book-cylinder-faq .accordion-button:not(.collapsed) {
+    background: #e2e8f0 !important;
+    color: #0f172a;
+}
+
+.book-cylinder-faq .accordion-button::after {
+    filter: brightness(0.35);
+}
+
+.book-cylinder-faq .accordion-body {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #475569;
+    background: #fff;
+    padding: 1rem 1.1rem 1.15rem;
+}
+
+/* Query */
+.book-cylinder-query {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.book-cylinder-query > p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.85rem;
+}
+
+.book-cylinder-query-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.85rem 1.25rem;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #4f46e5 !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-cylinder-query-card:hover {
+    border-color: rgba(79, 70, 229, 0.45);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.12);
+    color: #4338ca !important;
+}
+
+.book-cylinder-query-card i {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}

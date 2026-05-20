@@ -1,0 +1,240 @@
+<%- contentFor('css') %>
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/slick.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/scrollbar.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/animate.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/vendors/chartist.css">
+
+<%- contentFor('body') %>
+<div class="container-fluid">
+  <div class="row projectdetails">
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <div class="select-options">
+              <select class="form-control form-control-primary" name="select">
+                <option value="opt1">Today</option>
+                <option value="opt2">Yesterday</option>
+                <option value="opt3">Tomorrow</option>
+                <option value="opt4">Monthly</option>
+                <option value="opt5">Weekly</option>
+              </select>
+            </div>
+          </div>
+          <div class="project-widgets text-center">
+            <h1 class="font-primary counter">48</h1>
+            <h6 class="mb-0">Due Tasks</h6>
+          </div>
+        </div>
+        <div class="card-footer project-footer">
+          <h6 class="mb-0">Completed: <span class="counter">14 </span></h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <h5 class="mb-0">Features</h5>
+          </div>
+          <div class="project-widgets text-center">
+            <h1 class="font-primary counter">80</h1>
+            <h6 class="mb-0">Proposals</h6>
+          </div>
+        </div>
+        <div class="card-footer project-footer">
+          <h6 class="mb-0">Implemented: <span class="counter">14</span></h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <h5 class="mb-0">Issues</h5>
+          </div>
+          <div class="project-widgets text-center">
+            <h1 class="font-primary counter">34</h1>
+            <h6 class="mb-0">Open</h6>
+          </div>
+        </div>
+        <div class="card-footer project-footer">
+          <h6 class="mb-0">Closed today: <span class="counter">10</span></h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <h5 class="mb-0">Overdue</h5>
+          </div>
+          <div class="project-widgets text-center">
+            <h1 class="font-primary counter">7</h1>
+            <h6 class="mb-0">Tasks</h6>
+          </div>
+        </div>
+        <div class="card-footer project-footer">
+          <h6 class="mb-0">Task Solved: <span class="counter">4</span></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row projectmore">
+    <div class="col-xl-7 xl-100">
+      <div class="card">
+        <div class="card-body">
+          <div class="media mb-4"><img class="img-50 me-4 rounded-circle" src="/assets/images/user/3.jpg" alt="" data-original-title="" title="">
+            <div class="media-body">
+              <h5>Endless admin Design</h5>
+              <p>scretch to working project(Build project)</p>
+            </div>
+          </div>
+          <h6>Project explaination</h6>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+          <h6>Task list</h6>
+          <div class="task-list mb-3">
+            <ul>
+              <li> <i class="fa fa-angle-double-right me-1"></i>Understend requirement </li>
+              <li> <i class="fa fa-angle-double-right me-1"> </i>Identify & Meet with Stakeholders</li>
+              <li> <i class="fa fa-angle-double-right me-1"> </i> Set & Prioritize Goals</li>
+              <li> <i class="fa fa-angle-double-right me-1"> </i> Define Deliverables</li>
+            </ul>
+            <ul>
+              <li> <i class="fa fa-angle-double-right me-1"> </i> Create the Project Schedule</li>
+              <li> <i class="fa fa-angle-double-right me-1"> </i> Identify Issues</li>
+              <li> <i class="fa fa-angle-double-right me-1"></i> Present the Project Plan</li>
+            </ul>
+          </div>
+          <h6>Other details</h6>
+          <div class="details">
+            <div class="row">
+              <div class="col-4"><span> Client name</span></div>
+              <div class="col-4">Johan deo</div>
+            </div>
+            <div class="row">
+              <div class="col-4"><span> Starting date</span></div>
+              <div class="col-4">8/5/2020</div>
+            </div>
+            <div class="row">
+              <div class="col-4"><span> Ending date</span></div>
+              <div class="col-4">9/6/2020 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-5 xl-100">
+      <div class="card">
+        <div class="card-body">
+          <div class="show-value-top d-flex">
+            <div class="value-left d-inline-block">
+              <div class="square bg-primary d-inline-block"></div><span>Design work</span>
+            </div>
+            <div class="value-right d-inline-block">
+              <div class="square d-inline-block bg-secondary"></div><span>Devloping work</span>
+            </div>
+          </div>
+          <div class="smooth-chart flot-chart-container"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header card-header-border">
+          <h5>Project Files</h5>
+        </div>
+        <div class="card-body">
+          <div class="new-users activity">
+            <div class="media">
+              <div class="gradient-round m-r-30 gradient-line-1"><i class="fa fa-file-zip-o"></i></div>
+              <div class="media-body">
+                <h6 class="mb-1 f-w-700">Old_project.zip</h6>
+                <p>Visual Designer, Github Inc</p>
+              </div><span class="pull-right">
+                <button class="btn btn-pill btn-outline-light">Download</button></span>
+            </div>
+            <div class="media">
+              <div class="gradient-round m-r-30 gradient-line-1"><i class="fa fa-file-picture-o"></i></div>
+              <div class="media-body">
+                <h6 class="mb-1 f-w-700">Logo.PSD</h6>
+                <p>Visual Designer, Github Inc</p>
+              </div><span class="pull-right">
+                <button class="btn btn-pill btn-outline-light">Download</button></span>
+            </div>
+            <div class="media">
+              <div class="gradient-round m-r-30 gradient-line-1"><i class="fa fa-file-powerpoint-o"></i></div>
+              <div class="media-body">
+                <h6 class="mb-1 f-w-700">Requirement doc</h6>
+                <p>Visual Designer, Github Inc</p>
+              </div><span class="pull-right">
+                <button class="btn btn-pill btn-outline-light">Download</button></span>
+            </div>
+            <div class="media">
+              <div class="gradient-round m-r-30 gradient-line-1"><i class="fa fa-file-pdf-o"></i></div>
+              <div class="media-body">
+                <h6 class="mb-1 f-w-700">Color details</h6>
+                <p>Visual Designer, Github Inc</p>
+              </div><span class="pull-right">
+                <button class="btn btn-pill btn-outline-light">Download</button></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header card-header-border">
+          <h5>Activity </h5>
+        </div>
+        <div class="card-body recent-notification">
+          <div class="media">
+            <h6>09:00</h6>
+            <div class="media-body"><span>chanage Logo colors</span>
+              <p class="f-12">By Kan</p>
+            </div>
+          </div>
+          <div class="media">
+            <h6>10:50</h6>
+            <div class="media-body"><span>Check requirement of doc</span>
+              <p class="f-12">By Tailer</p>
+            </div>
+          </div>
+          <div class="media">
+            <h6>01:00</h6>
+            <div class="media-body"><span>Starting working on psd</span>
+              <p class="f-12">By Kaint</p>
+            </div>
+          </div>
+          <div class="media">
+            <h6>05:00</h6>
+            <div class="media-body"><span>Starting working on psd to HTML</span>
+              <p class="f-12">By call</p>
+            </div>
+          </div>
+          <div class="media">
+            <h6>12:00</h6>
+            <div class="media-body"><span>Testing</span>
+              <p class="f-12">By Waiter</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('script') %>
+<script src="/assets/js/sidebar-menu.js"></script>
+<script src="/assets/js/slick/slick.min.js"></script>
+<script src="/assets/js/slick/slick.js"></script>
+<script src="/assets/js/header-slick.js"></script>
+<script src="/assets/js/chart/chartist/chartist.js"></script>
+<script src="/assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
+<script src="/assets/js/typeahead/handlebars.js"></script>
+<script src="/assets/js/typeahead/typeahead.bundle.js"></script>
+<script src="/assets/js/typeahead/typeahead.custom.js"></script>
+<script src="/assets/js/typeahead-search/handlebars.js"></script>
+<script src="/assets/js/typeahead-search/typeahead-custom.js"></script>
+<script src="/assets/js/tooltip-init.js"></script>

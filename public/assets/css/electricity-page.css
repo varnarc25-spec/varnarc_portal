@@ -1,0 +1,295 @@
+/**
+ * Electricity bill payment — scoped under .service-item-section.electricity-service-section
+ */
+
+.service-item-section.electricity-service-section {
+    background: #e8eef7;
+}
+
+.service-item-section.electricity-service-section .electricity-section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding-bottom: 0.5rem;
+}
+
+/* Horizontal promo strip */
+.electricity-promo-wrap {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.electricity-promo-scroll {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    gap: 0.65rem;
+    margin: 0 -0.15rem;
+    overflow-x: auto;
+    padding: 0.2rem 0 0.6rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.electricity-promo-scroll::-webkit-scrollbar {
+    height: 5px;
+}
+
+.electricity-promo-scroll::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 99px;
+}
+
+.electricity-promo-card {
+    background: #e0f2fe;
+    border: 1px solid rgba(14, 116, 144, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    flex: 0 0 min(200px, 72vw);
+    padding: 0.65rem 0.75rem;
+    scroll-snap-align: start;
+}
+
+.electricity-promo-card--gas {
+    background: #fef3c7;
+    border-color: rgba(217, 119, 6, 0.25);
+}
+
+.electricity-promo-card--gift {
+    background: #fce7f3;
+    border-color: rgba(219, 39, 119, 0.2);
+}
+
+.electricity-promo-card__icon {
+    color: #0369a1;
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+}
+
+.electricity-promo-card--gas .electricity-promo-card__icon {
+    color: #c2410c;
+}
+
+.electricity-promo-card--gift .electricity-promo-card__icon {
+    color: #db2777;
+}
+
+.electricity-promo-card__text {
+    color: #0f172a;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.electricity-page-title {
+    color: #0f172a;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 0.85rem;
+}
+
+.electricity-search {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.55rem 0.75rem;
+}
+
+.electricity-search i {
+    color: #64748b;
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.electricity-search input {
+    background: transparent;
+    border: 0;
+    color: #0f172a;
+    flex: 1;
+    font-size: 0.9rem;
+    min-width: 0;
+    outline: none;
+}
+
+.electricity-search input::placeholder {
+    color: #94a3b8;
+}
+
+.electricity-recent-label {
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+}
+
+.electricity-recent-empty {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+}
+
+.electricity-all-heading {
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+}
+
+.electricity-biller-list {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    list-style: none;
+    margin: 0 0 1rem;
+    overflow: hidden;
+    padding: 0;
+}
+
+.electricity-biller-list li {
+    align-items: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+    cursor: default;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 0.9rem;
+}
+
+.electricity-biller-list li:last-child {
+    border-bottom: none;
+}
+
+.electricity-biller-list li:hover {
+    background: #f8fafc;
+}
+
+.electricity-biller-logo {
+    align-items: center;
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    font-weight: 800;
+    height: 36px;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    text-align: center;
+    width: 36px;
+}
+
+.electricity-biller-logo--c0 {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.electricity-biller-logo--c1 {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.electricity-biller-logo--c2 {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.electricity-biller-logo--c3 {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.electricity-biller-logo--c4 {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.electricity-biller-logo--c5 {
+    background: linear-gradient(135deg, #db2777, #9d174d);
+}
+
+.electricity-biller-logo--c6 {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.electricity-biller-logo--c7 {
+    background: linear-gradient(135deg, #475569, #334155);
+}
+
+.electricity-biller-name {
+    color: #1e293b;
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.electricity-proceed-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.25rem;
+}
+
+.electricity-proceed-btn {
+    background: #f97316;
+    border: 0;
+    border-radius: 999px;
+    box-shadow: 0 2px 10px rgba(249, 115, 22, 0.35);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 0.55rem 1.6rem;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.electricity-proceed-btn:hover {
+    background: #ea580c;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.electricity-faq {
+    margin-top: 0.5rem;
+}
+
+.electricity-faq > h2 {
+    color: #0f172a;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+.electricity-faq .accordion-item {
+    background: #eef3fb;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 6px !important;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.electricity-faq .accordion-button {
+    background: #eef3fb !important;
+    box-shadow: none !important;
+    color: #1e293b;
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 0.85rem 1rem;
+}
+
+.electricity-faq .accordion-body {
+    background: #fff;
+    color: #475569;
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+@media (max-width: 575px) {
+    .service-item-section.electricity-service-section .electricity-section-inner {
+        max-width: 100%;
+    }
+}

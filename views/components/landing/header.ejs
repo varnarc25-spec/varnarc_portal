@@ -1,0 +1,372 @@
+<header id="header" class="header fixed-top">
+
+  <div class="topbar d-flex align-items-center dark-background">
+    <div class="container-fluid d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a
+            href="mailto:support@varnarc.com" data-company-email-link>support@varnarc.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span data-company-phone-text>+91 973 972 3973</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center" data-company-social-links>
+        <a href="#!" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#!" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#!" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#!" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div><!-- End Top Bar -->
+
+  <div class="branding d-flex align-items-center">
+
+    <div class="container-fluid header-row position-relative d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/images/logo/varnarclogo1.png" alt="" data-company-logo>
+        <!-- <h1 class="sitename">Varnarc</h1  -->
+      </a>
+      <div class="landing-header-nav-cluster flex-grow-1 d-flex justify-content-end align-items-center ms-2 ms-lg-3">
+          <%
+            var menuTabs = Array.isArray(landingMenuTabs) ? landingMenuTabs : [];
+            function toSortedArray(mapObj, sortFn) {
+              return Object.keys(mapObj).map(function (key) { return mapObj[key]; }).sort(sortFn);
+            }
+            function alphaValue(val) {
+              return String(val || "").toLowerCase();
+            }
+            function flattenMegaCategoryItems(category) {
+              var out = [];
+              var subList = category.subcategories || [];
+              var directItems = category.items || [];
+              subList.forEach(function (subcategory) {
+                (subcategory.items || []).forEach(function (item) {
+                  out.push(item);
+                });
+              });
+              directItems.forEach(function (item) {
+                out.push(item);
+              });
+              return out;
+            }
+            function sectionFolderFromSection(sec) {
+              var slug = sec && sec.slug ? String(sec.slug) : "";
+              var name = sec && sec.name ? String(sec.name) : "";
+              var raw = slug || name || "Section";
+              var parts = raw.split(/[\s/_-]+/).filter(Boolean);
+              var pascal = parts.map(function (p) {
+                return p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
+              }).join("");
+              return pascal || "Section";
+            }
+            function menuItemHref(item) {
+              return (typeof serviceLeafUrlByItemId !== "undefined" && serviceLeafUrlByItemId && item && item.id != null && serviceLeafUrlByItemId[String(item.id)])
+                ? ("/services/" + serviceLeafUrlByItemId[String(item.id)])
+                : "#";
+            }
+            var menuSections = menuTabs.map(function (tab) {
+              var section = tab && tab.section ? tab.section : {};
+              var items = Array.isArray(tab && tab.items) ? tab.items : [];
+              var categoryMap = {};
+  
+              items.forEach(function (item) {
+                var row = item || {};
+                var categoryKey = row.category_id || row.category_slug || row.category_name || "general";
+                if (!categoryMap[categoryKey]) {
+                  categoryMap[categoryKey] = {
+                    key: categoryKey,
+                    id: row.category_id || null,
+                    slug: row.category_slug || null,
+                    name: row.category_name || row.category || "General",
+                    order: Number.isFinite(Number(row.category_display_order)) ? Number(row.category_display_order) : 9999,
+                    subcategoriesMap: {},
+                    items: []
+                  };
+                }
+  
+                var hasSubCategory = Boolean(row.subcategory_id || row.subcategory_slug || row.subcategory_name || row.sub_category);
+                if (hasSubCategory) {
+                  var subKey = row.subcategory_id || row.subcategory_slug || row.subcategory_name || row.sub_category;
+                  if (!categoryMap[categoryKey].subcategoriesMap[subKey]) {
+                    categoryMap[categoryKey].subcategoriesMap[subKey] = {
+                      key: subKey,
+                      id: row.subcategory_id || null,
+                      slug: row.subcategory_slug || null,
+                      name: row.subcategory_name || row.sub_category || "Other",
+                      order: Number.isFinite(Number(row.subcategory_display_order)) ? Number(row.subcategory_display_order) : 9999,
+                      items: []
+                    };
+                  }
+                  categoryMap[categoryKey].subcategoriesMap[subKey].items.push(row);
+                } else {
+                  categoryMap[categoryKey].items.push(row);
+                }
+              });
+  
+              var categories = toSortedArray(categoryMap, function (a, b) {
+                if (a.order !== b.order) return a.order - b.order;
+                return alphaValue(a.name).localeCompare(alphaValue(b.name));
+              }).map(function (category) {
+                var subcategories = toSortedArray(category.subcategoriesMap, function (a, b) {
+                  if (a.order !== b.order) return a.order - b.order;
+                  return alphaValue(a.name).localeCompare(alphaValue(b.name));
+                }).map(function (sub) {
+                  sub.items = sub.items.sort(function (a, b) {
+                    var aOrder = Number.isFinite(Number(a.display_order)) ? Number(a.display_order) : 9999;
+                    var bOrder = Number.isFinite(Number(b.display_order)) ? Number(b.display_order) : 9999;
+                    if (aOrder !== bOrder) return aOrder - bOrder;
+                    return alphaValue(a.name).localeCompare(alphaValue(b.name));
+                  });
+                  return sub;
+                });
+  
+                category.items = category.items.sort(function (a, b) {
+                  var aOrder = Number.isFinite(Number(a.display_order)) ? Number(a.display_order) : 9999;
+                  var bOrder = Number.isFinite(Number(b.display_order)) ? Number(b.display_order) : 9999;
+                  if (aOrder !== bOrder) return aOrder - bOrder;
+                  return alphaValue(a.name).localeCompare(alphaValue(b.name));
+                });
+                category.subcategories = subcategories;
+                return category;
+              });
+  
+              return {
+                id: section.id || null,
+                slug: section.slug || "",
+                order: Number.isFinite(Number(section.display_order)) ? Number(section.display_order) : 9999,
+                name: section.name || "Services",
+                categories: categories
+              };
+            }).sort(function (a, b) {
+              if (a.order !== b.order) return a.order - b.order;
+              return alphaValue(a.name).localeCompare(alphaValue(b.name));
+            });
+          %>
+          <nav class="navbar navbar-expand-xl landing-unified-nav primary-menu p-0 flex-grow-1 align-self-stretch" aria-label="Main navigation">
+            <div class="container-fluid landing-unified-nav-inner d-flex flex-wrap flex-xl-nowrap justify-content-end align-items-center p-0 gap-1">
+              <div class="collapse navbar-collapse justify-content-xl-end order-xl-first" id="landing-main-navbar-collapse">
+                <ul class="navbar-nav ms-xl-auto align-items-xl-center flex-wrap gap-xl-1 py-2 py-xl-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item landing-nav-visitor-only">
+                    <a class="nav-link" href="/#applications">Why Choose Us</a>
+                  </li>
+                  <li class="nav-item landing-nav-visitor-only">
+                    <a class="nav-link" href="/#frameworks">How It Works</a>
+                  </li>
+                  <li class="nav-item landing-nav-visitor-only">
+                    <a class="nav-link" href="/#components">All Services</a>
+                  </li>
+                  <li class="nav-item landing-nav-visitor-only">
+                    <a class="nav-link" href="/#landings">Partners</a>
+                  </li>
+                  <li class="nav-item landing-nav-visitor-only">
+                    <a class="nav-link" href="/#faq">FAQ</a>
+                  </li>
+                  <% menuSections.forEach(function (section, sectionIdx) { %>
+                    <% var sectionViewAllHref = '/services/' + sectionFolderFromSection(section) + '/index'; %>
+                    <li class="nav-item dropdown landing-nav-signed-in-services landing-nav-multilevel d-none <%= sectionIdx === 0 ? 'active' : '' %>">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false"><%= section.name %></a>
+                      <ul class="dropdown-menu dropdown-menu-end landing-nav-multilevel__menu">
+                        <li><a class="dropdown-item fw-semibold" href="<%= sectionViewAllHref %>">View all</a></li>
+                        <% if (!section.categories.length) { %>
+                          <li><span class="dropdown-item-text text-muted small">No services available</span></li>
+                        <% } else { %>
+                          <%
+                            var sectionSingleCategory = section.categories.length === 1 ? section.categories[0] : null;
+                            var sectionMenuCategories = sectionSingleCategory ? [sectionSingleCategory] : section.categories;
+                          %>
+                          <li><hr class="dropdown-divider" /></li>
+                          <% sectionMenuCategories.forEach(function (category) { %>
+                            <%
+                              var catItems = category.items || [];
+                              var catSubs = (category.subcategories || []).filter(function (sub) {
+                                return (sub.items || []).length > 0;
+                              });
+                              var catHasSubs = catSubs.length > 0;
+                              var catHasDirect = catItems.length > 0;
+                              var flattenCategory = !!sectionSingleCategory;
+                            %>
+                            <% if (!catHasSubs && !catHasDirect) { return; } %>
+                            <% if (!flattenCategory) { %>
+                            <li class="dropend">
+                              <a class="dropdown-item dropdown-toggle" href="#" role="button" aria-expanded="false"><%= category.name %></a>
+                              <ul class="dropdown-menu">
+                            <% } %>
+                                <% if (catHasDirect) { %>
+                                  <% catItems.forEach(function (item) { %>
+                                    <li><a class="dropdown-item" href="<%= menuItemHref(item) %>"><%= item.name || "Untitled" %></a></li>
+                                  <% }) %>
+                                  <% if (catHasSubs) { %><li><hr class="dropdown-divider" /></li><% } %>
+                                <% } %>
+                                <% catSubs.forEach(function (sub) { %>
+                                  <% var subItems = sub.items || []; %>
+                                  <% if (!subItems.length) { return; } %>
+                                  <% if (subItems.length === 1 && !catHasDirect && catSubs.length === 1) { %>
+                                    <li><a class="dropdown-item" href="<%= menuItemHref(subItems[0]) %>"><%= sub.name %></a></li>
+                                  <% } else { %>
+                                  <li class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#" role="button" aria-expanded="false"><%= sub.name %></a>
+                                    <ul class="dropdown-menu">
+                                      <% subItems.forEach(function (item) { %>
+                                        <li><a class="dropdown-item" href="<%= menuItemHref(item) %>"><%= item.name || "Untitled" %></a></li>
+                                      <% }) %>
+                                    </ul>
+                                  </li>
+                                  <% } %>
+                                <% }) %>
+                            <% if (!flattenCategory) { %>
+                              </ul>
+                            </li>
+                            <% } %>
+                          <% }) %>
+                        <% } %>
+                      </ul>
+                    </li>
+                  <% }) %>
+                  <li class="nav-item ms-xl-2 ps-xl-3 landing-nav-auth-gap-xl login-signup" id="landing-auth-guest-nav" data-company-login-nav>
+                    <a class="nav-link py-2 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#login-modal" href="#" title="Login / Sign up">
+                      <span class="d-none d-sm-inline">Login / Sign up</span>
+                      <span class="user-icon ms-sm-2"><i class="fas fa-user"></i></span>
+                    </a>
+                  </li>
+                  <li class="nav-item dropdown profile-nav onhover-dropdown pe-0 py-0 d-none align-self-center landing-nav-auth-gap-xl ps-xl-3 ms-xl-2" id="landing-auth-profile-nav">
+                    <div class="media profile-media nav-link py-2">
+                      <img class="b-r-10" src="/assets/images/dashboard/profile.png" alt="">
+                      <div class="media-body text-start">
+                        <span id="landing-user-name" data-varn-auth-name>User</span>
+                        <p class="mb-0 font-roboto small"><span id="landing-user-meta" data-varn-auth-meta>Not logged in</span> <i class="middle fa fa-angle-down"></i></p>
+                      </div>
+                    </div>
+                    <ul class="profile-dropdown onhover-show-div">
+                      <li><a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>Account </span></a>
+                      </li>
+                      <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span>Inbox</span></a></li>
+                      <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Taskboard</span></a></li>
+                      <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span>Settings</span></a></li>
+                      <li>
+                        <a id="landing-logout-btn" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg><span>Log out</span></a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <button class="navbar-toggler landing-navbar-toggler border-0 shadow-none px-2 py-1 ms-2 order-last" type="button" data-bs-toggle="collapse" data-bs-target="#landing-main-navbar-collapse" aria-controls="landing-main-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  @media (min-width: 992px) {
+    .landing-nav-multilevel.show > .dropdown-menu,
+    .landing-nav-multilevel:hover > .dropdown-menu {
+      display: block;
+    }
+    .landing-nav-multilevel .dropend.show > .dropdown-menu,
+    .landing-nav-multilevel .dropend:hover > .dropdown-menu,
+    .landing-nav-multilevel .dropend:focus-within > .dropdown-menu {
+      display: block;
+    }
+    .landing-nav-multilevel .dropdown-menu .dropend > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: 0;
+      margin-left: 0.125rem;
+    }
+    .landing-nav-multilevel .dropdown-menu .dropend > .dropdown-item.dropdown-toggle::after {
+      vertical-align: 0.15em;
+    }
+  }
+  @media (max-width: 991.98px) {
+    .landing-nav-multilevel .dropend > .dropdown-menu {
+      position: static !important;
+      float: none;
+      border: 0;
+      box-shadow: none;
+      margin-left: 0.75rem;
+      padding-left: 0.5rem;
+    }
+  }
+</style>
+
+<% if (typeof menuItemsApiDebug !== 'undefined' && menuItemsApiDebug) { %>
+<section class="container-fluid py-2 border-bottom bg-body-tertiary small" id="menu-items-api-debug" aria-label="Menu items API debug">
+  <details>
+    <summary class="fw-semibold">Menu items API response (debug)</summary>
+    <p class="text-muted mt-2 mb-1">HTTP: <code>GET {MARG}/api/services/menu-items?section_slug=…</code> returns:</p>
+    <pre class="p-2 bg-white border rounded mb-2" style="max-height:10rem;overflow:auto;font-size:11px">{
+  "success": true,
+  "message": "Menu items fetched successfully",
+  "data": {
+    "section_slug": "&lt;query param&gt;",
+    "items": [ /* see JSON below — same fields as each row in items[] */ ]
+  },
+  "error": null
+}</pre>
+    <p class="text-muted mb-1">Varnarc merges tabs into the mega menu; each item may include <code>icon_name</code>, <code>icon_url</code>, <code>icon_bg_color</code>, <code>icon_color</code> (plus category / subcategory fields). Raw tabs from the server:</p>
+    <pre class="p-2 bg-white border rounded mb-0" style="max-height:28rem;overflow:auto;font-size:11px;white-space:pre-wrap;word-break:break-word"><%= typeof landingMenuTabs !== 'undefined' && landingMenuTabs != null ? JSON.stringify(landingMenuTabs, null, 2) : '(no landingMenuTabs on this view)' %></pre>
+  </details>
+</section>
+<% } %>
+
+<div class="modal fade" id="login-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <img src="assets/images/logo/varnarclogo1.png" alt="Company icon" data-company-icon style="max-height: 50px; width: auto;">
+          Login with Mobile OTP
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="auth-alert" class="alert d-none" role="alert"></div>
+        <div class="mb-3">
+          <label class="form-label" for="phone-number-input">Phone Number</label>
+          <div class="row g-2">
+            <div class="col-4">
+              <input id="country-code-input" class="form-control" type="text" value="+91" placeholder="+91" />
+            </div>
+            <div class="col-8">
+              <input id="phone-number-input" class="form-control" type="tel" placeholder="9876543210" />
+            </div>
+          </div>
+          <small class="text-muted">Example: +91XXXXXXXXXX</small>
+        </div>
+
+        <div class="mb-3 d-none" id="otp-container">
+          <label class="form-label" for="otp-input">OTP</label>
+          <input id="otp-input" class="form-control" type="text" placeholder="Enter 6 digit OTP" maxlength="6" />
+        </div>
+
+        <div class="mb-3 d-flex justify-content-center">
+          <div id="recaptcha-container"></div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-end gap-2">
+        <small id="otp-timer-text" class="text-muted me-auto"></small>
+        <button id="send-otp-btn" class="btn btn-primary" type="button">Send OTP</button>
+        <button id="verify-otp-btn" class="btn btn-success d-none" type="button">Verify OTP</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.VARNARC_AUTH_CONFIG = {
+    firebaseApiKey: "<%= authConfig.firebaseApiKey %>",
+    firebaseAuthDomain: "<%= authConfig.firebaseAuthDomain %>",
+    firebaseProjectId: "<%= authConfig.firebaseProjectId %>",
+    firebaseStorageBucket: "<%= authConfig.firebaseStorageBucket %>",
+    firebaseAppId: "<%= authConfig.firebaseAppId %>",
+    firebaseMessagingSenderId: "<%= authConfig.firebaseMessagingSenderId %>",
+    firebaseMeasurementId: "<%= authConfig.firebaseMeasurementId %>",
+    margApiBaseUrl: "<%= authConfig.margApiBaseUrl %>"
+  };
+</script>

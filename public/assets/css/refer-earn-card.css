@@ -1,0 +1,119 @@
+/**
+ * Refer & earn promo card — views/components/refer-earn-card.ejs
+ */
+
+.refer-earn-card-section {
+    --refer-earn-blue: #2b8cff;
+    --refer-earn-navy: #0f2940;
+    --refer-earn-muted: #64748b;
+    --refer-earn-icon-bg: #e8eef3;
+}
+
+.refer-earn-card-section__inner {
+    padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.refer-earn-card {
+    max-width: 960px;
+    margin-inline: auto;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.75rem);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.refer-earn-card__header {
+    text-align: center;
+    margin-bottom: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.refer-earn-card__title {
+    font-family: var(--heading-font, "Rubik", sans-serif);
+    font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+    font-weight: 700;
+    color: var(--refer-earn-navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+
+.refer-earn-card__subtitle {
+    font-size: 0.975rem;
+    color: var(--refer-earn-muted);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.refer-earn-card__step {
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+}
+
+.refer-earn-card__step-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--refer-earn-icon-bg);
+    font-size: 1.65rem;
+    color: var(--refer-earn-blue);
+}
+
+.refer-earn-card__step-title {
+    font-family: var(--heading-font, "Rubik", sans-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--refer-earn-navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.refer-earn-card__step-text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--refer-earn-muted);
+    margin-bottom: 0;
+    max-width: 240px;
+    margin-inline: auto;
+}
+
+.refer-earn-card__cta {
+    text-align: center;
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+    padding-top: 0.25rem;
+}
+
+.refer-earn-card__cta .btn-refer-earn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.85rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--refer-earn-blue);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(43, 140, 255, 0.35);
+    text-decoration: none;
+    transition: filter 0.2s ease, transform 0.15s ease;
+}
+
+.refer-earn-card__cta .btn-refer-earn:hover {
+    color: #fff;
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 767.98px) {
+    .refer-earn-card__step {
+        padding-bottom: 1.25rem;
+    }
+
+    .refer-earn-card__step-text {
+        max-width: 320px;
+    }
+}

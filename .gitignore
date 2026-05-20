@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Python venv (background removal tooling)
+.venv-bgremove/
+
+# OS & editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs & temp
+logs/
+*.log
+npm-debug.log*
+.tmp-*
+scratch/
+
+# Cursor / local tooling
+.cursor/

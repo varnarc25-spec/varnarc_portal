@@ -1,0 +1,1138 @@
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.landing-page header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    --background-color: rgba(255, 255, 255, 0);
+    color: var(--default-color);
+    transition: all 0.5s;
+    z-index: 997;
+    background-color: var(--background-color);
+    box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+.header .topbar {
+    background-color: var(--accent-color);
+    height: 40px;
+    padding: 0;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+
+.header .topbar .contact-info i {
+    font-style: normal;
+    color: var(--white);
+}
+
+.header .topbar .contact-info i a,
+.header .topbar .contact-info i span {
+    padding-left: 5px;
+    color: var(--white);
+}
+
+@media (max-width: 575px) {
+
+    .header .topbar .contact-info i a,
+    .header .topbar .contact-info i span {
+        font-size: 13px;
+    }
+}
+
+.header .topbar .contact-info i a {
+    line-height: 0;
+    transition: 0.3s;
+}
+
+.header .topbar .contact-info i a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.header .topbar .social-links a {
+    color: color-mix(in srgb, var(--white), transparent 40%);
+    line-height: 0;
+    transition: 0.3s;
+    margin-left: 20px;
+}
+
+.header .topbar .social-links a:hover {
+    color: var(--contrast-color);
+}
+
+.header .branding {
+    min-height: 60px;
+    padding: 10px 0;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.header .logo {
+    line-height: 1;
+}
+
+.header .logo img {
+    max-height: 50px;
+    margin-right: 8px;
+}
+
+.header .logo h1 {
+    font-size: 30px;
+    margin: 0;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.scrolled .header .topbar {
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+/* Global Header on Scroll
+  ------------------------------*/
+.scrolled .header {
+    --background-color: #ffffff;
+    box-shadow: none;
+}
+
+.scrolled .header .branding {
+    background-color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/*--------------------------------------------------------------
+  # Fixed header — reserve space for content (fixed-top removes flow height)
+  --------------------------------------------------------------*/
+.landing-page {
+    --landing-fixed-header-offset: 9rem;
+}
+
+/* Service / section templates: .landing-page1 wraps only the header; main section is the next sibling */
+.landing-page .landing-page1 + section.section-space {
+    padding-top: var(--landing-fixed-header-offset);
+    padding-bottom: 5rem;
+}
+
+/*--------------------------------------------------------------
+  # Navigation Menu
+  --------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 1200px) {
+    .navmenu {
+        padding: 0;
+    }
+
+    .navmenu ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        align-items: center;
+    }
+
+    .navmenu li {
+        position: relative;
+    }
+
+    .navmenu>ul>li {
+        white-space: nowrap;
+        padding: 15px 14px;
+    }
+
+    .navmenu>ul>li:last-child {
+        padding-right: 0;
+    }
+
+    .navmenu a,
+    .navmenu a:focus {
+        color: var(--nav-color);
+        font-size: 15px;
+        padding: 0 2px;
+        font-family: var(--nav-font);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+        transition: 0.3s;
+        position: relative;
+    }
+
+    .navmenu a i,
+    .navmenu a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+        transition: 0.3s;
+    }
+
+    .navmenu>ul>li>a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: var(--accent-color);
+        visibility: hidden;
+        width: 0px;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .navmenu a:hover:before,
+    .navmenu li:hover>a:before,
+    .navmenu .active:before {
+        visibility: visible;
+        width: 100%;
+    }
+
+    .navmenu li:hover>a,
+    .navmenu .active,
+    .navmenu .active:focus {
+        color: var(--nav-hover-color);
+    }
+
+    .navmenu .dropdown ul {
+        margin: 0;
+        padding: 10px 0;
+        background: var(--nav-dropdown-background-color);
+        display: block;
+        position: absolute;
+        visibility: hidden;
+        left: 14px;
+        top: 130%;
+        opacity: 0;
+        transition: 0.3s;
+        border-radius: 4px;
+        z-index: 99;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .navmenu .dropdown ul li {
+        min-width: 200px;
+    }
+
+    .navmenu .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 15px;
+        text-transform: none;
+        color: var(--nav-dropdown-color);
+    }
+
+    .navmenu .dropdown ul a i {
+        font-size: 12px;
+    }
+
+    .navmenu .dropdown ul a:hover,
+    .navmenu .dropdown ul .active:hover,
+    .navmenu .dropdown ul li:hover>a {
+        color: var(--nav-dropdown-hover-color);
+    }
+
+    .navmenu .dropdown:hover>ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+    }
+
+    .navmenu .dropdown .dropdown ul {
+        top: 0;
+        left: -90%;
+        visibility: hidden;
+    }
+
+    .navmenu .dropdown .dropdown:hover>ul {
+        opacity: 1;
+        top: 0;
+        left: -100%;
+        visibility: visible;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 1199px) {
+    .mobile-nav-toggle {
+        color: var(--nav-color);
+        font-size: 28px;
+        line-height: 0;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .navmenu {
+        padding: 0;
+        z-index: 9997;
+    }
+
+    .navmenu ul {
+        display: none;
+        list-style: none;
+        position: absolute;
+        inset: 60px 20px 20px 20px;
+        padding: 10px 0;
+        margin: 0;
+        border-radius: 6px;
+        background-color: var(--nav-mobile-background-color);
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+        box-shadow: none;
+        overflow-y: auto;
+        transition: 0.3s;
+        z-index: 9998;
+    }
+
+    .navmenu a,
+    .navmenu a:focus {
+        color: var(--nav-dropdown-color);
+        padding: 10px 20px;
+        font-family: var(--nav-font);
+        font-size: 17px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
+
+    .navmenu a i,
+    .navmenu a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: 0.3s;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    }
+
+    .navmenu a i:hover,
+    .navmenu a:focus i:hover {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+    }
+
+    .navmenu a:hover,
+    .navmenu .active,
+    .navmenu .active:focus {
+        color: var(--nav-dropdown-hover-color);
+    }
+
+    .navmenu .active i,
+    .navmenu .active:focus i {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        transform: rotate(180deg);
+    }
+
+    .navmenu .dropdown ul {
+        position: static;
+        display: none;
+        z-index: 99;
+        padding: 10px 0;
+        margin: 10px 20px;
+        background-color: var(--nav-dropdown-background-color);
+        transition: all 0.5s ease-in-out;
+    }
+
+    .navmenu .dropdown ul ul {
+        background-color: rgba(33, 37, 41, 0.1);
+    }
+
+    .navmenu .dropdown>.dropdown-active {
+        display: block;
+        background-color: rgba(33, 37, 41, 0.03);
+    }
+
+    .mobile-nav-active {
+        overflow: hidden;
+    }
+
+    .mobile-nav-active .mobile-nav-toggle {
+        color: #fff;
+        position: absolute;
+        font-size: 32px;
+        top: 15px;
+        right: 15px;
+        margin-right: 0;
+        z-index: 9999;
+    }
+
+    .mobile-nav-active .navmenu {
+        position: fixed;
+        overflow: hidden;
+        inset: 0;
+        background: rgba(33, 37, 41, 0.8);
+        transition: 0.3s;
+    }
+
+    .mobile-nav-active .navmenu>ul {
+        display: block;
+    }
+}
+
+/*--------------------------------------------------------------
+# Unified landing navbar (single Bootstrap navbar + mega menu + auth)
+--------------------------------------------------------------*/
+@media (min-width: 1200px) {
+    .landing-nav-auth-gap-xl {
+        border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+    }
+
+    /*
+     * Beat global `.navbar-expand-xl .navbar-collapse { flex-flow: row nowrap }` (style.css)
+     * and prevent flex-shrink from stacking labels on top of each other.
+     */
+    .landing-page .landing-unified-nav.navbar-expand-xl .navbar-collapse {
+        flex-flow: row wrap !important;
+        flex-shrink: 1;
+        align-items: flex-start !important;
+        justify-content: flex-end !important;
+        row-gap: 0.35rem;
+        min-width: 0;
+    }
+
+    .landing-page .landing-unified-nav .navbar-collapse .navbar-nav {
+        flex-wrap: wrap !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        row-gap: 0.35rem;
+        column-gap: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+        min-width: max-content;
+    }
+
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item > .nav-link {
+        white-space: nowrap;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+    }
+
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown > .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .landing-page .landing-unified-nav #landing-auth-profile-nav .profile-media {
+        max-width: 220px;
+    }
+
+    /*
+     * Do not use overflow:auto on this cluster — it clips absolutely positioned .dropdown-menu
+     * (mega menus look “empty”). Wrapping + min-width on items handles overlap instead.
+     */
+    .landing-page .header .branding .landing-header-nav-cluster {
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .landing-page .header .branding .landing-header-nav-cluster > .landing-unified-nav {
+        min-width: min(100%, max-content);
+    }
+}
+
+/*
+ * style.css: `.dropdown .dropdown-toggle { width: 100px }` — only undo width on nested mega items;
+ * do not change display/pseudo-elements there or menus break / look empty.
+ */
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item.dropdown-toggle {
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Top-level navbar section links only (not nested .dropdown-menu toggles) */
+.landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown > .nav-link.dropdown-toggle {
+    width: auto !important;
+    max-width: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    text-align: inherit !important;
+    border-radius: 0 !important;
+    color: var(--nav-color) !important;
+    background-color: transparent !important;
+    position: relative !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+/*
+ * Use theme’s empty <i class="arrow"> (theme.js appends a second — hide duplicates).
+ * Hide Bootstrap / theme ::after carets so only i.arrow rotates for open/close.
+ */
+.landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown > .nav-link.dropdown-toggle::after,
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item.dropdown-toggle::after {
+    display: none !important;
+    content: none !important;
+    margin: 0 !important;
+    border: 0 !important;
+}
+
+.landing-page .landing-unified-nav a.dropdown-toggle i.arrow ~ i.arrow {
+    display: none !important;
+}
+
+.landing-page .landing-unified-nav a.dropdown-toggle i.arrow {
+    display: inline-block !important;
+    width: 0;
+    height: 0;
+    margin-left: 0.35rem;
+    flex-shrink: 0;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    border-bottom: 0;
+    transition: transform 0.2s ease;
+    transform: rotate(0deg);
+    transform-origin: 50% 35%;
+}
+
+/* Mobile (<992): theme.js toggles .open on i.arrow; Bootstrap may add .show on li */
+.landing-page .landing-unified-nav a.dropdown-toggle i.arrow.open,
+.landing-page .landing-unified-nav li.dropdown.show > a.dropdown-toggle i.arrow {
+    transform: rotate(180deg);
+}
+
+/* Desktop: rotate caret when submenu is open. Signed-in mega is click-toggled (theme.js), not hover — exclude it here so the arrow matches panel state. */
+@media (min-width: 992px) {
+
+    .landing-page .landing-unified-nav li.dropdown:not(.landing-nav-signed-in-services):hover > a.dropdown-toggle i.arrow,
+    .landing-page .landing-unified-nav li.dropdown:not(.landing-nav-signed-in-services):focus-within > a.dropdown-toggle i.arrow {
+        transform: rotate(180deg);
+    }
+}
+
+/*
+ * Mega menu columns: same typographic scale and row height as top-level `.nav-link`,
+ * consistent min-width across nested flyouts, unified panel chrome (fixes uneven gray/white columns).
+ */
+.landing-page .landing-unified-nav {
+    --landing-dd-item-fs: 13px;
+    --landing-dd-item-px: 14px;
+    --landing-dd-item-py: 10px;
+    --landing-dd-row-min: 40px;
+    --landing-dd-col-min: 220px;
+}
+
+.landing-page .landing-unified-nav .dropdown-menu > li {
+    margin: 0;
+    padding: 0;
+}
+
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item {
+    font-size: var(--landing-dd-item-fs);
+    font-weight: 500;
+    font-family: var(--nav-font);
+    letter-spacing: 0.02em;
+    padding: var(--landing-dd-item-py) var(--landing-dd-item-px) !important;
+    min-height: var(--landing-dd-row-min);
+    display: flex !important;
+    align-items: center;
+    line-height: 1.35;
+    white-space: nowrap;
+    color: var(--default-color);
+    border-radius: 0;
+}
+
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item.dropdown-toggle {
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item:hover,
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item:focus {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+    color: var(--nav-hover-color);
+}
+
+/* API-sourced names are often lowercase — show title case (use a.nav-link only: skip profile div.nav-link + phone) */
+.landing-page .landing-unified-nav .navbar-nav > .nav-item > a.nav-link,
+.landing-page .landing-unified-nav .dropdown-menu .dropdown-item {
+    text-transform: capitalize;
+}
+
+@media (min-width: 1200px) {
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown > .dropdown-menu {
+        min-width: var(--landing-dd-col-min);
+        padding: 0.375rem 0;
+        background: #fff !important;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+        box-shadow: 0 12px 32px rgba(33, 37, 41, 0.1);
+        border-radius: 8px;
+    }
+
+    .landing-page .landing-unified-nav .dropdown-menu .dropdown-menu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-left: 0.125rem;
+        min-width: var(--landing-dd-col-min);
+        padding: 0.375rem 0 !important;
+        background: #fff !important;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+        box-shadow: 0 12px 32px rgba(33, 37, 41, 0.1);
+        border-radius: 8px;
+    }
+}
+
+/*
+ * One color for the whole bar: global `.landing-page .navbar-nav .nav-item .nav-link`
+ * uses `--default-color` (dark) while dropdown toggles used `--nav-color` (brand).
+ */
+.landing-page .landing-unified-nav .navbar-nav > .nav-item > .nav-link {
+    color: var(--nav-color) !important;
+    font-weight: 500;
+    font-family: var(--nav-font);
+}
+
+.landing-page .landing-unified-nav .navbar-nav > .nav-item.active > .nav-link,
+.landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown.show > .nav-link,
+.landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown:hover > .nav-link,
+.landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown:focus-within > .nav-link {
+    font-weight: 600;
+}
+
+.landing-page .landing-unified-nav .navbar-nav > .nav-item > .nav-link:hover,
+.landing-page .landing-unified-nav .navbar-nav > .nav-item > .nav-link:focus {
+    color: var(--nav-hover-color) !important;
+}
+
+.landing-unified-nav .nav-link {
+    color: var(--nav-color);
+    font-weight: 500;
+    font-family: var(--nav-font);
+}
+
+.landing-unified-nav .nav-link:hover {
+    color: var(--nav-hover-color);
+}
+
+.landing-unified-nav .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.landing-navbar-toggler .navbar-toggler-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+}
+
+@media (max-width: 1199.98px) {
+    .landing-page .header .branding .landing-header-nav-cluster {
+        flex: 0 0 auto;
+        min-width: 0;
+    }
+
+    .landing-unified-nav .navbar-collapse {
+        width: 100%;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 12px;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+        background: #fff;
+        box-shadow: 0 10px 28px rgba(33, 37, 41, 0.12);
+    }
+
+    .landing-unified-nav .navbar-nav {
+        width: 100%;
+        align-items: stretch !important;
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+
+    .landing-unified-nav .navbar-nav > .nav-item {
+        width: 100%;
+    }
+
+    .landing-unified-nav .navbar-nav > .nav-item > .nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0.875rem !important;
+        border-radius: 8px;
+        white-space: normal;
+        line-height: 1.3;
+    }
+
+    .landing-unified-nav .navbar-nav > .nav-item + .nav-item {
+        margin-top: 0.125rem;
+    }
+
+    .landing-unified-nav .dropdown-menu {
+        position: static;
+        float: none;
+        margin: 0.15rem 0 0.35rem;
+        padding: 0.25rem 0;
+        border: 0;
+        border-left: 2px solid color-mix(in srgb, var(--accent-color), transparent 78%);
+        border-radius: 0;
+        background: color-mix(in srgb, var(--accent-color), transparent 96%);
+        box-shadow: none;
+    }
+
+    .landing-unified-nav .dropdown-menu .dropdown-menu {
+        margin-left: 0.65rem;
+        padding-left: 0.35rem;
+    }
+
+    .landing-page .landing-unified-nav .dropdown-menu .dropdown-item {
+        white-space: normal;
+        min-height: 36px;
+        font-size: 13px;
+        padding: 0.55rem 0.8rem !important;
+    }
+}
+
+/*
+ * Signed-in profile menu (feather SVGs): Cuba theme sizes/icons live under
+ * `.page-wrapper .page-header .nav-right .profile-dropdown`, which the landing
+ * header does not use — without these rules, SVGs inflate and overlap labels.
+ */
+.landing-page #landing-auth-profile-nav.onhover-dropdown {
+    position: relative;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown.onhover-show-div {
+    top: calc(100% + 8px) !important;
+    left: auto !important;
+    right: 0 !important;
+    min-width: 200px;
+    width: max-content;
+    max-width: min(280px, 92vw);
+    padding: 0.35rem 0 !important;
+    margin: 0;
+    list-style: none;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(33, 37, 41, 0.12);
+    border: 1px solid color-mix(in srgb, var(--default-color, #212529), transparent 88%);
+    z-index: 1055;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li {
+    padding: 0 !important;
+    margin: 0;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li a {
+    display: flex !important;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 1rem !important;
+    white-space: nowrap;
+    text-decoration: none !important;
+    color: #3f475a;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li a svg {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    max-width: 18px;
+    flex-shrink: 0;
+    margin: 0 !important;
+    display: block;
+    stroke: #3f475a;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li a svg circle,
+.landing-page #landing-auth-profile-nav .profile-dropdown li a svg line,
+.landing-page #landing-auth-profile-nav .profile-dropdown li a svg path,
+.landing-page #landing-auth-profile-nav .profile-dropdown li a svg polyline {
+    stroke: currentColor;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li a span {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li a:hover,
+.landing-page #landing-auth-profile-nav .profile-dropdown li a:focus {
+    background-color: color-mix(in srgb, var(--accent-color, #0d6efd), transparent 92%);
+    color: var(--nav-hover-color, var(--accent-color, #0d6efd));
+}
+
+.landing-page #landing-auth-profile-nav .profile-dropdown li a:hover svg,
+.landing-page #landing-auth-profile-nav .profile-dropdown li a:focus svg {
+    stroke: currentColor;
+}
+
+/*--------------------------------------------------------------
+# SaaS-inspired header (e.g. clean bar, pills, soft panels — original styling)
+--------------------------------------------------------------*/
+.landing-page .landing-header-saas.header {
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+
+.landing-page .landing-header-saas.header .branding {
+    border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 94%);
+}
+
+.scrolled .landing-page .landing-header-saas.header .branding {
+    border-bottom-color: transparent;
+}
+
+/* Top-level links: readable sentence case like modern marketing sites */
+.landing-page .landing-header-saas .landing-unified-nav .navbar-nav > .nav-item > a.nav-link {
+    text-transform: none !important;
+    letter-spacing: 0.01em;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.landing-page .landing-header-saas .landing-unified-nav .navbar-nav > .nav-item.dropdown > .nav-link.dropdown-toggle {
+    letter-spacing: 0.01em;
+    font-size: 15px;
+}
+
+@media (min-width: 1200px) {
+    .landing-page .landing-header-saas .landing-unified-nav .navbar-nav > .nav-item > .nav-link {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    /* Guest auth: outline pill (two-step CTAs can be added later as a second .btn) */
+    .landing-page .landing-header-saas #landing-auth-guest-nav.landing-nav-cta-guest > .landing-nav-pill-cta.nav-link {
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 78%);
+        border-radius: 999px;
+        padding: 0.5rem 1.15rem !important;
+        background: color-mix(in srgb, #fff, transparent 6%);
+        color: var(--default-color) !important;
+        box-shadow: 0 1px 0 color-mix(in srgb, #fff, transparent 40%);
+    }
+
+    .landing-page .landing-header-saas #landing-auth-guest-nav.landing-nav-cta-guest > .landing-nav-pill-cta.nav-link:hover,
+    .landing-page .landing-header-saas #landing-auth-guest-nav.landing-nav-cta-guest > .landing-nav-pill-cta.nav-link:focus {
+        border-color: color-mix(in srgb, var(--accent-color), transparent 35%);
+        background: color-mix(in srgb, var(--accent-color), transparent 94%);
+        color: var(--nav-hover-color) !important;
+    }
+
+    .landing-page .landing-header-saas .landing-unified-nav .navbar-nav > .nav-item.dropdown:not(.landing-nav-signed-in-services) > .dropdown-menu,
+    .landing-page .landing-header-saas .landing-unified-nav .dropdown-menu .dropdown-menu {
+        border-radius: 12px;
+        box-shadow: 0 16px 48px rgba(15, 23, 42, 0.08), 0 0 0 1px color-mix(in srgb, var(--default-color), transparent 90%);
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .landing-page .landing-header-saas #landing-auth-guest-nav > .landing-nav-pill-cta.nav-link {
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 82%);
+        border-radius: 10px;
+        justify-content: center;
+        font-weight: 600;
+    }
+}
+
+/*--------------------------------------------------------------
+# Signed-in services: full-width single-plane mega (no nested flyouts)
+--------------------------------------------------------------*/
+.landing-page .landing-unified-nav.navbar {
+    position: relative;
+}
+
+/* Pixel `top` for fixed full-width mega; landing_sticky.js overwrites with #header getBoundingClientRect().bottom */
+.landing-page {
+    --landing-mega-top: 7.75rem;
+}
+
+body.scrolled.landing-page {
+    --landing-mega-top: 5.375rem;
+}
+
+@media (min-width: 992px) {
+
+    /* Fixed = true viewport width; theme keeps menu inside <li>, bridge closes hover gap under header */
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown.position-static.landing-nav-signed-in-services > .dropdown-menu.landing-services-mega {
+        position: fixed;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        top: var(--landing-mega-top);
+        bottom: auto;
+        max-width: none;
+        margin: 0 !important;
+        margin-top: 0;
+        transform: none !important;
+        border-radius: 0 !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        z-index: 1020;
+        background: #fff !important;
+        border: 0 !important;
+        border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%) !important;
+        box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1) !important;
+        height: auto;
+        max-height: min(85vh, calc(100vh - var(--landing-mega-top) - 0.75rem));
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: env(safe-area-inset-bottom) !important;
+    }
+
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown.position-static.landing-nav-signed-in-services > .dropdown-menu.landing-services-mega::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    .landing-page .landing-unified-nav .navbar-nav > .nav-item.dropdown.position-static.landing-nav-signed-in-services > .dropdown-menu.landing-services-mega::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 20px;
+        top: calc(var(--landing-mega-top) - 20px);
+        z-index: 1019;
+    }
+
+    .landing-services-mega__layout {
+        align-items: stretch;
+    }
+
+    .landing-services-mega__quick,
+    .landing-services-mega__promo {
+        height: 100%;
+        background: #f8fafc;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+        border-radius: 14px;
+        padding: 1.25rem 1.1rem;
+    }
+
+    .landing-services-mega__quick-title {
+        font-weight: 800;
+        font-size: 0.95rem;
+        color: var(--default-color);
+        font-family: var(--nav-font, "Rubik", sans-serif);
+    }
+
+    .landing-services-mega__quick-link,
+    .landing-services-mega__store {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.55rem 0.75rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--default-color);
+        /* font-weight: 500; */
+        /* background: #fff; */
+        /* border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%); */
+        transition: border-color 0.12s ease, transform 0.12s ease;
+    }
+
+    .landing-services-mega__quick-link i,
+    .landing-services-mega__store i {
+        font-size: 1.05rem;
+        color: var(--accent-color);
+    }
+
+    .landing-services-mega__quick-link:hover,
+    .landing-services-mega__store:hover {
+        border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+        transform: translateY(-1px);
+        color: var(--default-color);
+    }
+
+    .landing-services-mega__quick-stores {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .landing-services-mega__quick-cta,
+    .landing-services-mega__promo-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.65rem 0.9rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 800;
+        border: 1px solid color-mix(in srgb, var(--accent-color), transparent 55%);
+        background: color-mix(in srgb, var(--accent-color), transparent 92%);
+        color: var(--nav-hover-color, var(--accent-color));
+        transition: filter 0.12s ease, transform 0.12s ease;
+    }
+
+    .landing-services-mega__quick-cta:hover,
+    .landing-services-mega__promo-cta:hover {
+        filter: brightness(1.02);
+        transform: translateY(-1px);
+        color: var(--nav-hover-color, var(--accent-color));
+    }
+
+    .landing-services-mega__promo {
+        background: #f1f7ff;
+        border-color: color-mix(in srgb, #2563eb, transparent 82%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .landing-services-mega__promo-title {
+        font-weight: 900;
+        font-size: 1.05rem;
+        line-height: 1.2;
+        margin: 0;
+        color: #0f172a;
+        font-family: var(--nav-font, "Rubik", sans-serif);
+    }
+
+    .landing-services-mega__promo-sub {
+        margin: 0;
+        font-weight: 800;
+        color: #1d4ed8;
+    }
+
+    .landing-services-mega__promo-art {
+        flex: 1;
+        min-height: 140px;
+        border-radius: 14px;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255, 106, 0, 0.25), transparent 55%),
+            radial-gradient(circle at 70% 30%, rgba(37, 99, 235, 0.25), transparent 55%),
+            radial-gradient(circle at 40% 75%, rgba(16, 185, 129, 0.2), transparent 60%),
+            linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.55));
+        border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .landing-services-mega__col-heading {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        line-height: 1.3;
+        margin-bottom: 0.75rem !important;
+        text-transform: capitalize;
+    }
+
+    .landing-services-mega__sub-heading {
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-left: 0.65rem;
+        padding-left: 0.65rem;
+        border-left: 2px solid color-mix(in srgb, var(--accent-color), transparent 62%);
+        text-transform: capitalize;
+    }
+
+    .landing-services-mega__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.2rem 0 0.2rem 0.5rem;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--default-color);
+        text-decoration: none;
+        border-radius: 4px;
+        text-transform: capitalize;
+    }
+
+    .landing-services-mega__link-lead {
+        flex: 0 0 auto;
+        width: 1.75rem;
+        height: 1.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .landing-services-mega__link-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .landing-services-mega__link-fa {
+        font-size: 0.8125rem;
+        line-height: 1;
+        color: var(--accent-color);
+    }
+
+    .landing-services-mega__link-icon {
+        width: 0.75rem;
+        flex: 0 0 0.75rem;
+        font-size: 0.75rem;
+        color: var(--accent-color);
+        text-align: center;
+    }
+
+    .landing-services-mega__link:hover,
+    .landing-services-mega__link:focus {
+        color: var(--nav-hover-color);
+    }
+
+    /* Plain text mega links — no theme triangles / Bootstrap carets inside the panel */
+    .landing-services-mega i.arrow,
+    .landing-services-mega .arrow {
+        display: none !important;
+    }
+
+    .landing-services-mega a.dropdown-toggle::after,
+    .landing-services-mega a.dropdown-toggle::before,
+    .landing-services-mega .landing-services-mega__link::after,
+    .landing-services-mega .landing-services-mega__link::before {
+        display: none !important;
+        content: none !important;
+        border: 0 !important;
+    }
+
+    /* Section tab label stays text-only */
+    .landing-page .landing-unified-nav .landing-nav-signed-in-services > .nav-link.dropdown-toggle.landing-mega-section-toggle i.arrow {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    .landing-unified-nav .landing-nav-signed-in-services > .dropdown-menu.landing-services-mega {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin: 0.25rem 0 0.5rem !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        background: color-mix(in srgb, var(--accent-color), transparent 96%) !important;
+        max-height: none;
+        overflow: visible !important;
+    }
+
+    .landing-services-mega__columns.row {
+        --bs-gutter-y: 1.25rem;
+    }
+}

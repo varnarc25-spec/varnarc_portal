@@ -1,0 +1,129 @@
+<section class="section-space feature-section pt-0">
+    <ul class="decoration">
+        <li class="round-gif"><img src="/assets/images/landing/gifs/5.gif" alt=""></li>
+    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 wow pulse">
+                <div class="landing-title">
+                    <h5 class="sub-title">Built for Your Everyday Needs</h5>
+                    <h2> Smart Features for a <span class="gradient-5">Better Financial Experience</span></h2>
+                    <p>Enjoy a fast, secure, and seamless experience with features designed to simplify your everyday payments, investments, and bookings.</p>
+                </div>
+                <div class="vector-image"> <img src="/assets/images/landing/vectors/2.svg" alt="vector women"></div>
+            </div>
+        </div>
+        <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3">
+            <% /* Sprite IDs must exist in /public/assets/svg/icon-sprite.svg (not Font Awesome names like fa-mobile-phone). */ %>
+            <% var spriteDefaults = ['stroke-home','tag','bag','clock','search','star','sale','customers']; %>
+            <% var bgLights = ['bg-light-1','bg-light-2','bg-light-3','bg-light-4','bg-light-5','bg-light-6','bg-light-7']; %>
+            <% var sections = typeof serviceSections !== 'undefined' && serviceSections ? serviceSections : []; %>
+            <% sections.forEach(function(section, idx) {
+              var iconUrl = section.icon_url && String(section.icon_url).trim();
+              var rawIcon = section.icon_name && String(section.icon_name).trim();
+              var spriteFragment = spriteDefaults[idx % spriteDefaults.length];
+              if (rawIcon && rawIcon.indexOf('fa-') !== 0 && /^[a-z0-9_-]+$/i.test(rawIcon)) {
+                spriteFragment = rawIcon;
+              }
+              var bgClass = bgLights[idx % bgLights.length];
+              var iconBgColor = section.icon_bg_color && String(section.icon_bg_color).trim();
+              var iconColor = section.icon_color && String(section.icon_color).trim();
+              var iconStyle = '';
+              if (iconBgColor) iconStyle += 'background:' + iconBgColor + ';';
+              if (iconColor) iconStyle += 'color:' + iconColor + ';';
+              var subtitle = section.category;
+              if (!subtitle && section.description) subtitle = String(section.description).slice(0, 80);
+              if (!subtitle && section.slug) subtitle = String(section.slug).replace(/-/g, ' ');
+            %>
+            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                <div class="feature-box common-card bg-feature-<%= section.display_order %>">
+                    <div class="feature-icon"<% if (iconStyle) { %> style="<%= iconStyle %>"<% } %>> 
+                        <% if (iconUrl) { %>
+                            <span class="remote-svg-icon" data-svg-url="<%= iconUrl %>"<% if (iconColor) { %> data-icon-color="<%= iconColor %>"<% } %>>
+                                <img src="<%= iconUrl %>" alt="" style="width: 24px; height: 24px;" />
+                            </span>
+                        <% } else { %>
+                        <svg aria-hidden="true" focusable="false"<% if (iconColor) { %> style="color:<%= iconColor %>;"<% } %>>
+                            <use href="/assets/svg/icon-sprite.svg#<%= spriteFragment %>"></use>
+                        </svg>
+                        <% } %>
+                    </div>
+                    <h5><%= section.name %></h5>
+                    <p class="mb-0 f-light"><%= subtitle || 'Explore services' %></p>
+                </div>
+            </div>
+            
+            <% }); %>
+            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                <div class="feature-box common-card bg-feature-8">
+                    <div class="feature-icon"> 
+                        <svg aria-hidden="true" focusable="false"  style="width: 24px; height: 24px;">
+                            <use href="/assets/svg/icon-sprite.svg#arrowright"></use>
+                        </svg>
+                    </div>
+                    <h5>Explore All</h5>
+                    <p class="mb-0 f-light"><%= sections.length > 0 ? 'More ' + sections.length + '+ Categories' : 'More 50+ Categories' %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+  (function () {
+    function initRemoteSvgIcons() {
+    var iconNodes = document.querySelectorAll('.remote-svg-icon[data-svg-url]');
+    if (!iconNodes.length) return;
+
+    iconNodes.forEach(function (node) {
+      var url = node.getAttribute('data-svg-url');
+      var color = node.getAttribute('data-icon-color');
+      if (!url) return;
+
+      fetch(url)
+        .then(function (res) { return res.text(); })
+        .then(function (svgText) {
+          if (!svgText || svgText.indexOf('<svg') === -1) return;
+
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(svgText, 'image/svg+xml');
+          var svg = doc.querySelector('svg');
+          if (!svg) return;
+
+          if (!svg.getAttribute('viewBox')) {
+            var width = svg.getAttribute('width') || '24';
+            var height = svg.getAttribute('height') || '24';
+            svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+          }
+
+          svg.setAttribute('width', '24');
+          svg.setAttribute('height', '24');
+          svg.setAttribute('aria-hidden', 'true');
+          svg.setAttribute('focusable', 'false');
+
+          if (color) {
+            svg.style.color = color;
+            svg.querySelectorAll('[fill]').forEach(function (el) {
+              if (el.getAttribute('fill') !== 'none') el.setAttribute('fill', 'currentColor');
+            });
+            svg.querySelectorAll('[stroke]').forEach(function (el) {
+              if (el.getAttribute('stroke') !== 'none') el.setAttribute('stroke', 'currentColor');
+            });
+            if (!svg.hasAttribute('fill')) svg.setAttribute('fill', 'currentColor');
+          }
+
+          node.innerHTML = '';
+          node.appendChild(svg);
+        })
+        .catch(function () {
+          // Keep fallback <img> when cross-origin fetch is blocked.
+        });
+    });
+  }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initRemoteSvgIcons);
+    } else {
+      initRemoteSvgIcons();
+    }
+  })();
+</script>

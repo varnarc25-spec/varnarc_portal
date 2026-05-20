@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+
+<body class="landing-page service-section-page service-section-hub-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <% if (!hubNavEntries || !hubNavEntries.length) { %>
+  <%- include('../../../components/services/hub/section-empty') %>
+  <% } else { %>
+  <%- include('../../../components/services/hub/section-open') %>
+  <%- include('../../../components/services/hub/forms/travel-booking', { panelSlug: 'travel-flight', panelTitle: 'Book Flight' }) %>
+  <%- include('../../../components/services/hub/forms/travel-booking', { panelSlug: 'travel-bus', panelTitle: 'Book Bus' }) %>
+  <%- include('../../../components/services/hub/forms/travel-booking', { panelSlug: 'travel-train', panelTitle: 'Book Train' }) %>
+  <%- include('../../../components/services/hub/forms/travel-booking', { panelSlug: 'travel-hotel', panelTitle: 'Book Hotel' }) %>
+  <%- include('../../../components/services/hub/section-close') %>
+  <% } %>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+</body>
+
+</html>

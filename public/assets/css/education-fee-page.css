@@ -1,0 +1,340 @@
+/**
+ * Education fee payment — scoped under .service-item-section.edu-fee-service-section
+ */
+
+.service-item-section.edu-fee-service-section {
+    background: #e8eef7;
+}
+
+.service-item-section.edu-fee-service-section .edu-fee-section-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding-bottom: 0.5rem;
+}
+
+.edu-fee-promo-wrap {
+    align-items: stretch;
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.edu-fee-promo-nav {
+    align-self: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    color: #334155;
+    flex-shrink: 0;
+    height: 40px;
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+    width: 40px;
+}
+
+.edu-fee-promo-nav:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.edu-fee-promo-nav:focus-visible {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    outline: none;
+}
+
+.edu-fee-promo-scroll {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex: 1;
+    gap: 0.85rem;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.75rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.edu-fee-promo-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.edu-fee-promo-scroll::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 99px;
+}
+
+.edu-fee-promo-card {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    flex: 0 0 min(260px, 72vw);
+    min-height: 100px;
+    padding: 0.85rem 1rem;
+    scroll-snap-align: start;
+}
+
+.edu-fee-promo-card--accent {
+    background: #eef2ff;
+    border-color: rgba(79, 70, 229, 0.22);
+}
+
+.edu-fee-promo-card--muted {
+    background: #f8fafc;
+}
+
+.edu-fee-promo-card__title {
+    color: #0f172a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.55rem;
+}
+
+.edu-fee-promo-card__btn {
+    background: #f97316;
+    border-radius: 8px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.edu-fee-promo-card__btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.edu-fee-pay-web {
+    margin-bottom: 1.75rem;
+}
+
+.edu-fee-pay-web__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+}
+
+.edu-fee-form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.edu-fee-form-field {
+    margin: 0;
+}
+
+.edu-fee-field-label {
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.edu-fee-select {
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    color: #0f172a;
+    cursor: pointer;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 0.95rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.edu-fee-select:focus {
+    border-color: rgba(249, 115, 22, 0.65);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+    outline: none;
+}
+
+.edu-fee-select:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.edu-fee-input {
+    background-color: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.75rem 0.95rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.edu-fee-input::placeholder {
+    color: #94a3b8;
+}
+
+.edu-fee-input:focus {
+    border-color: rgba(249, 115, 22, 0.65);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+    outline: none;
+}
+
+.edu-fee-form-hint {
+    color: #64748b;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0.85rem 0 0;
+}
+
+.edu-fee-app-strip {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    padding: 1.25rem 1.35rem;
+}
+
+.edu-fee-app-strip__title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+}
+
+.edu-fee-app-strip__sub {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.edu-fee-download-btn {
+    align-items: center;
+    background: #f97316;
+    border-radius: 10px;
+    color: #fff !important;
+    display: inline-flex;
+    font-size: 0.82rem;
+    font-weight: 800;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.edu-fee-download-btn:hover {
+    background: #ea580c;
+    color: #fff !important;
+}
+
+.edu-fee-faq {
+    margin-top: 2.25rem;
+}
+
+.edu-fee-faq > h2 {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+.edu-fee-faq .accordion-item {
+    background: #eef2f7;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 10px !important;
+    margin-bottom: 0.65rem;
+    overflow: hidden;
+}
+
+.edu-fee-faq .accordion-button {
+    background: #eef2f7 !important;
+    box-shadow: none !important;
+    color: #1e293b;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 1rem 1.1rem;
+}
+
+.edu-fee-faq .accordion-button:not(.collapsed) {
+    background: #e2e8f0 !important;
+    color: #0f172a;
+}
+
+.edu-fee-faq .accordion-body {
+    background: #fff;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding: 1rem 1.1rem 1.15rem;
+}
+
+.edu-fee-query {
+    margin-top: 1.75rem;
+    text-align: center;
+}
+
+.edu-fee-query > p {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.edu-fee-query-card {
+    align-items: center;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 12px;
+    color: #4f46e5 !important;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 0.65rem;
+    padding: 0.85rem 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edu-fee-query-card:hover {
+    border-color: rgba(79, 70, 229, 0.45);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.12);
+    color: #4338ca !important;
+}
+
+.edu-fee-query-card i {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 575px) {
+    .service-item-section.edu-fee-service-section .edu-fee-section-inner {
+        max-width: 100%;
+    }
+
+    .edu-fee-promo-nav {
+        display: none;
+    }
+}

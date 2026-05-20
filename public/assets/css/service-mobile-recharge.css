@@ -1,0 +1,928 @@
+/**
+ * Mobile recharge service flow — scoped to .service-mobile-recharge-page
+ */
+
+.service-mobile-recharge-page {
+    --recharge-primary: #0a3d62;
+    --recharge-primary-light: #1c6ea4;
+    --recharge-accent: #2b8cff;
+    --recharge-panel-bg: #f4f6f8;
+    --recharge-card-radius: 12px;
+    background-color: var(--recharge-panel-bg);
+}
+
+@media (max-width: 991.98px) {
+    .service-mobile-recharge-page {
+        padding-bottom: 5.25rem;
+    }
+}
+
+.service-mobile-recharge-page .service-recharge-hero {
+    padding-bottom: 0.5rem;
+}
+
+.service-mobile-recharge-page .service-recharge-panel {
+    margin-top: 0.5rem;
+}
+
+.service-mobile-recharge-page .service-recharge-card {
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--default-color, #212529), transparent 90%);
+    border-radius: var(--recharge-card-radius);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+    padding: 1.75rem 1.5rem 2rem;
+}
+
+@media (min-width: 992px) {
+    .service-mobile-recharge-page .service-recharge-card {
+        padding: 2rem 2.25rem 2.25rem;
+    }
+}
+
+.service-mobile-recharge-page .service-recharge-value-prop {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: #475569;
+    max-width: 40rem;
+}
+
+.service-mobile-recharge-page .service-recharge-card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--recharge-primary);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+    font-family: var(--nav-font, "Rubik", sans-serif);
+}
+
+.service-mobile-recharge-page .service-recharge-card .service-recharge-card__sub {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    line-height: 1.45;
+}
+
+.service-mobile-recharge-page .recharge-flow-steps {
+    list-style: none;
+    margin: 0 0 1.25rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    align-items: flex-start;
+}
+
+.service-mobile-recharge-page .recharge-flow-steps__segment {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.service-mobile-recharge-page .recharge-flow-steps__segment::after {
+    content: "";
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background: #e2e8f0;
+    margin-top: 0.35rem;
+}
+
+.service-mobile-recharge-page .recharge-flow-steps__segment.is-active::after,
+.service-mobile-recharge-page .recharge-flow-steps__segment.is-done::after {
+    background: linear-gradient(90deg, var(--recharge-accent), var(--recharge-primary-light));
+}
+
+.service-mobile-recharge-page .recharge-flow-steps__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+}
+
+.service-mobile-recharge-page .recharge-flow-steps__segment.is-active .recharge-flow-steps__label,
+.service-mobile-recharge-page .recharge-flow-steps__segment.is-done .recharge-flow-steps__label {
+    color: var(--recharge-primary);
+}
+
+.service-mobile-recharge-page .input-hint {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+}
+
+.service-mobile-recharge-page .field-feedback {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.35rem;
+    min-height: 1.1rem;
+}
+
+.service-mobile-recharge-page .field-feedback.is-valid {
+    color: #059669;
+}
+
+.service-mobile-recharge-page .field-feedback.is-invalid {
+    color: #dc2626;
+}
+
+.service-mobile-recharge-page .form-control.is-valid,
+.service-mobile-recharge-page .form-select.is-valid {
+    border-color: #34d399;
+}
+
+.service-mobile-recharge-page .form-control.is-invalid,
+.service-mobile-recharge-page .form-select.is-invalid {
+    border-color: #f87171;
+}
+
+.service-mobile-recharge-page .recharge-operator-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.service-mobile-recharge-page .recharge-operator-field__main {
+    flex: 1;
+    min-width: 0;
+}
+
+.service-mobile-recharge-page .recharge-operator-logo-wrap {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-mobile-recharge-page .recharge-operator-logo-wrap.d-none {
+    display: none !important;
+}
+
+.service-mobile-recharge-page .recharge-operator-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+}
+
+.service-mobile-recharge-page .operator-hint {
+    font-size: 0.8rem;
+    color: #0369a1;
+    margin-top: 0.35rem;
+    min-height: 1rem;
+}
+
+.service-mobile-recharge-page .recharge-personalized {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid rgba(43, 140, 255, 0.25);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+}
+
+.service-mobile-recharge-page .recharge-personalized h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--recharge-primary);
+    margin-bottom: 0.65rem;
+}
+
+.service-mobile-recharge-page .recharge-personalized-pill {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: var(--recharge-primary);
+    margin: 0 0.4rem 0.4rem 0;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.service-mobile-recharge-page .recharge-personalized-pill:hover {
+    border-color: var(--recharge-accent);
+    box-shadow: 0 2px 8px rgba(43, 140, 255, 0.2);
+}
+
+.service-mobile-recharge-page .amount-label-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.35rem;
+}
+
+.service-mobile-recharge-page .amount-label-row .form-label {
+    margin-bottom: 0.4rem;
+}
+
+.service-mobile-recharge-page .recharge-plan-picker {
+    margin-top: 1.25rem;
+    padding-top: 1.1rem;
+    border-top: 1px dashed #e2e8f0;
+}
+
+/* Space between scrollable plans and amount (only when plan block is visible) */
+.service-mobile-recharge-page #recharge-plan-picker:not(.d-none) {
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.35rem;
+}
+
+.service-mobile-recharge-page #recharge-plan-picker:not(.d-none) + .recharge-amount-section {
+    margin-top: 0.75rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.service-mobile-recharge-page .recharge-amount-section__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--recharge-primary, #0a3d62);
+}
+
+.service-mobile-recharge-page .recharge-plan-picker__title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.service-mobile-recharge-page .recharge-plan-category-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.15rem;
+}
+
+.service-mobile-recharge-page .recharge-plan-tab {
+    flex: 0 0 auto;
+    border: 2px solid #e2e8f0;
+    border-radius: 999px;
+    background: #fff;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+}
+
+.service-mobile-recharge-page .recharge-plan-tab:hover {
+    border-color: color-mix(in srgb, var(--recharge-accent), #fff 50%);
+    color: var(--recharge-primary);
+}
+
+.service-mobile-recharge-page .recharge-plan-tab.is-active {
+    border-color: var(--recharge-accent);
+    background: color-mix(in srgb, var(--recharge-accent), #fff 88%);
+    color: var(--recharge-primary);
+}
+
+.service-mobile-recharge-page .recharge-plan-tab__count {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #64748b;
+    background: #f1f5f9;
+    border-radius: 999px;
+    padding: 0.08rem 0.35rem;
+    min-width: 1.15rem;
+    text-align: center;
+}
+
+.service-mobile-recharge-page .recharge-plan-tab.is-active .recharge-plan-tab__count {
+    background: #fff;
+    color: var(--recharge-primary);
+}
+
+/* Keep the rest of the form reachable: plans scroll inside this shell instead of stretching the page */
+.service-mobile-recharge-page .recharge-plan-grid-scroll {
+    max-height: min(52vh, 28rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.65rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.35rem;
+    background: #f8fafc;
+    scrollbar-gutter: stable;
+}
+
+@media (min-width: 992px) {
+    .service-mobile-recharge-page .recharge-plan-grid-scroll {
+        max-height: min(48vh, 26rem);
+    }
+}
+
+.service-mobile-recharge-page .recharge-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 0.65rem;
+}
+
+.service-mobile-recharge-page .recharge-plan-card {
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.75rem 0.65rem;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.service-mobile-recharge-page .recharge-plan-card:hover {
+    border-color: color-mix(in srgb, var(--recharge-accent), #fff 40%);
+}
+
+.service-mobile-recharge-page .recharge-plan-card.is-selected {
+    border-color: var(--recharge-accent);
+    box-shadow: 0 4px 14px rgba(43, 140, 255, 0.2);
+}
+
+.service-mobile-recharge-page .recharge-plan-card__badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: var(--recharge-primary);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+}
+
+.service-mobile-recharge-page .recharge-plan-card__badge--accent {
+    background: var(--recharge-accent);
+}
+
+.service-mobile-recharge-page .recharge-plan-card__badge--muted {
+    background: #64748b;
+}
+
+.service-mobile-recharge-page .recharge-plan-card__price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--recharge-primary);
+    line-height: 1.15;
+}
+
+.service-mobile-recharge-page .recharge-plan-card__price small {
+    font-size: 0.7rem;
+    font-weight: 600;
+    vertical-align: baseline;
+}
+
+.service-mobile-recharge-page .recharge-plan-card__meta {
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.35;
+    margin-top: 0.35rem;
+}
+
+.service-mobile-recharge-page .recharge-trust-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    align-items: center;
+    margin: 1rem 0 0.25rem;
+    padding: 0.75rem 0.85rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.service-mobile-recharge-page .recharge-trust-chip {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.service-mobile-recharge-page .recharge-trust-chip i {
+    font-size: 1rem;
+    color: var(--recharge-accent);
+}
+
+.service-mobile-recharge-page .recharge-pay-logo-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.service-mobile-recharge-page .recharge-pay-logo-row span {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.42rem;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+}
+
+.service-mobile-recharge-page .btn-recharge-continue:disabled,
+.service-mobile-recharge-page .btn-recharge-continue.is-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.service-mobile-recharge-page .recharge-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.1);
+    z-index: 996;
+}
+
+@media (max-width: 991.98px) {
+    .service-mobile-recharge-page .recharge-sticky-cta {
+        display: block;
+    }
+}
+
+.service-mobile-recharge-page .promo-expiry-text {
+    font-size: 0.72rem;
+    opacity: 0.82;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-mobile-recharge-page .promo-apply-stack {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.service-mobile-recharge-page .promo-visible-code {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #fef08a;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.service-mobile-recharge-page .btn-promo-apply {
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--recharge-primary);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.service-mobile-recharge-page .btn-promo-apply:hover {
+    filter: brightness(1.06);
+}
+
+.service-mobile-recharge-page .promo-apply-stack [role="status"] {
+    flex: 0 0 100%;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #bbf7d0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    margin: 0;
+    min-height: 1rem;
+}
+
+.service-mobile-recharge-page .promo-apply-stack [role="status"].is-show {
+    opacity: 1;
+}
+
+/* Prepaid / Postpaid */
+.service-mobile-recharge-page .recharge-type-toggle {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.service-mobile-recharge-page .recharge-type-toggle .form-check {
+    padding: 0;
+    margin: 0;
+    min-height: auto;
+}
+
+.service-mobile-recharge-page .recharge-type-toggle .form-check-input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.2rem;
+    border-color: #adb5bd;
+    cursor: pointer;
+}
+
+.service-mobile-recharge-page .recharge-type-toggle .form-check-input:checked {
+    background-color: var(--recharge-accent);
+    border-color: var(--recharge-accent);
+}
+
+.service-mobile-recharge-page .recharge-type-toggle .form-check-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #334155;
+    padding-left: 0.35rem;
+    cursor: pointer;
+}
+
+.service-mobile-recharge-page .service-recharge-form .form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    margin-bottom: 0.4rem;
+}
+
+.service-mobile-recharge-page .service-recharge-form .form-control,
+.service-mobile-recharge-page .service-recharge-form .form-select {
+    border-radius: 8px;
+    border-color: #e2e8f0;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.95rem;
+}
+
+.service-mobile-recharge-page .service-recharge-form .form-control:focus,
+.service-mobile-recharge-page .service-recharge-form .form-select:focus {
+    border-color: var(--recharge-accent);
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--recharge-accent), transparent 80%);
+}
+
+/* Mobile input + appended button (Bootstrap input-group) */
+.service-mobile-recharge-page .recharge-mobile-input-group .form-control {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+}
+
+.service-mobile-recharge-page .recharge-mobile-input-group .form-control:focus {
+    border-right: none;
+    box-shadow: none;
+    outline: none;
+    border-color: var(--recharge-accent);
+}
+
+.service-mobile-recharge-page .recharge-mobile-input-group:focus-within {
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--recharge-accent), transparent 80%);
+    border-radius: 8px;
+}
+
+.service-mobile-recharge-page .recharge-mobile-input-group:focus-within .form-control,
+.service-mobile-recharge-page .recharge-mobile-input-group:focus-within .recharge-mobile-append-btn {
+    border-color: var(--recharge-accent);
+}
+
+.service-mobile-recharge-page .recharge-mobile-append-btn {
+    border-radius: 0 8px 8px 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-color: #e2e8f0;
+    color: var(--recharge-primary);
+    white-space: nowrap;
+    background-color: #f8fafc;
+}
+
+.service-mobile-recharge-page .recharge-mobile-append-btn:hover {
+    background-color: #eef2ff;
+    border-color: var(--recharge-accent);
+    color: var(--recharge-primary-light);
+}
+
+.service-mobile-recharge-page .recharge-mobile-input-group .form-control.is-invalid {
+    border-right: none;
+}
+
+.service-mobile-recharge-page .recharge-mobile-input-group .form-control.is-invalid + .recharge-mobile-append-btn {
+    border-color: #f87171;
+}
+
+.service-mobile-recharge-page .recharge-mobile-input-group .form-control.is-valid + .recharge-mobile-append-btn {
+    border-color: #34d399;
+}
+
+/* Amount + View Plans */
+.service-mobile-recharge-page .service-recharge-amount-wrap {
+    position: relative;
+}
+
+.service-mobile-recharge-page .service-recharge-amount-wrap .input-group-text {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #475569;
+    font-weight: 600;
+    border-radius: 8px 0 0 8px;
+}
+
+.service-mobile-recharge-page .service-recharge-amount-wrap .form-control {
+    border-radius: 0 8px 8px 0;
+    padding-right: 6.5rem;
+}
+
+.service-mobile-recharge-page .service-recharge-view-plans {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--recharge-accent);
+    text-decoration: none;
+    z-index: 2;
+}
+
+.service-mobile-recharge-page .service-recharge-view-plans:hover {
+    text-decoration: underline;
+    color: var(--recharge-primary);
+}
+
+/* Higher specificity + after base rule so “Browse plans below” stays in the label row, not stacked on the previous field */
+.service-mobile-recharge-page .amount-label-row .service-recharge-view-plans.service-recharge-view-plans--inline {
+    position: static;
+    right: auto;
+    top: auto;
+    transform: none;
+    z-index: auto;
+    font-size: 0.8rem;
+}
+
+.service-mobile-recharge-page .btn-recharge-continue {
+    background: linear-gradient(180deg, var(--recharge-primary-light) 0%, var(--recharge-primary) 100%);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(10, 61, 98, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.service-mobile-recharge-page .btn-recharge-continue:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(10, 61, 98, 0.4);
+}
+
+/* Promo banner + carousel */
+.service-mobile-recharge-page .service-recharge-banner {
+    border-radius: var(--recharge-card-radius);
+    overflow: hidden;
+    min-height: 320px;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+}
+
+.service-mobile-recharge-page .recharge-promo-slide {
+    min-height: 320px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(125deg, #b8e6c8 0%, #7ec89a 35%, #0a3d62 35.2%, #0a2340 100%);
+    color: #fff;
+    padding: 1.5rem 1.25rem 1.5rem 1.5rem;
+}
+
+.service-mobile-recharge-page .recharge-promo-slide--alt {
+    background: linear-gradient(125deg, #c4d9f5 0%, #6b9bd1 35%, #0a3d62 35.2%, #0c4a6e 100%);
+}
+
+.service-mobile-recharge-page .recharge-promo-art {
+    flex: 0 0 38%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.service-mobile-recharge-page .recharge-promo-art .promo-icon-wrap {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.service-mobile-recharge-page .recharge-promo-body {
+    flex: 1;
+    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.service-mobile-recharge-page .recharge-promo-eyebrow {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    margin-bottom: 0.25rem;
+}
+
+.service-mobile-recharge-page .recharge-promo-amount {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #7dd3fc;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.35rem;
+}
+
+.service-mobile-recharge-page .recharge-promo-sub {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    max-width: 16rem;
+    margin-bottom: 1rem;
+}
+
+.service-mobile-recharge-page .recharge-promo-code {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px dashed rgba(255, 255, 255, 0.85);
+    border-radius: 6px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.service-mobile-recharge-page .recharge-promo-code .code-label {
+    color: #fef08a;
+    margin-right: 0.35rem;
+}
+
+.service-mobile-recharge-page .recharge-promo-foot {
+    font-size: 0.7rem;
+    opacity: 0.75;
+    margin-top: auto;
+    padding-top: 0.75rem;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-control-prev,
+.service-mobile-recharge-page .service-recharge-banner .carousel-control-next {
+    width: 2.25rem;
+    height: 2.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-control-prev {
+    left: 0.5rem;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-control-next {
+    right: 0.5rem;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-indicators {
+    margin-bottom: 0.5rem;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-indicators .active {
+    background-color: #fff;
+}
+
+/* Info tabs */
+.service-mobile-recharge-page .service-recharge-info {
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.service-mobile-recharge-page .service-recharge-info .nav-tabs {
+    border-bottom: 2px solid #e2e8f0;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.service-mobile-recharge-page .service-recharge-info .nav-tabs .nav-link {
+    border: none;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.1rem;
+    border-radius: 0;
+    margin-bottom: -2px;
+    background: transparent;
+}
+
+.service-mobile-recharge-page .service-recharge-info .nav-tabs .nav-link:hover {
+    color: var(--recharge-primary);
+}
+
+.service-mobile-recharge-page .service-recharge-info .nav-tabs .nav-link.active {
+    color: var(--recharge-accent);
+    border-bottom: 2px solid var(--recharge-accent);
+    background: transparent;
+}
+
+.service-mobile-recharge-page .service-recharge-info .tab-content {
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.service-mobile-recharge-page .service-recharge-info .tab-content a {
+    color: var(--recharge-accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.service-mobile-recharge-page .service-recharge-info .tab-content a:hover {
+    text-decoration: underline;
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-inner,
+.service-mobile-recharge-page .service-recharge-banner .carousel-item {
+    border-radius: var(--recharge-card-radius);
+}
+
+.service-mobile-recharge-page .service-recharge-banner .carousel-control-prev-icon,
+.service-mobile-recharge-page .service-recharge-banner .carousel-control-next-icon {
+    filter: invert(1);
+    opacity: 0.95;
+}
+
+@media (max-width: 991.98px) {
+    .service-mobile-recharge-page .service-recharge-banner {
+        min-height: 280px;
+    }
+
+    .service-mobile-recharge-page .recharge-promo-slide {
+        min-height: 280px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .service-mobile-recharge-page .recharge-promo-body {
+        padding-left: 0;
+    }
+
+    .service-mobile-recharge-page .recharge-promo-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Mobile recharge page form (other service pages keep amount padding for “View plans”) */
+.service-mobile-recharge-page #mobile-recharge-form .service-recharge-amount-wrap .form-control {
+    padding-right: 0.85rem;
+}

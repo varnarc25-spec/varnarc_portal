@@ -1,0 +1,22 @@
+<section class="section-space service-item-section quickai-section-hub" data-service-section-hub aria-label="<%= secTitle %> services">
+  <div class="container py-4">
+      <div class="quickai-section-hub__mobile-select d-lg-none mb-3">
+        <label class="visually-hidden" for="serviceHubMobileSelect">Choose a service</label>
+        <select id="serviceHubMobileSelect" class="form-select" data-hub-mobile-select>
+          <% navEntries.forEach(function (entry) { %>
+            <% if (entry.type === 'item') { %>
+              <option value="<%= entry.panelSlug || 'generic' %>"<%= panelIsActive(entry.panelSlug) ? ' selected' : '' %>><%= entry.label %></option>
+            <% } %>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 col-lg-10">
+          <div id="verticalTab">
+            <div class="row g-0">
+              <div class="col-md-3 my-0 my-md-4">
+                <%- include('./sidebar') %>
+              </div>
+              <div class="col-md-9">
+                <div class="resp-tabs-container bg-white shadow-md rounded h-100 p-3">

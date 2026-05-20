@@ -1,0 +1,10 @@
+<div class="mb-3">
+  <label class="form-label" for="amt-<%= slug %>"><%= typeof amountLabel !== 'undefined' ? amountLabel : 'Custom Amount' %></label>
+  <div class="input-group hub-amount-group">
+    <span class="input-group-text">$</span>
+    <% if (typeof showPlans !== 'undefined' && showPlans) { %>
+      <a href="<%= href %>" class="view-plans-link">View Plans</a>
+    <% } %>
+    <input type="text" class="form-control" id="amt-<%= slug %>" placeholder="Enter Amount" inputmode="decimal" />
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<ul class="resp-tabs-list" role="tablist">
+  <% navEntries.forEach(function (entry) { %>
+    <% if (entry.type !== 'item') { return; } %>
+    <% var pid = entry.panelSlug || 'generic'; %>
+    <% var isActive = panelIsActive(pid); %>
+    <% var iconSuffix = hubIconSuffix(entry.label, entry.item); %>
+    <li class="<%= isActive ? 'resp-tab-active is-active' : '' %>" role="presentation" data-hub-nav="<%= pid %>" aria-current="<%= isActive ? 'true' : 'false' %>" tabindex="0">
+      <span aria-hidden="true">
+        <% var iconUrl = entry.item && entry.item.icon_url ? String(entry.item.icon_url).trim() : ''; %>
+        <% if (iconUrl) { %>
+          <img src="<%= iconUrl %>" alt="" width="18" height="18" loading="lazy" decoding="async" />
+        <% } else { %>
+          <i class="fas fa-<%= iconSuffix %>"></i>
+        <% } %>
+      </span>
+      <%= String(entry.label || '').trim().toLowerCase().replace(/\b\w/g, function (ch) { return ch.toUpperCase(); }) %>
+    </li>
+  <% }) %>
+</ul>

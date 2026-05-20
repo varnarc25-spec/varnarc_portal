@@ -1,0 +1,70 @@
+<%
+  var navEntries = (typeof hubNavEntries !== 'undefined' && Array.isArray(hubNavEntries))
+    ? hubNavEntries
+    : [];
+  var secMenu = typeof serviceSectionMenu !== 'undefined' ? serviceSectionMenu : null;
+  var secFolder = typeof serviceSectionFolder !== 'undefined' ? String(serviceSectionFolder) : '';
+  var secTitle = secMenu && secMenu.name ? secMenu.name : secFolder.replace(/([A-Z])/g, ' $1').trim() || 'Services';
+  var activePanelSlug = typeof activePanelSlug !== 'undefined' ? String(activePanelSlug) : '';
+
+  if (!activePanelSlug && typeof activeHubNavId !== 'undefined' && activeHubNavId) {
+    navEntries.forEach(function (e) {
+      if (e.type === 'item' && e.key === activeHubNavId) {
+        activePanelSlug = e.panelSlug || '';
+      }
+    });
+  }
+
+  function itemHref(item) {
+    if (
+      typeof serviceLeafUrlByItemId !== 'undefined' &&
+      serviceLeafUrlByItemId &&
+      item &&
+      item.id != null &&
+      serviceLeafUrlByItemId[String(item.id)]
+    ) {
+      return '/services/' + serviceLeafUrlByItemId[String(item.id)];
+    }
+    return '#';
+  }
+
+  function hubHrefForPanel(slug) {
+    var i;
+    for (i = 0; i < navEntries.length; i++) {
+      var e = navEntries[i];
+      if (e.type === 'item' && e.panelSlug === slug) {
+        return itemHref(e.item);
+      }
+    }
+    return '#';
+  }
+
+  function panelIsActive(slug) {
+    return activePanelSlug === String(slug);
+  }
+
+  function hubIconSuffix(label, item) {
+    var iconName = item && item.icon_name ? String(item.icon_name).trim() : '';
+    var faSuffix = iconName.replace(/^fa-/, '').replace(/^fa\s+/i, '');
+    if (faSuffix && /^[a-z0-9\-]+$/i.test(faSuffix)) {
+      return faSuffix;
+    }
+    var n = String(label || '').toLowerCase();
+    var map = [
+      ['mobile', 'mobile-alt'], ['dth', 'tv'], ['datacard', 'sim-card'], ['data', 'sim-card'],
+      ['broadband', 'wifi'], ['landline', 'phone'], ['cable', 'plug'], ['electric', 'lightbulb'],
+      ['metro', 'subway'], ['gas', 'flask'], ['water', 'tint'], ['fastag', 'car'],
+      ['subscription', 'play-circle'], ['insurance', 'shield-alt'], ['travel', 'plane'],
+      ['flight', 'plane'], ['hotel', 'hotel'], ['loan', 'hand-holding-usd'],
+      ['credit', 'credit-card'], ['gold', 'coins'], ['transfer', 'exchange-alt'],
+      ['bank', 'university'], ['invest', 'chart-line']
+    ];
+    var i;
+    for (i = 0; i < map.length; i++) {
+      if (n.indexOf(map[i][0]) !== -1) {
+        return map[i][1];
+      }
+    }
+    return 'circle';
+  }
+%>
