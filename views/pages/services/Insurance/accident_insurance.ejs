@@ -1,0 +1,44 @@
+<% var pageTitle = 'Personal Accident Insurance'; %>
+<% var pageDescription = 'Compare personal accident insurance plans, use premium and cover calculators, and get instant quotes on Varnarc.'; %>
+<%
+  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
+  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
+  var downloadHref = _play || _ios || '#';
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/service-mobile-recharge.css" />
+<link rel="stylesheet" href="/assets/css/accident-insurance-page.css" />
+<link rel="stylesheet" href="/assets/css/loan-repayment-page.css" />
+
+<body class="landing-page service-item-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <section class="section-space service-item-section loanrep-service-section">
+    <div class="container text-start py-4">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/services/Insurance/index">Insurance</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Accident Insurance</li>
+        </ol>
+      </nav>
+
+      <%- include('../../../components/services/hub/forms/insurance/accident_insurance_form', {
+        panelSlug: 'insurance-accident',
+        hubEmbed: false
+      }) %>
+    </div>
+  </section>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+<script src="/assets/js/hub-insurance-quote.js" defer></script>
+</body>
+
+</html>

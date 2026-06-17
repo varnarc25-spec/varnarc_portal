@@ -1,0 +1,31 @@
+<%
+  var headerTitle =
+    typeof panelTitle !== "undefined" && panelTitle
+      ? String(panelTitle)
+      : typeof title !== "undefined" && title
+        ? String(title)
+        : "Service";
+  var headerSlug =
+    typeof panelSlug !== "undefined" && panelSlug ? String(panelSlug) : "";
+  var headerHref =
+    typeof href !== "undefined" && href
+      ? String(href)
+      : typeof hubHrefForPanel === "function" && headerSlug
+        ? hubHrefForPanel(headerSlug)
+        : "#";
+  var headerHelpLabel =
+    typeof helpLabel !== "undefined" && helpLabel
+      ? String(helpLabel)
+      : headerTitle + " help";
+%>
+<header class="hub-panel-header d-flex flex-row align-items-center justify-content-between mb-3">
+  <h2 class="hub-panel-header__title text-6 mb-0"><%= headerTitle %></h2>
+  <a
+    class="hub-panel-header__help"
+    href="<%= headerHref %>?help=1"
+    aria-label="<%= headerHelpLabel %>"
+    title="Help"
+  >
+    <i class="far fa-question-circle" aria-hidden="true"></i>
+  </a>
+</header>

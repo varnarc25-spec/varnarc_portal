@@ -1,0 +1,64 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "book-cylinder";
+  var title =
+    typeof panelTitle !== "undefined" && panelTitle
+      ? String(panelTitle)
+      : "Book Gas Cylinder";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/BillPayments/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var consumerLabel =
+    typeof serviceIdLabel !== "undefined" && serviceIdLabel
+      ? String(serviceIdLabel)
+      : "Consumer Number";
+  var ctaText =
+    typeof ctaText !== "undefined" && ctaText ? String(ctaText) : "Continue";
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="hub-tab-panel is-active">
+<% } %>
+  <%- include('../../panel-header', { panelTitle: title, panelSlug: slug, href: href }) %>
+  <form class="hub-service-form" action="<%= href %>" method="get" novalidate>
+    <div class="mb-3">
+      <label class="form-label" for="op-<%= slug %>">Your Operator</label>
+      <select class="form-select" id="op-<%= slug %>" name="operator" required>
+        <option value="" selected disabled>Select Your Operator</option>
+        <option value="bharat-gas">Bharat Gas (BPCL)</option>
+        <option value="bharat-gas-commercial">Bharat Gas (BPCL) — Commercial</option>
+        <option value="hp-gas">HP Gas (HPCL)</option>
+        <option value="indane">Indane Gas (Indian Oil)</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="consumer-<%= slug %>"><%= consumerLabel %></label>
+      <input
+        type="text"
+        class="form-control"
+        id="consumer-<%= slug %>"
+        name="consumerNumber"
+        placeholder="Enter <%= consumerLabel %>"
+        autocomplete="off"
+        required
+      />
+    </div>
+    <%- include('../amount-field', { slug: slug, href: href, showPlans: false, amountLabel: 'Amount' }) %>
+    <div class="d-grid mt-4">
+      <button type="submit" class="btn btn-primary"><%= ctaText %></button>
+    </div>
+  </form>
+</div>

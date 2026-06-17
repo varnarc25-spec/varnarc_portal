@@ -48345,7 +48345,6 @@ footer {
 .section-space {
     padding: 80px 0;
     position: relative;
-    text-align: center
 }
 
 .section-space p {
@@ -48354,7 +48353,8 @@ footer {
 }
 
 .landing-title {
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    text-align: center !important;
 }
 
 @media (max-width:767px) {

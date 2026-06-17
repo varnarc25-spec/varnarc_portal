@@ -3,9 +3,12 @@
       <div class="quickai-section-hub__mobile-select d-lg-none mb-3">
         <label class="visually-hidden" for="serviceHubMobileSelect">Choose a service</label>
         <select id="serviceHubMobileSelect" class="form-select" data-hub-mobile-select>
+          <% var hubSelectIndex = 0; %>
           <% navEntries.forEach(function (entry) { %>
             <% if (entry.type === 'item') { %>
-              <option value="<%= entry.panelSlug || 'generic' %>"<%= panelIsActive(entry.panelSlug) ? ' selected' : '' %>><%= entry.label %></option>
+              <% var sel = typeof navItemIsActive === 'function' ? navItemIsActive(entry, hubSelectIndex) : panelIsActive(entry.panelSlug); %>
+              <option value="<%= hubSelectIndex %>" data-hub-panel="<%= entry.panelSlug || 'generic' %>"<%= sel ? ' selected' : '' %>><%= entry.label %></option>
+              <% hubSelectIndex += 1; %>
             <% } %>
           <% }) %>
         </select>

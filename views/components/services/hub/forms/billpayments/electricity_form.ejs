@@ -1,0 +1,300 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "electricity";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/BillPayments/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var searchId = "electricity-provider-search-" + slug;
+  var topProviders = [
+    { key: "mseb maharashtra state electricity", initials: "MS", name: "Maharashtra State Electricity Distbn Co Ltd", color: "c0" },
+    { key: "tangedco tamil nadu electricity board tneb", initials: "TN", name: "Tamil Nadu Electricity Board (TNEB)", color: "c1" },
+    { key: "torrent power", initials: "TP", name: "Torrent Power", color: "c2" },
+    { key: "wbseb west bengal state electricity", initials: "WB", name: "West Bengal Electricity", color: "c3" },
+  ];
+  var allProviders = [
+    { key: "aeml seepz adani", initials: "AE", name: "AEML SEEPZ Limited", color: "c4" },
+    { key: "adani electricity mumbai limited", initials: "AE", name: "Adani Electricity Mumbai Limited", color: "c0" },
+    { key: "ajmer vidyut vitran nigam avvnl", initials: "AV", name: "Ajmer Vidyut Vitran Nigam Limited (AVVNL)", color: "c1" },
+    { key: "apcpdcl andhra pradesh central power distribution", initials: "AP", name: "Andhra Pradesh Central Power Distribution Corporation Limited", color: "c2" },
+    { key: "bescom bangalore electricity supply", initials: "BE", name: "Bangalore Electricity Supply Co. Ltd. (BESCOM)", color: "c3" },
+    { key: "bses rajdhani power limited", initials: "BR", name: "BSES Rajdhani Power Limited", color: "c4" },
+    { key: "tata power delhi", initials: "TD", name: "Tata Power - Delhi", color: "c5" },
+    { key: "bses yamuna power limited", initials: "BY", name: "BSES Yamuna Power Limited", color: "c6" },
+    { key: "best mumbai", initials: "BT", name: "Brihanmumbai Electric Supply and Transport (BEST)", color: "c7" },
+    { key: "mseb maharashtra state electricity", initials: "MS", name: "MSEDCL - Maharashtra State Electricity Distribution Co. Ltd.", color: "c0" },
+    { key: "tata power mumbai", initials: "TM", name: "Tata Power Mumbai Distribution", color: "c1" },
+    { key: "torrent power ahmedabad", initials: "TA", name: "Torrent Power Ltd. (Ahmedabad)", color: "c2" },
+    { key: "torrent power surat", initials: "TS", name: "Torrent Power Ltd. (Surat)", color: "c3" },
+    { key: "tangedco tamil nadu generation distribution", initials: "TG", name: "Tamil Nadu Generation and Distribution Corporation (TANGEDCO)", color: "c0" },
+    { key: "kseb kerala state electricity", initials: "KE", name: "Kerala State Electricity Board (KSEB)", color: "c1" },
+    { key: "hescom hubli electricity supply", initials: "HE", name: "Hubli Electricity Supply Company Ltd. (HESCOM)", color: "c2" },
+    { key: "cesc kolkata", initials: "CE", name: "CESC Limited - Kolkata", color: "c3" },
+    { key: "wbseb west bengal state electricity", initials: "WB", name: "WBSEDCL - West Bengal State Electricity Distribution Co. Ltd.", color: "c4" },
+    { key: "dvvnl dakshinanchal vij uttar pradesh", initials: "DV", name: "Dakshinanchal Vidyut Vitran Nigam Ltd. (DVVNL)", color: "c5" },
+    { key: "puvvnl purvanchal vij uttar pradesh", initials: "PV", name: "Purvanchal Vidyut Vitran Nigam Ltd. (PUVVNL)", color: "c6" },
+    { key: "mvvnl madhyanchal vij uttar pradesh", initials: "MV", name: "Madhyanchal Vidyut Vitran Nigam Ltd. (MVVNL)", color: "c7" },
+    { key: "npcl noida power", initials: "NP", name: "Noida Power Company Ltd. (NPCL)", color: "c0" },
+    { key: "jvvnl jaipur vij vitran", initials: "JV", name: "Jaipur Vidyut Vitran Nigam Ltd. (JVVNL)", color: "c1" },
+    { key: "jodhpur vij vitran", initials: "JD", name: "Jodhpur Vidyut Vitran Nigam Ltd. (JDVVNL)", color: "c2" },
+    { key: "chhattisgarh state power", initials: "CS", name: "Chhattisgarh State Power Distribution Co. Ltd. (CSPDCL)", color: "c3" },
+    { key: "tsnpdcl telangana northern power", initials: "NT", name: "TSNPDCL - Northern Power Distribution Co. of Telangana Ltd.", color: "c4" },
+    { key: "tsspdcl telangana southern power", initials: "TS", name: "TSSPDCL - Southern Power Distribution Co. of Telangana Ltd.", color: "c5" },
+    { key: "mescom mangalore electricity supply", initials: "ME", name: "Mangalore Electricity Supply Company Ltd. (MESCOM)", color: "c6" },
+    { key: "pspcl punjab state power", initials: "PS", name: "PSPCL - Punjab State Power Corporation Ltd.", color: "c7" },
+    { key: "hpseb himachal pradesh", initials: "HP", name: "HPSEBL - Himachal Pradesh State Electricity Board Ltd.", color: "c0" },
+  ];
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel electricity-hub-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-electricity-hub
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="electricity-hub-panel is-active" data-electricity-hub>
+<% } %>
+  <div class="electricity-hub-pay-web">
+    <div data-electricity-step="pick">
+    <%- include('../../panel-header', { panelTitle: 'Pay on Web', panelSlug: slug, href: href }) %>
+
+    <div class="electricity-hub-search-wrap">
+      <input
+        type="search"
+        class="electricity-hub-search-input"
+        id="<%= searchId %>"
+        data-electricity-provider-search
+        placeholder="Search your provider"
+        autocomplete="off"
+        aria-label="Search your provider"
+      />
+      <button
+        type="button"
+        class="electricity-hub-search-clear"
+        data-electricity-search-clear
+        aria-label="Clear search"
+        hidden
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <section class="electricity-hub-providers-section" aria-labelledby="electricity-top-<%= slug %>">
+      <h3 id="electricity-top-<%= slug %>" class="electricity-hub-section-title">Top Service providers</h3>
+      <ul class="electricity-hub-providers list-unstyled mb-0" data-electricity-provider-list="top">
+        <% topProviders.forEach(function (p) { %>
+        <li data-biller="<%= p.key %>">
+          <button type="button" class="electricity-hub-provider-btn" data-electricity-provider="<%= p.key %>">
+            <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+            <span class="electricity-hub-provider-name"><%= p.name %></span>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="electricity-hub-providers-section electricity-hub-providers-section--spaced" aria-labelledby="electricity-all-<%= slug %>">
+      <h3 id="electricity-all-<%= slug %>" class="electricity-hub-section-title">All service providers</h3>
+      <ul class="electricity-hub-providers list-unstyled mb-0" data-electricity-provider-list="all">
+        <% allProviders.forEach(function (p) { %>
+        <li data-biller="<%= p.key %>">
+          <button type="button" class="electricity-hub-provider-btn" data-electricity-provider="<%= p.key %>">
+            <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+            <span class="electricity-hub-provider-name"><%= p.name %></span>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+    </div>
+
+    <div class="electricity-hub-details" data-electricity-step="details" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-electricity-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Change provider
+      </button>
+      <p class="electricity-hub-selected-provider mb-3">
+        <span class="electricity-hub-selected-provider__label">Provider</span>
+        <span class="electricity-hub-selected-provider__name" data-electricity-selected-name>—</span>
+      </p>
+
+      <div class="electricity-hub-help-bar">
+        <span class="electricity-hub-help-bar__left">
+          <span class="electricity-hub-help-bar__icon" aria-hidden="true">?</span>
+          <span class="electricity-hub-help-bar__text">Where to find details?</span>
+        </span>
+        <button type="button" class="electricity-hub-help-bar__link" data-electricity-sample-bill>View Sample Bill</button>
+      </div>
+
+      <form class="electricity-hub-details-form" data-electricity-details-form novalidate>
+        <div class="mb-3">
+          <label class="form-label electricity-hub-field-label" for="electricity-customer-<%= slug %>">
+            Customer ID / Account ID
+          </label>
+          <input
+            type="text"
+            class="form-control electricity-hub-account-input"
+            id="electricity-customer-<%= slug %>"
+            data-electricity-customer-id
+            inputmode="numeric"
+            maxlength="10"
+            pattern="[0-9]{1,10}"
+            placeholder=""
+            autocomplete="off"
+            required
+          />
+          <p class="electricity-hub-field-hint mb-0">
+            Please enter Customer ID / Account ID of upto 10 digits
+          </p>
+        </div>
+
+        <div class="electricity-hub-consent mb-4">
+          <input
+            class="form-check-input electricity-hub-consent__input"
+            type="checkbox"
+            id="electricity-consent-<%= slug %>"
+            data-electricity-consent
+          />
+          <label class="form-check-label electricity-hub-consent__label" for="electricity-consent-<%= slug %>">
+            I hereby authorize Varnarc and provide explicit consent for accessing future bills and to
+            facilitate the provision of bill reminders.
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="btn electricity-hub-fetch-btn w-100"
+          data-electricity-fetch
+          disabled
+        >
+          Fetch your bill
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  function initElectricityHub(root) {
+    if (!root || root.getAttribute("data-electricity-hub-init") === "1") return;
+    root.setAttribute("data-electricity-hub-init", "1");
+
+    var pickStep = root.querySelector('[data-electricity-step="pick"]');
+    var detailsStep = root.querySelector('[data-electricity-step="details"]');
+    var selectedNameEl = root.querySelector("[data-electricity-selected-name]");
+    var backBtn = root.querySelector("[data-electricity-back]");
+    var detailsForm = root.querySelector("[data-electricity-details-form]");
+    var customerInput = root.querySelector("[data-electricity-customer-id]");
+    var consentInput = root.querySelector("[data-electricity-consent]");
+    var fetchBtn = root.querySelector("[data-electricity-fetch]");
+    var sampleBillBtn = root.querySelector("[data-electricity-sample-bill]");
+    var input = root.querySelector("[data-electricity-provider-search]");
+    var clearBtn = root.querySelector("[data-electricity-search-clear]");
+    var lists = root.querySelectorAll("[data-electricity-provider-list]");
+
+    function showStep(step) {
+      if (pickStep) pickStep.hidden = step !== "pick";
+      if (detailsStep) detailsStep.hidden = step !== "details";
+    }
+
+    function setFetchEnabled() {
+      if (!fetchBtn) return;
+      var id = customerInput ? String(customerInput.value || "").replace(/\D/g, "") : "";
+      var ok = id.length > 0 && id.length <= 10 && consentInput && consentInput.checked;
+      fetchBtn.disabled = !ok;
+    }
+
+    function openDetails(providerName) {
+      if (selectedNameEl) selectedNameEl.textContent = providerName || "—";
+      if (customerInput) customerInput.value = "";
+      if (consentInput) consentInput.checked = false;
+      setFetchEnabled();
+      showStep("details");
+      if (customerInput) customerInput.focus();
+    }
+
+    function openPick() {
+      showStep("pick");
+    }
+
+    if (backBtn) backBtn.addEventListener("click", openPick);
+
+    if (sampleBillBtn) {
+      sampleBillBtn.addEventListener("click", function () {
+        window.alert("Sample bill: look for Customer ID or Account ID on the top section of your electricity bill.");
+      });
+    }
+
+    if (customerInput) {
+      customerInput.addEventListener("input", function () {
+        customerInput.value = customerInput.value.replace(/\D/g, "").slice(0, 10);
+        setFetchEnabled();
+      });
+    }
+    if (consentInput) consentInput.addEventListener("change", setFetchEnabled);
+
+    if (detailsForm) {
+      detailsForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (fetchBtn && fetchBtn.disabled) return;
+        var provider = selectedNameEl ? selectedNameEl.textContent : "";
+        var customerId = customerInput ? customerInput.value : "";
+        window.alert(
+          "Fetching bill for:\n" +
+            provider +
+            "\nCustomer ID: " +
+            customerId
+        );
+      });
+    }
+
+    if (!input) return;
+
+    function filterProviders() {
+      var q = String(input.value || "").trim().toLowerCase();
+      if (clearBtn) clearBtn.hidden = !q;
+      lists.forEach(function (list) {
+        list.querySelectorAll("li[data-biller]").forEach(function (li) {
+          var key = (li.getAttribute("data-biller") || li.textContent || "").toLowerCase();
+          li.hidden = !!(q && key.indexOf(q) === -1);
+        });
+      });
+    }
+
+    input.addEventListener("input", filterProviders);
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        input.value = "";
+        filterProviders();
+        input.focus();
+      });
+    }
+
+    root.querySelectorAll("[data-electricity-provider]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var nameEl = btn.querySelector(".electricity-hub-provider-name");
+        openDetails(nameEl ? nameEl.textContent.trim() : "Provider");
+      });
+    });
+
+    showStep("pick");
+  }
+
+  document.querySelectorAll("[data-electricity-hub]").forEach(initElectricityHub);
+  document.addEventListener("hub-panel-activated", function (ev) {
+    var panelId = ev.detail && ev.detail.panelId;
+    if (panelId !== "electricity") return;
+    document
+      .querySelectorAll('[data-hub-panel="electricity"][data-electricity-hub]')
+      .forEach(initElectricityHub);
+  });
+})();
+</script>

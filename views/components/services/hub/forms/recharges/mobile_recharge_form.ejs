@@ -1,0 +1,387 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "mobile_recharge";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href = typeof hubHrefForPanel === "function" ? hubHrefForPanel(slug) : "/services/Recharge/index";
+  var active = hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var searchId = "mobile-recharge-operator-search-" + slug;
+  var topOperators = [
+    { key: "airtel", initials: "AI", name: "Airtel", color: "c0", value: "airtel" },
+    { key: "jio", initials: "JI", name: "Jio", color: "c1", value: "jio" },
+    { key: "vi vodafone idea", initials: "VI", name: "Vi", color: "c2", value: "vi" },
+    { key: "bsnl", initials: "BS", name: "BSNL", color: "c3", value: "bsnl" },
+  ];
+  var allOperators = [
+    { key: "airtel", initials: "AI", name: "Airtel", color: "c0", value: "airtel" },
+    { key: "jio", initials: "JI", name: "Jio", color: "c1", value: "jio" },
+    { key: "vi vodafone idea", initials: "VI", name: "Vi", color: "c2", value: "vi" },
+    { key: "bsnl", initials: "BS", name: "BSNL", color: "c3", value: "bsnl" },
+    { key: "mtnl delhi", initials: "MD", name: "MTNL Delhi", color: "c4", value: "bsnl" },
+    { key: "mtnl mumbai", initials: "MM", name: "MTNL Mumbai", color: "c5", value: "bsnl" },
+  ];
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel service-mobile-recharge-page electricity-hub-panel mobile-recharge-hub-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-mobile-recharge-hub
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="service-mobile-recharge-page electricity-hub-panel mobile-recharge-hub-panel is-active" data-mobile-recharge-hub>
+<% } %>
+  <script type="application/json" id="varnarc-recharge-ui-config">{}</script>
+
+  <div class="electricity-hub-pay-web mb-4" data-mobile-recharge-step="pick">
+    <%- include('../../panel-header', { panelTitle: 'Pay on Web', panelSlug: slug, href: href }) %>
+
+    <%- include('./mobile-quick-access') %>
+
+    <div class="electricity-hub-search-wrap">
+      <input
+        type="search"
+        class="electricity-hub-search-input"
+        id="<%= searchId %>"
+        data-mobile-recharge-operator-search
+        placeholder="Search your provider"
+        autocomplete="off"
+        aria-label="Search operator"
+      />
+      <button
+        type="button"
+        class="electricity-hub-search-clear"
+        data-mobile-recharge-search-clear
+        aria-label="Clear search"
+        hidden
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <section class="electricity-hub-providers-section" aria-labelledby="mr-top-<%= slug %>">
+      <h3 id="mr-top-<%= slug %>" class="electricity-hub-section-title">Top Service providers</h3>
+      <ul class="electricity-hub-providers list-unstyled mb-0" data-mobile-recharge-operator-list="top">
+        <% topOperators.forEach(function (p) { %>
+        <li data-biller="<%= p.key %>">
+          <button
+            type="button"
+            class="electricity-hub-provider-btn"
+            data-mobile-recharge-operator="<%= p.key %>"
+            data-operator-value="<%= p.value %>"
+          >
+            <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+            <span class="electricity-hub-provider-name"><%= p.name %></span>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="electricity-hub-providers-section electricity-hub-providers-section--spaced" aria-labelledby="mr-all-<%= slug %>">
+      <h3 id="mr-all-<%= slug %>" class="electricity-hub-section-title">All service providers</h3>
+      <ul class="electricity-hub-providers list-unstyled mb-0" data-mobile-recharge-operator-list="all">
+        <% allOperators.forEach(function (p) { %>
+        <li data-biller="<%= p.key %>">
+          <button
+            type="button"
+            class="electricity-hub-provider-btn"
+            data-mobile-recharge-operator="<%= p.key %>"
+            data-operator-value="<%= p.value %>"
+          >
+            <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+            <span class="electricity-hub-provider-name"><%= p.name %></span>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+  </div>
+
+  <div data-mobile-recharge-step="recharge" hidden>
+    <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-mobile-recharge-back>
+      <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Change operator
+    </button>
+    <p class="electricity-hub-selected-provider mb-3">
+      <span class="electricity-hub-selected-provider__label">Operator</span>
+      <span class="electricity-hub-selected-provider__name" data-mobile-recharge-selected-operator>—</span>
+    </p>
+
+  <div class="service-recharge-hero text-start">
+    <p class="service-recharge-value-prop mb-3 mb-lg-4">
+      Instant mobile recharge with secure payments and reward points — complete your prepaid or bill payment in
+      under a minute.
+    </p>
+
+    <div class="service-recharge-panel">
+        <div class="service-recharge-card h-100 position-relative">
+          <h2 class="text-6 mb-2">Mobile Recharge or Bill Payment</h2>
+          <p class="service-recharge-card__sub">Fill your number and operator, pick a suggested plan or enter an
+            amount — then proceed to pay securely.</p>
+
+          <ol class="recharge-flow-steps mb-4" aria-label="Recharge progress">
+            <li class="recharge-flow-steps__segment is-active" data-step="details">
+              <span class="recharge-flow-steps__label">Enter details</span>
+            </li>
+            <li class="recharge-flow-steps__segment" data-step="plans">
+              <span class="recharge-flow-steps__label">Choose plan</span>
+            </li>
+            <li class="recharge-flow-steps__segment" data-step="payment">
+              <span class="recharge-flow-steps__label">Payment</span>
+            </li>
+          </ol>
+
+          <%- include('./mobile-quick-access') %>
+
+          <form id="mobile-recharge-form" class="service-recharge-form" action="<%= href %>" method="get" novalidate>
+            <div class="recharge-type-toggle" role="radiogroup" aria-label="Connection type">
+              <label class="recharge-type-toggle__option" for="recharge-prepaid">
+                <input class="recharge-type-toggle__input" type="radio" name="connectionType" id="recharge-prepaid"
+                  value="prepaid" checked>
+                <span class="recharge-type-toggle__label">Prepaid</span>
+              </label>
+              <label class="recharge-type-toggle__option" for="recharge-postpaid">
+                <input class="recharge-type-toggle__input" type="radio" name="connectionType" id="recharge-postpaid"
+                  value="postpaid">
+                <span class="recharge-type-toggle__label">Postpaid (bill)</span>
+              </label>
+            </div>
+            <p class="input-hint mb-3">Choose prepaid for talktime/data packs, postpaid when paying a monthly bill.
+            </p>
+
+            <div class="mb-3">
+              <label for="recharge-mobile" class="form-label">Mobile number (India)</label>
+              <div class="input-group recharge-mobile-input-group">
+                <input type="tel" class="form-control" id="recharge-mobile" name="mobile" inputmode="numeric"
+                  autocomplete="tel" pattern="[0-9\s]{10,13}" maxlength="13"
+                  placeholder="10-digit mobile, e.g. 9876543210" title="Indian mobile starting with 6–9">
+                <button type="button" class="btn btn-outline-secondary recharge-mobile-append-btn"
+                  id="recharge-mobile-verify-btn" aria-label="Verify number and suggest operator">
+                  Fetch plans
+                </button>
+              </div>
+              <div id="recharge-mobile-feedback" class="field-feedback" aria-live="polite"></div>
+              <span class="input-hint">We don’t spam. Used only for recharge and confirmations.</span>
+            </div>
+
+            <div class="mb-3">
+              <label for="recharge-operator" class="form-label">Operator</label>
+              <div class="recharge-operator-field">
+                <div id="recharge-operator-logo-wrap" class="recharge-operator-logo-wrap d-none"
+                  aria-hidden="true">
+                  <img id="recharge-operator-logo" class="recharge-operator-logo" src="" alt=""
+                    width="44" height="44" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                </div>
+                <div class="recharge-operator-field__main">
+                  <select class="form-select" id="recharge-operator" name="operator"
+                    aria-describedby="operator-hint-text">
+                    <option value="" selected disabled>Select your operator</option>
+                    <option value="airtel">Airtel</option>
+                    <option value="jio">Jio</option>
+                    <option value="vi">Vi</option>
+                    <option value="bsnl">BSNL</option>
+                  </select>
+                  <p id="operator-hint-text" class="operator-hint mb-0" aria-live="polite"></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="recharge-plan-picker" class="recharge-plan-picker d-none">
+              <p id="recharge-plans" class="recharge-plan-picker__title">Browse plans</p>
+              <p class="small text-muted mb-2">Choose a category, then tap a plan to fill the amount. You can edit the amount anytime.</p>
+              <div id="recharge-plan-category-tabs" class="recharge-plan-category-tabs d-none" role="tablist"
+                aria-label="Plan categories"></div>
+              <div class="recharge-plan-grid-scroll" id="recharge-plan-grid-scroll">
+                <div id="recharge-plan-grid" class="recharge-plan-grid"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="amount-label-row">
+                <label for="recharge-amount" class="form-label mb-0">Amount (₹)</label>
+                <a href="#recharge-plans" class="service-recharge-view-plans service-recharge-view-plans--inline">
+                  Browse plans below
+                </a>
+              </div>
+              <div class="service-recharge-amount-wrap">
+                <div class="input-group">
+                  <span class="input-group-text">₹</span>
+                  <input type="text" class="form-control" id="recharge-amount" name="amount" inputmode="decimal"
+                    placeholder="e.g. 349" aria-describedby="amount-tip">
+                </div>
+              </div>
+              <span id="amount-tip" class="input-hint d-block mt-1">Minimum ₹10. Use a plan card or enter your own amount.</span>
+            </div>
+
+            <div class="recharge-trust-compact" aria-label="Trust and payments">
+              <span class="recharge-trust-chip"><i class="bi bi-lock-fill"></i> Secure payments</span>
+              <span class="recharge-trust-chip"><i class="bi bi-lightning-fill"></i> Instant recharge</span>
+              <span class="recharge-trust-chip"><i class="bi bi-headset"></i> 24/7 support</span>
+              <div class="recharge-pay-logo-row" aria-label="Payment networks">
+                <span>UPI</span>
+                <span>VISA</span>
+                <span>RuPay</span>
+                <span>NetBanking</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-recharge-continue w-100 mt-3"
+              id="recharge-main-submit" disabled>Proceed to Pay</button>
+            <p class="small text-muted text-center mt-2 mb-0">
+              <a href="mailto:support@varnarc.com">support@varnarc.com</a> ·
+              <a href="tel:+919739723973">+91 973 972 3973</a>
+            </p>
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <div class="recharge-sticky-cta d-lg-none" id="recharge-sticky-cta">
+    <button type="submit" form="mobile-recharge-form" class="btn btn-primary btn-recharge-continue w-100"
+      id="recharge-sticky-submit" disabled>Proceed to Pay</button>
+  </div>
+
+  <section class="service-recharge-info mt-4" id="recharge-info-tabs">
+    <ul class="nav nav-tabs" id="rechargeInfoTab-<%= slug %>" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-recharge-<%= slug %>" data-bs-toggle="tab" data-bs-target="#pane-recharge-<%= slug %>"
+          type="button" role="tab" aria-controls="pane-recharge-<%= slug %>" aria-selected="true">Mobile recharge</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-bill-<%= slug %>" data-bs-toggle="tab" data-bs-target="#pane-bill-<%= slug %>" type="button"
+          role="tab" aria-controls="pane-bill-<%= slug %>" aria-selected="false">Bill payment</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-why-<%= slug %>" data-bs-toggle="tab" data-bs-target="#pane-why-<%= slug %>" type="button"
+          role="tab" aria-controls="pane-why-<%= slug %>" aria-selected="false">Why Varnarc</button>
+      </li>
+    </ul>
+    <div class="tab-content pt-4" id="rechargeInfoTabContent-<%= slug %>">
+      <div class="tab-pane fade show active" id="pane-recharge-<%= slug %>" role="tabpanel" aria-labelledby="tab-recharge-<%= slug %>"
+        tabindex="0">
+        <p class="mb-3">
+          Recharge any prepaid mobile number in a few steps. Enter your number, pick your operator, and choose an
+          amount or browse plans. Payments are processed securely; you will receive confirmation once the operator
+          accepts the recharge.
+        </p>
+        <p class="mb-0">
+          For plan-specific validity and talk time, pick a suggested plan card or use <strong>Browse plans
+            below</strong>. Questions? Email <a href="mailto:support@varnarc.com">support@varnarc.com</a> or read
+          <a href="/pages/term-conditions">terms</a>.
+        </p>
+      </div>
+      <div class="tab-pane fade" id="pane-bill-<%= slug %>" role="tabpanel" aria-labelledby="tab-bill-<%= slug %>" tabindex="0">
+        <p class="mb-3">
+          Pay postpaid mobile, DTH, electricity, and other bills from one place. Add your account or consumer
+          number, verify details on the biller screen, and pay with your preferred method.
+        </p>
+        <p class="mb-0">
+          Bill availability depends on the biller. Save payees for faster checkout next time. <a
+            href="/pages/term-conditions">Read terms</a>
+        </p>
+      </div>
+      <div class="tab-pane fade" id="pane-why-<%= slug %>" role="tabpanel" aria-labelledby="tab-why-<%= slug %>" tabindex="0">
+        <p class="mb-3">
+          Varnarc brings recharges, bills, investments, and more into one platform with clear flows and support when
+          you need it.
+        </p>
+        <p class="mb-0">
+          We focus on reliable payments and transparent pricing. Questions? See our <a href="/#faq">FAQ</a>, call
+          <a href="tel:+919739723973">support</a>, or review <a href="/pages/term-conditions">terms</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  function initMobileRechargePick(root) {
+    if (!root || root.getAttribute("data-mobile-recharge-pick-init") === "1") return;
+    root.setAttribute("data-mobile-recharge-pick-init", "1");
+
+    var pickStep = root.querySelector('[data-mobile-recharge-step="pick"]');
+    var rechargeStep = root.querySelector('[data-mobile-recharge-step="recharge"]');
+    var backBtn = root.querySelector("[data-mobile-recharge-back]");
+    var selectedNameEl = root.querySelector("[data-mobile-recharge-selected-operator]");
+    var operatorSelect = document.getElementById("recharge-operator");
+    var input = root.querySelector("[data-mobile-recharge-operator-search]");
+    var clearBtn = root.querySelector("[data-mobile-recharge-search-clear]");
+    var lists = root.querySelectorAll("[data-mobile-recharge-operator-list]");
+
+    function showStep(step) {
+      if (pickStep) pickStep.hidden = step !== "pick";
+      if (rechargeStep) rechargeStep.hidden = step !== "recharge";
+    }
+
+    function selectOperator(displayName, value) {
+      if (selectedNameEl) selectedNameEl.textContent = displayName || "—";
+      if (operatorSelect && value) {
+        operatorSelect.value = value;
+        try {
+          operatorSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        } catch (e) {
+          var ev = document.createEvent("Event");
+          ev.initEvent("change", true, true);
+          operatorSelect.dispatchEvent(ev);
+        }
+      }
+      showStep("recharge");
+      var mobileEl = document.getElementById("recharge-mobile");
+      if (mobileEl) mobileEl.focus();
+    }
+
+    function openPick() {
+      showStep("pick");
+    }
+
+    if (backBtn) backBtn.addEventListener("click", openPick);
+
+    function filterOperators() {
+      if (!input) return;
+      var q = String(input.value || "").trim().toLowerCase();
+      if (clearBtn) clearBtn.hidden = !q;
+      lists.forEach(function (list) {
+        list.querySelectorAll("li[data-biller]").forEach(function (li) {
+          var key = (li.getAttribute("data-biller") || li.textContent || "").toLowerCase();
+          li.hidden = !!(q && key.indexOf(q) === -1);
+        });
+      });
+    }
+
+    if (input) {
+      input.addEventListener("input", filterOperators);
+      if (clearBtn) {
+        clearBtn.addEventListener("click", function () {
+          input.value = "";
+          filterOperators();
+          input.focus();
+        });
+      }
+    }
+
+    root.querySelectorAll("[data-mobile-recharge-operator]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var nameEl = btn.querySelector(".electricity-hub-provider-name");
+        var value = btn.getAttribute("data-operator-value") || "";
+        selectOperator(nameEl ? nameEl.textContent.trim() : "Operator", value);
+      });
+    });
+
+    showStep("pick");
+  }
+
+  document.querySelectorAll("[data-mobile-recharge-hub]").forEach(initMobileRechargePick);
+  document.addEventListener("hub-panel-activated", function (ev) {
+    var panelId = ev.detail && ev.detail.panelId;
+    if (panelId !== "mobile_recharge" && panelId !== "mobile") return;
+    document
+      .querySelectorAll('[data-hub-panel="mobile_recharge"][data-mobile-recharge-hub]')
+      .forEach(initMobileRechargePick);
+  });
+})();
+</script>

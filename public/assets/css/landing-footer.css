@@ -532,18 +532,8 @@
 
 .footer-subscribe-form .btn-subscribe {
   flex: 0 0 auto;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  padding: 0.55rem 1.25rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--footer-strip-accent, #2c3f50);
-}
-
-.footer-subscribe-form .btn-subscribe:hover {
-  filter: brightness(1.08);
-  color: #fff;
+  border-radius: 0 var(--vn-btn-radius, 0.5rem) var(--vn-btn-radius, 0.5rem) 0;
+  min-height: auto;
 }
 
 .footer-social-strip {

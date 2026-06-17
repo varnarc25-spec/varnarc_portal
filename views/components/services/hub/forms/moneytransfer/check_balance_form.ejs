@@ -1,0 +1,261 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "check_balance";
+  var href = hubHrefForPanel(slug);
+  var active = panelIsActive(slug);
+  var bankAccounts = [
+    {
+      id: "icici-xx63",
+      name: "ICICI Bank - XX63",
+      subtitle: "Bank Account",
+      iconBg: "#e85d04",
+      iconLabel: "IC",
+      balance: "24,568.90",
+      mpinLength: 4,
+      transactions: [
+        { date: "18 May 2026", desc: "UPI / Rohit Sharma", amount: "500.00", type: "debit" },
+        { date: "17 May 2026", desc: "Salary Credit", amount: "45,000.00", type: "credit" },
+        { date: "16 May 2026", desc: "ATM Withdrawal", amount: "2,000.00", type: "debit" },
+        { date: "15 May 2026", desc: "NEFT / Priya Mehta", amount: "1,200.00", type: "debit" },
+        { date: "14 May 2026", desc: "Interest Credit", amount: "128.40", type: "credit" },
+      ],
+    },
+    {
+      id: "bob-8708",
+      name: "Bank Of Baroda - 8708",
+      subtitle: "Bank Account",
+      iconBg: "#f77f00",
+      iconLabel: "BOB",
+      balance: "8,142.35",
+      mpinLength: 6,
+      transactions: [
+        { date: "18 May 2026", desc: "UPI / Amazon Pay", amount: "1,499.00", type: "debit" },
+        { date: "17 May 2026", desc: "IMPS / Self Transfer", amount: "5,000.00", type: "credit" },
+        { date: "16 May 2026", desc: "POS / BigBasket", amount: "842.50", type: "debit" },
+        { date: "14 May 2026", desc: "UPI / Electricity Bill", amount: "1,180.00", type: "debit" },
+        { date: "12 May 2026", desc: "Cash Deposit", amount: "3,000.00", type: "credit" },
+      ],
+    },
+    {
+      id: "idfc-5784",
+      name: "IDFC First Bank - 5784",
+      subtitle: "Bank Account",
+      iconBg: "#9d0208",
+      iconLabel: "ID",
+      balance: null,
+      pinRequired: true,
+      mpinLength: 6,
+      transactions: [],
+    },
+  ];
+  var otherMethods = [
+    {
+      name: "Varnarc Wallet",
+      subtitle: "Pay on any QR up to ₹2 lakh",
+      iconBg: "#f48c06",
+      iconClass: "fas fa-wallet",
+      actionLabel: "Activate",
+      href: href + "?wallet=varnarc",
+    },
+    {
+      name: "RuPay Credit Card",
+      subtitle: null,
+      iconBg: "#0077b6",
+      iconClass: "fas fa-credit-card",
+      actionLabel: "Link Now",
+      href: href + "?card=rupay",
+    },
+  ];
+%>
+<div
+  class="hub-tab-panel money-transfer-check-balance-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-check-balance-panel
+  <% if (!active) { %> hidden<% } %>
+>
+  <header class="mt-cb-header d-flex flex-row align-items-center justify-content-between mb-3">
+    <h2 class="text-6 mb-0">Check Balance</h2>
+    <a class="mt-cb-header__help" href="<%= href %>?help=1" aria-label="Check balance help" title="Help">
+      <i class="far fa-question-circle" aria-hidden="true"></i>
+    </a>
+  </header>
+
+  <a
+    class="mt-cb-promo hub-promo-fallback hub-promo-fallback--dark mb-4 text-decoration-none"
+    href="<%= href %>?promo=sbi-card"
+    aria-label="Enjoy zero joining fee on SBI card"
+  >
+    <div class="d-flex align-items-center gap-3">
+      <div class="flex-grow-1 min-w-0">
+        <p class="hub-promo-fallback__text mb-1">
+          Enjoy Zero Joining Fee
+          <i class="fas fa-chevron-right ms-1 small opacity-75" aria-hidden="true"></i>
+        </p>
+        <p class="mb-0 small opacity-75">On Varnarc SBI Card</p>
+      </div>
+      <div class="mt-cb-promo__card" aria-hidden="true">
+        <span class="mt-cb-promo__card-chip"></span>
+        <span class="mt-cb-promo__card-brand">SBI</span>
+      </div>
+    </div>
+  </a>
+
+  <ul class="mt-cb-methods list-unstyled mb-0" role="list">
+    <% bankAccounts.forEach(function (bank) {
+      var pinLen = bank.mpinLength === 4 ? 4 : 6;
+    %>
+    <li
+      class="mt-cb-methods__item mt-cb-accordion"
+      role="listitem"
+      data-mt-cb-accordion
+      data-mt-cb-account-id="<%= bank.id %>"
+      data-mt-cb-account-name="<%= bank.name %>"
+      data-mt-cb-pin-length="<%= pinLen %>"
+      <% if (bank.pinRequired) { %> data-mt-cb-needs-setup="1"<% } %>
+    >
+      <div class="mt-cb-accordion__row">
+        <button
+          type="button"
+          class="mt-cb-method mt-cb-accordion__trigger"
+          id="mt-cb-trigger-<%= bank.id %>"
+          aria-expanded="false"
+          aria-controls="mt-cb-panel-<%= bank.id %>"
+          data-mt-cb-trigger
+        >
+          <span class="mt-cb-method__icon" style="background-color: <%= bank.iconBg %>">
+            <span class="mt-cb-method__icon-text"><%= bank.iconLabel %></span>
+          </span>
+          <span class="mt-cb-method__body">
+            <span class="mt-cb-method__name"><%= bank.name %></span>
+            <span class="mt-cb-method__sub"><%= bank.subtitle %></span>
+          </span>
+          <span class="mt-cb-method__chevron" aria-hidden="true">
+            <i class="fas fa-chevron-down" data-mt-cb-chevron></i>
+          </span>
+        </button>
+        <% if (bank.pinRequired) { %>
+        <a
+          class="mt-cb-method__action mt-cb-accordion__action"
+          href="<%= href %>?account=<%= bank.id %>&step=set-pin"
+        >Set PIN</a>
+        <% } %>
+      </div>
+      <div
+        class="mt-cb-accordion__panel"
+        id="mt-cb-panel-<%= bank.id %>"
+        role="region"
+        aria-labelledby="mt-cb-trigger-<%= bank.id %>"
+        hidden
+      >
+        <% if (bank.pinRequired) { %>
+        <p class="mt-cb-accordion__hint mb-0">Set your UPI PIN to view balance and recent transactions.</p>
+        <% } else { %>
+        <div class="mt-cb-accordion__details" data-mt-cb-details>
+        <div class="mt-cb-balance">
+          <span class="mt-cb-balance__label">Available balance</span>
+          <span class="mt-cb-balance__amount">₹<%= bank.balance %></span>
+        </div>
+        <h3 class="mt-cb-txns__title">Last 5 transactions</h3>
+        <ul class="mt-cb-txns list-unstyled mb-0">
+          <% bank.transactions.forEach(function (txn) { %>
+          <li class="mt-cb-txn mt-cb-txn--<%= txn.type %>">
+            <span class="mt-cb-txn__main">
+              <span class="mt-cb-txn__desc"><%= txn.desc %></span>
+              <span class="mt-cb-txn__date"><%= txn.date %></span>
+            </span>
+            <span class="mt-cb-txn__amount">
+              <%= txn.type === "credit" ? "+" : "-" %>₹<%= txn.amount %>
+            </span>
+          </li>
+          <% }) %>
+        </ul>
+        </div>
+        <% } %>
+      </div>
+    </li>
+    <% }) %>
+
+    <% otherMethods.forEach(function (method) { %>
+    <li class="mt-cb-methods__item" role="listitem">
+      <div class="mt-cb-method">
+        <span class="mt-cb-method__icon" style="background-color: <%= method.iconBg %>">
+          <i class="<%= method.iconClass %>" aria-hidden="true"></i>
+        </span>
+        <span class="mt-cb-method__body">
+          <span class="mt-cb-method__name"><%= method.name %></span>
+          <% if (method.subtitle) { %>
+          <span class="mt-cb-method__sub"><%= method.subtitle %></span>
+          <% } %>
+        </span>
+        <a class="mt-cb-method__action" href="<%= method.href %>"><%= method.actionLabel %></a>
+      </div>
+    </li>
+    <% }) %>
+
+    <li class="mt-cb-methods__item" role="listitem">
+      <a class="mt-cb-method mt-cb-method--link mt-cb-method--add" href="<%= href %>?add=payment">
+        <span class="mt-cb-method__icon mt-cb-method__icon--add" aria-hidden="true">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span class="mt-cb-method__body">
+          <span class="mt-cb-method__name">Add new payment method</span>
+          <span class="mt-cb-method__sub">Bank Account, UPI Lite &amp; more</span>
+        </span>
+        <span class="mt-cb-method__chevron" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="mt-cb-pin-modal" data-mt-cb-pin-modal hidden aria-hidden="true">
+    <div class="mt-cb-pin-modal__backdrop" data-mt-cb-pin-dismiss tabindex="-1" aria-hidden="true"></div>
+    <div
+      class="mt-cb-pin-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mt-cb-pin-modal-title"
+      aria-describedby="mt-cb-pin-modal-desc"
+    >
+      <button type="button" class="mt-cb-pin-modal__close" data-mt-cb-pin-dismiss aria-label="Close">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <h3 class="mt-cb-pin-modal__title" id="mt-cb-pin-modal-title">Enter UPI PIN</h3>
+      <p class="mt-cb-pin-modal__desc" id="mt-cb-pin-modal-desc" data-mt-cb-pin-desc>
+        Enter your <span data-mt-cb-pin-length-label>6-digit</span> UPI PIN to view balance for
+        <strong data-mt-cb-pin-account-name></strong>.
+      </p>
+      <div class="mt-cb-pin-modal__form" data-mt-cb-pin-form>
+        <label class="visually-hidden" for="mt-cb-pin-input" data-mt-cb-pin-input-label>UPI PIN</label>
+        <input
+          type="password"
+          class="form-control mt-cb-pin-modal__input text-center"
+          id="mt-cb-pin-input"
+          data-mt-cb-pin-input
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="6"
+          autocomplete="off"
+          placeholder="••••••"
+          aria-describedby="mt-cb-pin-modal-desc"
+        />
+        <p class="mt-cb-pin-modal__error small text-danger mb-0" data-mt-cb-pin-error hidden role="alert">
+          Incorrect PIN. Enter the full <span data-mt-cb-pin-length-label>6-digit</span> UPI PIN for this bank.
+        </p>
+        <div class="mt-cb-pin-modal__actions">
+          <button type="button" class="btn btn-outline-secondary" data-mt-cb-pin-dismiss>Cancel</button>
+          <button type="button" class="btn btn-primary" data-mt-cb-pin-submit>Confirm</button>
+        </div>
+      </div>
+      <div class="mt-cb-pin-modal__setup" data-mt-cb-pin-setup hidden>
+        <p class="mb-3" data-mt-cb-pin-setup-desc>
+          Set your <span data-mt-cb-pin-length-label>6-digit</span> UPI PIN before you can check balance for this account.
+        </p>
+        <a class="btn btn-primary" data-mt-cb-pin-setup-link href="#">Set PIN</a>
+        <button type="button" class="btn btn-link text-secondary" data-mt-cb-pin-dismiss>Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

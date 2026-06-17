@@ -1,0 +1,170 @@
+<% var pageTitle = 'Water Bill Payment'; %>
+<% var pageDescription = 'Pay water and sewerage bills online for major utilities across India on Varnarc.'; %>
+<% 
+  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
+  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
+  var downloadHref = _play || _ios || '#';
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/water-page.css" />
+
+<body class="landing-page service-item-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <section class="section-space service-item-section water-service-section">
+    <div class="container text-start py-4">
+      <div class="water-section-inner">
+        <div class="water-promo-wrap">
+          <div class="water-promo-scroll" tabindex="0" role="region" aria-label="Promotional offers">
+            <article class="water-promo-card water-promo-card--muted">
+              <p class="water-promo-card__title">Pay your EMIs with multiple payment options - part payment, total overdue and more</p>
+              <a href="/services/FinancialHub/card_repay" class="water-promo-card__btn">Explore</a>
+            </article>
+            <article class="water-promo-card water-promo-card--muted">
+              <p class="water-promo-card__title">Registered billers and recurring payments - manage water and other bills in one place</p>
+              <a href="/services/BillPayments/index" class="water-promo-card__btn">Explore now</a>
+            </article>
+            <article class="water-promo-card water-promo-card--muted">
+              <p class="water-promo-card__title">Insta EMI Card - split spends into easy instalments</p>
+              <a href="/services/FinancialHub/index" class="water-promo-card__btn">Get it now</a>
+            </article>
+            <article class="water-promo-card water-promo-card--muted">
+              <p class="water-promo-card__title">Personal loan - quick eligibility check and disbursal</p>
+              <a href="/services/FinancialHub/investments" class="water-promo-card__btn">Apply now</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="water-pay-web">
+          <label class="water-pay-web__title" for="waterProviderSearch">Pay on Web</label>
+          <input type="search" id="waterProviderSearch" class="water-search-input" placeholder="Search your provider" autocomplete="off" aria-label="Search your water provider" />
+        </div>
+
+        <section aria-labelledby="water-top-heading">
+          <h2 id="water-top-heading" class="water-section-title">Top Service providers</h2>
+          <ul class="water-providers list-unstyled mb-0" id="waterTopList">
+            <li data-provider="bangalore water supply and sewerage board"><span class="water-biller-logo water-biller-logo--c0" aria-hidden="true">BW</span><span class="fw-semibold">Bangalore Water Supply And Sewerage Board</span></li>
+            <li data-provider="delhi jal board"><span class="water-biller-logo water-biller-logo--c1" aria-hidden="true">DJ</span><span class="fw-semibold">Delhi Jal Board</span></li>
+            <li data-provider="hyderabad metropolitan water supply and sewerage board"><span class="water-biller-logo water-biller-logo--c2" aria-hidden="true">HM</span><span class="fw-semibold">Hyderabad Metropolitan Water Supply And Sewerage Board</span></li>
+            <li data-provider="kerala water authority kwa"><span class="water-biller-logo water-biller-logo--c3" aria-hidden="true">KW</span><span class="fw-semibold">Kerala Water Authority (KWA)</span></li>
+            <li data-provider="uttarakhand jal sansthan"><span class="water-biller-logo water-biller-logo--c4" aria-hidden="true">UJ</span><span class="fw-semibold">Uttarakhand Jal Sansthan</span></li>
+          </ul>
+        </section>
+
+        <section class="water-providers-spaced" aria-labelledby="water-all-heading">
+          <h2 id="water-all-heading" class="water-section-title">All service providers</h2>
+          <ul class="water-providers list-unstyled mb-0" id="waterAllList">
+            <li data-provider="bangalore water supply and sewerage board"><span class="water-biller-logo water-biller-logo--c0" aria-hidden="true">BW</span><span class="fw-semibold">Bangalore Water Supply And Sewerage Board</span></li>
+            <li data-provider="bhopal municipal corporation water"><span class="water-biller-logo water-biller-logo--c5" aria-hidden="true">BM</span><span class="fw-semibold">Bhopal Municipal Corporation - Water</span></li>
+            <li data-provider="chandrapur municipal corporation"><span class="water-biller-logo water-biller-logo--c6" aria-hidden="true">CH</span><span class="fw-semibold">Chandrapur Municipal Corporation</span></li>
+            <li data-provider="chennai metropolitan water supply and sewerage board"><span class="water-biller-logo water-biller-logo--c7" aria-hidden="true">CE</span><span class="fw-semibold">Chennai Metropolitan Water Supply And Sewerage Board</span></li>
+            <li data-provider="pune municipal corporation water"><span class="water-biller-logo water-biller-logo--c1" aria-hidden="true">PM</span><span class="fw-semibold">Pune Municipal Corporation - Water</span></li>
+            <li data-provider="municipal corporation of greater mumbai water"><span class="water-biller-logo water-biller-logo--c2" aria-hidden="true">MC</span><span class="fw-semibold">Municipal Corporation of Greater Mumbai (Water)</span></li>
+            <li data-provider="nagpur municipal corporation water"><span class="water-biller-logo water-biller-logo--c3" aria-hidden="true">NM</span><span class="fw-semibold">Nagpur Municipal Corporation - Water</span></li>
+            <li data-provider="gwalior municipal corporation water"><span class="water-biller-logo water-biller-logo--c4" aria-hidden="true">GM</span><span class="fw-semibold">Gwalior Municipal Corporation - Water</span></li>
+            <li data-provider="indore municipal corporation water"><span class="water-biller-logo water-biller-logo--c5" aria-hidden="true">IM</span><span class="fw-semibold">Indore Municipal Corporation - Water</span></li>
+            <li data-provider="ahmedabad municipal corporation water"><span class="water-biller-logo water-biller-logo--c6" aria-hidden="true">AM</span><span class="fw-semibold">Ahmedabad Municipal Corporation - Water</span></li>
+            <li data-provider="surat municipal corporation water"><span class="water-biller-logo water-biller-logo--c7" aria-hidden="true">SM</span><span class="fw-semibold">Surat Municipal Corporation - Water</span></li>
+          </ul>
+        </section>
+
+        <section class="water-app-strip" aria-labelledby="water-app-heading">
+          <div>
+            <h2 id="water-app-heading" class="water-app-strip__title">Continue on the app</h2>
+            <p class="water-app-strip__sub">Download the app to redeem your rewards</p>
+            <% if (_play && _ios) { %>
+            <p class="small text-muted mb-0 mt-2">
+              <a href="<%= _ios %>" class="link-secondary" rel="noopener noreferrer" target="_blank">App Store</a>
+              <span class="text-muted px-1">|</span>
+              <a href="<%= _play %>" class="link-secondary" rel="noopener noreferrer" target="_blank">Google Play</a>
+            </p>
+            <% } %>
+          </div>
+          <a class="water-download-btn" href="<%= downloadHref %>" <%= downloadHref !== '#' ? 'rel="noopener noreferrer" target="_blank"' : '' %> aria-label="Download the Varnarc app">Download</a>
+        </section>
+
+        <section class="water-faq" aria-labelledby="water-faq-heading">
+          <h2 id="water-faq-heading">Frequently asked questions</h2>
+          <div class="accordion" id="waterFaq">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#waterFaq1" aria-expanded="false" aria-controls="waterFaq1">
+                  Why can&apos;t I find my water service provider?
+                </button>
+              </h3>
+              <div id="waterFaq1" class="accordion-collapse collapse" data-bs-parent="#waterFaq">
+                <div class="accordion-body">
+                  Try a shorter name or alternate spelling (for example &quot;BWSSB&quot; or &quot;Bangalore water&quot;). Some utilities are listed under the municipal corporation name. If your board is still missing, it may not be onboarded yet - use Raise a request so we can check coverage.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#waterFaq2" aria-expanded="false" aria-controls="waterFaq2">
+                  Can I cancel my water payment?
+                </button>
+              </h3>
+              <div id="waterFaq2" class="accordion-collapse collapse" data-bs-parent="#waterFaq">
+                <div class="accordion-body">
+                  Once a bill payment is submitted and confirmed by the biller, cancellation follows the utility&apos;s policy. If you paid twice by mistake, keep both transaction IDs and contact support with your consumer number and receipts.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#waterFaq3" aria-expanded="false" aria-controls="waterFaq3">
+                  How soon will my water bill payment reflect?
+                </button>
+              </h3>
+              <div id="waterFaq3" class="accordion-collapse collapse" data-bs-parent="#waterFaq">
+                <div class="accordion-body">
+                  Most payments are sent to the utility within minutes. The board&apos;s system may take up to 24-48 hours to update your account - check SMS or email from the provider for confirmation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="water-query">
+          <p>Still have a query?</p>
+          <a class="water-query-card" href="mailto:support@varnarc.com?subject=Water%20bill%20payment%20support">
+            <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+            Raise a request
+          </a>
+        </section>
+      </div>
+    </div>
+  </section>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+<script>
+(function () {
+  var input = document.getElementById("waterProviderSearch");
+  var topList = document.getElementById("waterTopList");
+  var allList = document.getElementById("waterAllList");
+  if (!input || !topList || !allList) return;
+  function filterLists() {
+    var q = String(input.value || "").trim().toLowerCase();
+    function apply(ul) {
+      var items = ul.querySelectorAll("li");
+      for (var i = 0; i < items.length; i++) {
+        var li = items[i];
+        var key = (li.getAttribute("data-provider") || li.textContent || "").toLowerCase();
+        li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
+      }
+    }
+    apply(topList);
+    apply(allList);
+  }
+  input.addEventListener("input", filterLists);
+})();
+</script>
+</body>
+
+</html>

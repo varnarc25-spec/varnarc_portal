@@ -3,6 +3,9 @@
 
 <%- include('../../../components/landing/head') %>
 <link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/service-mobile-recharge.css" />
+<link rel="stylesheet" href="/assets/css/accident-insurance-page.css" />
 
 <body class="landing-page service-section-page service-section-hub-page">
   <div class="landing-page1">
@@ -13,11 +16,14 @@
   <%- include('../../../components/services/hub/section-empty') %>
   <% } else { %>
   <%- include('../../../components/services/hub/section-open') %>
-  <%- include('../../../components/services/hub/forms/insurance-quote', { panelSlug: 'insurance-bike', panelTitle: 'Bike Insurance' }) %>
-  <%- include('../../../components/services/hub/forms/insurance-quote', { panelSlug: 'insurance-car', panelTitle: 'Car Insurance' }) %>
-  <%- include('../../../components/services/hub/forms/insurance-quote', { panelSlug: 'insurance-health', panelTitle: 'Health Insurance' }) %>
-  <%- include('../../../components/services/hub/forms/insurance-quote', { panelSlug: 'insurance-term', panelTitle: 'Term Life Insurance' }) %>
+  <% /* Panel order + data-hub-panel ids must match hubNavEntries (leaf slugs → insurance-* via section-hub-nav aliases) */ %>
+  <%- include('../../../components/services/hub/forms/insurance/vehicle_insurance_form', { panelSlug: 'insurance-bike', panelTitle: 'Bike Insurance', vehicleType: 'bike' }) %>
+  <%- include('../../../components/services/hub/forms/insurance/vehicle_insurance_form', { panelSlug: 'insurance-car', panelTitle: 'Car Insurance', vehicleType: 'car' }) %>
+  <%- include('../../../components/services/hub/forms/insurance/health_insurance_form', { panelSlug: 'insurance-health' }) %>
+  <%- include('../../../components/services/hub/forms/insurance/term_life_insurance_form', { panelSlug: 'insurance-term' }) %>
+  <%- include('../../../components/services/hub/forms/insurance/accident_insurance_form', { panelSlug: 'insurance-accident' }) %>
   <%- include('../../../components/services/hub/section-close') %>
+  <script src="/assets/js/hub-insurance-quote.js" defer></script>
   <% } %>
 
 <%- include('../../../components/landing/footer') %>

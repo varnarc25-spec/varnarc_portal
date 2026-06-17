@@ -1,0 +1,24 @@
+{
+  "section": "BillPayments",
+  "basePath": "/assets/images/hub/icons",
+  "deprecatedPath": "/assets/images/hub/bill-payments",
+  "icons": {
+    "cabletv": { "file": "cabletv.svg", "label": "Cable TV" },
+    "book-cylinder": { "file": "book-cylinder.svg", "label": "Book Gas Cylinder" },
+    "electricity": { "file": "electricity.svg", "label": "Electricity" },
+    "gas": { "file": "gas.svg", "label": "Piped Gas" },
+    "water": { "file": "water.svg", "label": "Water" },
+    "municipal-tax": { "file": "municipal-tax.svg", "label": "Municipal Tax" },
+    "broadband_landline": { "file": "broadband_landline.svg", "label": "Broadband / Landline" },
+    "mobile-postpaid": { "file": "mobile-postpaid.svg", "label": "Mobile Postpaid" },
+    "education-fee": { "file": "education-fee.svg", "label": "Education Fee" },
+    "loan": { "file": "loan.svg", "label": "Loan Repayment" },
+    "credit-card": { "file": "credit-card.svg", "label": "Credit Card Bill" },
+    "lic-insurance": { "file": "lic-insurance.svg", "label": "LIC Insurance" },
+    "nps": { "file": "nps.svg", "label": "NPS Contribution" },
+    "echallan": { "file": "echallan.svg", "label": "E-Challan" },
+    "devotion": { "file": "devotion.svg", "label": "Devotion" },
+    "donation": { "file": "donation.svg", "label": "Donation" },
+    "portfolio": { "file": "portfolio.svg", "label": "Portfolio Holdings" }
+  }
+}

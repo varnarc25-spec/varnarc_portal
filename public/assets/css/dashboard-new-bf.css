@@ -175,22 +175,7 @@
     color: #fff;
 }
 
-.dashboard-bf-home .bf-btn-primary {
-    background: linear-gradient(180deg, var(--bf-orange), var(--bf-orange-dark));
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.45rem 1rem;
-    border-radius: 6px;
-    border: none;
-    text-decoration: none;
-    box-shadow: 0 2px 8px rgba(255, 106, 0, 0.35);
-}
-
-.dashboard-bf-home .bf-btn-primary:hover {
-    color: #fff;
-    filter: brightness(1.05);
-}
+/* .bf-btn-primary — see varnarc-buttons.css */
 
 .dashboard-bf-home .bf-toggler {
     border: 1px solid #dee2e6;

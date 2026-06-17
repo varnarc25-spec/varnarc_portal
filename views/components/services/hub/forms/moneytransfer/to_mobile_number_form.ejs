@@ -1,0 +1,150 @@
+<%
+  /* Must match sidebar tab panelSlug from menu (leaf: MoneyTransfer/to_mobile_number). */
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "to_mobile_number";
+  var href = hubHrefForPanel(slug);
+  var active = panelIsActive(slug);
+  var recentContacts = [
+    { initials: "RS", name: "Rohit", detail: "9876...@ybl", value: "9876543210@ybl", color: "#6f42c1" },
+    { initials: "PP", name: "Priya", detail: "9123...@ybl", value: "9123456780@ybl", color: "#f4a261" },
+    { initials: "AM", name: "Amit", detail: "9988...@ybl", value: "9988776655@ybl", color: "#4dabf7" },
+    { initials: "SK", name: "Sneha", detail: "9871...@ybl", value: "9871234560@ybl", color: "#e64980" },
+  ];
+%>
+<div
+  class="hub-tab-panel money-transfer-send-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-money-transfer-send
+  <% if (!active) { %> hidden<% } %>
+>
+  <h2 class="text-6 mb-3">Send Money</h2>
+
+  <div class="mt-send-mode-tabs" aria-label="Send money method">
+    <button
+      type="button"
+      class="mt-send-mode-tabs__btn"
+      aria-selected="false"
+      id="mt-send-tab-upi-<%= slug %>"
+      data-mt-send-mode="upi"
+    >
+      UPI ID
+    </button>
+    <button
+      type="button"
+      class="mt-send-mode-tabs__btn is-active"
+      aria-selected="true"
+      id="mt-send-tab-mobile-<%= slug %>"
+      data-mt-send-mode="mobile"
+    >
+      Mobile Number
+    </button>
+  </div>
+
+  <form class="hub-service-form mt-send-form" id="mt-send-form-<%= slug %>" action="<%= href %>" method="get" novalidate>
+    <input type="hidden" name="mode" id="mt-send-mode-input-<%= slug %>" value="mobile" />
+
+    <div
+      class="mt-send-mode-panel"
+      id="mt-send-panel-upi-<%= slug %>"
+      data-mt-send-panel="upi"
+      aria-labelledby="mt-send-tab-upi-<%= slug %>"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="mt-upi-<%= slug %>">Enter UPI ID / Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="mt-upi-<%= slug %>"
+          name="upi"
+          placeholder="9876543210@ybl"
+          autocomplete="off"
+          inputmode="text"
+          data-mt-recipient
+        />
+      </div>
+    </div>
+
+    <div
+      class="mt-send-mode-panel is-active"
+      id="mt-send-panel-mobile-<%= slug %>"
+      data-mt-send-panel="mobile"
+      aria-labelledby="mt-send-tab-mobile-<%= slug %>"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="mt-mobile-<%= slug %>">Enter Mobile Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="mt-mobile-<%= slug %>"
+          name="mobile"
+          placeholder="10-digit mobile number"
+          maxlength="10"
+          inputmode="numeric"
+          pattern="[6-9][0-9]{9}"
+          data-mt-recipient
+        />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="mt-amount-<%= slug %>">Enter Amount</label>
+      <div class="input-group hub-amount-group mt-send-amount-group">
+        <span class="input-group-text">₹</span>
+        <input
+          type="text"
+          class="form-control"
+          id="mt-amount-<%= slug %>"
+          name="amount"
+          placeholder="1,000"
+          inputmode="decimal"
+          autocomplete="off"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label" for="mt-note-<%= slug %>">Add Note (Optional)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="mt-note-<%= slug %>"
+        name="note"
+        placeholder="Dinner payment"
+        maxlength="120"
+      />
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary mt-send-continue-btn">Continue</button>
+    </div>
+  </form>
+
+  <section class="mt-recent-contacts" aria-label="Recent contacts">
+    <div class="mt-recent-contacts__head">
+      <h3 class="mt-recent-contacts__title">Recent Contacts</h3>
+      <a href="<%= href %>" class="mt-recent-contacts__see-all">See All</a>
+    </div>
+    <div class="mt-recent-contacts__list" role="list">
+      <% recentContacts.forEach(function (contact, idx) { %>
+      <button
+        type="button"
+        class="mt-recent-contact"
+        role="listitem"
+        data-mt-recent-contact
+        data-mt-value="<%= contact.value %>"
+        data-mt-mobile="<%= String(contact.value || '').split('@')[0] %>"
+        aria-label="Send to <%= contact.name %>"
+      >
+        <span class="mt-recent-contact__avatar" style="background-color: <%= contact.color %>"><%= contact.initials %></span>
+        <span class="mt-recent-contact__name"><%= contact.name %></span>
+        <span class="mt-recent-contact__detail"><%= contact.detail %></span>
+      </button>
+      <% }) %>
+    </div>
+  </section>
+</div>

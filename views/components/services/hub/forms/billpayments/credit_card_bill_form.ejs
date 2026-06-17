@@ -1,0 +1,225 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "credit-card";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/BillPayments/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var searchId = "credit-card-provider-search-" + slug;
+  var topProviders = [
+    { key: "axis bank credit card", initials: "AX", name: "Axis Bank Credit Card", color: "c6" },
+    { key: "bank of baroda credit card bob", initials: "BO", name: "BoB Credit Card", color: "c0" },
+    { key: "hdfc bank credit card", initials: "HD", name: "HDFC Credit Card", color: "c1" },
+    { key: "icici bank credit card", initials: "IC", name: "ICICI Credit Card", color: "c3" },
+    { key: "idfc first bank credit card", initials: "ID", name: "IDFC FIRST Bank Credit Card", color: "c7" },
+    { key: "indusind credit card", initials: "IN", name: "IndusInd Credit Card", color: "c1" },
+    { key: "kotak mahindra bank credit card", initials: "KO", name: "Kotak Mahindra Bank Credit Card Payment", color: "c2" },
+    { key: "sbi card", initials: "SB", name: "SBI Card", color: "c0" },
+    { key: "yes bank credit card", initials: "YE", name: "Yes Bank Credit Card", color: "c6" },
+  ];
+  var allProviders = [
+    { key: "au bank credit card", initials: "AU", name: "AU Bank Credit Card", color: "c5" },
+    { key: "axis bank credit card", initials: "AX", name: "Axis Bank Credit Card", color: "c6" },
+    { key: "bandhan bank credit card", initials: "BN", name: "Bandhan Bank Credit Card", color: "c7" },
+    { key: "bank of baroda credit card bob", initials: "BO", name: "Bank of Baroda Credit Card", color: "c0" },
+    { key: "canara bank credit card", initials: "CA", name: "Canara Bank Credit Card", color: "c3" },
+    { key: "citibank credit card", initials: "CI", name: "Citibank Credit Card", color: "c4" },
+    { key: "csb bank credit card", initials: "CS", name: "CSB Bank Credit Card", color: "c2" },
+    { key: "federal bank credit card", initials: "FD", name: "Federal Bank Credit Card", color: "c5" },
+    { key: "hdfc bank credit card", initials: "HD", name: "HDFC Bank Credit Card", color: "c1" },
+    { key: "hsbc credit card", initials: "HS", name: "HSBC Credit Card", color: "c6" },
+    { key: "icici bank credit card", initials: "IC", name: "ICICI Bank Credit Card", color: "c3" },
+    { key: "idfc first bank credit card", initials: "ID", name: "IDFC FIRST Bank Credit Card", color: "c7" },
+    { key: "indusind credit card", initials: "IN", name: "IndusInd Credit Card", color: "c1" },
+    { key: "indian bank credit card", initials: "IB", name: "Indian Bank Credit Card", color: "c0" },
+    { key: "kotak mahindra bank credit card", initials: "KO", name: "Kotak Mahindra Bank Credit Card", color: "c2" },
+    { key: "punjab national bank credit card", initials: "PN", name: "Punjab National Bank Credit Card", color: "c4" },
+    { key: "rbl bank credit card", initials: "RB", name: "RBL Bank Credit Card", color: "c5" },
+    { key: "sbi card", initials: "SB", name: "SBI Card", color: "c0" },
+    { key: "standard chartered credit card", initials: "SC", name: "Standard Chartered Credit Card", color: "c3" },
+    { key: "yes bank credit card", initials: "YE", name: "Yes Bank Credit Card", color: "c6" },
+    { key: "american express", initials: "AM", name: "American Express Banking Corp", color: "c4" },
+  ];
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel electricity-hub-panel credit-card-hub-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-credit-card-hub
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="electricity-hub-panel credit-card-hub-panel is-active" data-credit-card-hub>
+<% } %>
+  <div class="electricity-hub-pay-web">
+    <div data-credit-card-step="cards">
+      <%- include('../../panel-header', { panelTitle: 'Credit Card Bills', panelSlug: slug, href: href }) %>
+
+      <section class="ccb-wallet" data-ccb-wallet aria-labelledby="ccb-wallet-title">
+        <div class="ccb-wallet__head">
+          <div>
+            <h2 id="ccb-wallet-title" class="ccb-wallet__title">Your cards</h2>
+            <p class="ccb-wallet__subtitle">View generated bills, due dates, and pay in one tap — like CRED.</p>
+          </div>
+          <button type="button" class="ccb-wallet__link-all" data-ccb-browse-all>Pay other bank</button>
+        </div>
+        <ul class="ccb-wallet__list" data-ccb-wallet-list></ul>
+        <button type="button" class="ccb-add-card mt-2" data-ccb-add-card>
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add credit card
+        </button>
+      </section>
+
+      <p class="hub-quick-access__lead mb-0">Sign in to save cards and see bills. New users can add a card below.</p>
+    </div>
+
+    <div data-credit-card-step="pick" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-credit-card-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back to your cards
+      </button>
+      <%- include('../../panel-header', { panelTitle: 'Add credit card', panelSlug: slug, href: href }) %>
+
+      <div class="electricity-hub-search-wrap">
+        <input
+          type="search"
+          class="electricity-hub-search-input"
+          id="<%= searchId %>"
+          data-credit-card-provider-search
+          placeholder="Search your provider"
+          autocomplete="off"
+          aria-label="Search your provider"
+        />
+        <button
+          type="button"
+          class="electricity-hub-search-clear"
+          data-credit-card-search-clear
+          aria-label="Clear search"
+          hidden
+        >
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <section class="electricity-hub-providers-section" aria-labelledby="ccb-top-<%= slug %>">
+        <h3 id="ccb-top-<%= slug %>" class="electricity-hub-section-title">Top Service providers</h3>
+        <ul class="electricity-hub-providers list-unstyled mb-0" data-credit-card-provider-list="top">
+          <% topProviders.forEach(function (p) { %>
+          <li data-biller="<%= p.key %>">
+            <button type="button" class="electricity-hub-provider-btn" data-credit-card-provider="<%= p.key %>">
+              <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+              <span class="electricity-hub-provider-name"><%= p.name %></span>
+            </button>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+
+      <section class="electricity-hub-providers-section electricity-hub-providers-section--spaced" aria-labelledby="ccb-all-<%= slug %>">
+        <h3 id="ccb-all-<%= slug %>" class="electricity-hub-section-title">All service providers</h3>
+        <ul class="electricity-hub-providers list-unstyled mb-0" data-credit-card-provider-list="all">
+          <% allProviders.forEach(function (p) { %>
+          <li data-biller="<%= p.key %>">
+            <button type="button" class="electricity-hub-provider-btn" data-credit-card-provider="<%= p.key %>">
+              <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+              <span class="electricity-hub-provider-name"><%= p.name %></span>
+            </button>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    </div>
+
+    <div data-credit-card-step="pay" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-credit-card-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back to your cards
+      </button>
+      <div class="ccb-pay-panel">
+        <p class="electricity-hub-selected-provider__label mb-1">Amount due</p>
+        <p class="ccb-pay-panel__amount" data-ccb-pay-amount>—</p>
+        <p class="ccb-pay-panel__meta" data-ccb-pay-meta></p>
+        <button type="button" class="btn electricity-hub-fetch-btn w-100" data-ccb-pay-confirm>
+          Proceed to pay
+        </button>
+      </div>
+    </div>
+
+    <div class="electricity-hub-details" data-credit-card-step="details" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-credit-card-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back
+      </button>
+      <p class="electricity-hub-selected-provider mb-3">
+        <span class="electricity-hub-selected-provider__label">Provider</span>
+        <span class="electricity-hub-selected-provider__name" data-credit-card-selected-name>—</span>
+      </p>
+
+      <form class="electricity-hub-details-form" data-credit-card-details-form novalidate>
+        <div class="mb-3">
+          <label class="form-label electricity-hub-field-label" for="ccb-last4-<%= slug %>">
+            Last 4 digits of Credit Card Number
+          </label>
+          <input
+            type="text"
+            class="form-control electricity-hub-account-input"
+            id="ccb-last4-<%= slug %>"
+            data-credit-card-last4
+            inputmode="numeric"
+            maxlength="4"
+            pattern="[0-9]{4}"
+            autocomplete="off"
+            required
+          />
+          <p class="electricity-hub-field-hint mb-0">
+            Please enter last 4 digits of your credit card number
+          </p>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label electricity-hub-field-label" for="ccb-mobile-<%= slug %>">
+            Registered Mobile Number
+          </label>
+          <input
+            type="tel"
+            class="form-control electricity-hub-account-input"
+            id="ccb-mobile-<%= slug %>"
+            data-credit-card-mobile
+            inputmode="numeric"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            autocomplete="tel"
+            required
+          />
+          <p class="electricity-hub-field-hint mb-0">Please enter 10 digit mobile number</p>
+        </div>
+
+        <div class="electricity-hub-consent mb-4">
+          <input
+            class="form-check-input electricity-hub-consent__input"
+            type="checkbox"
+            id="ccb-consent-<%= slug %>"
+            data-credit-card-consent
+          />
+          <label class="form-check-label electricity-hub-consent__label" for="ccb-consent-<%= slug %>">
+            I hereby authorize <strong data-credit-card-consent-bank>your card issuer</strong> and Varnarc to access my
+            current and future bills and to facilitate the provision of bill reminders.
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="btn electricity-hub-fetch-btn w-100"
+          data-credit-card-fetch
+          disabled
+        >
+          Fetch your bill
+        </button>
+        <p class="electricity-hub-field-hint mt-2 mb-0" data-credit-card-fetch-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>

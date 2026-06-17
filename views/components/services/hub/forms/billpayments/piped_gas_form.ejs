@@ -1,0 +1,146 @@
+<% var pageTitle = 'Piped Gas Bill Payment'; %>
+<% var pageDescription = 'Pay piped natural gas (PNG) bills online for city gas distribution companies on Varnarc.'; %>
+<% 
+  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
+  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
+  var downloadHref = _play || _ios || '#';
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/piped-gas-page.css" />
+
+<body class="landing-page service-item-page">
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <section class="section-space service-item-section pipedgas-service-section">
+    <div class="container text-start py-4">
+      <div class="pipedgas-section-inner">
+        <div class="pipedgas-promo-wrap">
+          <div class="pipedgas-promo-scroll" tabindex="0" role="region" aria-label="Offers and shortcuts">
+            <article class="pipedgas-promo-card pipedgas-promo-card--lpg">
+              <p class="pipedgas-promo-card__title">LPG booking - get cashback when you book cylinder refills on time</p>
+              <a href="/services/BillPayments/book_cylinder" class="pipedgas-promo-card__btn">Book now</a>
+            </article>
+            <article class="pipedgas-promo-card pipedgas-promo-card--lpg">
+              <p class="pipedgas-promo-card__title">Flat rewards on domestic gas bookings via supported pay modes</p>
+              <a href="/services/BillPayments/book_cylinder" class="pipedgas-promo-card__btn">Book now</a>
+            </article>
+            <article class="pipedgas-promo-card pipedgas-promo-card--muted">
+              <p class="pipedgas-promo-card__title">Insta EMI Card - split spends into easy instalments</p>
+              <a href="/services/FinancialHub/index" class="pipedgas-promo-card__btn">Get it now</a>
+            </article>
+            <article class="pipedgas-promo-card pipedgas-promo-card--muted">
+              <p class="pipedgas-promo-card__title">Personal loan - quick eligibility check and disbursal</p>
+              <a href="/services/FinancialHub/investments" class="pipedgas-promo-card__btn">Apply now</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="pipedgas-pay-web">
+          <label class="pipedgas-pay-web__title" for="pipedgasProviderSearch">Pay on Web</label>
+          <input type="search" id="pipedgasProviderSearch" class="pipedgas-search-input" placeholder="Search your provider" autocomplete="off" aria-label="Search your piped gas provider" />
+        </div>
+
+        <section aria-labelledby="pipedgas-all-heading">
+          <h2 id="pipedgas-all-heading" class="pipedgas-section-title">All service providers</h2>
+          <ul class="pipedgas-providers list-unstyled mb-0" id="pipedgasBillerList">
+            <li data-provider="agp cgd india pvt ltd"><span class="pipedgas-biller-logo pipedgas-biller-logo--c0" aria-hidden="true">AG</span><span class="fw-semibold">AGP CGD India Pvt Ltd</span></li>
+            <li data-provider="agp city gas pvt ltd"><span class="pipedgas-biller-logo pipedgas-biller-logo--c1" aria-hidden="true">AC</span><span class="fw-semibold">AGP City Gas Pvt Ltd</span></li>
+            <li data-provider="aavantika gas ltd"><span class="pipedgas-biller-logo pipedgas-biller-logo--c2" aria-hidden="true">AA</span><span class="fw-semibold">Aavantika Gas Ltd.</span></li>
+            <li data-provider="adani gas"><span class="pipedgas-biller-logo pipedgas-biller-logo--c3" aria-hidden="true">AD</span><span class="fw-semibold">Adani Gas</span></li>
+            <li data-provider="mahanagar gas mumbai"><span class="pipedgas-biller-logo pipedgas-biller-logo--c4" aria-hidden="true">MG</span><span class="fw-semibold">Mahanagar Gas Limited</span></li>
+            <li data-provider="indraprastha gas delhi"><span class="pipedgas-biller-logo pipedgas-biller-logo--c5" aria-hidden="true">IG</span><span class="fw-semibold">Indraprastha Gas Limited (IGL)</span></li>
+            <li data-provider="gujarat gas company"><span class="pipedgas-biller-logo pipedgas-biller-logo--c6" aria-hidden="true">GG</span><span class="fw-semibold">Gujarat Gas Limited</span></li>
+            <li data-provider="sabarmati gas"><span class="pipedgas-biller-logo pipedgas-biller-logo--c7" aria-hidden="true">SG</span><span class="fw-semibold">Sabarmati Gas Limited</span></li>
+            <li data-provider="green gas limited ggl"><span class="pipedgas-biller-logo pipedgas-biller-logo--c0" aria-hidden="true">GG</span><span class="fw-semibold">Green Gas Limited (GGL)</span></li>
+            <li data-provider="central up gas limited"><span class="pipedgas-biller-logo pipedgas-biller-logo--c1" aria-hidden="true">CU</span><span class="fw-semibold">Central UP Gas Limited</span></li>
+            <li data-provider="maharashtra natural gas"><span class="pipedgas-biller-logo pipedgas-biller-logo--c2" aria-hidden="true">MN</span><span class="fw-semibold">Maharashtra Natural Gas Ltd. (MNGL)</span></li>
+            <li data-provider="bhagyanagar gas limited"><span class="pipedgas-biller-logo pipedgas-biller-logo--c3" aria-hidden="true">BG</span><span class="fw-semibold">Bhagyanagar Gas Limited</span></li>
+            <li data-provider="vadodara gas limited"><span class="pipedgas-biller-logo pipedgas-biller-logo--c4" aria-hidden="true">VG</span><span class="fw-semibold">Vadodara Gas Limited</span></li>
+            <li data-provider="charotar gas sahakari mandali"><span class="pipedgas-biller-logo pipedgas-biller-logo--c5" aria-hidden="true">CS</span><span class="fw-semibold">Charotar Gas Sahakari Mandali Ltd.</span></li>
+            <li data-provider="tripura natural gas company"><span class="pipedgas-biller-logo pipedgas-biller-logo--c6" aria-hidden="true">TN</span><span class="fw-semibold">Tripura Natural Gas Company Ltd.</span></li>
+            <li data-provider="assam gas company limited"><span class="pipedgas-biller-logo pipedgas-biller-logo--c7" aria-hidden="true">AS</span><span class="fw-semibold">Assam Gas Company Limited</span></li>
+          </ul>
+        </section>
+
+        <section class="pipedgas-app-strip" aria-labelledby="pipedgas-app-heading">
+          <div>
+            <h2 id="pipedgas-app-heading" class="pipedgas-app-strip__title">Continue on the app</h2>
+            <p class="pipedgas-app-strip__sub">Download the app to redeem your rewards</p>
+            <% if (_play && _ios) { %>
+            <p class="small text-muted mb-0 mt-2">
+              <a href="<%= _ios %>" class="link-secondary" rel="noopener noreferrer" target="_blank">App Store</a>
+              <span class="text-muted px-1">|</span>
+              <a href="<%= _play %>" class="link-secondary" rel="noopener noreferrer" target="_blank">Google Play</a>
+            </p>
+            <% } %>
+          </div>
+          <a class="pipedgas-download-btn" href="<%= downloadHref %>"<% if (downloadHref !== '#') { %> rel="noopener noreferrer" target="_blank"<% } %> aria-label="Download the Varnarc app">Download</a>
+        </section>
+
+        <section class="pipedgas-faq" aria-labelledby="pipedgas-faq-heading">
+          <h2 id="pipedgas-faq-heading">Frequently asked questions</h2>
+          <div class="accordion" id="pipedgasFaq">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pipedgasFaq1" aria-expanded="false" aria-controls="pipedgasFaq1">
+                  Why can&apos;t I find my piped gas service provider?
+                </button>
+              </h3>
+              <div id="pipedgasFaq1" class="accordion-collapse collapse" data-bs-parent="#pipedgasFaq">
+                <div class="accordion-body">
+                  Try a shorter name or search for your city gas company or CGD brand. Some operators are listed under their registered legal name. If your provider is missing, it may not be onboarded yet - use Raise a request so we can check coverage.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pipedgasFaq2" aria-expanded="false" aria-controls="pipedgasFaq2">
+                  Can I cancel my piped gas payment?
+                </button>
+              </h3>
+              <div id="pipedgasFaq2" class="accordion-collapse collapse" data-bs-parent="#pipedgasFaq">
+                <div class="accordion-body">
+                  After payment is confirmed by the biller, cancellation follows the gas company&apos;s policy. If you paid twice by mistake, keep both transaction IDs and contact support with your customer ID and receipts.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pipedgas-query">
+          <p>Still have a query?</p>
+          <a class="pipedgas-query-card" href="mailto:support@varnarc.com?subject=Piped%20gas%20bill%20support">
+            <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
+            Raise a request
+          </a>
+        </section>
+      </div>
+    </div>
+  </section>
+
+<%- include('../../../components/landing/footer') %>
+<%- include('../../../components/landing/scripts') %>
+<script>
+(function () {
+  var input = document.getElementById("pipedgasProviderSearch");
+  var list = document.getElementById("pipedgasBillerList");
+  if (!input || !list) return;
+  input.addEventListener("input", function () {
+    var q = String(input.value || "").trim().toLowerCase();
+    var items = list.querySelectorAll("li");
+    for (var i = 0; i < items.length; i++) {
+      var li = items[i];
+      var key = (li.getAttribute("data-provider") || li.textContent || "").toLowerCase();
+      li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
+    }
+  });
+})();
+</script>
+</body>
+
+</html>

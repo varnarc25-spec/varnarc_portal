@@ -3,6 +3,9 @@
 
 <%- include('../../../components/landing/head') %>
 <link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+<link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/hub-quick-access.css" />
 
 <body class="landing-page service-section-page service-section-hub-page">
   <div class="landing-page1">
@@ -14,23 +17,30 @@
   <% } else { %>
   <%- include('../../../components/services/hub/section-open') %>
   <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'cabletv', panelTitle: 'Pay your Cable TV Bill', serviceIdLabel: 'Cable TV Id' }) %>
-  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'book-cylinder', panelTitle: 'Book Gas Cylinder' }) %>
-  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'electricity', panelTitle: 'Pay your Electricity Bill', includeState: true }) %>
+  <%- include('../../../components/services/hub/forms/billpayments/book_cylinder_form', { panelSlug: 'book-cylinder', panelTitle: 'Book Gas Cylinder' }) %>
+  <%- include('../../../components/services/hub/forms/billpayments/electricity_form', { panelSlug: 'electricity' }) %>
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'gas', panelTitle: 'Pay your Piped Gas Bill' }) %>
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'water', panelTitle: 'Pay your Water Bill' }) %>
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'municipal-tax', panelTitle: 'Pay Municipal Tax' }) %>
-  <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'broadband', panelTitle: 'Broadband & Landline Bill', serviceIdLabel: 'Account Id' }) %>
+  <%- include('../../../components/services/hub/forms/billpayments/broadband_landline_form', { panelSlug: 'broadband_landline', panelTitle: 'Pay your Broadband Bill', serviceIdLabel: 'Broadband Id', ctaText: 'Continue to Pay Bill' }) %>
   <%- include('../../../components/services/hub/forms/mobile-postpaid') %>
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'education-fee', panelTitle: 'Education Fee Payment' }) %>
-  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'loan', panelTitle: 'Loan Repayment' }) %>
-  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'credit-card', panelTitle: 'Credit Card Bill Payment' }) %>
-  <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'lic-insurance', panelTitle: 'LIC Insurance Premium' }) %>
+  <%- include('../../../components/services/hub/forms/billpayments/loan_repayment_form', { panelSlug: 'loan' }) %>
+  <%- include('../../../components/services/hub/forms/billpayments/credit_card_bill_form', { panelSlug: 'credit-card' }) %>
+  <%- include('../../../components/services/hub/forms/billpayments/lic_insurance_form', { panelSlug: 'lic-insurance' }) %>
   <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'nps', panelTitle: 'NPS Contribution', ctaText: 'Continue to Pay Bill' }) %>
   <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'echallan', panelTitle: 'E-Challan Payment', ctaText: 'Continue to Pay Bill' }) %>
   <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'devotion', panelTitle: 'Devotion', ctaText: 'Continue' }) %>
   <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'donation', panelTitle: 'Donation', ctaText: 'Continue' }) %>
   <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'portfolio', panelTitle: 'Portfolio Holdings', ctaText: 'Continue' }) %>
   <%- include('../../../components/services/hub/section-close') %>
+  <script>
+    window.VARNARC_CHECKOUT_CONFIG = { cashfreeMode: "<%= (process.env.CASHFREE_ENV || 'sandbox').toLowerCase() %>" };
+  </script>
+  <script src="/assets/js/varnarc-checkout.js" defer></script>
+  <script src="/assets/js/hub-credit-card-wallet.js" defer></script>
+  <script src="/assets/js/hub-loan-repayment-wallet.js" defer></script>
+  <script src="/assets/js/hub-lic-insurance-wallet.js" defer></script>
   <% } %>
 
 <%- include('../../../components/landing/footer') %>

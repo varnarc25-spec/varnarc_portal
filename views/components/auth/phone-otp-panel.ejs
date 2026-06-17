@@ -1,0 +1,68 @@
+<%
+  var authRedirect =
+    typeof redirectUrl !== "undefined" && redirectUrl
+      ? String(redirectUrl)
+      : "/dashboardNew";
+  var authCompact = typeof authCompact !== "undefined" && authCompact;
+  var authRootClass = authCompact ? "varn-auth-root varn-auth-root--compact" : "varn-auth-root";
+%>
+<div
+  class="<%= authRootClass %>"
+  data-varn-auth-root
+  data-auth-redirect="<%= authRedirect %>"
+>
+  <div data-auth-alert class="alert d-none" role="alert"></div>
+
+  <div class="varn-auth-phone-row mb-3">
+    <label class="form-label" data-auth-phone-label for="varn-auth-country-<%= authCompact ? 'modal' : 'page' %>">Mobile Number</label>
+    <div class="row g-2 align-items-stretch">
+      <div class="col-4 col-sm-3">
+        <input
+          data-auth-country-code
+          id="varn-auth-country-<%= authCompact ? 'modal' : 'page' %>"
+          class="form-control"
+          type="text"
+          value="+91"
+          placeholder="+91"
+          autocomplete="tel-country-code"
+        />
+      </div>
+      <div class="col-8 col-sm-9">
+        <input
+          data-auth-phone
+          class="form-control"
+          type="tel"
+          inputmode="numeric"
+          placeholder="10-digit mobile number"
+          autocomplete="tel-national"
+          maxlength="10"
+        />
+      </div>
+    </div>
+    <p class="varn-auth-hint mb-0" data-auth-phone-hint>An OTP will be sent to this number for verification.</p>
+  </div>
+
+  <div class="mb-3 d-none" data-auth-otp-wrap>
+    <label class="form-label" for="varn-auth-otp-<%= authCompact ? 'modal' : 'page' %>">OTP</label>
+    <input
+      data-auth-otp
+      id="varn-auth-otp-<%= authCompact ? 'modal' : 'page' %>"
+      class="form-control"
+      type="text"
+      inputmode="numeric"
+      placeholder="Enter 6 digit OTP"
+      maxlength="6"
+      autocomplete="one-time-code"
+    />
+  </div>
+
+  <div class="mb-3 d-flex justify-content-center" data-auth-recaptcha-wrap>
+    <div data-auth-recaptcha></div>
+  </div>
+
+  <div class="varn-auth-actions d-flex flex-wrap align-items-center gap-2">
+    <small data-auth-timer class="text-muted varn-auth-timer"></small>
+    <button data-auth-send type="button" class="btn varn-auth-btn-primary ms-auto">GET OTP</button>
+    <button data-auth-verify type="button" class="btn btn-success d-none">Verify OTP</button>
+  </div>
+</div>

@@ -622,8 +622,10 @@
     }
 
     if (!hasMobileRechargeClientSession()) {
-      window.location.replace("/");
-      return;
+      if (!document.querySelector("[data-mobile-recharge-hub]")) {
+        window.location.replace("/");
+        return;
+      }
     }
 
     var form = document.getElementById("mobile-recharge-form");
@@ -958,6 +960,7 @@
     }
 
     function renderPersonalization() {
+      if (document.querySelector("[data-mobile-quick-access]")) return;
       if (!personalizeEl) return;
       var auth = readJson(AUTH_USER_KEY, null);
       var recent = readJson(STORAGE_RECENT, []);

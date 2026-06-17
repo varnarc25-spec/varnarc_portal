@@ -1,0 +1,389 @@
+/**
+ * Varnarc sign-in page (Bajaj Finserv–inspired layout)
+ */
+.signin-page {
+  --signin-accent: #ff6b00;
+  --signin-accent-hover: #e85f00;
+  --signin-text: #1a1a1a;
+  --signin-muted: #6b7280;
+  --signin-card-radius: 12px;
+  min-height: 100vh;
+  font-family: "Inter", "Roboto", system-ui, sans-serif;
+  color: var(--signin-text);
+  background: linear-gradient(165deg, #dce8f5 0%, #e8eef5 35%, #f0f4f8 70%, #e2eaf2 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.signin-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.85) 55%),
+    url("/assets/images/signin/mountains-bg.svg") center bottom / cover no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.signin-page__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.signin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.signin-topbar__logo img {
+  max-height: 44px;
+  width: auto;
+}
+
+.signin-topbar__home {
+  color: var(--signin-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.signin-topbar__home:hover {
+  color: var(--signin-accent);
+}
+
+.signin-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .signin-hero {
+    grid-template-columns: minmax(0, 420px) 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.signin-card {
+  background: #fff;
+  border-radius: var(--signin-card-radius);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.signin-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--signin-text);
+}
+
+.signin-card__subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.signin-card__subhead p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--signin-muted);
+}
+
+.signin-card__help {
+  color: var(--signin-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.signin-card__help:hover {
+  text-decoration: underline;
+}
+
+.signin-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.25rem;
+}
+
+.signin-tabs__btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--signin-muted);
+  cursor: pointer;
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.65rem 0.35rem;
+  text-align: center;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.signin-tabs__btn.is-active {
+  border-bottom-color: var(--signin-accent);
+  color: var(--signin-accent);
+}
+
+.signin-tabs__btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.signin-panel--disabled .varn-auth-root {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.signin-coming-soon {
+  background: #fff8f3;
+  border: 1px solid #ffd9bf;
+  border-radius: 8px;
+  color: #9a3412;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.signin-card .form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.signin-card .varn-auth-hint {
+  color: var(--signin-muted);
+  font-size: 0.78rem;
+  margin-top: 0.35rem;
+}
+
+.signin-card .alert-info {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+.signin-card .varn-auth-btn-primary,
+.signin-card [data-auth-send] {
+  background: var(--signin-accent) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  min-width: 120px;
+  padding: 0.65rem 1.5rem !important;
+  text-transform: uppercase;
+}
+
+.signin-card .varn-auth-btn-primary:hover:not(:disabled),
+.signin-card [data-auth-send]:hover:not(:disabled) {
+  background: var(--signin-accent-hover) !important;
+}
+
+.signin-card .varn-auth-actions {
+  margin-top: 0.5rem;
+}
+
+.signin-card .varn-auth-timer {
+  flex: 1 1 100%;
+  font-size: 0.78rem;
+}
+
+.signin-legal {
+  color: #9ca3af;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  margin-top: 1.25rem;
+}
+
+.signin-welcome {
+  padding: 0.5rem 0;
+}
+
+.signin-welcome h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.signin-welcome__lead {
+  color: var(--signin-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  max-width: 36rem;
+}
+
+.signin-app-promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.signin-app-promo__qr {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  padding: 0.5rem;
+}
+
+.signin-app-promo__qr img {
+  display: block;
+  height: 100px;
+  width: 100px;
+}
+
+.signin-app-promo__text h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.signin-app-promo__text p {
+  color: var(--signin-muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.65rem;
+}
+
+.signin-app-stores {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.signin-app-stores a {
+  align-items: center;
+  color: var(--signin-text);
+  display: inline-flex;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.signin-ratings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.signin-rating-block {
+  text-align: left;
+}
+
+.signin-rating-block__label {
+  color: var(--signin-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.signin-rating-block__score {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.signin-rating-block__score small {
+  color: #f59e0b;
+  font-size: 0.9rem;
+}
+
+.signin-rating-block__platform {
+  color: var(--signin-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.signin-features {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: var(--signin-card-radius);
+  margin-top: 2rem;
+  padding: 1.5rem 1.25rem 1.75rem;
+}
+
+.signin-features__head {
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.signin-features__head a {
+  color: var(--signin-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signin-features__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 576px) {
+  .signin-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .signin-features__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .signin-features__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.signin-feature {
+  text-align: center;
+}
+
+.signin-feature__icon {
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: 50%;
+  color: #6b7280;
+  display: inline-flex;
+  font-size: 1.25rem;
+  height: 48px;
+  justify-content: center;
+  margin-bottom: 0.65rem;
+  width: 48px;
+}
+
+.signin-feature h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.signin-feature p {
+  color: var(--signin-muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.varn-auth-root--compact .varn-auth-actions {
+  flex-direction: column;
+  align-items: stretch !important;
+}
+
+.varn-auth-root--compact [data-auth-send] {
+  width: 100%;
+}

@@ -3,6 +3,10 @@
 
 <%- include('../../../components/landing/head') %>
 <link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+<link rel="stylesheet" href="/assets/css/service-mobile-recharge.css" />
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/hub-quick-access.css" />
+<link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
 
 <body class="landing-page service-section-page service-section-hub-page">
   <div class="landing-page1">
@@ -13,9 +17,16 @@
   <%- include('../../../components/services/hub/section-empty') %>
   <% } else { %>
   <%- include('../../../components/services/hub/section-open') %>
-  <%- include('../../../components/services/hub/forms/mobile') %>
-  <%- include('../../../components/services/hub/forms/dth') %>
-  <%- include('../../../components/services/hub/forms/datacard') %>
+  <% /* Panel order matches API display_order: Mobile → DTH → Subscription → FASTag → Apple → EV → Get SIM */ %>
+  <%- include('../../../components/services/hub/forms/recharges/mobile_recharge_form', { panelSlug: 'mobile_recharge' }) %>
+  <%- include('../../../components/services/hub/forms/dth', { panelSlug: 'dth' }) %>
+  <%- include('../../../components/services/hub/forms/subscription', { panelSlug: 'subscription' }) %>
+  <%- include('../../../components/services/hub/forms/vehicle-recharge', { panelSlug: 'fastag_recharge', panelTitle: 'FASTag Recharge' }) %>
+  <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'apple_store', panelTitle: 'Apple Store', ctaText: 'Continue' }) %>
+  <%- include('../../../components/services/hub/forms/vehicle-recharge', { panelSlug: 'ev_recharge', panelTitle: 'EV Recharge' }) %>
+  <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'get_sim', panelTitle: 'Get SIM', ctaText: 'Continue' }) %>
+  <% /* Legacy hub panels (not in current API sidebar; kept after menu panels) */ %>
+  <%- include('../../../components/services/hub/forms/datacard', { panelSlug: 'datacard' }) %>
   <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'broadband', panelTitle: 'Pay your Broadband Bill', serviceIdLabel: 'Broadband Id' }) %>
   <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'landline', panelTitle: 'Pay your Landline Bill', serviceIdLabel: 'Landline Id' }) %>
   <%- include('../../../components/services/hub/forms/connect-bill', { panelSlug: 'cabletv', panelTitle: 'Pay your Cable TV Bill', serviceIdLabel: 'Cable TV Id' }) %>
@@ -23,12 +34,9 @@
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'metro', panelTitle: 'Pay your Metro Bill' }) %>
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'gas', panelTitle: 'Pay your Gas Bill' }) %>
   <%- include('../../../components/services/hub/forms/utility-bill', { panelSlug: 'water', panelTitle: 'Pay your Water Bill' }) %>
-  <%- include('../../../components/services/hub/forms/vehicle-recharge', { panelSlug: 'fastag', panelTitle: 'FASTag Recharge' }) %>
-  <%- include('../../../components/services/hub/forms/vehicle-recharge', { panelSlug: 'ev-recharge', panelTitle: 'EV Recharge' }) %>
-  <%- include('../../../components/services/hub/forms/subscription') %>
-  <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'get-sim', panelTitle: 'Get SIM', ctaText: 'Continue' }) %>
-  <%- include('../../../components/services/hub/forms/simple-service', { panelSlug: 'apple-store', panelTitle: 'Apple Store', ctaText: 'Continue' }) %>
   <%- include('../../../components/services/hub/section-close') %>
+  <script src="/assets/js/service-mobile-recharge.js" defer></script>
+  <script src="/assets/js/hub-mobile-quick-access.js" defer></script>
   <% } %>
 
 <%- include('../../../components/landing/footer') %>

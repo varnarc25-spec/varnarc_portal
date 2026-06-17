@@ -1,6 +1,6 @@
 <% var slug = 'mobile-postpaid'; var href = hubHrefForPanel(slug); var active = panelIsActive(slug); %>
 <div class="hub-tab-panel<%= active ? ' is-active' : '' %>" data-hub-panel="<%= slug %>" id="hub-panel-<%= slug %>" role="tabpanel"<%= active ? '' : ' hidden' %>>
-  <h2 class="text-6 mb-4">Mobile Postpaid Bill Payment</h2>
+  <%- include('../panel-header', { panelTitle: 'Mobile Postpaid Bill Payment', panelSlug: slug, href: href }) %>
   <form class="hub-service-form" action="<%= href %>" method="get">
     <div class="mb-3">
       <label class="form-label" for="num-postpaid">Mobile Number</label>

@@ -1,6 +1,6 @@
 <% var pageTitle = 'Loan Repayment'; %>
 <% var pageDescription = 'Pay loan EMIs to banks and NBFCs online on Varnarc — find your lender and complete payment securely.'; %>
-<% 
+<%
   var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
   var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
   var downloadHref = _play || _ios || '#';
@@ -9,6 +9,8 @@
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/hub-quick-access.css" />
 <link rel="stylesheet" href="/assets/css/loan-repayment-page.css" />
 
 <body class="landing-page service-item-page">
@@ -18,88 +20,36 @@
 
   <section class="section-space service-item-section loanrep-service-section">
     <div class="container text-start py-4">
-      <div class="loanrep-section-inner">
+      <div class="loanrep-section-inner" id="lrSectionInner">
         <div class="loanrep-promo-wrap">
           <div class="loanrep-promo-scroll" tabindex="0" role="region" aria-label="Offers and shortcuts">
             <article class="loanrep-promo-card loanrep-promo-card--accent">
-              <p class="loanrep-promo-card__title">Flat ₹20 cashback on DTH recharge — any pay mode</p>
-              <a href="/services/Recharge/dth" class="loanrep-promo-card__btn">Recharge now</a>
+              <p class="loanrep-promo-card__title">Flat 10% cashback on bill payments — eligible categories</p>
+              <a href="/services/BillPayments/index" class="loanrep-promo-card__btn">Pay bills</a>
             </article>
             <article class="loanrep-promo-card loanrep-promo-card--muted">
-              <p class="loanrep-promo-card__title">Flat 10% cashback on bill payments — eligible categories</p>
-              <a href="/services/BillPayments/index" class="loanrep-promo-card__btn">Shop now</a>
+              <p class="loanrep-promo-card__title">Pay full EMI or a specific amount — your choice</p>
+              <a href="/services/BillPayments/loan_repayment" class="loanrep-promo-card__btn">Repay loan</a>
             </article>
             <article class="loanrep-promo-card loanrep-promo-card--muted">
               <p class="loanrep-promo-card__title">Consumer durable &amp; AC offers — check EMI tenures</p>
               <a href="/services/FinancialHub/index" class="loanrep-promo-card__btn">Check offer</a>
             </article>
             <article class="loanrep-promo-card loanrep-promo-card--muted">
-              <p class="loanrep-promo-card__title">Insta EMI Card — split spends into easy instalments</p>
-              <a href="/services/FinancialHub/index" class="loanrep-promo-card__btn">Get it now</a>
+              <p class="loanrep-promo-card__title">DTH &amp; mobile recharge — flat cashback on select packs</p>
+              <a href="/services/Recharge/dth" class="loanrep-promo-card__btn">Recharge</a>
             </article>
           </div>
         </div>
 
-        <div class="loanrep-pay-web">
-          <label class="loanrep-pay-web__title" for="loanrepProviderSearch">Pay on Web</label>
-          <input type="search" id="loanrepProviderSearch" class="loanrep-search-input" placeholder="Search your provider" autocomplete="off" aria-label="Search your loan provider" />
-        </div>
+        <%- include('../../../components/services/hub/forms/billpayments/loan_repayment_form', {
+          panelSlug: 'loan',
+          hubEmbed: false
+        }) %>
 
-        <section class="loanrep-providers-block" aria-labelledby="loanrep-top-heading">
-          <h2 id="loanrep-top-heading" class="loanrep-section-title">Top service providers</h2>
-          <ul class="loanrep-providers list-unstyled mb-0 loanrep-filter-list" id="loanrepTopList">
-            <li data-provider="bajaj finance limited agent collection"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">BA</span><span class="fw-semibold">Bajaj Finance Limited Agent Collection</span></li>
-            <li data-provider="bajaj finance ltd"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">BF</span><span class="fw-semibold">Bajaj Finance Ltd</span></li>
-          </ul>
-        </section>
-
-        <section class="loanrep-providers-block" aria-labelledby="loanrep-all-heading">
-          <h2 id="loanrep-all-heading" class="loanrep-section-title">All service providers</h2>
-          <ul class="loanrep-providers list-unstyled mb-0 loanrep-filter-list" id="loanrepAllList">
-            <li data-provider="121 finance private limited"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">12</span><span class="fw-semibold">121 Finance Private Limited</span></li>
-            <li data-provider="aavas financiers limited"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">AA</span><span class="fw-semibold">AAVAS FINANCIERS LIMITED</span></li>
-            <li data-provider="amu leasing pvt ltd"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">AM</span><span class="fw-semibold">AMU Leasing Pvt Ltd</span></li>
-            <li data-provider="apac financial services pvt ltd"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">AP</span><span class="fw-semibold">APAC Financial Services Pvt Ltd</span></li>
-            <li data-provider="axis bank loan"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">AX</span><span class="fw-semibold">Axis Bank</span></li>
-            <li data-provider="cholamandalam investment"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">CI</span><span class="fw-semibold">Cholamandalam Investment and Finance Company</span></li>
-            <li data-provider="fullerton india credit"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">FI</span><span class="fw-semibold">Fullerton India Credit Company Limited</span></li>
-            <li data-provider="hdfc bank loan"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">HD</span><span class="fw-semibold">HDFC Bank</span></li>
-            <li data-provider="home credit india"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">HC</span><span class="fw-semibold">Home Credit India Finance Pvt Ltd</span></li>
-            <li data-provider="icici bank loan"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">IC</span><span class="fw-semibold">ICICI Bank</span></li>
-            <li data-provider="indiabulls housing finance"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">IB</span><span class="fw-semibold">Indiabulls Housing Finance Limited</span></li>
-            <li data-provider="lt finance limited"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">LT</span><span class="fw-semibold">L&amp;T Finance Limited</span></li>
-            <li data-provider="manappuram finance"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">MF</span><span class="fw-semibold">Manappuram Finance Limited</span></li>
-            <li data-provider="muthoot finance"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">MU</span><span class="fw-semibold">Muthoot Finance Ltd</span></li>
-            <li data-provider="pnb housing finance"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">PN</span><span class="fw-semibold">PNB Housing Finance Limited</span></li>
-            <li data-provider="shriram finance"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">SR</span><span class="fw-semibold">Shriram Finance Limited</span></li>
-            <li data-provider="tata capital"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">TC</span><span class="fw-semibold">Tata Capital Limited</span></li>
-            <li data-provider="godrej housing finance"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">GH</span><span class="fw-semibold">Godrej Housing Finance</span></li>
-          </ul>
-        </section>
-
-        <div id="loanrepBillPanel" class="loanrep-bill-panel" aria-hidden="true">
-          <div class="loanrep-bill-panel__head">
-            <p class="loanrep-bill-panel__provider">Selected provider: <span id="loanrepSelectedName"></span></p>
-            <button type="button" class="loanrep-change-provider" id="loanrepChangeProvider">Change provider</button>
-          </div>
-          <div class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="loanrepLoanNo">Loan no</label>
-            <input type="text" id="loanrepLoanNo" class="loanrep-loan-input" maxlength="20" autocomplete="off" aria-describedby="loanrepLoanHint" />
-            <p id="loanrepLoanHint" class="loanrep-loan-hint">Please enter 20 character Loan no</p>
-          </div>
-          <div class="loanrep-consent">
-            <input type="checkbox" id="loanrepConsent" />
-            <label for="loanrepConsent">I hereby authorize <strong id="loanrepConsentLenderName"></strong> and Varnarc to access bill details for this payment, and I provide explicit consent for bill reminders and related communications.</label>
-          </div>
-          <div class="loanrep-fetch-wrap">
-            <button type="button" class="loanrep-fetch-btn" id="loanrepFetchBill" disabled>Fetch your bill</button>
-          </div>
-          <p class="loanrep-fetch-status" id="loanrepFetchStatus" role="status" aria-live="polite"></p>
-        </div>
-
-        <section class="loanrep-app-strip" aria-labelledby="loanrep-app-heading">
+        <section class="loanrep-app-strip mt-4" aria-labelledby="lr-app-heading">
           <div>
-            <h2 id="loanrep-app-heading" class="loanrep-app-strip__title">Continue on the app</h2>
+            <h2 id="lr-app-heading" class="loanrep-app-strip__title">Continue on the app</h2>
             <p class="loanrep-app-strip__sub">Download the app to redeem your rewards</p>
             <% if (_play && _ios) { %>
             <p class="small text-muted mb-0 mt-2">
@@ -112,16 +62,28 @@
           <a class="loanrep-download-btn" href="<%= downloadHref %>"<% if (downloadHref !== '#') { %> rel="noopener noreferrer" target="_blank"<% } %> aria-label="Download the Varnarc app">Download</a>
         </section>
 
-        <section class="loanrep-faq" aria-labelledby="loanrep-faq-heading">
-          <h2 id="loanrep-faq-heading">Frequently asked questions</h2>
-          <div class="accordion" id="loanrepFaq">
+        <section class="loanrep-faq" aria-labelledby="lr-faq-heading">
+          <h2 id="lr-faq-heading">Frequently asked questions</h2>
+          <div class="accordion" id="lrFaq">
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#loanrepFaq1" aria-expanded="false" aria-controls="loanrepFaq1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lrFaq1" aria-expanded="false" aria-controls="lrFaq1">
+                  Can I pay a partial amount on my loan EMI?
+                </button>
+              </h3>
+              <div id="lrFaq1" class="accordion-collapse collapse" data-bs-parent="#lrFaq">
+                <div class="accordion-body">
+                  Yes. After fetching your bill, choose <strong>Pay specific amount</strong> and enter the amount you wish to pay (within the limits shown). Some lenders may apply partial payments differently — check your loan statement after payment.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lrFaq2" aria-expanded="false" aria-controls="lrFaq2">
                   Why am I unable to find my loan bank/lender?
                 </button>
               </h3>
-              <div id="loanrepFaq1" class="accordion-collapse collapse" data-bs-parent="#loanrepFaq">
+              <div id="lrFaq2" class="accordion-collapse collapse" data-bs-parent="#lrFaq">
                 <div class="accordion-body">
                   Try the official lender name as on your loan statement (including &quot;Ltd&quot; or &quot;Limited&quot;). Some banks list retail loans under a different biller name than your savings account bank. If you still cannot find them, the lender may not be onboarded yet — use Raise a request with your lender name and loan type.
                 </div>
@@ -129,11 +91,11 @@
             </div>
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#loanrepFaq2" aria-expanded="false" aria-controls="loanrepFaq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lrFaq3" aria-expanded="false" aria-controls="lrFaq3">
                   Why is my loan repayment not reflecting even after successful payment?
                 </button>
               </h3>
-              <div id="loanrepFaq2" class="accordion-collapse collapse" data-bs-parent="#loanrepFaq">
+              <div id="lrFaq3" class="accordion-collapse collapse" data-bs-parent="#lrFaq">
                 <div class="accordion-body">
                   Lenders often reconcile in 24–72 hours. Keep your transaction ID and receipt. If your loan account still shows unpaid after that window, contact the lender with your loan account number and share the same details via Raise a request so we can help trace the payment.
                 </div>
@@ -155,153 +117,7 @@
 
 <%- include('../../../components/landing/footer') %>
 <%- include('../../../components/landing/scripts') %>
-<script>
-(function () {
-  var input = document.getElementById("loanrepProviderSearch");
-  var lists = document.querySelectorAll(".loanrep-filter-list");
-  var sectionInner = document.querySelector(".loanrep-section-inner");
-  var panel = document.getElementById("loanrepBillPanel");
-  var selectedNameEl = document.getElementById("loanrepSelectedName");
-  var consentLenderEl = document.getElementById("loanrepConsentLenderName");
-  var loanInput = document.getElementById("loanrepLoanNo");
-  var consentCb = document.getElementById("loanrepConsent");
-  var fetchBtn = document.getElementById("loanrepFetchBill");
-  var fetchStatus = document.getElementById("loanrepFetchStatus");
-  var changeBtn = document.getElementById("loanrepChangeProvider");
-  var selectedLi = null;
-
-  function allProviderLis() {
-    return document.querySelectorAll("#loanrepTopList li, #loanrepAllList li");
-  }
-
-  function isLiVisible(li) {
-    return li && li.style.display !== "none";
-  }
-
-  function getDisplayName(li) {
-    var span = li.querySelector(".fw-semibold");
-    return span ? span.textContent.trim() : String(li.textContent || "").trim();
-  }
-
-  function syncFetchState() {
-    if (!fetchBtn || !loanInput || !consentCb) return;
-    var len = String(loanInput.value || "").length;
-    fetchBtn.disabled = len !== 20 || !consentCb.checked;
-  }
-
-  function clearSelection() {
-    if (selectedLi) selectedLi.classList.remove("is-selected");
-    selectedLi = null;
-    if (panel) {
-      panel.classList.remove("is-visible");
-      panel.setAttribute("aria-hidden", "true");
-    }
-    if (loanInput) {
-      loanInput.value = "";
-      loanInput.classList.remove("loanrep-loan-input--invalid");
-    }
-    if (consentCb) consentCb.checked = false;
-    if (fetchStatus) fetchStatus.textContent = "";
-    syncFetchState();
-  }
-
-  function showPanelFor(li) {
-    if (!panel || !li) return;
-    if (selectedLi) selectedLi.classList.remove("is-selected");
-    selectedLi = li;
-    selectedLi.classList.add("is-selected");
-    var name = getDisplayName(li);
-    if (selectedNameEl) selectedNameEl.textContent = name;
-    if (consentLenderEl) consentLenderEl.textContent = name;
-    if (loanInput) {
-      loanInput.value = "";
-      loanInput.classList.remove("loanrep-loan-input--invalid");
-    }
-    if (consentCb) consentCb.checked = false;
-    if (fetchStatus) fetchStatus.textContent = "";
-    panel.classList.add("is-visible");
-    panel.setAttribute("aria-hidden", "false");
-    syncFetchState();
-    try {
-      li.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    } catch (e) {
-      li.scrollIntoView(false);
-    }
-    window.setTimeout(function () {
-      if (loanInput) loanInput.focus();
-    }, 150);
-  }
-
-  function initListA11y() {
-    var lis = allProviderLis();
-    for (var j = 0; j < lis.length; j++) {
-      lis[j].setAttribute("tabindex", "0");
-      lis[j].setAttribute("role", "button");
-    }
-  }
-
-  if (input && lists.length) {
-    input.addEventListener("input", function () {
-      var q = String(input.value || "").trim().toLowerCase();
-      for (var L = 0; L < lists.length; L++) {
-        var items = lists[L].querySelectorAll("li");
-        for (var i = 0; i < items.length; i++) {
-          var li = items[i];
-          var key = (li.getAttribute("data-provider") || li.textContent || "").toLowerCase();
-          li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
-        }
-      }
-      if (selectedLi && !isLiVisible(selectedLi)) clearSelection();
-    });
-  }
-
-  if (sectionInner) {
-    sectionInner.addEventListener("click", function (e) {
-      var li = e.target && e.target.closest ? e.target.closest("#loanrepTopList li, #loanrepAllList li") : null;
-      if (!li || !isLiVisible(li)) return;
-      showPanelFor(li);
-    });
-    sectionInner.addEventListener("keydown", function (e) {
-      if (e.key !== "Enter" && e.key !== " ") return;
-      var li = e.target && e.target.closest ? e.target.closest("#loanrepTopList li, #loanrepAllList li") : null;
-      if (!li || !isLiVisible(li)) return;
-      e.preventDefault();
-      showPanelFor(li);
-    });
-  }
-
-  if (changeBtn) {
-    changeBtn.addEventListener("click", function () {
-      clearSelection();
-      if (input) input.focus();
-    });
-  }
-
-  if (loanInput) {
-    loanInput.addEventListener("input", function () {
-      loanInput.classList.remove("loanrep-loan-input--invalid");
-      syncFetchState();
-    });
-  }
-  if (consentCb) consentCb.addEventListener("change", syncFetchState);
-
-  if (fetchBtn) {
-    fetchBtn.addEventListener("click", function () {
-      var v = loanInput ? String(loanInput.value || "") : "";
-      if (v.length !== 20) {
-        if (loanInput) loanInput.classList.add("loanrep-loan-input--invalid");
-        if (fetchStatus) fetchStatus.textContent = "Please enter exactly 20 characters for the loan number.";
-        return;
-      }
-      if (!consentCb || !consentCb.checked) return;
-      if (fetchStatus) fetchStatus.textContent = "Bill fetch will connect to your checkout when this flow is integrated.";
-    });
-  }
-
-  initListA11y();
-  syncFetchState();
-})();
-</script>
+<script src="/assets/js/hub-loan-repayment-wallet.js" defer></script>
 </body>
 
 </html>

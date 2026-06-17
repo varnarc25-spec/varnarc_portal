@@ -1,3 +1,5 @@
+require("./lib/load-dotenv")();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,7 +12,9 @@ var serviceMenuPaths = require('./lib/service-menu-paths');
 var indexRouter = require('./routes/index');
 var non_authenticated = require('./routes/non-authenticated');
 var authRouter = require('./routes/auth');
+var publicApiRouter = require('./routes/public-api');
 var rechargesRouter = require('./routes/recharges');
+var paymentsRouter = require('./routes/payments');
 var app = express();
 
 const users = [];
@@ -48,7 +52,9 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/', non_authenticated);
 app.use('/', authRouter);
+app.use('/', publicApiRouter);
 app.use('/', rechargesRouter);
+app.use('/', paymentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -62,8 +68,15 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  err.status == 404 ? res.render('error-404', { layout: false }) : res.render('error-400', { layout: false });
+  var status = err.status || 500;
+  res.status(status);
+  if (status === 404) {
+    return res.render("error-404", { layout: false });
+  }
+  if (status >= 500) {
+    return res.render("error-500", { layout: false, message: req.app.get("env") === "development" ? err.message : undefined });
+  }
+  return res.render("error-400", { layout: false, message: req.app.get("env") === "development" ? err.message : undefined });
 });
 
 module.exports = app;

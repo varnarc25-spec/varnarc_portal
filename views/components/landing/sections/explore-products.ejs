@@ -70,6 +70,16 @@
 </section>
 <script>
   (function () {
+    function proxySvgUrl(url) {
+      try {
+        var parsed = new URL(url, window.location.origin);
+        if (parsed.origin === window.location.origin) return parsed.href;
+        return '/api/proxy/svg?url=' + encodeURIComponent(url);
+      } catch (e) {
+        return url;
+      }
+    }
+
     function initRemoteSvgIcons() {
     var iconNodes = document.querySelectorAll('.remote-svg-icon[data-svg-url]');
     if (!iconNodes.length) return;
@@ -79,7 +89,7 @@
       var color = node.getAttribute('data-icon-color');
       if (!url) return;
 
-      fetch(url)
+      fetch(proxySvgUrl(url), { credentials: 'same-origin' })
         .then(function (res) { return res.text(); })
         .then(function (svgText) {
           if (!svgText || svgText.indexOf('<svg') === -1) return;

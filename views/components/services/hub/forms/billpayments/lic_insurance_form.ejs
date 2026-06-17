@@ -1,0 +1,5 @@
+<%
+  var _slug = typeof panelSlug !== "undefined" ? panelSlug : "lic-insurance";
+  var _embed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+%>
+<%- include('../insurance/lic_insurance_form', { panelSlug: _slug, hubEmbed: _embed }) %>

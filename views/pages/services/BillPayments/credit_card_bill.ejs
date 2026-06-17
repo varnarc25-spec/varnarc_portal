@@ -1,6 +1,6 @@
 <% var pageTitle = 'Credit Card Bill Payment'; %>
 <% var pageDescription = 'Pay your credit card bills online on Varnarc — select your card issuer and complete payment securely.'; %>
-<% 
+<%
   var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
   var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
   var downloadHref = _play || _ios || '#';
@@ -9,6 +9,8 @@
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/hub-quick-access.css" />
 <link rel="stylesheet" href="/assets/css/loan-repayment-page.css" />
 
 <body class="landing-page service-item-page">
@@ -40,75 +42,12 @@
           </div>
         </div>
 
-        <div class="loanrep-pay-web">
-          <label class="loanrep-pay-web__title" for="ccbProviderSearch">Pay on Web</label>
-          <input type="search" id="ccbProviderSearch" class="loanrep-search-input" placeholder="Search your provider" autocomplete="off" aria-label="Search your credit card issuer" />
-        </div>
+        <%- include('../../../components/services/hub/forms/billpayments/credit_card_bill_form', {
+          panelSlug: 'credit-card',
+          hubEmbed: false
+        }) %>
 
-        <section class="loanrep-providers-block" aria-labelledby="ccb-top-heading">
-          <h2 id="ccb-top-heading" class="loanrep-section-title">Top service providers</h2>
-          <ul class="loanrep-providers list-unstyled mb-0 loanrep-filter-list" id="ccbTopList">
-            <li data-provider="hdfc bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">HD</span><span class="fw-semibold">HDFC Bank Credit Card</span></li>
-            <li data-provider="icici bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">IC</span><span class="fw-semibold">ICICI Bank Credit Card</span></li>
-            <li data-provider="axis bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">AX</span><span class="fw-semibold">Axis Bank Credit Card</span></li>
-            <li data-provider="sbi card"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">SB</span><span class="fw-semibold">SBI Card</span></li>
-            <li data-provider="american express"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">AM</span><span class="fw-semibold">American Express Banking Corp</span></li>
-            <li data-provider="kotak mahindra bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">KO</span><span class="fw-semibold">Kotak Mahindra Bank Credit Card</span></li>
-          </ul>
-        </section>
-
-        <section class="loanrep-providers-block" aria-labelledby="ccb-all-heading">
-          <h2 id="ccb-all-heading" class="loanrep-section-title">All service providers</h2>
-          <ul class="loanrep-providers list-unstyled mb-0 loanrep-filter-list" id="ccbAllList">
-            <li data-provider="au small finance bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">AU</span><span class="fw-semibold">AU Small Finance Bank Credit Card</span></li>
-            <li data-provider="axis bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">AX</span><span class="fw-semibold">Axis Bank Credit Card</span></li>
-            <li data-provider="bandhan bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">BN</span><span class="fw-semibold">Bandhan Bank Credit Card</span></li>
-            <li data-provider="bank of baroda credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">BO</span><span class="fw-semibold">Bank of Baroda Credit Card</span></li>
-            <li data-provider="canara bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">CA</span><span class="fw-semibold">Canara Bank Credit Card</span></li>
-            <li data-provider="citibank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">CI</span><span class="fw-semibold">Citibank Credit Card</span></li>
-            <li data-provider="csb bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">CS</span><span class="fw-semibold">CSB Bank Credit Card</span></li>
-            <li data-provider="federal bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">FD</span><span class="fw-semibold">Federal Bank Credit Card</span></li>
-            <li data-provider="hdfc bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">HD</span><span class="fw-semibold">HDFC Bank Credit Card</span></li>
-            <li data-provider="hsbc credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">HS</span><span class="fw-semibold">HSBC Credit Card</span></li>
-            <li data-provider="icici bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">IC</span><span class="fw-semibold">ICICI Bank Credit Card</span></li>
-            <li data-provider="idfc first bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">ID</span><span class="fw-semibold">IDFC FIRST Bank Credit Card</span></li>
-            <li data-provider="indian bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">IB</span><span class="fw-semibold">Indian Bank Credit Card</span></li>
-            <li data-provider="indusind bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">II</span><span class="fw-semibold">IndusInd Bank Credit Card</span></li>
-            <li data-provider="kotak mahindra bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">KO</span><span class="fw-semibold">Kotak Mahindra Bank Credit Card</span></li>
-            <li data-provider="punjab national bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">PN</span><span class="fw-semibold">Punjab National Bank Credit Card</span></li>
-            <li data-provider="rbl bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">RB</span><span class="fw-semibold">RBL Bank Credit Card</span></li>
-            <li data-provider="sbi card"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">SB</span><span class="fw-semibold">SBI Card</span></li>
-            <li data-provider="standard chartered credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">SC</span><span class="fw-semibold">Standard Chartered Credit Card</span></li>
-            <li data-provider="yes bank credit card"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">YE</span><span class="fw-semibold">Yes Bank Credit Card</span></li>
-          </ul>
-        </section>
-
-        <div id="ccbBillPanel" class="loanrep-bill-panel" aria-hidden="true">
-          <div class="loanrep-bill-panel__head">
-            <p class="loanrep-bill-panel__provider">Selected provider: <span id="ccbSelectedName"></span></p>
-            <button type="button" class="loanrep-change-provider" id="ccbChangeProvider">Change provider</button>
-          </div>
-          <div class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="ccbLastFour">Last 4 digits of Credit Card Number</label>
-            <input type="text" id="ccbLastFour" class="loanrep-loan-input" maxlength="4" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-describedby="ccbLastFourHint" />
-            <p id="ccbLastFourHint" class="loanrep-loan-hint">Please Enter Last 4 Digits of Credit Card Number</p>
-          </div>
-          <div class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="ccbRegisteredMobile">Registered Mobile Number</label>
-            <input type="tel" id="ccbRegisteredMobile" class="loanrep-loan-input loanrep-loan-input--secondary" maxlength="10" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-describedby="ccbMobileHint" />
-            <p id="ccbMobileHint" class="loanrep-loan-hint">Please Enter 10 Digit Mobile Number</p>
-          </div>
-          <div class="loanrep-consent">
-            <input type="checkbox" id="ccbConsent" />
-            <label for="ccbConsent">I hereby authorize <strong id="ccbConsentBankName"></strong> and Varnarc to access my current and future bills and to facilitate the provision of bill reminders.</label>
-          </div>
-          <div class="loanrep-fetch-wrap">
-            <button type="button" class="loanrep-fetch-btn" id="ccbFetchBill" disabled>Fetch your bill</button>
-          </div>
-          <p class="loanrep-fetch-status" id="ccbFetchStatus" role="status" aria-live="polite"></p>
-        </div>
-
-        <section class="loanrep-app-strip" aria-labelledby="ccb-app-heading">
+        <section class="loanrep-app-strip mt-4" aria-labelledby="ccb-app-heading">
           <div>
             <h2 id="ccb-app-heading" class="loanrep-app-strip__title">Continue on the app</h2>
             <p class="loanrep-app-strip__sub">Download the app to redeem your rewards</p>
@@ -134,7 +73,7 @@
               </h3>
               <div id="ccbFaq1" class="accordion-collapse collapse" data-bs-parent="#ccbFaq">
                 <div class="accordion-body">
-                  Choose your card issuer from the list, enter the last four digits of your card and the mobile number registered with the bank for that card, fetch your bill, and pay using your preferred mode. Keep your card or statement handy if the bank asks for extra verification during fetch.
+                  Choose your card issuer from the list, enter the last four digits of your card and the mobile number registered with the bank for that card, fetch your bill, and pay using your preferred mode.
                 </div>
               </div>
             </div>
@@ -146,7 +85,7 @@
               </h3>
               <div id="ccbFaq2" class="accordion-collapse collapse" data-bs-parent="#ccbFaq">
                 <div class="accordion-body">
-                  Most issuers update your account within a few minutes to 24 hours. Payments made close to the due date should still be honoured if completed before the cut-off time shown at checkout. Save your transaction ID until the amount appears on your card statement.
+                  Most issuers update your account within a few minutes to 24 hours. Save your transaction ID until the amount appears on your card statement.
                 </div>
               </div>
             </div>
@@ -158,7 +97,7 @@
               </h3>
               <div id="ccbFaq3" class="accordion-collapse collapse" data-bs-parent="#ccbFaq">
                 <div class="accordion-body">
-                  Issuers sometimes list corporate, co-brand, or NRI cards under a different biller name. Try the name printed on your statement. If your bank is not listed, it may not be onboarded yet — use Raise a request with your bank and card type so we can follow up.
+                  Issuers sometimes list corporate or co-brand cards under a different biller name. Try the name printed on your statement, or contact support if your bank is not listed.
                 </div>
               </div>
             </div>
@@ -178,188 +117,7 @@
 
 <%- include('../../../components/landing/footer') %>
 <%- include('../../../components/landing/scripts') %>
-<script>
-(function () {
-  var input = document.getElementById("ccbProviderSearch");
-  var lists = document.querySelectorAll("#ccbSectionInner .loanrep-filter-list");
-  var sectionInner = document.getElementById("ccbSectionInner");
-  var panel = document.getElementById("ccbBillPanel");
-  var selectedNameEl = document.getElementById("ccbSelectedName");
-  var consentBankEl = document.getElementById("ccbConsentBankName");
-  var lastFourInput = document.getElementById("ccbLastFour");
-  var mobileInput = document.getElementById("ccbRegisteredMobile");
-  var consentCb = document.getElementById("ccbConsent");
-  var fetchBtn = document.getElementById("ccbFetchBill");
-  var fetchStatus = document.getElementById("ccbFetchStatus");
-  var changeBtn = document.getElementById("ccbChangeProvider");
-  var selectedLi = null;
-
-  function allProviderLis() {
-    return document.querySelectorAll("#ccbTopList li, #ccbAllList li");
-  }
-
-  function isLiVisible(li) {
-    return li && li.style.display !== "none";
-  }
-
-  function getDisplayName(li) {
-    var span = li.querySelector(".fw-semibold");
-    return span ? span.textContent.trim() : String(li.textContent || "").trim();
-  }
-
-  function isValidMobile(v) {
-    return /^[0-9]{10}$/.test(String(v || ""));
-  }
-
-  function isValidLastFour(v) {
-    return /^[0-9]{4}$/.test(String(v || ""));
-  }
-
-  function syncFetchState() {
-    if (!fetchBtn || !mobileInput || !lastFourInput || !consentCb) return;
-    fetchBtn.disabled =
-      !isValidLastFour(lastFourInput.value) ||
-      !isValidMobile(mobileInput.value) ||
-      !consentCb.checked;
-  }
-
-  function clearSelection() {
-    if (selectedLi) selectedLi.classList.remove("is-selected");
-    selectedLi = null;
-    if (panel) {
-      panel.classList.remove("is-visible");
-      panel.setAttribute("aria-hidden", "true");
-    }
-    if (lastFourInput) {
-      lastFourInput.value = "";
-      lastFourInput.classList.remove("loanrep-loan-input--invalid");
-    }
-    if (mobileInput) {
-      mobileInput.value = "";
-      mobileInput.classList.remove("loanrep-loan-input--invalid");
-    }
-    if (consentCb) consentCb.checked = false;
-    if (fetchStatus) fetchStatus.textContent = "";
-    syncFetchState();
-  }
-
-  function showPanelFor(li) {
-    if (!panel || !li) return;
-    if (selectedLi) selectedLi.classList.remove("is-selected");
-    selectedLi = li;
-    selectedLi.classList.add("is-selected");
-    var name = getDisplayName(li);
-    if (selectedNameEl) selectedNameEl.textContent = name;
-    if (consentBankEl) consentBankEl.textContent = name;
-    if (lastFourInput) {
-      lastFourInput.value = "";
-      lastFourInput.classList.remove("loanrep-loan-input--invalid");
-    }
-    if (mobileInput) {
-      mobileInput.value = "";
-      mobileInput.classList.remove("loanrep-loan-input--invalid");
-    }
-    if (consentCb) consentCb.checked = false;
-    if (fetchStatus) fetchStatus.textContent = "";
-    panel.classList.add("is-visible");
-    panel.setAttribute("aria-hidden", "false");
-    syncFetchState();
-    try {
-      li.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    } catch (e) {
-      li.scrollIntoView(false);
-    }
-    window.setTimeout(function () {
-      if (lastFourInput) lastFourInput.focus();
-    }, 150);
-  }
-
-  function initListA11y() {
-    var lis = allProviderLis();
-    for (var j = 0; j < lis.length; j++) {
-      lis[j].setAttribute("tabindex", "0");
-      lis[j].setAttribute("role", "button");
-    }
-  }
-
-  if (input && lists.length) {
-    input.addEventListener("input", function () {
-      var q = String(input.value || "").trim().toLowerCase();
-      for (var L = 0; L < lists.length; L++) {
-        var items = lists[L].querySelectorAll("li");
-        for (var i = 0; i < items.length; i++) {
-          var li = items[i];
-          var key = (li.getAttribute("data-provider") || li.textContent || "").toLowerCase();
-          li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
-        }
-      }
-      if (selectedLi && !isLiVisible(selectedLi)) clearSelection();
-    });
-  }
-
-  if (sectionInner) {
-    sectionInner.addEventListener("click", function (e) {
-      var li = e.target && e.target.closest ? e.target.closest("#ccbTopList li, #ccbAllList li") : null;
-      if (!li || !isLiVisible(li)) return;
-      showPanelFor(li);
-    });
-    sectionInner.addEventListener("keydown", function (e) {
-      if (e.key !== "Enter" && e.key !== " ") return;
-      var li = e.target && e.target.closest ? e.target.closest("#ccbTopList li, #ccbAllList li") : null;
-      if (!li || !isLiVisible(li)) return;
-      e.preventDefault();
-      showPanelFor(li);
-    });
-  }
-
-  if (changeBtn) {
-    changeBtn.addEventListener("click", function () {
-      clearSelection();
-      if (input) input.focus();
-    });
-  }
-
-  if (lastFourInput) {
-    lastFourInput.addEventListener("input", function () {
-      lastFourInput.value = String(lastFourInput.value || "").replace(/\D/g, "").slice(0, 4);
-      lastFourInput.classList.remove("loanrep-loan-input--invalid");
-      syncFetchState();
-    });
-  }
-  if (mobileInput) {
-    mobileInput.addEventListener("input", function () {
-      mobileInput.value = String(mobileInput.value || "").replace(/\D/g, "").slice(0, 10);
-      mobileInput.classList.remove("loanrep-loan-input--invalid");
-      syncFetchState();
-    });
-  }
-  if (consentCb) consentCb.addEventListener("change", syncFetchState);
-
-  if (fetchBtn) {
-    fetchBtn.addEventListener("click", function () {
-      var four = lastFourInput ? String(lastFourInput.value || "") : "";
-      var mob = mobileInput ? String(mobileInput.value || "") : "";
-      var okFour = isValidLastFour(four);
-      var okMob = isValidMobile(mob);
-      if (lastFourInput) lastFourInput.classList.toggle("loanrep-loan-input--invalid", !okFour);
-      if (mobileInput) mobileInput.classList.toggle("loanrep-loan-input--invalid", !okMob);
-      if (!okFour || !okMob) {
-        if (fetchStatus) {
-          fetchStatus.textContent = !okFour
-            ? "Please enter the last 4 digits of your credit card."
-            : "Please enter a valid 10-digit mobile number.";
-        }
-        return;
-      }
-      if (!consentCb || !consentCb.checked) return;
-      if (fetchStatus) fetchStatus.textContent = "Bill fetch will connect to your checkout when this flow is integrated.";
-    });
-  }
-
-  initListA11y();
-  syncFetchState();
-})();
-</script>
+<script src="/assets/js/hub-credit-card-wallet.js" defer></script>
 </body>
 
 </html>

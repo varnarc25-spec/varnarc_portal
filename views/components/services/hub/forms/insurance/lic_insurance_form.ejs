@@ -1,0 +1,276 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "lic-insurance";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/BillPayments/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var searchId = "lic-provider-search-" + slug;
+  var topProviders = [
+    { key: "lic of india", initials: "LI", name: "LIC of India", color: "c0" },
+    { key: "hdfc life insurance", initials: "HL", name: "HDFC Life Insurance", color: "c1" },
+    { key: "icici prudential life", initials: "IP", name: "ICICI Prudential Life Insurance", color: "c3" },
+    { key: "sbi life insurance", initials: "SB", name: "SBI Life Insurance", color: "c0" },
+    { key: "max life insurance", initials: "MX", name: "Max Life Insurance", color: "c6" },
+    { key: "bajaj allianz life", initials: "BA", name: "Bajaj Allianz Life Insurance", color: "c2" },
+  ];
+  var allProviders = [
+    { key: "lic of india", initials: "LI", name: "LIC of India", color: "c0" },
+    { key: "hdfc life insurance", initials: "HL", name: "HDFC Life Insurance", color: "c1" },
+    { key: "icici prudential life", initials: "IP", name: "ICICI Prudential Life Insurance", color: "c3" },
+    { key: "sbi life insurance", initials: "SB", name: "SBI Life Insurance", color: "c0" },
+    { key: "max life insurance", initials: "MX", name: "Max Life Insurance", color: "c6" },
+    { key: "bajaj allianz life", initials: "BA", name: "Bajaj Allianz Life Insurance", color: "c2" },
+    { key: "tata aia life", initials: "TA", name: "Tata AIA Life Insurance", color: "c4" },
+    { key: "kotak life insurance", initials: "KL", name: "Kotak Mahindra Life Insurance", color: "c5" },
+    { key: "aditya birla sun life", initials: "AB", name: "Aditya Birla Sun Life Insurance", color: "c7" },
+    { key: "pnb metlife", initials: "PM", name: "PNB MetLife India Insurance", color: "c4" },
+    { key: "canara hsbc life", initials: "CH", name: "Canara HSBC Life Insurance", color: "c3" },
+    { key: "star union dai-ichi", initials: "SU", name: "Star Union Dai-Ichi Life Insurance", color: "c5" },
+    { key: "reliance nippon life", initials: "RN", name: "Reliance Nippon Life Insurance", color: "c1" },
+    { key: "future generali india life", initials: "FG", name: "Future Generali India Life Insurance", color: "c2" },
+    { key: "indiafirst life", initials: "IF", name: "IndiaFirst Life Insurance", color: "c6" },
+    { key: "edelweiss tokio life", initials: "ET", name: "Edelweiss Tokio Life Insurance", color: "c7" },
+  ];
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel electricity-hub-panel lic-insurance-hub-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-lic-insurance-hub
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="electricity-hub-panel lic-insurance-hub-panel is-active" data-lic-insurance-hub>
+<% } %>
+  <div class="electricity-hub-pay-web">
+    <div data-lic-step="policies">
+      <%- include('../../panel-header', { panelTitle: 'LIC / Insurance Premium', panelSlug: slug, href: href }) %>
+
+      <section class="ccb-wallet" data-lic-wallet aria-labelledby="lic-wallet-title">
+        <div class="ccb-wallet__head">
+          <div>
+            <h2 id="lic-wallet-title" class="ccb-wallet__title">Your policies</h2>
+            <p class="ccb-wallet__subtitle">View premium due, due dates, and pay full or a specific amount.</p>
+          </div>
+          <button type="button" class="ccb-wallet__link-all" data-lic-browse-all>Pay other insurer</button>
+        </div>
+        <ul class="ccb-wallet__list" data-lic-wallet-list></ul>
+        <button type="button" class="ccb-add-card mt-2" data-lic-add-policy>
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add policy
+        </button>
+      </section>
+
+      <p class="hub-quick-access__lead mb-0">Sign in to save policies and see premiums. New users can add a policy below.</p>
+    </div>
+
+    <div data-lic-step="pick" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-lic-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back to your policies
+      </button>
+      <%- include('../../panel-header', { panelTitle: 'Add policy', panelSlug: slug, href: href }) %>
+
+      <div class="electricity-hub-search-wrap">
+        <input
+          type="search"
+          class="electricity-hub-search-input"
+          id="<%= searchId %>"
+          data-lic-provider-search
+          placeholder="Search your insurer"
+          autocomplete="off"
+          aria-label="Search your insurer"
+        />
+        <button
+          type="button"
+          class="electricity-hub-search-clear"
+          data-lic-search-clear
+          aria-label="Clear search"
+          hidden
+        >
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <section class="electricity-hub-providers-section" aria-labelledby="lic-top-<%= slug %>">
+        <h3 id="lic-top-<%= slug %>" class="electricity-hub-section-title">Top service providers</h3>
+        <ul class="electricity-hub-providers list-unstyled mb-0" data-lic-provider-list="top">
+          <% topProviders.forEach(function (p) { %>
+          <li data-biller="<%= p.key %>">
+            <button type="button" class="electricity-hub-provider-btn" data-lic-provider="<%= p.key %>">
+              <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+              <span class="electricity-hub-provider-name"><%= p.name %></span>
+            </button>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+
+      <section class="electricity-hub-providers-section electricity-hub-providers-section--spaced" aria-labelledby="lic-all-<%= slug %>">
+        <h3 id="lic-all-<%= slug %>" class="electricity-hub-section-title">All service providers</h3>
+        <ul class="electricity-hub-providers list-unstyled mb-0" data-lic-provider-list="all">
+          <% allProviders.forEach(function (p) { %>
+          <li data-biller="<%= p.key %>">
+            <button type="button" class="electricity-hub-provider-btn" data-lic-provider="<%= p.key %>">
+              <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+              <span class="electricity-hub-provider-name"><%= p.name %></span>
+            </button>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    </div>
+
+    <div data-lic-step="pay" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-lic-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back to your policies
+      </button>
+      <div class="ccb-pay-panel">
+        <p class="electricity-hub-selected-provider__label mb-1">Premium amount due</p>
+        <p class="ccb-pay-panel__amount" data-lic-pay-full-amount>—</p>
+        <p class="ccb-pay-panel__meta mb-3" data-lic-pay-meta></p>
+
+        <fieldset class="lr-amount-choice" data-lic-amount-choice>
+          <legend class="lr-amount-choice__legend">Choose payment amount</legend>
+          <label class="lr-amount-choice__option">
+            <input type="radio" name="lic-amount-type-<%= slug %>" value="full" data-lic-amount-type checked />
+            <span class="lr-amount-choice__label">Pay full amount</span>
+            <span class="lr-amount-choice__hint" data-lic-full-hint>Pay the complete premium due</span>
+          </label>
+          <label class="lr-amount-choice__option">
+            <input type="radio" name="lic-amount-type-<%= slug %>" value="specific" data-lic-amount-type />
+            <span class="lr-amount-choice__label">Pay specific amount</span>
+            <span class="lr-amount-choice__hint">Enter a custom amount (partial premium)</span>
+          </label>
+        </fieldset>
+
+        <div class="lr-specific-amount mb-3" data-lic-specific-wrap hidden>
+          <label class="form-label electricity-hub-field-label" for="lic-specific-<%= slug %>">Amount to pay (₹)</label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input
+              type="text"
+              class="form-control electricity-hub-account-input"
+              id="lic-specific-<%= slug %>"
+              data-lic-specific-amount
+              inputmode="decimal"
+              placeholder="e.g. 2500"
+              autocomplete="off"
+            />
+          </div>
+          <p class="electricity-hub-field-hint mb-0" data-lic-amount-hint>
+            Minimum ₹100 · Maximum <span data-lic-max-amount>—</span>
+          </p>
+        </div>
+
+        <p class="lr-pay-summary mb-3" aria-live="polite">
+          You will pay: <strong data-lic-pay-summary-amount>—</strong>
+        </p>
+
+        <button type="button" class="btn electricity-hub-fetch-btn w-100" data-lic-pay-confirm disabled>
+          Proceed to pay
+        </button>
+      </div>
+    </div>
+
+    <div class="electricity-hub-details" data-lic-step="details" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-lic-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back
+      </button>
+      <p class="electricity-hub-selected-provider mb-3">
+        <span class="electricity-hub-selected-provider__label">Insurer</span>
+        <span class="electricity-hub-selected-provider__name" data-lic-selected-name>—</span>
+      </p>
+
+      <form class="electricity-hub-details-form" data-lic-details-form novalidate>
+        <fieldset class="lr-amount-choice mb-3" data-lic-id-mode>
+          <legend class="lr-amount-choice__legend">How do you identify this policy?</legend>
+          <label class="lr-amount-choice__option">
+            <input type="radio" name="lic-id-mode-<%= slug %>" value="policy" data-lic-id-mode-input checked />
+            <span class="lr-amount-choice__label">Policy number &amp; mobile</span>
+            <span class="lr-amount-choice__hint">Use the policy number printed on your document</span>
+          </label>
+          <label class="lr-amount-choice__option">
+            <input type="radio" name="lic-id-mode-<%= slug %>" value="dob" data-lic-id-mode-input />
+            <span class="lr-amount-choice__label">Date of birth &amp; mobile</span>
+            <span class="lr-amount-choice__hint">DOB as DD-MM-YYYY, same as insurer records</span>
+          </label>
+        </fieldset>
+
+        <div class="mb-3" data-lic-policy-fields>
+          <label class="form-label electricity-hub-field-label" for="lic-policy-<%= slug %>">Policy number</label>
+          <input
+            type="text"
+            class="form-control electricity-hub-account-input"
+            id="lic-policy-<%= slug %>"
+            data-lic-policy-no
+            maxlength="20"
+            autocomplete="off"
+            aria-describedby="lic-policy-hint-<%= slug %>"
+          />
+          <p id="lic-policy-hint-<%= slug %>" class="electricity-hub-field-hint mb-0">
+            Enter your policy number without spaces
+          </p>
+        </div>
+
+        <div class="mb-3" data-lic-dob-fields hidden>
+          <label class="form-label electricity-hub-field-label" for="lic-dob-<%= slug %>">Date of birth</label>
+          <input
+            type="text"
+            class="form-control electricity-hub-account-input"
+            id="lic-dob-<%= slug %>"
+            data-lic-dob
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="DD-MM-YYYY"
+            autocomplete="bday"
+            aria-describedby="lic-dob-hint-<%= slug %>"
+          />
+          <p id="lic-dob-hint-<%= slug %>" class="electricity-hub-field-hint mb-0">
+            Format: DD-MM-YYYY (e.g. 15-08-1985)
+          </p>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label electricity-hub-field-label" for="lic-mobile-<%= slug %>">Registered mobile number</label>
+          <input
+            type="tel"
+            class="form-control electricity-hub-account-input"
+            id="lic-mobile-<%= slug %>"
+            data-lic-mobile
+            inputmode="numeric"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            autocomplete="tel"
+            required
+          />
+          <p class="electricity-hub-field-hint mb-0">10-digit mobile registered with the insurer</p>
+        </div>
+
+        <div class="electricity-hub-consent mb-4">
+          <input
+            class="form-check-input electricity-hub-consent__input"
+            type="checkbox"
+            id="lic-consent-<%= slug %>"
+            data-lic-consent
+          />
+          <label class="form-check-label electricity-hub-consent__label" for="lic-consent-<%= slug %>">
+            I hereby authorize <strong data-lic-consent-insurer>your insurer</strong> and Varnarc to access premium
+            details for this payment, and I provide explicit consent for reminders and related communications.
+          </label>
+        </div>
+
+        <button type="submit" class="btn electricity-hub-fetch-btn w-100" data-lic-fetch disabled>
+          Fetch your bill
+        </button>
+        <p class="electricity-hub-field-hint mt-2 mb-0" data-lic-fetch-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>

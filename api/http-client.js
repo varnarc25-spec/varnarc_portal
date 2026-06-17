@@ -131,7 +131,54 @@ function fetchJsonHttps(urlStr, opts) {
   });
 }
 
+/**
+ * GET URL and return response body as text (for SVG proxy, etc.).
+ * @param {string} urlStr
+ * @param {{ accept?: string, timeoutMs?: number }} [opts]
+ */
+function fetchTextHttps(urlStr, opts) {
+  opts = opts || {};
+  var timeoutMs = resolveTimeoutMs(opts);
+  var accept = opts.accept || "*/*";
+  return new Promise(function (resolve, reject) {
+    var url = new URL(urlStr);
+    var transport = requestModuleForUrl(urlStr);
+    var req = transport.request(
+      {
+        protocol: url.protocol,
+        hostname: url.hostname,
+        port: defaultPortForUrl(url),
+        path: url.pathname + (url.search || ""),
+        method: "GET",
+        headers: { Accept: accept },
+      },
+      function (res) {
+        var data = "";
+        res.on("data", function (chunk) {
+          data += chunk;
+        });
+        res.on("end", function () {
+          if (res.statusCode < 200 || res.statusCode >= 300) {
+            return reject(new Error("HTTP " + res.statusCode));
+          }
+          resolve({
+            body: data,
+            contentType: res.headers["content-type"] || "",
+          });
+        });
+      },
+    );
+    req.on("error", reject);
+    req.setTimeout(timeoutMs, function () {
+      req.destroy();
+      reject(new Error("Request timeout"));
+    });
+    req.end();
+  });
+}
+
 module.exports = {
   fetchJsonHttps: fetchJsonHttps,
+  fetchTextHttps: fetchTextHttps,
   postJsonHttps: postJsonHttps,
 };

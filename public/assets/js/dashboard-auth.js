@@ -109,20 +109,24 @@
         ? String(reason).trim()
         : "Your session expired. Please sign in again.";
 
-    try {
-      window.sessionStorage.setItem(SESSION_NOTICE_KEY, text);
-    } catch (e3) {}
-
     // Defer navigation so callers can finish the current stack (e.g. postRechargeApi may throw
     // right after this); an immediate assign can be skipped in some browsers when a throw follows.
     setTimeout(function () {
-      window.location.replace("/");
+      var target =
+        "/signin?notice=" + encodeURIComponent(text) + "&redirect=" + encodeURIComponent("/dashboardNew");
+      window.location.replace(target);
     }, 0);
   }
 
   window.VARNARC_SESSION_EXPIRED = sessionExpiredPromptRelogin;
 
   function syncUiAuthWithServerSession() {
+    var localUser = readUser();
+    if (!localUser) {
+      hydrateHeaderUser();
+      return Promise.resolve(null);
+    }
+
     return fetch("/api/auth/session", {
       method: "GET",
       credentials: "same-origin",
@@ -132,16 +136,18 @@
       },
     })
       .then(function (res) {
-        if (!res.ok) {
-          clearStoredAuth();
-          hydrateHeaderUser();
-          return null;
-        }
         return res
           .json()
           .then(function (payload) {
-            if (!payload || !payload.ok || !payload.user) {
+            if (res.status === 401) {
               clearStoredAuth();
+              hydrateHeaderUser();
+              return null;
+            }
+            if (!payload || !payload.ok || !payload.user) {
+              if (localUser) {
+                clearStoredAuth();
+              }
               hydrateHeaderUser();
               return null;
             }
@@ -214,18 +220,22 @@
       if (notice) window.sessionStorage.removeItem(SESSION_NOTICE_KEY);
     } catch (e) {}
 
-    if (notice && document.getElementById("login-modal")) {
-      var alertEl = document.getElementById("auth-alert");
-      if (alertEl) {
-        alertEl.className = "alert alert-warning mb-3";
-        alertEl.textContent = notice;
-        alertEl.classList.remove("d-none");
-      }
-      var modalEl = document.getElementById("login-modal");
-      if (modalEl && window.bootstrap && window.bootstrap.Modal) {
-        try {
-          window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
-        } catch (e2) {}
+    if (notice) {
+      if (window.location.pathname === "/signin" && window.VARNARC_AUTH_SHOW_NOTICE) {
+        window.VARNARC_AUTH_SHOW_NOTICE(notice, "warning");
+      } else if (document.getElementById("login-modal")) {
+        if (window.VARNARC_AUTH_SHOW_NOTICE) {
+          window.VARNARC_AUTH_SHOW_NOTICE(notice, "warning");
+        }
+        var modalEl = document.getElementById("login-modal");
+        if (modalEl && window.bootstrap && window.bootstrap.Modal) {
+          try {
+            window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+          } catch (e2) {}
+        }
+      } else {
+        window.location.href =
+          "/signin?notice=" + encodeURIComponent(notice) + "&redirect=" + encodeURIComponent("/dashboardNew");
       }
     }
   });

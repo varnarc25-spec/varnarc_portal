@@ -1,0 +1,26 @@
+{
+  "basePath": "/assets/images/hub/icons",
+  "sections": {
+    "BillPayments": [
+      "cabletv", "book-cylinder", "electricity", "gas", "water", "municipal-tax",
+      "broadband_landline", "mobile-postpaid", "education-fee", "loan", "credit-card",
+      "lic-insurance", "nps", "echallan", "devotion", "donation", "portfolio"
+    ],
+    "Recharge": [
+      "mobile_recharge", "dth", "subscription", "fastag_recharge", "apple_store",
+      "ev_recharge", "get_sim", "datacard", "broadband", "landline", "cabletv",
+      "electricity", "metro", "gas", "water"
+    ],
+    "MoneyTransfer": ["to_mobile_number", "to_bank_self_a_c", "check_balance"],
+    "Travel": ["travel-flight", "travel-bus", "travel-train", "travel-hotel"],
+    "Insurance": ["insurance-bike", "insurance-car", "insurance-health", "insurance-term"],
+    "DigiGoldSilver": [
+      "digigold", "buy_gold", "daily_gold_savings", "buy_silver_999", "daily_silver_saving",
+      "smart_sip", "gift_gold_silver", "family_vault", "profit_loss", "price_alerts",
+      "sell_gold_silver", "convert_to_physical_gold", "convert_to_physical_silver",
+      "transaction_history", "tax_capital_gain_report", "annual_statement"
+    ],
+    "FinancialHub": ["financial", "investments", "budget"],
+    "ConvenientHub": ["generic"]
+  }
+}

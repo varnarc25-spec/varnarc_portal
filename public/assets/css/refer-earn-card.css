@@ -90,22 +90,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.65rem 1.85rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #fff;
-    background: var(--refer-earn-blue);
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(43, 140, 255, 0.35);
     text-decoration: none;
-    transition: filter 0.2s ease, transform 0.15s ease;
 }
 
 .refer-earn-card__cta .btn-refer-earn:hover {
     color: #fff;
-    filter: brightness(1.06);
-    transform: translateY(-1px);
 }
 
 @media (max-width: 767.98px) {

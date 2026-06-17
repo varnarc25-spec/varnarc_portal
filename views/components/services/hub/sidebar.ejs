@@ -1,19 +1,27 @@
 <ul class="resp-tabs-list" role="tablist">
+  <% var hubTabIndex = 0; %>
   <% navEntries.forEach(function (entry) { %>
     <% if (entry.type !== 'item') { return; } %>
     <% var pid = entry.panelSlug || 'generic'; %>
-    <% var isActive = panelIsActive(pid); %>
+    <% entry._hubTabIndex = hubTabIndex; %>
+    <% var tabIdx = hubTabIndex; hubTabIndex += 1; %>
+    <% var isActive = typeof navItemIsActive === 'function' ? navItemIsActive(entry, tabIdx) : panelIsActive(pid); %>
     <% var iconSuffix = hubIconSuffix(entry.label, entry.item); %>
-    <li class="<%= isActive ? 'resp-tab-active is-active' : '' %>" role="presentation" data-hub-nav="<%= pid %>" aria-current="<%= isActive ? 'true' : 'false' %>" tabindex="0">
+    <li class="<%= isActive ? 'resp-tab-active is-active' : '' %>" role="presentation" data-hub-nav="<%= pid %>" data-hub-tab-index="<%= tabIdx %>" aria-current="<%= isActive ? 'true' : 'false' %>" tabindex="0">
       <span aria-hidden="true">
         <% var iconUrl = entry.item && entry.item.icon_url ? String(entry.item.icon_url).trim() : ''; %>
+        <% if (!iconUrl && typeof hubPanelIconUrl === 'function') { iconUrl = hubPanelIconUrl(pid) || ''; } %>
         <% if (iconUrl) { %>
+          <% if (iconUrl.indexOf('/assets/images/hub/') === 0) { %>
+          <span class="hub-nav-icon" style="-webkit-mask-image:url('<%= iconUrl %>');mask-image:url('<%= iconUrl %>');" role="presentation"></span>
+          <% } else { %>
           <img src="<%= iconUrl %>" alt="" width="18" height="18" loading="lazy" decoding="async" />
+          <% } %>
         <% } else { %>
           <i class="fas fa-<%= iconSuffix %>"></i>
         <% } %>
       </span>
-      <%= String(entry.label || '').trim().toLowerCase().replace(/\b\w/g, function (ch) { return ch.toUpperCase(); }) %>
+      <%= String(entry.label || '').trim() %>
     </li>
   <% }) %>
 </ul>

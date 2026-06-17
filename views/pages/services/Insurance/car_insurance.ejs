@@ -1,26 +1,40 @@
+<% var pageTitle = 'Car Insurance'; %>
+<% var pageDescription = 'Compare car insurance plans, use premium and IDV calculators, and get instant motor quotes on Varnarc.'; %>
 <!DOCTYPE html>
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/service-mobile-recharge.css" />
+<link rel="stylesheet" href="/assets/css/accident-insurance-page.css" />
 
 <body class="landing-page service-item-page">
   <div class="landing-page1">
     <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
   </div>
 
-  <section class="section-space service-item-section">
+  <section class="section-space service-item-section loanrep-service-section">
     <div class="container text-start py-4">
-      <div class="row align-items-start g-4">
-        <div class="col">
-          <h1 class="h2 mb-3">Car Insurance</h1>
-          <p class="lead text-muted mb-0">Car insurance</p>
-        </div>
-      </div>
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/services/Insurance/index">Insurance</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Car Insurance</li>
+        </ol>
+      </nav>
+
+      <%- include('../../../components/services/hub/forms/insurance/vehicle_insurance_form', {
+        panelSlug: 'insurance-car',
+        panelTitle: 'Car Insurance',
+        vehicleType: 'car',
+        hubEmbed: false
+      }) %>
     </div>
   </section>
 
 <%- include('../../../components/landing/footer') %>
 <%- include('../../../components/landing/scripts') %>
+<script src="/assets/js/hub-insurance-quote.js" defer></script>
 </body>
 
 </html>

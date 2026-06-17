@@ -1,0 +1,413 @@
+/**
+ * Hub — Quick access (mobile recharge) & credit card wallet (CRED-style)
+ */
+
+.hub-quick-access {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e8f4fd 100%);
+  border: 1px solid rgba(43, 140, 255, 0.22);
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+}
+
+.hub-quick-access__title {
+  color: #0a2e52;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.hub-quick-access__lead {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0 0 0.85rem;
+}
+
+.hub-quick-access__section {
+  margin-bottom: 0.75rem;
+}
+
+.hub-quick-access__section:last-child {
+  margin-bottom: 0;
+}
+
+.hub-quick-access__label {
+  color: #64748b;
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.hub-quick-access__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hub-quick-access__pill {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  color: #0a2e52;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hub-quick-access__pill:hover {
+  border-color: #2b8cff;
+  box-shadow: 0 2px 8px rgba(43, 140, 255, 0.18);
+}
+
+.hub-quick-access__empty {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* —— Credit card wallet —— */
+.ccb-wallet {
+  margin-bottom: 1.25rem;
+}
+
+.ccb-wallet__head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.ccb-wallet__title {
+  color: #0a2e52;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ccb-wallet__subtitle {
+  color: #64748b;
+  flex: 1 1 100%;
+  font-size: 0.82rem;
+  margin: -0.35rem 0 0;
+}
+
+.ccb-wallet__link-all {
+  background: none;
+  border: none;
+  color: #0071e3;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0;
+  text-decoration: none;
+}
+
+.ccb-wallet__link-all:hover {
+  text-decoration: underline;
+}
+
+.ccb-wallet__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ccb-card-tile {
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.ccb-card-tile__banner {
+  background: linear-gradient(120deg, #1e3a5f 0%, #2563eb 55%, #3b82f6 100%);
+  color: #fff;
+  padding: 0.85rem 1rem;
+}
+
+.ccb-card-tile__banner--c0 {
+  background: linear-gradient(120deg, #7c2d12 0%, #ea580c 100%);
+}
+
+.ccb-card-tile__banner--c1 {
+  background: linear-gradient(120deg, #1e3a8a 0%, #2563eb 100%);
+}
+
+.ccb-card-tile__banner--c3 {
+  background: linear-gradient(120deg, #831843 0%, #db2777 100%);
+}
+
+.ccb-card-tile__banner--c6 {
+  background: linear-gradient(120deg, #134e4a 0%, #0d9488 100%);
+}
+
+.ccb-card-tile__issuer-row {
+  align-items: center;
+  display: flex;
+  gap: 0.65rem;
+}
+
+.ccb-card-tile__logo {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.ccb-card-tile__issuer-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.ccb-card-tile__mask {
+  display: block;
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.ccb-card-tile__body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.ccb-card-tile__amount-row {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.ccb-card-tile__amount-label {
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ccb-card-tile__amount {
+  color: #0f172a;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.ccb-card-tile__meta {
+  display: grid;
+  gap: 0.35rem 1rem;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0.75rem;
+}
+
+.ccb-card-tile__meta dt {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ccb-card-tile__meta dd {
+  color: #1e293b;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ccb-card-tile__status {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin: 0 0 0.65rem;
+}
+
+.ccb-card-tile__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ccb-card-tile__pay {
+  background: #ff6b00;
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 8rem;
+  padding: 0.55rem 1rem;
+}
+
+.ccb-card-tile__pay:hover {
+  background: #e85f00;
+}
+
+.ccb-card-tile__secondary {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  color: #0f172a;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+}
+
+.ccb-card-tile__secondary:hover {
+  border-color: #94a3b8;
+}
+
+.ccb-add-card {
+  align-items: center;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  color: #0071e3;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  width: 100%;
+}
+
+.ccb-add-card:hover {
+  background: #f0f9ff;
+  border-color: #0071e3;
+}
+
+.ccb-pay-panel {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.ccb-pay-panel__amount {
+  color: #0f172a;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+}
+
+.ccb-pay-panel__meta {
+  color: #475569;
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+}
+
+.ccb-pay-panel__meta strong {
+  color: #0f172a;
+}
+
+.ccb-divider-or {
+  align-items: center;
+  color: #94a3b8;
+  display: flex;
+  font-size: 0.78rem;
+  font-weight: 600;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+.ccb-divider-or::before,
+.ccb-divider-or::after {
+  background: #e2e8f0;
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
+/* —— Loan repayment: full vs specific amount —— */
+.lr-amount-choice {
+  border: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.lr-amount-choice__legend {
+  color: #0a2e52;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.lr-amount-choice__option {
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 0.65rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 0.85rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lr-amount-choice__option:has(input:checked) {
+  border-color: #2b8cff;
+  box-shadow: 0 0 0 1px rgba(43, 140, 255, 0.25);
+}
+
+.lr-amount-choice__option input {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.lr-amount-choice__label {
+  color: #0f172a;
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.lr-amount-choice__hint {
+  color: #64748b;
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.lr-specific-amount .form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.lr-pay-summary {
+  color: #475569;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.lr-pay-summary strong {
+  color: #0f172a;
+  font-size: 1.05rem;
+}
+
+.lr-tile-note {
+  font-size: 0.75rem;
+  margin-top: -0.35rem;
+}

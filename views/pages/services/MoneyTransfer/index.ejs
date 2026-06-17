@@ -3,6 +3,8 @@
 
 <%- include('../../../components/landing/head') %>
 <link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+<link rel="stylesheet" href="/assets/css/services/money_transfer/money-transfer.css" />
+<link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
 
 <body class="landing-page service-section-page service-section-hub-page">
   <div class="landing-page1">
@@ -13,8 +15,15 @@
   <%- include('../../../components/services/hub/section-empty') %>
   <% } else { %>
   <%- include('../../../components/services/hub/section-open') %>
-  <%- include('../../../components/services/hub/forms/money-transfer') %>
+  <% /* Panel order matches sidebar: To Mobile Number → To Bank → Check Balance */ %>
+  <%- include('../../../components/services/hub/forms/moneytransfer/to_mobile_number_form', { panelSlug: 'to_mobile_number' }) %>
+  <%- include('../../../components/services/hub/forms/moneytransfer/to_bank_self_ac_form', { panelSlug: 'to_bank_self_a_c' }) %>
+  <%- include('../../../components/services/hub/forms/moneytransfer/check_balance_form', { panelSlug: 'check_balance' }) %>
   <%- include('../../../components/services/hub/section-close') %>
+  <script src="/assets/js/service-money-transfer-send.js" defer></script>
+  <script src="/assets/js/service-money-transfer-ifsc.js" defer></script>
+  <script src="/assets/js/service-money-transfer-self-bank.js" defer></script>
+  <script src="/assets/js/service-money-transfer-check-balance.js" defer></script>
   <% } %>
 
 <%- include('../../../components/landing/footer') %>

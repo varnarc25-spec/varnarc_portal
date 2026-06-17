@@ -1,0 +1,233 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "loan";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/BillPayments/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var searchId = "loan-provider-search-" + slug;
+  var topProviders = [
+    { key: "bajaj finance limited agent collection", initials: "BA", name: "Bajaj Finance Limited Agent Collection", color: "c0" },
+    { key: "bajaj finance ltd", initials: "BF", name: "Bajaj Finance Ltd", color: "c1" },
+    { key: "hdfc bank loan", initials: "HD", name: "HDFC Bank", color: "c1" },
+    { key: "icici bank loan", initials: "IC", name: "ICICI Bank", color: "c3" },
+    { key: "axis bank loan", initials: "AX", name: "Axis Bank", color: "c6" },
+    { key: "lt finance limited", initials: "LT", name: "L&T Finance Limited", color: "c5" },
+  ];
+  var allProviders = [
+    { key: "121 finance private limited", initials: "12", name: "121 Finance Private Limited", color: "c2" },
+    { key: "aavas financiers limited", initials: "AA", name: "AAVAS FINANCIERS LIMITED", color: "c3" },
+    { key: "amu leasing pvt ltd", initials: "AM", name: "AMU Leasing Pvt Ltd", color: "c4" },
+    { key: "apac financial services pvt ltd", initials: "AP", name: "APAC Financial Services Pvt Ltd", color: "c5" },
+    { key: "axis bank loan", initials: "AX", name: "Axis Bank", color: "c6" },
+    { key: "bajaj finance limited agent collection", initials: "BA", name: "Bajaj Finance Limited Agent Collection", color: "c0" },
+    { key: "bajaj finance ltd", initials: "BF", name: "Bajaj Finance Ltd", color: "c1" },
+    { key: "cholamandalam investment", initials: "CI", name: "Cholamandalam Investment and Finance Company", color: "c7" },
+    { key: "fullerton india credit", initials: "FI", name: "Fullerton India Credit Company Limited", color: "c0" },
+    { key: "godrej housing finance", initials: "GH", name: "Godrej Housing Finance", color: "c3" },
+    { key: "hdfc bank loan", initials: "HD", name: "HDFC Bank", color: "c1" },
+    { key: "home credit india", initials: "HC", name: "Home Credit India Finance Pvt Ltd", color: "c2" },
+    { key: "icici bank loan", initials: "IC", name: "ICICI Bank", color: "c3" },
+    { key: "indiabulls housing finance", initials: "IB", name: "Indiabulls Housing Finance Limited", color: "c4" },
+    { key: "lt finance limited", initials: "LT", name: "L&T Finance Limited", color: "c5" },
+    { key: "manappuram finance", initials: "MF", name: "Manappuram Finance Limited", color: "c6" },
+    { key: "muthoot finance", initials: "MU", name: "Muthoot Finance Ltd", color: "c7" },
+    { key: "pnb housing finance", initials: "PN", name: "PNB Housing Finance Limited", color: "c0" },
+    { key: "shriram finance", initials: "SR", name: "Shriram Finance Limited", color: "c1" },
+    { key: "tata capital", initials: "TC", name: "Tata Capital Limited", color: "c2" },
+  ];
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel electricity-hub-panel loan-repayment-hub-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-loan-repayment-hub
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="electricity-hub-panel loan-repayment-hub-panel is-active" data-loan-repayment-hub>
+<% } %>
+  <div class="electricity-hub-pay-web">
+    <div data-loan-step="loans">
+      <%- include('../../panel-header', { panelTitle: 'Loan Repayment', panelSlug: slug, href: href }) %>
+
+      <section class="ccb-wallet" data-lr-wallet aria-labelledby="lr-wallet-title">
+        <div class="ccb-wallet__head">
+          <div>
+            <h2 id="lr-wallet-title" class="ccb-wallet__title">Your loans</h2>
+            <p class="ccb-wallet__subtitle">View EMI due, due dates, and pay full or a specific amount.</p>
+          </div>
+          <button type="button" class="ccb-wallet__link-all" data-lr-browse-all>Pay other lender</button>
+        </div>
+        <ul class="ccb-wallet__list" data-lr-wallet-list></ul>
+        <button type="button" class="ccb-add-card mt-2" data-lr-add-loan>
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add loan account
+        </button>
+      </section>
+
+      <p class="hub-quick-access__lead mb-0">Sign in to save loans and see EMI bills. New users can add a loan below.</p>
+    </div>
+
+    <div data-loan-step="pick" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-loan-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back to your loans
+      </button>
+      <%- include('../../panel-header', { panelTitle: 'Add loan account', panelSlug: slug, href: href }) %>
+
+      <div class="electricity-hub-search-wrap">
+        <input
+          type="search"
+          class="electricity-hub-search-input"
+          id="<%= searchId %>"
+          data-loan-provider-search
+          placeholder="Search your provider"
+          autocomplete="off"
+          aria-label="Search your loan provider"
+        />
+        <button
+          type="button"
+          class="electricity-hub-search-clear"
+          data-loan-search-clear
+          aria-label="Clear search"
+          hidden
+        >
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <section class="electricity-hub-providers-section" aria-labelledby="lr-top-<%= slug %>">
+        <h3 id="lr-top-<%= slug %>" class="electricity-hub-section-title">Top service providers</h3>
+        <ul class="electricity-hub-providers list-unstyled mb-0" data-loan-provider-list="top">
+          <% topProviders.forEach(function (p) { %>
+          <li data-biller="<%= p.key %>">
+            <button type="button" class="electricity-hub-provider-btn" data-loan-provider="<%= p.key %>">
+              <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+              <span class="electricity-hub-provider-name"><%= p.name %></span>
+            </button>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+
+      <section class="electricity-hub-providers-section electricity-hub-providers-section--spaced" aria-labelledby="lr-all-<%= slug %>">
+        <h3 id="lr-all-<%= slug %>" class="electricity-hub-section-title">All service providers</h3>
+        <ul class="electricity-hub-providers list-unstyled mb-0" data-loan-provider-list="all">
+          <% allProviders.forEach(function (p) { %>
+          <li data-biller="<%= p.key %>">
+            <button type="button" class="electricity-hub-provider-btn" data-loan-provider="<%= p.key %>">
+              <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+              <span class="electricity-hub-provider-name"><%= p.name %></span>
+            </button>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    </div>
+
+    <div data-loan-step="pay" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-loan-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back to your loans
+      </button>
+      <div class="ccb-pay-panel">
+        <p class="electricity-hub-selected-provider__label mb-1">EMI amount due</p>
+        <p class="ccb-pay-panel__amount" data-lr-pay-full-amount>—</p>
+        <p class="ccb-pay-panel__meta mb-3" data-lr-pay-meta></p>
+
+        <fieldset class="lr-amount-choice" data-lr-amount-choice>
+          <legend class="lr-amount-choice__legend">Choose payment amount</legend>
+          <label class="lr-amount-choice__option">
+            <input type="radio" name="lr-amount-type-<%= slug %>" value="full" data-lr-amount-type checked />
+            <span class="lr-amount-choice__label">Pay full amount</span>
+            <span class="lr-amount-choice__hint" data-lr-full-hint>Pay the complete EMI due</span>
+          </label>
+          <label class="lr-amount-choice__option">
+            <input type="radio" name="lr-amount-type-<%= slug %>" value="specific" data-lr-amount-type />
+            <span class="lr-amount-choice__label">Pay specific amount</span>
+            <span class="lr-amount-choice__hint">Enter a custom amount (partial payment)</span>
+          </label>
+        </fieldset>
+
+        <div class="lr-specific-amount mb-3" data-lr-specific-wrap hidden>
+          <label class="form-label electricity-hub-field-label" for="lr-specific-<%= slug %>">Amount to pay (₹)</label>
+          <div class="input-group">
+            <span class="input-group-text">₹</span>
+            <input
+              type="text"
+              class="form-control electricity-hub-account-input"
+              id="lr-specific-<%= slug %>"
+              data-lr-specific-amount
+              inputmode="decimal"
+              placeholder="e.g. 5000"
+              autocomplete="off"
+            />
+          </div>
+          <p class="electricity-hub-field-hint mb-0" data-lr-amount-hint>
+            Minimum ₹100 · Maximum <span data-lr-max-amount>—</span>
+          </p>
+        </div>
+
+        <p class="lr-pay-summary mb-3" aria-live="polite">
+          You will pay: <strong data-lr-pay-summary-amount>—</strong>
+        </p>
+
+        <button type="button" class="btn electricity-hub-fetch-btn w-100" data-lr-pay-confirm disabled>
+          Proceed to pay
+        </button>
+      </div>
+    </div>
+
+    <div class="electricity-hub-details" data-loan-step="details" hidden>
+      <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-loan-back>
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Back
+      </button>
+      <p class="electricity-hub-selected-provider mb-3">
+        <span class="electricity-hub-selected-provider__label">Lender</span>
+        <span class="electricity-hub-selected-provider__name" data-loan-selected-name>—</span>
+      </p>
+
+      <form class="electricity-hub-details-form" data-loan-details-form novalidate>
+        <div class="mb-3">
+          <label class="form-label electricity-hub-field-label" for="lr-loanno-<%= slug %>">Loan number</label>
+          <input
+            type="text"
+            class="form-control electricity-hub-account-input"
+            id="lr-loanno-<%= slug %>"
+            data-loan-number
+            maxlength="20"
+            autocomplete="off"
+            required
+            aria-describedby="lr-loanno-hint-<%= slug %>"
+          />
+          <p id="lr-loanno-hint-<%= slug %>" class="electricity-hub-field-hint mb-0">
+            Please enter your 20-character loan account number
+          </p>
+        </div>
+
+        <div class="electricity-hub-consent mb-4">
+          <input
+            class="form-check-input electricity-hub-consent__input"
+            type="checkbox"
+            id="lr-consent-<%= slug %>"
+            data-loan-consent
+          />
+          <label class="form-check-label electricity-hub-consent__label" for="lr-consent-<%= slug %>">
+            I hereby authorize <strong data-loan-consent-lender>your lender</strong> and Varnarc to access bill details for
+            this payment, and I provide explicit consent for bill reminders and related communications.
+          </label>
+        </div>
+
+        <button type="submit" class="btn electricity-hub-fetch-btn w-100" data-loan-fetch disabled>
+          Fetch your bill
+        </button>
+        <p class="electricity-hub-field-hint mt-2 mb-0" data-loan-fetch-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>

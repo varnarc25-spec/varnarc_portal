@@ -1,179 +1,35 @@
-<% var pageTitle = 'Book LPG Gas'; %>
-<% var pageDescription = 'Book domestic LPG refill — Bharat Gas, HP Gas, Indane and more on Varnarc.'; %>
-<% 
-  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
-  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
-  var downloadHref = _play || _ios || '#';
-%>
 <!DOCTYPE html>
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
-<link rel="stylesheet" href="/assets/css/book-cylinder-page.css" />
+<link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+<link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
 
-<body class="landing-page service-item-page book-cylinder-page">
+<body class="landing-page service-item-page service-section-hub-page">
   <div class="landing-page1">
     <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
   </div>
 
-  <section class="section-space service-item-section book-cylinder-section">
+  <section class="section-space service-item-section">
     <div class="container text-start py-4">
-      <div class="book-cylinder-panel">
-        <div class="book-cylinder-promo-wrap">
-          <button type="button" class="book-cylinder-promo-arrow book-cylinder-promo-arrow--prev" id="bookCylinderPromoPrev" aria-label="Previous offers">
-            <i class="bi bi-chevron-left"></i>
-          </button>
-          <div class="book-cylinder-promo-scroll" id="bookCylinderPromoScroll" tabindex="0" role="region" aria-label="Promotional offers">
-            <article class="book-cylinder-promo-card">
-              <div>
-                <span class="book-cylinder-promo-card__badge">New user</span>
-                <p class="book-cylinder-promo-card__title">Flat ₹20 cashback on LPG booking via any pay mode</p>
-                <a href="#book-cylinder-providers-heading" class="book-cylinder-promo-card__btn">Book now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="100" viewBox="0 0 80 120"><defs><linearGradient id="bcylGrad1" x1="0" x2="1"><stop offset="0" stop-color="#dc2626"/><stop offset="1" stop-color="#991b1b"/></linearGradient></defs><ellipse cx="40" cy="18" rx="22" ry="8" fill="#b91c1c"/><rect x="18" y="14" width="44" height="92" rx="10" fill="url(#bcylGrad1)"/><rect x="30" y="4" width="20" height="14" rx="5" fill="#64748b"/></svg>
-              </div>
-            </article>
-            <article class="book-cylinder-promo-card">
-              <div>
-                <p class="book-cylinder-promo-card__title">Flat ₹10–₹20 cashback on LPG booking via any pay mode</p>
-                <a href="#book-cylinder-providers-heading" class="book-cylinder-promo-card__btn">Book now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="100" viewBox="0 0 80 120"><defs><linearGradient id="bcylGrad2" x1="0" x2="1"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#b91c1c"/></linearGradient></defs><ellipse cx="40" cy="18" rx="22" ry="8" fill="#b91c1c"/><rect x="18" y="14" width="44" height="92" rx="10" fill="url(#bcylGrad2)"/><rect x="30" y="4" width="20" height="14" rx="5" fill="#64748b"/></svg>
-              </div>
-            </article>
-            <article class="book-cylinder-promo-card book-cylinder-promo-card--muted">
-              <div>
-                <p class="book-cylinder-promo-card__title">Insta EMI Card — split spends into easy instalments</p>
-                <a href="/services/FinancialHub/index" class="book-cylinder-promo-card__btn">Get it now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="72" viewBox="0 0 80 80"><rect x="8" y="18" width="64" height="44" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/><rect x="16" y="44" width="28" height="6" rx="2" fill="#6366f1" opacity="0.5"/><circle cx="56" cy="38" r="10" fill="#6366f1"/></svg>
-              </div>
-            </article>
-            <article class="book-cylinder-promo-card book-cylinder-promo-card--muted">
-              <div>
-                <p class="book-cylinder-promo-card__title">Personal loan — quick eligibility check &amp; disbursal</p>
-                <a href="/services/FinancialHub/investments" class="book-cylinder-promo-card__btn">Apply now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="72" viewBox="0 0 80 80"><circle cx="40" cy="36" r="22" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><path d="M32 38h16v12H32z" fill="#f59e0b"/><path d="M36 30h8v8h-8z" fill="#d97706"/></svg>
-              </div>
-            </article>
-          </div>
-          <button type="button" class="book-cylinder-promo-arrow book-cylinder-promo-arrow--next" id="bookCylinderPromoNext" aria-label="Next offers">
-            <i class="bi bi-chevron-right"></i>
-          </button>
-        </div>
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/services/BillPayments/index">Bill Payments</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Book Gas Cylinder</li>
+        </ol>
+      </nav>
 
-        <section aria-labelledby="book-cylinder-providers-heading">
-          <h2 id="book-cylinder-providers-heading" class="book-cylinder-section-title">All service providers</h2>
-          <ul class="book-cylinder-providers list-unstyled mb-0">
-            <li>
-              <span class="book-cylinder-provider-logo book-cylinder-provider-logo--bpcl" aria-hidden="true">BP</span>
-              <span>Bharat Gas (BPCL)</span>
-            </li>
-            <li>
-              <span class="book-cylinder-provider-logo book-cylinder-provider-logo--bpcl-com" aria-hidden="true">BC</span>
-              <span>Bharat Gas (BPCL) — Commercial</span>
-            </li>
-            <li>
-              <span class="book-cylinder-provider-logo book-cylinder-provider-logo--hp" aria-hidden="true">HP</span>
-              <span>HP Gas (HPCL)</span>
-            </li>
-            <li>
-              <span class="book-cylinder-provider-logo book-cylinder-provider-logo--ioc" aria-hidden="true">IO</span>
-              <span>Indane Gas (Indian Oil)</span>
-            </li>
-          </ul>
-        </section>
-
-        <section class="book-cylinder-app-strip" aria-labelledby="book-cylinder-app-heading">
-          <div>
-            <h2 id="book-cylinder-app-heading" class="book-cylinder-app-strip__title">Continue on the app</h2>
-            <p class="book-cylinder-app-strip__sub">Download the app to redeem your rewards</p>
-            <% if (_play && _ios) { %>
-            <p class="small text-muted mb-0 mt-2">
-              <a href="<%= _ios %>" class="link-secondary" rel="noopener noreferrer" target="_blank">App Store</a>
-              <span class="text-muted px-1">·</span>
-              <a href="<%= _play %>" class="link-secondary" rel="noopener noreferrer" target="_blank">Google Play</a>
-            </p>
-            <% } %>
-          </div>
-          <a class="book-cylinder-download-btn" href="<%= downloadHref %>" <%= downloadHref !== '#' ? 'rel="noopener noreferrer" target="_blank"' : '' %> aria-label="Download the Varnarc app">Download</a>
-        </section>
-
-        <section class="book-cylinder-faq" aria-labelledby="book-cylinder-faq-heading">
-          <h2 id="book-cylinder-faq-heading" class="book-cylinder-section-title mb-3">Frequently asked questions</h2>
-          <div class="accordion" id="bookCylinderFaq">
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bookCylinderFaq1" aria-expanded="false" aria-controls="bookCylinderFaq1">
-                  How do I pay for my cylinder booking on Varnarc?
-                </button>
-              </h3>
-              <div id="bookCylinderFaq1" class="accordion-collapse collapse" data-bs-parent="#bookCylinderFaq">
-                <div class="accordion-body">
-                  Choose your LPG provider, enter your registered consumer details, pick a refill slot if offered, and pay with UPI, debit/credit card, or net banking. You will receive a confirmation on screen and by SMS/email.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bookCylinderFaq2" aria-expanded="false" aria-controls="bookCylinderFaq2">
-                  Where can I find my consumer ID / LPG ID?
-                </button>
-              </h3>
-              <div id="bookCylinderFaq2" class="accordion-collapse collapse" data-bs-parent="#bookCylinderFaq">
-                <div class="accordion-body">
-                  Your consumer number is printed on past invoices, SMS alerts from your distributor, or on your passbook from Bharat Gas, HP Gas, or Indane. You can also find it in your distributor’s mobile app or by calling the toll-free number on your cylinder booklet.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bookCylinderFaq3" aria-expanded="false" aria-controls="bookCylinderFaq3">
-                  When will I receive my gas cylinder?
-                </button>
-              </h3>
-              <div id="bookCylinderFaq3" class="accordion-collapse collapse" data-bs-parent="#bookCylinderFaq">
-                <div class="accordion-body">
-                  Delivery is arranged by your distributor after booking confirmation. Timing depends on route schedules and demand in your area — typically within a few working days. Track status in the app or contact your agency using the details on your booking receipt.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="book-cylinder-query">
-          <p>Still have a query?</p>
-          <a class="book-cylinder-query-card" href="mailto:support@varnarc.com?subject=LPG%20booking%20support">
-            <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
-            Raise a request
-          </a>
-        </section>
-      </div>
+      <%- include('../../../components/services/hub/forms/billpayments/book_cylinder_form', {
+        panelSlug: 'book-cylinder',
+        panelTitle: 'Book Gas Cylinder',
+        hubEmbed: false
+      }) %>
     </div>
   </section>
 
-<%- include('../../../components/landing/footer') %>
-<%- include('../../../components/landing/scripts') %>
-<script>
-(function () {
-  var el = document.getElementById("bookCylinderPromoScroll");
-  var prev = document.getElementById("bookCylinderPromoPrev");
-  var next = document.getElementById("bookCylinderPromoNext");
-  if (!el || !prev || !next) return;
-  function scrollByCards(dir) {
-    var card = el.querySelector(".book-cylinder-promo-card");
-    var delta = (card ? card.offsetWidth : 280) + 14;
-    el.scrollBy({ left: dir * delta, behavior: "smooth" });
-  }
-  prev.addEventListener("click", function () { scrollByCards(-1); });
-  next.addEventListener("click", function () { scrollByCards(1); });
-})();
-</script>
+  <%- include('../../../components/landing/footer') %>
+  <%- include('../../../components/landing/scripts') %>
 </body>
 
 </html>

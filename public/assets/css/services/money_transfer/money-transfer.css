@@ -1,0 +1,1522 @@
+/**
+ * Money transfer page
+ */
+/* —— Money Transfer: Send Money (UPI / Mobile) —— */
+.money-transfer-send-panel {
+  --mt-primary: #6f42c1;
+  --mt-primary-hover: #5a32a3;
+  --mt-tab-inactive-bg: #fff;
+  --mt-tab-inactive-border: #e5e7eb;
+  --mt-tab-inactive-text: #374151;
+}
+
+/* Inner UPI / Mobile panels — not .hub-tab-panel (avoid hub display:none rules). */
+.money-transfer-send-panel .mt-send-mode-panel {
+  display: none;
+  margin-bottom: 0.25rem;
+}
+
+.money-transfer-send-panel .mt-send-mode-panel.is-active {
+  display: block;
+}
+
+.money-transfer-send-panel .mt-send-mode-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.money-transfer-send-panel .mt-send-mode-tabs__btn {
+  background: var(--mt-tab-inactive-bg);
+  border: 1px solid var(--mt-tab-inactive-border);
+  border-radius: 0.5rem;
+  color: var(--mt-tab-inactive-text);
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.55rem 0.75rem;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.money-transfer-send-panel .mt-send-amount-group .input-group-text {
+  font-weight: 700;
+}
+
+.money-transfer-send-panel .mt-recent-contacts {
+  border-top: 1px solid #eef0f2;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+}
+
+.money-transfer-send-panel .mt-recent-contacts__head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.money-transfer-send-panel .mt-recent-contacts__title {
+  color: #111827;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.money-transfer-send-panel .mt-recent-contacts__see-all {
+  color: var(--mt-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.money-transfer-send-panel .mt-recent-contacts__see-all:hover {
+  text-decoration: underline;
+}
+
+.money-transfer-send-panel .mt-recent-contacts__list {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.money-transfer-send-panel .mt-recent-contact {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 4.5rem;
+  padding: 0;
+  text-align: center;
+}
+
+.money-transfer-send-panel .mt-recent-contact__avatar {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: 700;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.money-transfer-send-panel .mt-recent-contact__name {
+  color: #111827;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.money-transfer-send-panel .mt-recent-contact__detail {
+  color: #6b7280;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.money-transfer-send-panel .mt-recent-contact:hover .mt-recent-contact__avatar {
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.25);
+}
+
+/* —— Money Transfer: Check Balance (hub / Quickai theme) —— */
+.money-transfer-check-balance-panel {
+  --mt-cb-accent: #0071e3;
+  --mt-cb-accent-hover: #005bb5;
+  --mt-cb-border: #eef0f2;
+  --mt-cb-muted: #6b7280;
+  --mt-cb-text: #1f2937;
+  max-width: 100%;
+}
+
+.money-transfer-check-balance-panel .mt-cb-header__help {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 50%;
+  color: #6b7280;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2rem;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  width: 2rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-header__help:hover {
+  background: #f8fafc;
+  border-color: #86b7fe;
+  color: var(--mt-cb-accent);
+}
+
+.money-transfer-check-balance-panel .mt-cb-promo.hub-promo-fallback--dark {
+  color: #fff;
+  display: block;
+  min-height: auto !important;
+  overflow: hidden;
+  padding: 1rem 1.1rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-promo.hub-promo-fallback--dark:hover {
+  filter: brightness(1.05);
+}
+
+.money-transfer-check-balance-panel .mt-cb-promo__card {
+  background: linear-gradient(135deg, #fff 0%, #e8f4fc 100%);
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  height: 3.25rem;
+  position: relative;
+  transform: rotate(-6deg);
+  width: 4.75rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-promo__card-chip {
+  background: #f59e0b;
+  border-radius: 2px;
+  height: 0.5rem;
+  left: 0.45rem;
+  position: absolute;
+  top: 0.55rem;
+  width: 0.75rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-promo__card-brand {
+  bottom: 0.4rem;
+  color: #0a3d62;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  position: absolute;
+  right: 0.4rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-methods {
+  background: #fff;
+  border: 1px solid var(--mt-cb-border);
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.money-transfer-check-balance-panel .mt-cb-methods__item + .mt-cb-methods__item {
+  border-top: 1px solid var(--mt-cb-border);
+}
+
+.money-transfer-check-balance-panel .mt-cb-method {
+  align-items: center;
+  display: flex;
+  gap: 0.85rem;
+  min-height: 4.25rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method--link {
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method--link:hover,
+.money-transfer-check-balance-panel .mt-cb-method--link:focus-visible {
+  background: #f8fafc;
+  color: inherit;
+  outline: none;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__icon {
+  align-items: center;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__icon-text {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__icon--add {
+  background: #f8fafc;
+  border: 1px dashed #ced4da;
+  box-shadow: none;
+  color: var(--mt-cb-accent);
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__name {
+  color: var(--mt-cb-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__sub {
+  color: var(--mt-cb-muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__chevron {
+  color: #9ca3af;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__action {
+  color: var(--mt-cb-accent);
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__action:hover {
+  color: var(--mt-cb-accent-hover);
+  text-decoration: underline;
+}
+
+/* Check Balance — bank accordion */
+.money-transfer-check-balance-panel .mt-cb-accordion__row {
+  align-items: center;
+  display: flex;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion__trigger {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion__trigger:hover,
+.money-transfer-check-balance-panel .mt-cb-accordion__trigger:focus-visible {
+  background: #f8fafc;
+  outline: none;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion.is-open .mt-cb-accordion__trigger {
+  background: #f8fafc;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion.is-open .mt-cb-method__chevron i {
+  transform: rotate(180deg);
+}
+
+.money-transfer-check-balance-panel .mt-cb-method__chevron i {
+  transition: transform 0.2s ease;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion__action {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion__panel {
+  background: #f8fafc;
+  border-top: 1px solid var(--mt-cb-border);
+  padding: 1rem 1rem 1.1rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-accordion__hint {
+  color: var(--mt-cb-muted);
+  font-size: 0.85rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-balance {
+  margin-bottom: 1rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-balance__label {
+  color: var(--mt-cb-muted);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-balance__amount {
+  color: #0a2e52;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txns__title {
+  color: var(--mt-cb-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0 0 0.65rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn + .mt-cb-txn {
+  border-top: 1px solid #e5e7eb;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn__main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn__desc {
+  color: var(--mt-cb-text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn__date {
+  color: var(--mt-cb-muted);
+  font-size: 0.75rem;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn__amount {
+  flex-shrink: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn--debit .mt-cb-txn__amount {
+  color: #dc2626;
+}
+
+.money-transfer-check-balance-panel .mt-cb-txn--credit .mt-cb-txn__amount {
+  color: #059669;
+}
+
+/* Check Balance — UPI PIN modal */
+body.mt-cb-pin-modal-open {
+  overflow: hidden;
+}
+
+.mt-cb-pin-modal {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1055;
+}
+
+.mt-cb-pin-modal[hidden] {
+  display: none !important;
+}
+
+.mt-cb-pin-modal__backdrop {
+  background: rgba(10, 46, 82, 0.45);
+  inset: 0;
+  position: absolute;
+}
+
+.mt-cb-pin-modal__dialog {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  max-width: 22rem;
+  padding: 1.35rem 1.25rem 1.25rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.mt-cb-pin-modal__close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #6b7280;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  right: 0.65rem;
+  top: 0.65rem;
+  width: 2rem;
+}
+
+.mt-cb-pin-modal__close:hover {
+  color: #1f2937;
+}
+
+.mt-cb-pin-modal__title {
+  color: #0a2e52;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 1.5rem 0.5rem 0;
+}
+
+.mt-cb-pin-modal__desc {
+  color: #6b7280;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+.mt-cb-pin-modal__input {
+  font-size: 1.35rem;
+  letter-spacing: 0.35em;
+  margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 14rem;
+  min-height: 3rem;
+}
+
+.mt-cb-pin-modal__input--len-4 {
+  letter-spacing: 0.45em;
+  max-width: 10rem;
+}
+
+.mt-cb-pin-modal__error {
+  margin-top: 0.35rem;
+}
+
+.mt-cb-pin-modal__actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.mt-cb-pin-modal__setup {
+  text-align: center;
+}
+
+.mt-cb-pin-modal__setup .btn-link {
+  display: block;
+  margin: 0.5rem auto 0;
+  text-decoration: none;
+}
+
+/* —— Money Transfer: To Self Bank Account (multi-step) —— */
+.money-transfer-self-bank-panel {
+  --mt-self-primary: #6f42c1;
+  --mt-self-primary-hover: #5a32a3;
+  --mt-self-border: #eef0f2;
+  --mt-self-muted: #6b7280;
+  --mt-self-text: #1f2937;
+  --mt-self-card-bg: #f8fafc;
+  max-width: 100%;
+  position: relative;
+}
+
+.money-transfer-self-bank-panel .mt-self-step {
+  display: none;
+}
+
+.money-transfer-self-bank-panel .mt-self-step.is-active {
+  display: block;
+}
+
+.money-transfer-self-bank-panel .mt-self-header__back {
+  color: var(--mt-self-text);
+  font-size: 1.1rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.money-transfer-self-bank-panel .mt-self-header__back:hover {
+  color: var(--mt-self-primary);
+}
+
+.money-transfer-self-bank-panel .mt-self-header__help {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 50%;
+  color: var(--mt-self-muted);
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2rem;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  width: 2rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-header__help:hover {
+  border-color: #86b7fe;
+  color: var(--mt-self-primary);
+}
+
+.money-transfer-self-bank-panel .mt-self-section-label {
+  color: var(--mt-self-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.money-transfer-self-bank-panel .mt-self-section-label--sheet {
+  margin-top: 0.25rem;
+}
+
+/* Step 1 — Send Money cards */
+.money-transfer-self-bank-panel .mt-self-send-card {
+  align-items: center;
+  background: var(--mt-self-card-bg);
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.5rem;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  height: 100%;
+  justify-content: center;
+  min-height: 6.5rem;
+  padding: 1rem 0.65rem;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-self-send-card:hover,
+.money-transfer-self-bank-panel .mt-self-send-card:focus-visible {
+  border-color: var(--mt-self-primary);
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.15);
+  outline: none;
+}
+
+.money-transfer-self-bank-panel .mt-self-send-card__icon {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 1.1rem;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-send-card__icon--self,
+.money-transfer-self-bank-panel .mt-self-send-card__icon--bank {
+  background: var(--mt-self-primary);
+}
+
+.money-transfer-self-bank-panel .mt-self-send-card__label {
+  color: var(--mt-self-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.5rem;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  transition: background 0.15s ease;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row:hover {
+  background: #f8fafc;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row__icon {
+  align-items: center;
+  background: #e5e7eb;
+  border-radius: 50%;
+  color: #374151;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row__title {
+  color: var(--mt-self-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row__sub {
+  color: var(--mt-self-muted);
+  font-size: 0.8rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-upi-row__chev {
+  color: #9ca3af;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-wallet-promo {
+  border-radius: 0.5rem;
+  display: block;
+  min-height: auto !important;
+  padding: 1rem 1.1rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-wallet-promo__arrow {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-wallet-promo__wallet {
+  background: linear-gradient(145deg, #92400e 0%, #78350f 100%);
+  border-radius: 0.35rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+  height: 2.75rem;
+  position: relative;
+  width: 3.25rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-wallet-promo__wallet::after {
+  background: #f472b6;
+  border-radius: 2px;
+  content: "₹";
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0.2rem 0.25rem;
+  position: absolute;
+  right: -0.15rem;
+  top: -0.2rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-suggested__item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mt-self-border);
+  cursor: pointer;
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  text-align: left;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-self-suggested__item:hover {
+  background: #f8fafc;
+}
+
+.money-transfer-self-bank-panel .mt-self-suggested__icon {
+  align-items: center;
+  border-radius: 0.375rem;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-suggested__name {
+  color: var(--mt-self-text);
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-self-suggested__detail {
+  color: var(--mt-self-muted);
+  display: block;
+  font-size: 0.8rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-suggested__self {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-self-powered__badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Step 2 — Bank list */
+.money-transfer-self-bank-panel .mt-self-bank-list {
+  background: #fff;
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.money-transfer-self-bank-panel .mt-self-bank-list__item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mt-self-border);
+  cursor: pointer;
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  transition: background 0.15s ease;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-self-bank-list__item:last-child {
+  border-bottom: 0;
+}
+
+.money-transfer-self-bank-panel .mt-self-bank-list__item:hover {
+  background: #f8fafc;
+}
+
+.money-transfer-self-bank-panel .mt-self-bank-list__icon {
+  align-items: center;
+  border-radius: 0.375rem;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-bank-list__name {
+  color: var(--mt-self-text);
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-self-bank-list__branch {
+  color: var(--mt-self-muted);
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.money-transfer-self-bank-panel .mt-self-add-ac-btn {
+  border-radius: 2rem;
+  min-height: auto;
+  padding: 0.55rem 1.1rem;
+}
+
+/* Step 3 — Pay */
+.money-transfer-self-bank-panel .mt-self-pay-card {
+  background: var(--mt-self-card-bg);
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.5rem;
+  padding: 1.1rem 1rem 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-recipient {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-recipient__icon {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-recipient__mask {
+  color: var(--mt-self-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.money-transfer-self-bank-panel .mt-self-amount-input .form-control {
+  border-color: var(--mt-self-primary);
+  box-shadow: 0 0 0 1px var(--mt-self-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  min-height: 3rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-amount-input .input-group-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.money-transfer-self-bank-panel .mt-self-note-input {
+  background: #fff;
+  border-color: #d1d5db;
+  min-height: 2.75rem;
+}
+
+/* Step 4 — Checkout sheet */
+body.mt-self-checkout-open {
+  overflow: hidden;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout {
+  align-items: flex-end;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1055;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout[hidden] {
+  display: none !important;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout__backdrop {
+  background: rgba(15, 23, 42, 0.55);
+  inset: 0;
+  position: absolute;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout__sheet {
+  background: #fff;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.18);
+  max-height: 85vh;
+  max-width: 32rem;
+  overflow-y: auto;
+  padding: 1.1rem 1.15rem 1.35rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout__head {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout__title {
+  color: var(--mt-self-text);
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout__total {
+  color: var(--mt-self-text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.money-transfer-self-bank-panel .mt-self-checkout__close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--mt-self-muted);
+  display: inline-flex;
+  font-size: 1.1rem;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mt-self-border);
+  cursor: pointer;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  text-align: left;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source.is-selected .mt-self-pay-source__check {
+  color: #22c55e;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__icon {
+  align-items: center;
+  border-radius: 0.375rem;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.25rem;
+  justify-content: center;
+  width: 2.25rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__name {
+  color: var(--mt-self-text);
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__meta {
+  align-items: center;
+  color: var(--mt-self-muted);
+  display: flex;
+  font-size: 0.78rem;
+  gap: 0.35rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__upi {
+  background: #f3f4f6;
+  border-radius: 0.2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.1rem 0.3rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__amount {
+  color: var(--mt-self-text);
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__check {
+  color: transparent;
+  flex-shrink: 0;
+  font-size: 1.15rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__pin-link {
+  color: var(--mt-self-primary);
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-source__pin-link:hover {
+  text-decoration: underline;
+}
+
+.money-transfer-self-bank-panel .mt-self-add-bank-link {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+.money-transfer-self-bank-panel .mt-self-add-bank-link__icon {
+  color: var(--mt-self-muted);
+  font-size: 1.1rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-add-bank-link__text {
+  color: var(--mt-self-text);
+  flex: 1;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-self-add-bank-link .fa-chevron-right {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.money-transfer-self-bank-panel .mt-self-pay-final-btn {
+  font-weight: 700;
+}
+
+/* Primary/disabled button colors: varnarc-buttons.css */
+
+/* —— IFSC / Account Number flow —— */
+.money-transfer-self-bank-panel .mt-ifsc-saved-list {
+  background: #fff;
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mt-self-border);
+  cursor: pointer;
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__item:last-child {
+  border-bottom: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__item:hover {
+  background: #f8fafc;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__icon {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__name {
+  color: var(--mt-self-text);
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__bank {
+  color: var(--mt-self-text);
+  display: block;
+  font-size: 0.88rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__meta {
+  color: var(--mt-self-muted);
+  display: block;
+  font-size: 0.78rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-saved-list__menu {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-header {
+  align-items: center;
+  display: flex;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-header__avatar {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-header__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-header__name {
+  color: var(--mt-self-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-header__bank {
+  color: var(--mt-self-muted);
+  font-size: 0.8rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-body {
+  min-height: 12rem;
+  padding-bottom: 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-date {
+  color: var(--mt-self-muted);
+  font-size: 0.78rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-bubble {
+  max-width: 16rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-bubble__card {
+  background: #6f42c1;
+  border-radius: 0.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-bubble__amount {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-bubble__status {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-retry {
+  margin-top: 0.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-compose {
+  align-items: center;
+  border-top: 1px solid var(--mt-self-border);
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-compose__input {
+  flex: 1;
+  min-height: 2.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-compose__send {
+  align-items: center;
+  background: var(--vn-btn-primary-bg, #0071e3);
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-chat-compose__send:disabled {
+  background: var(--vn-btn-disabled-bg, #e5e7eb) !important;
+  color: var(--vn-btn-disabled-color, #9ca3af) !important;
+  cursor: not-allowed;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search-wrap {
+  position: relative;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 0.85rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search__icon {
+  color: var(--mt-self-muted);
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search__input {
+  border: 0;
+  box-shadow: none;
+  min-height: 2.75rem;
+  padding-left: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search__input:focus {
+  box-shadow: none;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search-results {
+  background: #fff;
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.375rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  left: 0;
+  max-height: 14rem;
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.25rem);
+  z-index: 20;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search-results__item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mt-self-border);
+  cursor: pointer;
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search-results__item:hover {
+  background: #f8fafc;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-search-results__icon {
+  align-items: center;
+  border-radius: 0.25rem;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  height: 1.75rem;
+  justify-content: center;
+  width: 1.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-popular-grid {
+  display: grid;
+  gap: 0.75rem 0.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-popular-item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  text-align: center;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-popular-item__icon {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.6rem;
+  font-weight: 800;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-popular-item__name {
+  color: var(--mt-self-text);
+  font-size: 0.68rem;
+  line-height: 1.2;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-divider {
+  border-color: var(--mt-self-border);
+  margin: 0.5rem 0 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-all-banks {
+  background: #fff;
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.375rem;
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-all-banks__item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mt-self-border);
+  cursor: pointer;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-all-banks__item:hover {
+  background: #f8fafc;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-all-banks__icon {
+  align-items: center;
+  border-radius: 0.25rem;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  height: 1.75rem;
+  justify-content: center;
+  width: 1.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-all-banks__name {
+  color: var(--mt-self-text);
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card {
+  background: var(--mt-self-card-bg);
+  border: 1px solid var(--mt-self-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__bank {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__bank-icon {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__bank-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__bank-label {
+  color: var(--mt-self-muted);
+  display: block;
+  font-size: 0.75rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__bank-name {
+  color: var(--mt-self-text);
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__edit {
+  color: var(--vn-btn-primary-bg, #0071e3);
+  font-size: 1rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__rule {
+  border-color: var(--mt-self-border);
+  margin: 1rem 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__field-label {
+  color: var(--mt-self-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__field {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d1d5db;
+  border-radius: 0;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.money-transfer-self-bank-panel .mt-ifsc-add-card__field:focus {
+  border-bottom-color: var(--vn-btn-primary-bg, #0071e3);
+  box-shadow: none;
+}

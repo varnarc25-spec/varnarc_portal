@@ -3,308 +3,35 @@
 
 <%- include('../../../components/landing/head') %>
 
-  <body class="landing-page service-item-page service-mobile-recharge-page">
-    <link rel="stylesheet" href="/assets/css/service-mobile-recharge.css" />
-    <!-- Optional: JSON for remote operator lookup, e.g. { "operatorLookupUrlTemplate": "/api/lookup?mobile={mobile}" } -->
-    <script type="application/json" id="varnarc-recharge-ui-config">{}</script>
+<body class="landing-page service-item-page service-mobile-recharge-page">
+  <link rel="stylesheet" href="/assets/css/service-mobile-recharge.css" />
+  <link rel="stylesheet" href="/assets/css/electricity-page.css" />
+  <link rel="stylesheet" href="/assets/css/hub-quick-access.css" />
+  <link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
 
-    <div class="landing-page1">
-      <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  <div class="landing-page1">
+    <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
+  </div>
+
+  <section class="section-space service-recharge-hero service-item-section">
+    <div class="container text-start">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/services/Recharge/index">Recharge &amp; Bill Payment</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mobile Recharge</li>
+        </ol>
+      </nav>
+
+      <%- include('../../../components/services/hub/forms/recharges/mobile_recharge_form', { panelSlug: 'mobile_recharge', hubEmbed: false }) %>
     </div>
+  </section>
 
-    <section class="section-space service-recharge-hero service-item-section">
-      <div class="container text-start">
-        <nav aria-label="breadcrumb" class="mb-3">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/services/Recharge/index">Recharge &amp; Bill Payment</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Mobile Recharge</li>
-          </ol>
-        </nav>
-
-        <p class="service-recharge-value-prop mb-3 mb-lg-4">
-          Instant mobile recharge with secure payments and reward points — complete your prepaid or bill payment in
-          under a minute.
-        </p>
-
-        <div class="row service-recharge-panel g-4 g-lg-4 align-items-stretch">
-          <div class="col-lg-6">
-            <div class="service-recharge-card h-100 position-relative">
-              <h2>Mobile Recharge or Bill Payment</h2>
-              <p class="service-recharge-card__sub">Fill your number and operator, pick a suggested plan or enter an
-                amount — then proceed to pay securely.</p>
-
-              <ol class="recharge-flow-steps mb-4" aria-label="Recharge progress">
-                <li class="recharge-flow-steps__segment is-active" data-step="details">
-                  <span class="recharge-flow-steps__label">Enter details</span>
-                </li>
-                <li class="recharge-flow-steps__segment" data-step="plans">
-                  <span class="recharge-flow-steps__label">Choose plan</span>
-                </li>
-                <li class="recharge-flow-steps__segment" data-step="payment">
-                  <span class="recharge-flow-steps__label">Payment</span>
-                </li>
-              </ol>
-
-              <div id="recharge-personalized" class="recharge-personalized d-none mb-4">
-                <h3>Quick access</h3>
-                <p class="small text-muted mb-2">Signed-in users see recent numbers and quick recharge.</p>
-                <div id="recharge-again-own" class="mb-2 d-none">
-                  <span class="small fw-semibold text-secondary d-block mb-1">Your number</span>
-                  <button type="button" class="recharge-personalized-pill" id="recharge-again-own-btn"
-                    data-quick-number="">Recharge my number</button>
-                </div>
-                <div class="mb-2">
-                  <span class="small fw-semibold text-secondary d-block mb-1">Recent recharges</span>
-                  <div id="recharge-recent-list" class="d-flex flex-wrap"></div>
-                </div>
-                <div>
-                  <span class="small fw-semibold text-secondary d-block mb-1">Saved numbers</span>
-                  <div id="recharge-saved-list" class="d-flex flex-wrap"></div>
-                </div>
-              </div>
-
-              <form id="mobile-recharge-form" class="service-recharge-form" action="#" method="get" novalidate>
-                <div class="recharge-type-toggle" role="radiogroup" aria-label="Connection type">
-                  <div class="form-check form-check-inline d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="connectionType" id="recharge-prepaid"
-                      value="prepaid" checked>
-                    <label class="form-check-label" for="recharge-prepaid">Prepaid</label>
-                  </div>
-                  <div class="form-check form-check-inline d-flex align-items-center">
-                    <input class="form-check-input" type="radio" name="connectionType" id="recharge-postpaid"
-                      value="postpaid">
-                    <label class="form-check-label" for="recharge-postpaid">Postpaid (bill)</label>
-                  </div>
-                </div>
-                <p class="input-hint mb-3">Choose prepaid for talktime/data packs, postpaid when paying a monthly bill.
-                </p>
-
-                <div class="mb-3">
-                  <label for="recharge-mobile" class="form-label">Mobile number (India)</label>
-                  <div class="input-group recharge-mobile-input-group">
-                    <input type="tel" class="form-control" id="recharge-mobile" name="mobile" inputmode="numeric"
-                      autocomplete="tel" pattern="[0-9\s]{10,13}" maxlength="13"
-                      placeholder="10-digit mobile, e.g. 9876543210" title="Indian mobile starting with 6–9">
-                    <button type="button" class="btn btn-outline-secondary recharge-mobile-append-btn"
-                      id="recharge-mobile-verify-btn" aria-label="Verify number and suggest operator">
-                      Fetch plans
-                    </button>
-                  </div>
-                  <div id="recharge-mobile-feedback" class="field-feedback" aria-live="polite"></div>
-                  <span class="input-hint">We don’t spam. Used only for recharge and confirmations.</span>
-                </div>
-
-                <div class="mb-3">
-                  <label for="recharge-operator" class="form-label">Operator</label>
-                  <div class="recharge-operator-field">
-                    <div id="recharge-operator-logo-wrap" class="recharge-operator-logo-wrap d-none"
-                      aria-hidden="true">
-                      <img id="recharge-operator-logo" class="recharge-operator-logo" src="" alt=""
-                        width="44" height="44" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-                    </div>
-                    <div class="recharge-operator-field__main">
-                      <select class="form-select" id="recharge-operator" name="operator"
-                        aria-describedby="operator-hint-text">
-                        <option value="" selected disabled>Select your operator</option>
-                        <option value="airtel">Airtel</option>
-                        <option value="jio">Jio</option>
-                        <option value="vi">Vi</option>
-                        <option value="bsnl">BSNL</option>
-                      </select>
-                      <p id="operator-hint-text" class="operator-hint mb-0" aria-live="polite"></p>
-                    </div>
-                  </div>
-                </div>
-
-                <div id="recharge-plan-picker" class="recharge-plan-picker d-none">
-                  <p id="recharge-plans" class="recharge-plan-picker__title">Browse plans</p>
-                  <p class="small text-muted mb-2">Choose a category, then tap a plan to fill the amount. You can edit the amount anytime.</p>
-                  <div id="recharge-plan-category-tabs" class="recharge-plan-category-tabs d-none" role="tablist"
-                    aria-label="Plan categories"></div>
-                  <div class="recharge-plan-grid-scroll" id="recharge-plan-grid-scroll">
-                    <div id="recharge-plan-grid" class="recharge-plan-grid"></div>
-                  </div>
-                </div>
-
-                <div class="mb-3">
-                  <div class="amount-label-row">
-                    <label for="recharge-amount" class="form-label mb-0">Amount (₹)</label>
-                    <a href="#recharge-plans" class="service-recharge-view-plans service-recharge-view-plans--inline">
-                      Browse plans below
-                    </a>
-                  </div>
-                  <div class="service-recharge-amount-wrap">
-                    <div class="input-group">
-                      <span class="input-group-text">₹</span>
-                      <input type="text" class="form-control" id="recharge-amount" name="amount" inputmode="decimal"
-                        placeholder="e.g. 349" aria-describedby="amount-tip">
-                    </div>
-                  </div>
-                  <span id="amount-tip" class="input-hint d-block mt-1">Minimum ₹10. Use a plan card or enter your own amount.</span>
-                </div>
-
-                <div class="recharge-trust-compact" aria-label="Trust and payments">
-                  <span class="recharge-trust-chip"><i class="bi bi-lock-fill"></i> Secure payments</span>
-                  <span class="recharge-trust-chip"><i class="bi bi-lightning-fill"></i> Instant recharge</span>
-                  <span class="recharge-trust-chip"><i class="bi bi-headset"></i> 24/7 support</span>
-                  <div class="recharge-pay-logo-row" aria-label="Payment networks">
-                    <span>UPI</span>
-                    <span>VISA</span>
-                    <span>RuPay</span>
-                    <span>NetBanking</span>
-                  </div>
-                </div>
-
-                <button type="submit" class="btn btn-recharge-continue w-100 mt-3"
-                  id="recharge-main-submit" disabled>Proceed to Pay</button>
-                <p class="small text-muted text-center mt-2 mb-0">
-                  <a href="mailto:support@varnarc.com">support@varnarc.com</a> ·
-                  <a href="tel:+919739723973">+91 973 972 3973</a>
-                </p>
-              </form>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div id="rechargePromoCarousel" class="carousel slide service-recharge-banner" data-bs-ride="carousel"
-              data-bs-interval="6000">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#rechargePromoCarousel" data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#rechargePromoCarousel" data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="recharge-promo-slide">
-                    <div class="recharge-promo-art" aria-hidden="true">
-                      <div class="promo-icon-wrap">
-                        <i class="bi bi-wifi"></i>
-                      </div>
-                    </div>
-                    <div class="recharge-promo-body recharge-promo-body-inner">
-                      <p class="recharge-promo-eyebrow mb-0">Limited offer</p>
-                      <p class="recharge-promo-amount">GET ₹100 OFF</p>
-                      <p class="recharge-promo-sub">Apply promo code at checkout on selected prepaid recharges.</p>
-                      <div class="recharge-promo-code mb-1">
-                        <span class="code-label">Promo code</span>
-                        <span class="promo-visible-code">STAR20</span>
-                      </div>
-                      <p class="promo-expiry-text">Valid until 31 Mar 2026 · *T&amp;C apply</p>
-                      <div class="promo-apply-stack">
-                        <span id="promo-copy-toast" role="status"></span>
-                        <button type="button" class="btn-promo-apply" data-promo-code="STAR20">Apply code</button>
-                      </div>
-                      <p class="recharge-promo-foot">Copy the code and paste it on the payment screen when shown.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="recharge-promo-slide recharge-promo-slide--alt">
-                    <div class="recharge-promo-art" aria-hidden="true">
-                      <div class="promo-icon-wrap">
-                        <i class="bi bi-lightning-charge-fill"></i>
-                      </div>
-                    </div>
-                    <div class="recharge-promo-body recharge-promo-body-inner">
-                      <p class="recharge-promo-eyebrow mb-0">Rewards</p>
-                      <p class="recharge-promo-amount">2%</p>
-                      <p class="recharge-promo-sub">Extra reward points on your first eligible recharge this month.</p>
-                      <div class="recharge-promo-code mb-1">
-                        <span class="code-label">Promo code</span>
-                        <span class="promo-visible-code">VARNArc</span>
-                      </div>
-                      <p class="promo-expiry-text">Ends 30 Apr 2026 · *T&amp;C apply</p>
-                      <div class="promo-apply-stack">
-                        <span id="promo-copy-toast-alt" role="status"></span>
-                        <button type="button" class="btn-promo-apply" data-promo-code="VARNArc">Apply code</button>
-                      </div>
-                      <p class="recharge-promo-foot">Use before you pay — offers may vary by operator.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#rechargePromoCarousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#rechargePromoCarousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="recharge-sticky-cta d-lg-none" id="recharge-sticky-cta">
-      <button type="submit" form="mobile-recharge-form" class="btn btn-recharge-continue w-100"
-        id="recharge-sticky-submit" disabled>Proceed to Pay</button>
-    </div>
-
-    <section class="service-recharge-info" id="recharge-info-tabs">
-      <div class="container">
-        <ul class="nav nav-tabs" id="rechargeInfoTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="tab-recharge" data-bs-toggle="tab" data-bs-target="#pane-recharge"
-              type="button" role="tab" aria-controls="pane-recharge" aria-selected="true">Mobile recharge</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="tab-bill" data-bs-toggle="tab" data-bs-target="#pane-bill" type="button"
-              role="tab" aria-controls="pane-bill" aria-selected="false">Bill payment</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="tab-why" data-bs-toggle="tab" data-bs-target="#pane-why" type="button"
-              role="tab" aria-controls="pane-why" aria-selected="false">Why Varnarc</button>
-          </li>
-        </ul>
-        <div class="tab-content pt-4" id="rechargeInfoTabContent">
-          <div class="tab-pane fade show active" id="pane-recharge" role="tabpanel" aria-labelledby="tab-recharge"
-            tabindex="0">
-            <p class="mb-3">
-              Recharge any prepaid mobile number in a few steps. Enter your number, pick your operator, and choose an
-              amount or browse plans. Payments are processed securely; you will receive confirmation once the operator
-              accepts the recharge.
-            </p>
-            <p class="mb-0">
-              For plan-specific validity and talk time, pick a suggested plan card or use <strong>Browse plans
-                below</strong>. Questions? Email <a href="mailto:support@varnarc.com">support@varnarc.com</a> or read
-              <a href="/pages/term-conditions">terms</a>.
-            </p>
-          </div>
-          <div class="tab-pane fade" id="pane-bill" role="tabpanel" aria-labelledby="tab-bill" tabindex="0">
-            <p class="mb-3">
-              Pay postpaid mobile, DTH, electricity, and other bills from one place. Add your account or consumer
-              number, verify details on the biller screen, and pay with your preferred method.
-            </p>
-            <p class="mb-0">
-              Bill availability depends on the biller. Save payees for faster checkout next time. <a
-                href="/pages/term-conditions">Read terms</a>
-            </p>
-          </div>
-          <div class="tab-pane fade" id="pane-why" role="tabpanel" aria-labelledby="tab-why" tabindex="0">
-            <p class="mb-3">
-              Varnarc brings recharges, bills, investments, and more into one platform with clear flows and support when
-              you need it.
-            </p>
-            <p class="mb-0">
-              We focus on reliable payments and transparent pricing. Questions? See our <a href="/#faq">FAQ</a>, call
-              <a href="tel:+919739723973">support</a>, or review <a href="/pages/term-conditions">terms</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <%- include('../../../components/footer-trust-strip') %>
-
-      <%- include('../../../components/footer-end') %>
-        <%- include('../../../components/landing/scripts') %>
-          <script src="/assets/js/service-mobile-recharge.js"></script>
-  </body>
+  <%- include('../../../components/footer-trust-strip') %>
+  <%- include('../../../components/footer-end') %>
+  <%- include('../../../components/landing/scripts') %>
+  <script src="/assets/js/service-mobile-recharge.js" defer></script>
+  <script src="/assets/js/hub-mobile-quick-access.js" defer></script>
+</body>
 
 </html>

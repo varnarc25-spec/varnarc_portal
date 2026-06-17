@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in | Varnarc</title>
+  <meta name="description" content="Sign in to Varnarc with your mobile number. Manage recharges, bills, transfers, and more in one place." />
+  <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/vendors/bootstrap.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/assets/css/signin-page.css" />
+</head>
+<body class="signin-page">
+  <div class="signin-page__inner">
+    <header class="signin-topbar">
+      <a class="signin-topbar__logo" href="/" title="Varnarc home">
+        <img src="/assets/images/logo/varnarclogo1.png" alt="Varnarc" data-company-icon />
+      </a>
+      <a class="signin-topbar__home" href="/">← Back to home</a>
+    </header>
+
+    <div class="signin-hero">
+      <section class="signin-card" aria-labelledby="signin-title">
+        <h1 id="signin-title" class="signin-card__title">Sign-in to Varnarc</h1>
+
+        <div class="signin-card__subhead">
+          <p>Select an account type to proceed</p>
+          <a class="signin-card__help" href="/contact" title="Help">Help?</a>
+        </div>
+
+        <div class="signin-tabs" role="tablist" aria-label="Account type">
+          <button type="button" class="signin-tabs__btn is-active" role="tab" data-signin-tab="individual" aria-selected="true">
+            Individual
+          </button>
+          <button type="button" class="signin-tabs__btn" role="tab" data-signin-tab="corporate" aria-selected="false">
+            Corporate/Business
+          </button>
+          <button type="button" class="signin-tabs__btn" role="tab" data-signin-tab="nri" aria-selected="false">
+            NRI
+          </button>
+        </div>
+
+        <div id="signin-coming-soon" class="signin-coming-soon d-none" role="status">
+          Mobile OTP sign-in is available for Individual accounts only. Other account types are coming soon.
+        </div>
+
+        <div id="signin-auth-panel">
+          <%- include('components/auth/phone-otp-panel', { redirectUrl: redirectUrl }) %>
+        </div>
+
+        <p class="signin-legal">
+          By proceeding, you agree to Varnarc’s terms of use and privacy policy. OTP verification is required to
+          secure your account. Services are subject to applicable regulations and partner availability.
+        </p>
+      </section>
+
+      <aside class="signin-welcome" aria-label="Welcome">
+        <h2>Welcome!</h2>
+        <p class="signin-welcome__lead">
+          Manage your recharges, bill payments, money transfers, insurance, investments, and more — all in one secure
+          place. Sign in with your mobile number to get started.
+        </p>
+
+        <div class="signin-app-promo">
+          <div class="signin-app-promo__qr">
+            <img src="/assets/images/signin/app-qr.svg" alt="" width="100" height="100" />
+          </div>
+          <div class="signin-app-promo__text">
+            <h3>Download our app</h3>
+            <p>For a personalised experience on the go.</p>
+            <div class="signin-app-stores">
+              <a href="/" title="Android app" aria-label="Android"><i class="bi bi-google-play"></i></a>
+              <a href="/" title="iOS app" aria-label="iOS"><i class="bi bi-apple"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="signin-ratings">
+          <div class="signin-rating-block">
+            <div class="signin-rating-block__label">ANDROID</div>
+            <div class="signin-rating-block__score">4.8 <small>★</small></div>
+            <div class="signin-rating-block__platform">Highly rated</div>
+          </div>
+          <div class="signin-rating-block">
+            <div class="signin-rating-block__label">iOS</div>
+            <div class="signin-rating-block__score">4.7 <small>★</small></div>
+            <div class="signin-rating-block__platform">Highly rated</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="signin-features" aria-labelledby="signin-features-title">
+      <h2 id="signin-features-title" class="signin-features__head">
+        Here’s what we have in store for you — <a href="/">Explore services</a>
+      </h2>
+      <div class="signin-features__grid">
+        <article class="signin-feature">
+          <span class="signin-feature__icon" aria-hidden="true"><i class="bi bi-shield-check"></i></span>
+          <h4>Insurance</h4>
+          <p>Explore bike, car, health, and term plans tailored for you.</p>
+        </article>
+        <article class="signin-feature">
+          <span class="signin-feature__icon" aria-hidden="true"><i class="bi bi-credit-card"></i></span>
+          <h4>Recharge &amp; Bills</h4>
+          <p>Pay mobile, DTH, electricity, gas, water, and other bills quickly.</p>
+        </article>
+        <article class="signin-feature">
+          <span class="signin-feature__icon" aria-hidden="true"><i class="bi bi-graph-up-arrow"></i></span>
+          <h4>Investments</h4>
+          <p>Track gold, silver, SIPs, and financial goals in one dashboard.</p>
+        </article>
+        <article class="signin-feature">
+          <span class="signin-feature__icon" aria-hidden="true"><i class="bi bi-cash-coin"></i></span>
+          <h4>Loans &amp; repayment</h4>
+          <p>Manage loan repayments and stay on top of your EMIs.</p>
+        </article>
+        <article class="signin-feature">
+          <span class="signin-feature__icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+          <h4>Your profile</h4>
+          <p>Update your phone number, KYC details, and account preferences.</p>
+        </article>
+        <article class="signin-feature">
+          <span class="signin-feature__icon" aria-hidden="true"><i class="bi bi-download"></i></span>
+          <h4>Documents</h4>
+          <p>View statements, receipts, and transaction history anytime.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    window.VARNARC_AUTH_CONFIG = {
+      firebaseApiKey: "<%= authConfig.firebaseApiKey %>",
+      firebaseAuthDomain: "<%= authConfig.firebaseAuthDomain %>",
+      firebaseProjectId: "<%= authConfig.firebaseProjectId %>",
+      firebaseStorageBucket: "<%= authConfig.firebaseStorageBucket %>",
+      firebaseAppId: "<%= authConfig.firebaseAppId %>",
+      firebaseMessagingSenderId: "<%= authConfig.firebaseMessagingSenderId %>",
+      firebaseMeasurementId: "<%= authConfig.firebaseMeasurementId %>",
+      margApiBaseUrl: "<%= authConfig.margApiBaseUrl %>"
+    };
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/company-info-global.js"></script>
+  <script src="/assets/js/firebase-phone-auth.js"></script>
+  <script src="/assets/js/dashboard-auth.js"></script>
+  <script src="/assets/js/signin-page.js"></script>
+</body>
+</html>

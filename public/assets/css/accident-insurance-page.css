@@ -1,0 +1,237 @@
+/**
+ * Insurance hub panels (accident, health, term, motor) — shared styles
+ */
+
+.service-accident-insurance-page,
+.service-insurance-hub-page {
+  --ai-primary: #0a3d62;
+  --ai-accent: #2b8cff;
+  --ai-warm: #ea580c;
+  --ai-panel-bg: #f4f6f8;
+  --ai-card-radius: 12px;
+  /* background-color: var(--ai-panel-bg); */
+}
+
+.service-accident-insurance-page .ai-calculator-bar,
+.service-insurance-hub-page .ai-calculator-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-accident-insurance-page .ai-calculator-btn,
+.service-insurance-hub-page .ai-calculator-btn {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(43, 140, 255, 0.35);
+  border-radius: 999px;
+  color: var(--ai-primary);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.service-accident-insurance-page .ai-calculator-btn:hover,
+.service-insurance-hub-page .ai-calculator-btn:hover,
+.service-accident-insurance-page .ai-calculator-btn.is-active,
+.service-insurance-hub-page .ai-calculator-btn.is-active {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e8f4fd 100%);
+  border-color: var(--ai-accent);
+  box-shadow: 0 2px 10px rgba(43, 140, 255, 0.2);
+}
+
+.service-accident-insurance-page .ai-calculator-btn i,
+.service-insurance-hub-page .ai-calculator-btn i {
+  color: var(--ai-accent);
+  font-size: 1rem;
+}
+
+.service-accident-insurance-page .ai-calculator-panel,
+.service-insurance-hub-page .ai-calculator-panel {
+  background: linear-gradient(135deg, #f0f9ff 0%, #fff 55%);
+  border: 1px solid rgba(43, 140, 255, 0.22);
+  border-radius: var(--ai-card-radius);
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+}
+
+.service-accident-insurance-page .ai-calculator-panel[hidden],
+.service-insurance-hub-page .ai-calculator-panel[hidden] {
+  display: none !important;
+}
+
+.service-accident-insurance-page .ai-calculator-panel__title,
+.service-insurance-hub-page .ai-calculator-panel__title {
+  color: var(--ai-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.service-accident-insurance-page .ai-calculator-result,
+.service-insurance-hub-page .ai-calculator-result {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  color: var(--ai-primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.service-accident-insurance-page .ai-highlights,
+.service-insurance-hub-page .ai-highlights {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.service-accident-insurance-page .ai-highlight,
+.service-insurance-hub-page .ai-highlight {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+}
+
+.service-accident-insurance-page .ai-highlight strong,
+.service-insurance-hub-page .ai-highlight strong {
+  color: var(--ai-primary);
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.15rem;
+}
+
+.service-accident-insurance-page .ai-highlight span,
+.service-insurance-hub-page .ai-highlight span {
+  color: #64748b;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.service-accident-insurance-page .service-recharge-hero,
+.service-insurance-hub-page .service-recharge-hero {
+  padding-bottom: 0.5rem;
+}
+
+.service-accident-insurance-page .service-recharge-card,
+.service-insurance-hub-page .service-recharge-card {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, #212529, transparent 90%);
+  border-radius: var(--ai-card-radius);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+  padding: 1.75rem 1.5rem 2rem;
+}
+
+.service-accident-insurance-page .service-recharge-value-prop,
+.service-insurance-hub-page .service-recharge-value-prop {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.service-accident-insurance-page .ai-plan-grid,
+.service-insurance-hub-page .ai-plan-grid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+  margin-bottom: 1rem;
+}
+
+.service-accident-insurance-page .ai-plan-card,
+.service-insurance-hub-page .ai-plan-card {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 0.85rem;
+  text-align: left;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+}
+
+.service-accident-insurance-page .ai-plan-card:hover,
+.service-insurance-hub-page .ai-plan-card:hover {
+  border-color: #94a3b8;
+}
+
+.service-accident-insurance-page .ai-plan-card.is-selected,
+.service-insurance-hub-page .ai-plan-card.is-selected {
+  background: #f0f9ff;
+  border-color: var(--ai-accent);
+  box-shadow: 0 4px 14px rgba(43, 140, 255, 0.18);
+}
+
+.service-accident-insurance-page .ai-plan-card__name,
+.service-insurance-hub-page .ai-plan-card__name {
+  color: var(--ai-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.service-accident-insurance-page .ai-plan-card__cover,
+.service-insurance-hub-page .ai-plan-card__cover {
+  color: #64748b;
+  font-size: 0.75rem;
+  margin: 0 0 0.35rem;
+}
+
+.service-accident-insurance-page .ai-plan-card__price,
+.service-insurance-hub-page .ai-plan-card__price {
+  color: var(--ai-warm);
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.service-accident-insurance-page .ai-benefit-list,
+.service-insurance-hub-page .ai-benefit-list {
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.service-accident-insurance-page .ai-benefit-list li,
+.service-insurance-hub-page .ai-benefit-list li {
+  margin-bottom: 0.2rem;
+}
+
+.service-accident-insurance-page .recharge-trust-compact,
+.service-insurance-hub-page .recharge-trust-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.service-accident-insurance-page .recharge-trust-chip,
+.service-insurance-hub-page .recharge-trust-chip {
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 999px;
+  color: #475569;
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  gap: 0.3rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.service-accident-insurance-page .recharge-trust-chip i,
+.service-insurance-hub-page .recharge-trust-chip i {
+  color: var(--ai-accent);
+}
+
+.service-accident-insurance-page .service-recharge-info .nav-tabs .nav-link,
+.service-insurance-hub-page .service-recharge-info .nav-tabs .nav-link {
+  font-size: 0.85rem;
+}

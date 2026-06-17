@@ -1,182 +1,37 @@
-<% var pageTitle = 'Broadband & Landline'; %>
-<% var pageDescription = 'Pay broadband and landline bills on the web — search your provider and complete payment on Varnarc.'; %>
-<% 
-  var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
-  var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
-  var downloadHref = _play || _ios || '#';
-%>
 <!DOCTYPE html>
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
-<link rel="stylesheet" href="/assets/css/book-cylinder-page.css" />
+<link rel="stylesheet" href="/assets/css/service-section-hub.css" />
+<link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
 
-<body class="landing-page service-item-page book-cylinder-page">
+<body class="landing-page service-item-page service-section-hub-page">
   <div class="landing-page1">
     <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
   </div>
 
-  <section class="section-space service-item-section book-cylinder-section">
+  <section class="section-space service-item-section">
     <div class="container text-start py-4">
-      <div class="book-cylinder-panel">
-        <div class="book-cylinder-promo-wrap">
-          <button type="button" class="book-cylinder-promo-arrow book-cylinder-promo-arrow--prev" id="bbLandlinePromoPrev" aria-label="Previous offers">
-            <i class="bi bi-chevron-left"></i>
-          </button>
-          <div class="book-cylinder-promo-scroll" id="bbLandlinePromoScroll" tabindex="0" role="region" aria-label="Promotional offers">
-            <article class="book-cylinder-promo-card book-cylinder-promo-card--muted">
-              <div>
-                <p class="book-cylinder-promo-card__title">Pay your EMIs with multiple payment options — part payment, total overdue &amp; more</p>
-                <a href="/services/FinancialHub/card_repay" class="book-cylinder-promo-card__btn">Explore</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="72" viewBox="0 0 80 80"><rect x="12" y="20" width="56" height="40" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/><path d="M22 44h36v6H22z" fill="#0284c7" opacity="0.35"/><circle cx="40" cy="36" r="8" fill="#0284c7"/></svg>
-              </div>
-            </article>
-            <article class="book-cylinder-promo-card book-cylinder-promo-card--muted">
-              <div>
-                <p class="book-cylinder-promo-card__title">Registered billers &amp; recurring payments — manage broadband &amp; more in one place</p>
-                <a href="/services/BillPayments/index" class="book-cylinder-promo-card__btn">Explore now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="72" viewBox="0 0 80 80"><rect x="14" y="22" width="52" height="36" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><path d="M24 38h32v4H24zm0 10h20v4H24z" fill="#f59e0b" opacity="0.45"/></svg>
-              </div>
-            </article>
-            <article class="book-cylinder-promo-card book-cylinder-promo-card--muted">
-              <div>
-                <p class="book-cylinder-promo-card__title">Insta EMI Card — split spends into easy instalments</p>
-                <a href="/services/FinancialHub/index" class="book-cylinder-promo-card__btn">Get it now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="72" viewBox="0 0 80 80"><rect x="8" y="18" width="64" height="44" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/><rect x="16" y="44" width="28" height="6" rx="2" fill="#6366f1" opacity="0.5"/><circle cx="56" cy="38" r="10" fill="#6366f1"/></svg>
-              </div>
-            </article>
-            <article class="book-cylinder-promo-card book-cylinder-promo-card--muted">
-              <div>
-                <p class="book-cylinder-promo-card__title">Personal loan — quick eligibility check &amp; disbursal</p>
-                <a href="/services/FinancialHub/investments" class="book-cylinder-promo-card__btn">Apply now</a>
-              </div>
-              <div class="book-cylinder-promo-card__visual" aria-hidden="true">
-                <svg width="72" height="72" viewBox="0 0 80 80"><circle cx="40" cy="36" r="22" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><path d="M32 38h16v12H32z" fill="#f59e0b"/><path d="M36 30h8v8h-8z" fill="#d97706"/></svg>
-              </div>
-            </article>
-          </div>
-          <button type="button" class="book-cylinder-promo-arrow book-cylinder-promo-arrow--next" id="bbLandlinePromoNext" aria-label="Next offers">
-            <i class="bi bi-chevron-right"></i>
-          </button>
-        </div>
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/services/BillPayments/index">Bill Payments</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Broadband &amp; Landline</li>
+        </ol>
+      </nav>
 
-        <div class="book-cylinder-pay-web">
-          <label class="book-cylinder-pay-web__title" for="bbLandlineProviderSearch">Pay on Web</label>
-          <input type="search" id="bbLandlineProviderSearch" class="book-cylinder-search-input" placeholder="Search your provider" autocomplete="off" />
-        </div>
-
-        <section aria-labelledby="bb-top-providers-heading">
-          <h2 id="bb-top-providers-heading" class="book-cylinder-section-title">Top Service providers</h2>
-          <ul class="book-cylinder-providers list-unstyled mb-0">
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-act" aria-hidden="true">AC</span><span class="fw-semibold">ACT Fibernet</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-airtel" aria-hidden="true">Ai</span><span class="fw-semibold">Airtel Broadband</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-alliance" aria-hidden="true">AB</span><span class="fw-semibold">Alliance Broadband Services Pvt. Ltd.</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-hathway" aria-hidden="true">Ha</span><span class="fw-semibold">Hathway Broadband</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-netplus" aria-hidden="true">Nb</span><span class="fw-semibold">Netplus Broadband</span></li>
-          </ul>
-        </section>
-
-        <section class="book-cylinder-providers-spaced" aria-labelledby="bb-all-providers-heading">
-          <h2 id="bb-all-providers-heading" class="book-cylinder-section-title">All service providers</h2>
-          <ul class="book-cylinder-providers list-unstyled mb-0">
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-777" aria-hidden="true">7</span><span class="fw-semibold">777 Network Broadband</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-aaa" aria-hidden="true">AA</span><span class="fw-semibold">AAA Internet Services Pvt Ltd</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-acns" aria-hidden="true">AC</span><span class="fw-semibold">ACNS Pvt Ltd</span></li>
-            <li><span class="book-cylinder-provider-logo book-cylinder-provider-logo--bb-act" aria-hidden="true">AC</span><span class="fw-semibold">ACT Fibernet</span></li>
-          </ul>
-        </section>
-
-        <section class="book-cylinder-app-strip" aria-labelledby="bb-app-heading">
-          <div>
-            <h2 id="bb-app-heading" class="book-cylinder-app-strip__title">Continue on the app</h2>
-            <p class="book-cylinder-app-strip__sub">Download the app to redeem your rewards</p>
-            <% if (_play && _ios) { %>
-            <p class="small text-muted mb-0 mt-2">
-              <a href="<%= _ios %>" class="link-secondary" rel="noopener noreferrer" target="_blank">App Store</a>
-              <span class="text-muted px-1">·</span>
-              <a href="<%= _play %>" class="link-secondary" rel="noopener noreferrer" target="_blank">Google Play</a>
-            </p>
-            <% } %>
-          </div>
-          <a class="book-cylinder-download-btn" href="<%= downloadHref %>" <%= downloadHref !== '#' ? 'rel="noopener noreferrer" target="_blank"' : '' %> aria-label="Download the Varnarc app">Download</a>
-        </section>
-
-        <section class="book-cylinder-faq" aria-labelledby="bb-faq-heading">
-          <h2 id="bb-faq-heading" class="book-cylinder-section-title mb-3">Frequently asked questions</h2>
-          <div class="accordion" id="bbLandlineFaq">
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bbLandlineFaq1" aria-expanded="false" aria-controls="bbLandlineFaq1">
-                  What if I have paid the broadband bill twice?
-                </button>
-              </h3>
-              <div id="bbLandlineFaq1" class="accordion-collapse collapse" data-bs-parent="#bbLandlineFaq">
-                <div class="accordion-body">
-                  If a duplicate debit appears, check your bank/UPI statement for both transaction IDs. Keep your confirmation SMS or receipt from Varnarc and contact support with those references — we will coordinate with the biller to trace the payment and advise on refund or adjustment per their policy.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bbLandlineFaq2" aria-expanded="false" aria-controls="bbLandlineFaq2">
-                  Why can’t I find my broadband service provider?
-                </button>
-              </h3>
-              <div id="bbLandlineFaq2" class="accordion-collapse collapse" data-bs-parent="#bbLandlineFaq">
-                <div class="accordion-body">
-                  Try another spelling or short name (for example “ACT” instead of “ACT Fibernet”). Some operators are listed under a parent company. If your provider is still missing, they may not be onboarded for online bill pay yet — use “Raise a request” so we can check coverage for your circle.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bbLandlineFaq3" aria-expanded="false" aria-controls="bbLandlineFaq3">
-                  How soon will my payment reflect with the operator?
-                </button>
-              </h3>
-              <div id="bbLandlineFaq3" class="accordion-collapse collapse" data-bs-parent="#bbLandlineFaq">
-                <div class="accordion-body">
-                  Most payments are sent to the biller within minutes. The operator’s system may take up to 24–48 hours to update your account or invoice — check your registered email/SMS from the provider for confirmation.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="book-cylinder-query">
-          <p>Still have a query?</p>
-          <a class="book-cylinder-query-card" href="mailto:support@varnarc.com?subject=Broadband%20%2F%20landline%20bill%20support">
-            <i class="bi bi-question-circle-fill" aria-hidden="true"></i>
-            Raise a request
-          </a>
-        </section>
-      </div>
+      <%- include('../../../components/services/hub/forms/billpayments/broadband_landline_form', {
+        panelSlug: 'broadband_landline',
+        panelTitle: 'Pay your Broadband Bill',
+        serviceIdLabel: 'Broadband Id',
+        ctaText: 'Continue to Pay Bill',
+        hubEmbed: false
+      }) %>
     </div>
   </section>
 
-<%- include('../../../components/landing/footer') %>
-<%- include('../../../components/landing/scripts') %>
-<script>
-(function () {
-  var el = document.getElementById("bbLandlinePromoScroll");
-  var prev = document.getElementById("bbLandlinePromoPrev");
-  var next = document.getElementById("bbLandlinePromoNext");
-  if (!el || !prev || !next) return;
-  function scrollByCards(dir) {
-    var card = el.querySelector(".book-cylinder-promo-card");
-    var delta = (card ? card.offsetWidth : 280) + 14;
-    el.scrollBy({ left: dir * delta, behavior: "smooth" });
-  }
-  prev.addEventListener("click", function () { scrollByCards(-1); });
-  next.addEventListener("click", function () { scrollByCards(1); });
-})();
-</script>
+  <%- include('../../../components/landing/footer') %>
+  <%- include('../../../components/landing/scripts') %>
 </body>
 
 </html>

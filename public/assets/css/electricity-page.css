@@ -234,24 +234,7 @@
     margin-bottom: 1.25rem;
 }
 
-.electricity-proceed-btn {
-    background: #f97316;
-    border: 0;
-    border-radius: 999px;
-    box-shadow: 0 2px 10px rgba(249, 115, 22, 0.35);
-    color: #fff;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    padding: 0.55rem 1.6rem;
-    transition: background 0.2s ease, transform 0.15s ease;
-}
-
-.electricity-proceed-btn:hover {
-    background: #ea580c;
-    color: #fff;
-    transform: translateY(-1px);
-}
+/* .electricity-proceed-btn — see varnarc-buttons.css */
 
 .electricity-faq {
     margin-top: 0.5rem;
@@ -292,4 +275,312 @@
     .service-item-section.electricity-service-section .electricity-section-inner {
         max-width: 100%;
     }
+}
+
+/* Hub tab — Pay on Web provider picker */
+.electricity-hub-panel .electricity-hub-pay-web,
+.mobile-recharge-hub-panel .electricity-hub-pay-web,
+.credit-card-hub-panel .electricity-hub-pay-web {
+    text-align: left;
+}
+
+.electricity-hub-panel .electricity-hub-pay-web__title {
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.electricity-hub-panel .electricity-hub-search-wrap {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.electricity-hub-panel .electricity-hub-search-input {
+    background-color: #fff;
+    border: 1px solid rgba(37, 99, 235, 0.45);
+    border-radius: 10px;
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.65rem 2.5rem 0.65rem 0.9rem;
+    width: 100%;
+}
+
+.electricity-hub-panel .electricity-hub-search-input::placeholder {
+    color: #94a3b8;
+}
+
+.electricity-hub-panel .electricity-hub-search-input:focus {
+    border-color: rgba(37, 99, 235, 0.75);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    outline: none;
+}
+
+.electricity-hub-panel .electricity-hub-search-clear {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #64748b;
+    cursor: pointer;
+    display: inline-flex;
+    height: 2rem;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+}
+
+.electricity-hub-panel .electricity-hub-search-clear:hover {
+    color: #0f172a;
+}
+
+.electricity-hub-panel .electricity-hub-section-title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+}
+
+.electricity-hub-panel .electricity-hub-providers-section--spaced {
+    margin-top: 1.5rem;
+}
+
+.electricity-hub-panel .electricity-hub-providers {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+}
+
+.electricity-hub-panel .electricity-hub-providers li {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.electricity-hub-panel .electricity-hub-providers li:last-child {
+    border-bottom: 0;
+}
+
+.electricity-hub-panel .electricity-hub-providers li[hidden] {
+    display: none;
+}
+
+.electricity-hub-panel .electricity-hub-provider-btn {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    gap: 0.85rem;
+    padding: 0.95rem 1.1rem;
+    text-align: left;
+    width: 100%;
+}
+
+.electricity-hub-panel .electricity-hub-provider-btn:hover {
+    background: #f8fafc;
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo {
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c0 {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c1 {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c2 {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c3 {
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c4 {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c5 {
+    background: linear-gradient(135deg, #db2777, #9d174d);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c6 {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+.electricity-hub-panel .electricity-hub-provider-logo--c7 {
+    background: linear-gradient(135deg, #475569, #334155);
+}
+
+.electricity-hub-panel .electricity-hub-provider-name {
+    color: #1e293b;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.electricity-hub-panel .electricity-hub-back {
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.electricity-hub-panel .electricity-hub-back:hover {
+    color: #0f172a;
+}
+
+.electricity-hub-panel .electricity-hub-selected-provider__label {
+    color: #64748b;
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.electricity-hub-panel .electricity-hub-selected-provider__name {
+    color: #0f172a;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.electricity-hub-panel .electricity-hub-help-bar {
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 1rem;
+}
+
+.electricity-hub-panel .electricity-hub-help-bar__left {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.5rem;
+}
+
+.electricity-hub-panel .electricity-hub-help-bar__icon {
+    align-items: center;
+    background: #2563eb;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 800;
+    height: 1.25rem;
+    justify-content: center;
+    width: 1.25rem;
+}
+
+.electricity-hub-panel .electricity-hub-help-bar__text {
+    color: #334155;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.electricity-hub-panel .electricity-hub-help-bar__link {
+    background: transparent;
+    border: 0;
+    color: #ea580c;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0;
+    text-decoration: none;
+}
+
+.electricity-hub-panel .electricity-hub-help-bar__link:hover {
+    text-decoration: underline;
+}
+
+.electricity-hub-panel .electricity-hub-field-label {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.electricity-hub-panel .electricity-hub-account-input {
+    background: #f8fafc;
+    border-color: rgba(37, 99, 235, 0.35);
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 0.7rem 0.85rem;
+}
+
+.electricity-hub-panel .electricity-hub-account-input:focus {
+    background: #fff;
+    border-color: rgba(37, 99, 235, 0.65);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.electricity-hub-panel .electricity-hub-field-hint {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+}
+
+.electricity-hub-panel .electricity-hub-consent {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.65rem;
+}
+
+.electricity-hub-panel .electricity-hub-consent__input {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.electricity-hub-panel .electricity-hub-consent__label {
+    color: #475569;
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.electricity-hub-panel .electricity-hub-fetch-btn {
+    background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%);
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.85rem 1.25rem;
+    text-transform: uppercase;
+}
+
+.electricity-hub-panel .electricity-hub-fetch-btn:hover:not(:disabled) {
+    background: linear-gradient(180deg, #f97316 0%, #c2410c 100%);
+    color: #fff;
+}
+
+.electricity-hub-panel .electricity-hub-fetch-btn:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
 }

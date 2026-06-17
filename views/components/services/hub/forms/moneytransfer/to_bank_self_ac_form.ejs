@@ -1,0 +1,699 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "to_bank_self_a_c";
+  var href = hubHrefForPanel(slug);
+  var active = panelIsActive(slug);
+
+  var destinationBanks = [
+    {
+      id: "bob-8708",
+      name: "Bank Of Baroda",
+      mask: "••8708",
+      branch: "R T NAGAR BR., BANGALORE, KARNATAKA",
+      iconBg: "#f77f00",
+      iconLabel: "BOB",
+    },
+    {
+      id: "icici-xx63",
+      name: "ICICI Bank",
+      mask: "••XX63",
+      branch: "HYDERABAD - MADHAPUR",
+      iconBg: "#e85d04",
+      iconLabel: "IC",
+    },
+    {
+      id: "idfc-5784",
+      name: "IDFC First Bank",
+      mask: "••5784",
+      branch: "BKC-NAMAN CHAMBERS BRANCH",
+      iconBg: "#9d0208",
+      iconLabel: "ID",
+    },
+  ];
+
+  var paymentSources = [
+    {
+      id: "icici-xx63",
+      name: "ICICI Bank",
+      mask: "•• XX63",
+      iconBg: "#e85d04",
+      iconLabel: "IC",
+      defaultSelected: true,
+      needsPin: false,
+    },
+    {
+      id: "idfc-5784",
+      name: "IDFC First Bank",
+      mask: "•• 5784",
+      iconBg: "#9d0208",
+      iconLabel: "ID",
+      defaultSelected: false,
+      needsPin: true,
+    },
+  ];
+
+  var suggested = [
+    {
+      id: "icici-xx63",
+      name: "ICICI Bank",
+      detail: "Self | ••XX63",
+      selfTag: true,
+      iconBg: "#e85d04",
+      iconLabel: "IC",
+    },
+    {
+      id: "sbi-vali",
+      name: "vali",
+      detail: "State Bank of India ••…",
+      selfTag: false,
+      iconBg: "#2563eb",
+      iconLabel: "SBI",
+    },
+    {
+      id: "bob-8708",
+      name: "Bank Of Baroda",
+      detail: "Self | ••8708",
+      selfTag: true,
+      iconBg: "#f77f00",
+      iconLabel: "BOB",
+    },
+  ];
+
+  var savedIfscAccounts = [
+    {
+      id: "sbi-vali",
+      name: "vali",
+      bank: "State Bank of India",
+      mask: "••5394",
+      status: "Sent: ₹6,550",
+      date: "15 Jan 2026",
+      iconBg: "#2563eb",
+      iconLabel: "SBI",
+    },
+    {
+      id: "kotak-innov",
+      name: "Innovatrix",
+      bank: "Kotak Mahindra Bank",
+      mask: "••6043",
+      status: "Bank account added",
+      date: "30 Jan 2025",
+      iconBg: "#db2777",
+      iconLabel: "KT",
+    },
+    {
+      id: "bob-prajwal",
+      name: "Prajwal M S",
+      bank: "Bank Of Baroda",
+      mask: "••8462",
+      status: "Bank account added",
+      date: "29 Apr 2023",
+      iconBg: "#f77f00",
+      iconLabel: "BOB",
+    },
+  ];
+
+  var receiverBanks = [
+    { id: "sbi", name: "State Bank of India", popular: true, iconBg: "#2563eb", iconLabel: "SBI" },
+    { id: "canara", name: "Canara Bank", popular: true, iconBg: "#0d9488", iconLabel: "CB" },
+    { id: "karnataka", name: "Karnataka Bank", popular: true, iconBg: "#7c3aed", iconLabel: "KB" },
+    { id: "kotak", name: "Kotak Mahindra Bank", popular: true, iconBg: "#db2777", iconLabel: "KT" },
+    { id: "hdfc", name: "HDFC Bank", popular: true, iconBg: "#1d4ed8", iconLabel: "HD" },
+    { id: "ippb", name: "India Post Payment Bank", popular: true, iconBg: "#dc2626", iconLabel: "IP" },
+    { id: "union", name: "Union Bank of India", popular: true, iconBg: "#0891b2", iconLabel: "UB" },
+    { id: "bob", name: "Bank of Baroda", popular: true, iconBg: "#f77f00", iconLabel: "BOB" },
+    { id: "kgb", name: "Karnataka Grameena Bank", popular: true, iconBg: "#16a34a", iconLabel: "KG" },
+    { id: "icici", name: "ICICI Bank", popular: false, iconBg: "#e85d04", iconLabel: "IC" },
+    { id: "axis", name: "Axis Bank", popular: false, iconBg: "#7c2d12", iconLabel: "AX" },
+    { id: "idfc", name: "IDFC First Bank", popular: false, iconBg: "#9d0208", iconLabel: "ID" },
+    { id: "yes", name: "Yes Bank", popular: false, iconBg: "#1e3a8a", iconLabel: "YS" },
+    { id: "indusind", name: "IndusInd Bank", popular: false, iconBg: "#b45309", iconLabel: "IN" },
+    { id: "federal", name: "Federal Bank", popular: false, iconBg: "#0369a1", iconLabel: "FB" },
+    { id: "rayat", name: "The Rayat Sevak Co-Op Bank Limited Satara", popular: false, iconBg: "#4b5563", iconLabel: "RC" },
+    { id: "ace", name: "ACE Cooperative Bank Ltd", popular: false, iconBg: "#059669", iconLabel: "AC" },
+    { id: "ahilyanagar", name: "AHILYANAGAR ZILLA PRATHAMIK SHIKSHAK SAHAKARI BANK LTD", popular: false, iconBg: "#65a30d", iconLabel: "AH" },
+    { id: "aman", name: "AMAN SAHAKARI BANK LTD ICHALKARANJI", popular: false, iconBg: "#9333ea", iconLabel: "AM" },
+  ];
+
+  var popularBanks = receiverBanks.filter(function (b) { return b.popular; });
+%>
+<div
+  class="hub-tab-panel money-transfer-self-bank-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-mt-self-bank
+  <% if (!active) { %> hidden<% } %>
+>
+  <!-- Step 1: Send Money entry (select To Self) -->
+  <section
+    class="mt-self-step is-active"
+    data-mt-self-step="send"
+    aria-label="Send money options"
+  >
+    <header class="mt-self-header d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="mt-self-header__back btn btn-link p-0" hidden aria-hidden="true" tabindex="-1">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="text-6 mb-0">Send Money</h2>
+      </div>
+      <a class="mt-self-header__help" href="<%= href %>?help=1" aria-label="Send money help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <div class="mt-self-send-cards row g-3 mb-3">
+      <div class="col-6">
+        <button
+          type="button"
+          class="mt-self-send-card"
+          data-mt-self-go="banks"
+          aria-label="To Self Bank Account"
+        >
+          <span class="mt-self-send-card__icon mt-self-send-card__icon--self" aria-hidden="true">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="mt-self-send-card__label">To Self Bank Account</span>
+        </button>
+      </div>
+      <div class="col-6">
+        <button
+          type="button"
+          class="mt-self-send-card"
+          data-mt-self-go="ifsc-saved"
+          aria-label="To Account Number and IFSC"
+        >
+          <span class="mt-self-send-card__icon mt-self-send-card__icon--bank" aria-hidden="true">
+            <i class="fas fa-university"></i>
+          </span>
+          <span class="mt-self-send-card__label">To Account Number &amp; IFSC</span>
+        </button>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="mt-self-upi-row"
+      data-mt-self-hub-go="to_mobile_number"
+      data-mt-send-mode="upi"
+      aria-label="To UPI ID or Number"
+    >
+      <span class="mt-self-upi-row__icon" aria-hidden="true">@</span>
+      <span class="mt-self-upi-row__body">
+        <span class="mt-self-upi-row__title">To UPI ID or Number</span>
+        <span class="mt-self-upi-row__sub">Transfer to any UPI app</span>
+      </span>
+      <i class="fas fa-chevron-right mt-self-upi-row__chev" aria-hidden="true"></i>
+    </button>
+
+    <a
+      class="mt-self-wallet-promo hub-promo-fallback hub-promo-fallback--dark mb-4 text-decoration-none"
+      href="<%= href %>?wallet=1"
+      aria-label="Use Wallet to transfer to any bank account"
+    >
+      <div class="d-flex align-items-center gap-3">
+        <span class="mt-self-wallet-promo__arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+        <div class="flex-grow-1 min-w-0">
+          <p class="hub-promo-fallback__text mb-1">Use Wallet to transfer to any bank a/c</p>
+          <p class="mb-0 small opacity-75">Top-up your wallet now!</p>
+        </div>
+        <span class="mt-self-wallet-promo__wallet" aria-hidden="true"></span>
+      </div>
+    </a>
+
+    <h3 class="mt-self-section-label">Suggested</h3>
+    <ul class="mt-self-suggested list-unstyled mb-0">
+      <% suggested.forEach(function (item) { %>
+      <li>
+        <button
+          type="button"
+          class="mt-self-suggested__item"
+          data-mt-self-suggested
+          data-mt-self-bank-id="<%= item.id %>"
+        >
+          <span class="mt-self-suggested__icon" style="background-color: <%= item.iconBg %>">
+            <span class="mt-self-suggested__icon-text"><%= item.iconLabel %></span>
+          </span>
+          <span class="mt-self-suggested__body">
+            <span class="mt-self-suggested__name"><%= item.name %></span>
+            <span class="mt-self-suggested__detail">
+              <% if (item.selfTag) { %>
+              <span class="mt-self-suggested__self">Self</span> | <%= item.detail.replace(/^Self \| /, "") %>
+              <% } else { %>
+              <%= item.detail %>
+              <% } %>
+            </span>
+          </span>
+        </button>
+      </li>
+      <% }) %>
+    </ul>
+
+    <p class="mt-self-powered small text-muted text-center mt-4 mb-0">
+      <span class="mt-self-powered__badge">POWERED BY UPI</span>
+    </p>
+  </section>
+
+  <!-- Step 2: Select destination bank -->
+  <section
+    class="mt-self-step"
+    data-mt-self-step="banks"
+    aria-label="To self account"
+    hidden
+  >
+    <header class="mt-self-header d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="mt-self-header__back btn btn-link p-0" data-mt-self-back aria-label="Back">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="text-6 mb-0">To Self Account</h2>
+      </div>
+      <a class="mt-self-header__help" href="<%= href %>?help=1" aria-label="Help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <h3 class="mt-self-section-label">Bank accounts</h3>
+    <ul class="mt-self-bank-list list-unstyled mb-4">
+      <% destinationBanks.forEach(function (bank) { %>
+      <li>
+        <button
+          type="button"
+          class="mt-self-bank-list__item"
+          data-mt-self-pick-bank
+          data-bank-id="<%= bank.id %>"
+          data-bank-name="<%= bank.name %>"
+          data-bank-mask="<%= bank.mask %>"
+          data-bank-branch="<%= bank.branch %>"
+          data-bank-icon-bg="<%= bank.iconBg %>"
+          data-bank-icon-label="<%= bank.iconLabel %>"
+        >
+          <span class="mt-self-bank-list__icon" style="background-color: <%= bank.iconBg %>">
+            <span class="mt-self-bank-list__icon-text"><%= bank.iconLabel %></span>
+          </span>
+          <span class="mt-self-bank-list__body">
+            <span class="mt-self-bank-list__name"><%= bank.name %> <%= bank.mask %></span>
+            <span class="mt-self-bank-list__branch"><%= bank.branch %></span>
+          </span>
+        </button>
+      </li>
+      <% }) %>
+    </ul>
+
+    <div class="d-flex justify-content-end">
+      <a class="btn btn-primary mt-self-add-ac-btn" href="<%= href %>?add=self">
+        <i class="fas fa-plus me-1" aria-hidden="true"></i> Self Account
+      </a>
+    </div>
+
+    <p class="mt-self-powered small text-muted text-center mt-4 mb-0">
+      <span class="mt-self-powered__badge">POWERED BY UPI</span>
+    </p>
+  </section>
+
+  <!-- Step 3: Pay amount -->
+  <section
+    class="mt-self-step"
+    data-mt-self-step="pay"
+    aria-label="Pay"
+    hidden
+  >
+    <header class="mt-self-header d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="mt-self-header__back btn btn-link p-0" data-mt-self-back aria-label="Back">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="text-6 mb-0">Pay</h2>
+      </div>
+      <a class="mt-self-header__help" href="<%= href %>?help=1" aria-label="Help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <div class="mt-self-pay-card">
+      <div class="mt-self-pay-recipient" data-mt-self-pay-recipient>
+        <span class="mt-self-pay-recipient__icon" data-mt-self-pay-icon aria-hidden="true"></span>
+        <span class="mt-self-pay-recipient__mask" data-mt-self-pay-mask>XXXXXX8708</span>
+      </div>
+
+      <div class="mb-3">
+        <label class="visually-hidden" for="mt-self-amount-<%= slug %>">Enter amount</label>
+        <div class="input-group mt-self-amount-input">
+          <span class="input-group-text">₹</span>
+          <input
+            type="text"
+            class="form-control"
+            id="mt-self-amount-<%= slug %>"
+            data-mt-self-amount
+            placeholder="Enter amount"
+            inputmode="decimal"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="mb-0">
+        <label class="visually-hidden" for="mt-self-note-<%= slug %>">Add a message</label>
+        <input
+          type="text"
+          class="form-control mt-self-note-input"
+          id="mt-self-note-<%= slug %>"
+          data-mt-self-note
+          placeholder="Add a message (optional)"
+          maxlength="120"
+        />
+      </div>
+    </div>
+
+    <div class="d-grid mt-4">
+      <button type="button" class="btn btn-primary w-100 mt-self-proceed-btn" data-mt-self-proceed disabled>
+        Proceed To Pay
+      </button>
+    </div>
+  </section>
+
+  <!-- Step 4: Payment bottom sheet -->
+  <div class="mt-self-checkout" data-mt-self-checkout hidden aria-hidden="true">
+    <div class="mt-self-checkout__backdrop" data-mt-self-checkout-dismiss tabindex="-1" aria-hidden="true"></div>
+    <div
+      class="mt-self-checkout__sheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mt-self-checkout-title"
+    >
+      <div class="mt-self-checkout__head">
+        <h3 class="mt-self-checkout__title" id="mt-self-checkout-title">Total payable</h3>
+        <span class="mt-self-checkout__total" data-mt-self-checkout-total>₹0</span>
+        <button type="button" class="mt-self-checkout__close" data-mt-self-checkout-dismiss aria-label="Close">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <h4 class="mt-self-section-label mt-self-section-label--sheet">Bank accounts</h4>
+      <ul class="mt-self-pay-sources list-unstyled mb-3">
+        <% paymentSources.forEach(function (src) { %>
+        <li>
+          <button
+            type="button"
+            class="mt-self-pay-source<%= src.defaultSelected ? ' is-selected' : '' %>"
+            data-mt-self-pay-source
+            data-source-id="<%= src.id %>"
+            data-source-name="<%= src.name %>"
+            data-source-mask="<%= src.mask %>"
+            data-source-icon-bg="<%= src.iconBg %>"
+            data-source-icon-label="<%= src.iconLabel %>"
+            <% if (src.needsPin) { %> data-needs-pin="1"<% } %>
+            aria-pressed="<%= src.defaultSelected ? 'true' : 'false' %>"
+          >
+            <span class="mt-self-pay-source__icon" style="background-color: <%= src.iconBg %>">
+              <span class="mt-self-pay-source__icon-text"><%= src.iconLabel %></span>
+            </span>
+            <span class="mt-self-pay-source__body">
+              <span class="mt-self-pay-source__name"><%= src.name %></span>
+              <span class="mt-self-pay-source__meta">
+                <span class="mt-self-pay-source__mask"><%= src.mask %></span>
+                <span class="mt-self-pay-source__upi">UPI</span>
+              </span>
+            </span>
+            <% if (src.needsPin) { %>
+            <a
+              class="mt-self-pay-source__pin-link"
+              href="<%= href %>?account=<%= src.id %>&step=set-pin"
+              data-mt-self-pin-link
+              onclick="event.stopPropagation()"
+            >Set UPI PIN</a>
+            <% } else { %>
+            <span class="mt-self-pay-source__amount" data-mt-self-source-amount>₹0</span>
+            <span class="mt-self-pay-source__check" aria-hidden="true"><i class="fas fa-check-circle"></i></span>
+            <% } %>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+
+      <h4 class="mt-self-section-label mt-self-section-label--sheet">Add payment methods</h4>
+      <a class="mt-self-add-bank-link" href="<%= href %>?add=bank">
+        <span class="mt-self-add-bank-link__icon" aria-hidden="true"><i class="fas fa-university"></i></span>
+        <span class="mt-self-add-bank-link__text">Add bank accounts</span>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </a>
+
+      <button type="button" class="btn btn-primary w-100 mt-self-pay-final-btn" data-mt-self-pay-final>
+        Pay <span data-mt-self-pay-final-amount>₹0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- IFSC flow 1: Saved bank accounts -->
+  <section class="mt-self-step" data-mt-self-step="ifsc-saved" aria-label="Saved bank accounts" hidden>
+    <header class="mt-self-header d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="mt-self-header__back btn btn-link p-0" data-mt-self-back aria-label="Back">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="text-6 mb-0">To Account Number &amp; IFSC</h2>
+      </div>
+      <a class="mt-self-header__help" href="<%= href %>?help=ifsc" aria-label="Help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <h3 class="mt-self-section-label">Saved bank accounts</h3>
+    <ul class="mt-ifsc-saved-list list-unstyled mb-4">
+      <% savedIfscAccounts.forEach(function (acct) { %>
+      <li>
+        <button
+          type="button"
+          class="mt-ifsc-saved-list__item"
+          data-mt-ifsc-pick-saved
+          data-account-id="<%= acct.id %>"
+          data-account-name="<%= acct.name %>"
+          data-bank-name="<%= acct.bank %>"
+          data-bank-mask="<%= acct.mask %>"
+          data-icon-bg="<%= acct.iconBg %>"
+          data-icon-label="<%= acct.iconLabel %>"
+        >
+          <span class="mt-ifsc-saved-list__icon" style="background-color: <%= acct.iconBg %>">
+            <span class="mt-ifsc-saved-list__icon-text"><%= acct.iconLabel %></span>
+          </span>
+          <span class="mt-ifsc-saved-list__body">
+            <span class="mt-ifsc-saved-list__name"><%= acct.name %></span>
+            <span class="mt-ifsc-saved-list__bank"><%= acct.bank %> <%= acct.mask %></span>
+            <span class="mt-ifsc-saved-list__meta"><%= acct.status %> · <%= acct.date %></span>
+          </span>
+          <span class="mt-ifsc-saved-list__menu" aria-hidden="true"><i class="fas fa-ellipsis-v"></i></span>
+        </button>
+      </li>
+      <% }) %>
+    </ul>
+
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-primary mt-self-add-ac-btn" data-mt-self-go="ifsc-select-bank">
+        <i class="fas fa-plus me-1" aria-hidden="true"></i> Bank Account
+      </button>
+    </div>
+
+    <p class="mt-self-powered small text-muted text-center mt-4 mb-0">
+      <span class="mt-self-powered__badge">POWERED BY UPI</span>
+    </p>
+  </section>
+
+  <!-- IFSC flow 2: Chat / send to saved account -->
+  <section class="mt-self-step" data-mt-self-step="ifsc-chat" aria-label="Send to saved account" hidden>
+    <header class="mt-ifsc-chat-header flex-row">
+      <button type="button" class="mt-ifsc-chat-header__back btn btn-link p-0" data-mt-self-back aria-label="Back">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+      </button>
+      <span class="mt-ifsc-chat-header__avatar" data-mt-ifsc-chat-avatar aria-hidden="true"></span>
+      <span class="mt-ifsc-chat-header__info">
+        <span class="mt-ifsc-chat-header__name" data-mt-ifsc-chat-name>Recipient</span>
+        <span class="mt-ifsc-chat-header__bank" data-mt-ifsc-chat-bank>Bank</span>
+      </span>
+      <a class="mt-self-header__help ms-auto" href="<%= href %>?help=ifsc" aria-label="Help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <div class="mt-ifsc-chat-body">
+      <p class="mt-ifsc-chat-date">May 28, 2024</p>
+      <div class="mt-ifsc-chat-bubble mt-ifsc-chat-bubble--failed">
+        <div class="mt-ifsc-chat-bubble__card">
+          <span class="mt-ifsc-chat-bubble__amount">₹10</span>
+          <span class="mt-ifsc-chat-bubble__status"><i class="fas fa-exclamation-circle" aria-hidden="true"></i> FAILED</span>
+          <span class="mt-ifsc-chat-bubble__time">11:09 AM</span>
+        </div>
+        <button type="button" class="btn btn-outline-secondary btn-sm mt-ifsc-chat-retry">Retry payment</button>
+      </div>
+    </div>
+
+    <div class="mt-ifsc-chat-compose">
+      <label class="visually-hidden" for="mt-ifsc-chat-amount-<%= slug %>">Enter amount</label>
+      <input
+        type="text"
+        class="form-control mt-ifsc-chat-compose__input"
+        id="mt-ifsc-chat-amount-<%= slug %>"
+        data-mt-ifsc-chat-amount
+        placeholder="Enter Amount"
+        inputmode="decimal"
+        autocomplete="off"
+      />
+      <button
+        type="button"
+        class="mt-ifsc-chat-compose__send"
+        data-mt-ifsc-chat-send
+        disabled
+        aria-label="Send amount"
+      >
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- IFSC flow 3: Select receiver bank -->
+  <section class="mt-self-step" data-mt-self-step="ifsc-select-bank" aria-label="Select receiver bank" hidden>
+    <header class="mt-self-header d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="mt-self-header__back btn btn-link p-0" data-mt-self-back aria-label="Back">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="text-6 mb-0">Select receiver Bank</h2>
+      </div>
+      <a class="mt-self-header__help" href="<%= href %>?help=ifsc" aria-label="Help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <div class="mt-ifsc-search-wrap">
+      <label class="visually-hidden" for="mt-ifsc-bank-search-<%= slug %>">Search by bank name</label>
+      <div class="mt-ifsc-search">
+        <i class="fas fa-search mt-ifsc-search__icon" aria-hidden="true"></i>
+        <input
+          type="search"
+          class="form-control mt-ifsc-search__input"
+          id="mt-ifsc-bank-search-<%= slug %>"
+          data-mt-ifsc-bank-search
+          placeholder="Search by bank name"
+          autocomplete="off"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-controls="mt-ifsc-search-list-<%= slug %>"
+        />
+      </div>
+      <ul
+        class="mt-ifsc-search-results list-unstyled mb-0"
+        id="mt-ifsc-search-list-<%= slug %>"
+        data-mt-ifsc-search-results
+        hidden
+        role="listbox"
+      ></ul>
+    </div>
+
+    <h3 class="mt-self-section-label mt-3">Popular banks</h3>
+    <div class="mt-ifsc-popular-grid">
+      <% popularBanks.forEach(function (bank) { %>
+      <button
+        type="button"
+        class="mt-ifsc-popular-item"
+        data-mt-ifsc-pick-receiver
+        data-bank-id="<%= bank.id %>"
+        data-bank-name="<%= bank.name %>"
+        data-icon-bg="<%= bank.iconBg %>"
+        data-icon-label="<%= bank.iconLabel %>"
+      >
+        <span class="mt-ifsc-popular-item__icon" style="background-color: <%= bank.iconBg %>">
+          <span class="mt-ifsc-popular-item__icon-text"><%= bank.iconLabel %></span>
+        </span>
+        <span class="mt-ifsc-popular-item__name"><%= bank.name %></span>
+      </button>
+      <% }) %>
+    </div>
+
+    <hr class="mt-ifsc-divider" />
+
+    <h3 class="mt-self-section-label">All banks</h3>
+    <ul class="mt-ifsc-all-banks list-unstyled mb-0">
+      <% receiverBanks.forEach(function (bank) { %>
+      <li>
+        <button
+          type="button"
+          class="mt-ifsc-all-banks__item"
+          data-mt-ifsc-pick-receiver
+          data-bank-id="<%= bank.id %>"
+          data-bank-name="<%= bank.name %>"
+          data-icon-bg="<%= bank.iconBg %>"
+          data-icon-label="<%= bank.iconLabel %>"
+        >
+          <span class="mt-ifsc-all-banks__icon" style="background-color: <%= bank.iconBg %>">
+            <span class="mt-ifsc-all-banks__icon-text"><%= bank.iconLabel %></span>
+          </span>
+          <span class="mt-ifsc-all-banks__name"><%= bank.name %></span>
+        </button>
+      </li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <!-- IFSC flow 4: Add bank account -->
+  <section class="mt-self-step" data-mt-self-step="ifsc-add-account" aria-label="Add bank account" hidden>
+    <header class="mt-self-header d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="mt-self-header__back btn btn-link p-0" data-mt-self-back aria-label="Back">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <h2 class="text-6 mb-0">Add Bank Account</h2>
+      </div>
+      <a class="mt-self-header__help" href="<%= href %>?help=ifsc" aria-label="Help" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i>
+      </a>
+    </header>
+
+    <div class="mt-ifsc-add-card">
+      <div class="mt-ifsc-add-card__bank">
+        <span class="mt-ifsc-add-card__bank-icon" data-mt-ifsc-add-icon aria-hidden="true"></span>
+        <span class="mt-ifsc-add-card__bank-body">
+          <span class="mt-ifsc-add-card__bank-label">Selected bank</span>
+          <span class="mt-ifsc-add-card__bank-name" data-mt-ifsc-add-bank-name>—</span>
+        </span>
+        <button type="button" class="mt-ifsc-add-card__edit btn btn-link p-0" data-mt-self-go="ifsc-select-bank" aria-label="Change bank">
+          <i class="fas fa-pen" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <hr class="mt-ifsc-add-card__rule" />
+
+      <div class="mb-3">
+        <label class="form-label mt-ifsc-add-card__field-label" for="mt-ifsc-account-<%= slug %>">Account number</label>
+        <input
+          type="text"
+          class="form-control mt-ifsc-add-card__field"
+          id="mt-ifsc-account-<%= slug %>"
+          data-mt-ifsc-account-number
+          inputmode="numeric"
+          autocomplete="off"
+          maxlength="18"
+        />
+      </div>
+      <div class="mb-0">
+        <label class="form-label mt-ifsc-add-card__field-label" for="mt-ifsc-code-<%= slug %>">IFSC</label>
+        <input
+          type="text"
+          class="form-control mt-ifsc-add-card__field"
+          id="mt-ifsc-code-<%= slug %>"
+          data-mt-ifsc-code
+          autocomplete="off"
+          maxlength="11"
+          style="text-transform: uppercase"
+        />
+      </div>
+    </div>
+
+    <div class="d-grid mt-4">
+      <button type="button" class="btn btn-primary w-100" data-mt-ifsc-next disabled>NEXT</button>
+    </div>
+  </section>
+</div>
+
+<script type="application/json" id="mt-receiver-banks-data-<%= slug %>"><%- JSON.stringify(receiverBanks) %></script>

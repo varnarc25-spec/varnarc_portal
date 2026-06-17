@@ -107,10 +107,7 @@
   }
 
   function fetchAndCacheCompanyInfo() {
-    var apiBase = (window.VARNARC_AUTH_CONFIG && window.VARNARC_AUTH_CONFIG.margApiBaseUrl) || '';
-    if (!apiBase) return;
-    var url = String(apiBase).replace(/\/$/, '') + '/api/company-info';
-    fetch(url, { method: 'GET', credentials: 'omit' })
+    fetch('/api/company-info', { method: 'GET', credentials: 'same-origin', cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (json) {
         if (!json || !json.success || !json.data) return;

@@ -62,6 +62,27 @@
                 ? ("/services/" + serviceLeafUrlByItemId[String(item.id)])
                 : "#";
             }
+            /** When a category has exactly one leaf item, return it for a direct menu link (no category submenu). */
+            function singleItemInCategory(category) {
+              if (!category) {
+                return null;
+              }
+              var catItems = category.items || [];
+              var catSubs = (category.subcategories || []).filter(function (sub) {
+                return (sub.items || []).length > 0;
+              });
+              if (catItems.length === 1 && catSubs.length === 0) {
+                return catItems[0];
+              }
+              if (catItems.length === 0 && catSubs.length === 1 && (catSubs[0].items || []).length === 1) {
+                return catSubs[0].items[0];
+              }
+              var all = flattenMegaCategoryItems(category);
+              if (all.length === 1) {
+                return all[0];
+              }
+              return null;
+            }
             var menuSections = menuTabs.map(function (tab) {
               var section = tab && tab.section ? tab.section : {};
               var items = Array.isArray(tab && tab.items) ? tab.items : [];
@@ -185,13 +206,15 @@
                               var catHasSubs = catSubs.length > 0;
                               var catHasDirect = catItems.length > 0;
                               var flattenCategory = !!sectionSingleCategory;
+                              var loneItem = singleItemInCategory(category);
                             %>
                             <% if (!catHasSubs && !catHasDirect) { return; } %>
-                            <% if (!flattenCategory) { %>
+                            <% if (loneItem) { %>
+                            <li><a class="dropdown-item" href="<%= menuItemHref(loneItem) %>"><%= loneItem.name || "Untitled" %></a></li>
+                            <% } else if (!flattenCategory) { %>
                             <li class="dropend">
                               <a class="dropdown-item dropdown-toggle" href="#" role="button" aria-expanded="false"><%= category.name %></a>
                               <ul class="dropdown-menu">
-                            <% } %>
                                 <% if (catHasDirect) { %>
                                   <% catItems.forEach(function (item) { %>
                                     <li><a class="dropdown-item" href="<%= menuItemHref(item) %>"><%= item.name || "Untitled" %></a></li>
@@ -201,8 +224,8 @@
                                 <% catSubs.forEach(function (sub) { %>
                                   <% var subItems = sub.items || []; %>
                                   <% if (!subItems.length) { return; } %>
-                                  <% if (subItems.length === 1 && !catHasDirect && catSubs.length === 1) { %>
-                                    <li><a class="dropdown-item" href="<%= menuItemHref(subItems[0]) %>"><%= sub.name %></a></li>
+                                  <% if (subItems.length === 1) { %>
+                                    <li><a class="dropdown-item" href="<%= menuItemHref(subItems[0]) %>"><%= subItems[0].name || sub.name || "Untitled" %></a></li>
                                   <% } else { %>
                                   <li class="dropend">
                                     <a class="dropdown-item dropdown-toggle" href="#" role="button" aria-expanded="false"><%= sub.name %></a>
@@ -214,9 +237,31 @@
                                   </li>
                                   <% } %>
                                 <% }) %>
-                            <% if (!flattenCategory) { %>
                               </ul>
                             </li>
+                            <% } else { %>
+                                <% if (catHasDirect) { %>
+                                  <% catItems.forEach(function (item) { %>
+                                    <li><a class="dropdown-item" href="<%= menuItemHref(item) %>"><%= item.name || "Untitled" %></a></li>
+                                  <% }) %>
+                                  <% if (catHasSubs) { %><li><hr class="dropdown-divider" /></li><% } %>
+                                <% } %>
+                                <% catSubs.forEach(function (sub) { %>
+                                  <% var subItems = sub.items || []; %>
+                                  <% if (!subItems.length) { return; } %>
+                                  <% if (subItems.length === 1) { %>
+                                    <li><a class="dropdown-item" href="<%= menuItemHref(subItems[0]) %>"><%= subItems[0].name || sub.name || "Untitled" %></a></li>
+                                  <% } else { %>
+                                  <li class="dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#" role="button" aria-expanded="false"><%= sub.name %></a>
+                                    <ul class="dropdown-menu">
+                                      <% subItems.forEach(function (item) { %>
+                                        <li><a class="dropdown-item" href="<%= menuItemHref(item) %>"><%= item.name || "Untitled" %></a></li>
+                                      <% }) %>
+                                    </ul>
+                                  </li>
+                                  <% } %>
+                                <% }) %>
                             <% } %>
                           <% }) %>
                         <% } %>
@@ -224,7 +269,7 @@
                     </li>
                   <% }) %>
                   <li class="nav-item ms-xl-2 ps-xl-3 landing-nav-auth-gap-xl login-signup" id="landing-auth-guest-nav" data-company-login-nav>
-                    <a class="nav-link py-2 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#login-modal" href="#" title="Login / Sign up">
+                    <a class="nav-link py-2 d-inline-flex align-items-center" href="/signin" title="Login / Sign up">
                       <span class="d-none d-sm-inline">Login / Sign up</span>
                       <span class="user-icon ms-sm-2"><i class="fas fa-user"></i></span>
                     </a>
@@ -320,39 +365,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">
-          <img src="assets/images/logo/varnarclogo1.png" alt="Company icon" data-company-icon style="max-height: 50px; width: auto;">
+          <img src="/assets/images/logo/varnarclogo1.png" alt="Company icon" data-company-icon style="max-height: 50px; width: auto;">
           Login with Mobile OTP
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div id="auth-alert" class="alert d-none" role="alert"></div>
-        <div class="mb-3">
-          <label class="form-label" for="phone-number-input">Phone Number</label>
-          <div class="row g-2">
-            <div class="col-4">
-              <input id="country-code-input" class="form-control" type="text" value="+91" placeholder="+91" />
-            </div>
-            <div class="col-8">
-              <input id="phone-number-input" class="form-control" type="tel" placeholder="9876543210" />
-            </div>
-          </div>
-          <small class="text-muted">Example: +91XXXXXXXXXX</small>
-        </div>
-
-        <div class="mb-3 d-none" id="otp-container">
-          <label class="form-label" for="otp-input">OTP</label>
-          <input id="otp-input" class="form-control" type="text" placeholder="Enter 6 digit OTP" maxlength="6" />
-        </div>
-
-        <div class="mb-3 d-flex justify-content-center">
-          <div id="recaptcha-container"></div>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-end gap-2">
-        <small id="otp-timer-text" class="text-muted me-auto"></small>
-        <button id="send-otp-btn" class="btn btn-primary" type="button">Send OTP</button>
-        <button id="verify-otp-btn" class="btn btn-success d-none" type="button">Verify OTP</button>
+        <p class="text-muted small mb-3">
+          <a href="/signin">Open full sign-in page</a> for the best experience.
+        </p>
+        <%- include('../auth/phone-otp-panel', { redirectUrl: '/dashboardNew', authCompact: true }) %>
       </div>
     </div>
   </div>

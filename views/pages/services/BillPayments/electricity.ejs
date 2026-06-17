@@ -1,166 +1,35 @@
-<% var pageTitle = 'Electricity Bill Payment'; %>
-<% var pageDescription = 'Pay electricity bills online for major discoms across India on Varnarc.'; %>
 <!DOCTYPE html>
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/service-section-hub.css" />
 <link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/varnarc-buttons.css" />
 
-<body class="landing-page service-item-page">
+<body class="landing-page service-item-page service-section-hub-page">
   <div class="landing-page1">
     <div class="sticky-header"><%- include('../../../components/landing/header') %></div>
   </div>
 
-  <section class="section-space service-item-section electricity-service-section">
+  <section class="section-space service-item-section">
     <div class="container text-start py-4">
-      <div class="electricity-section-inner">
-        <div class="electricity-promo-wrap">
-          <div class="electricity-promo-scroll" tabindex="0" role="region" aria-label="Offers and shortcuts">
-            <article class="electricity-promo-card">
-              <div class="electricity-promo-card__icon" aria-hidden="true"><i class="bi bi-lightbulb-fill"></i></div>
-              <p class="electricity-promo-card__text">Electricity bill pay - get cashback on timely payments</p>
-            </article>
-            <article class="electricity-promo-card">
-              <div class="electricity-promo-card__icon" aria-hidden="true"><i class="bi bi-lightbulb-fill"></i></div>
-              <p class="electricity-promo-card__text">Flat rewards on electricity when you pay via UPI</p>
-            </article>
-            <article class="electricity-promo-card electricity-promo-card--gas">
-              <div class="electricity-promo-card__icon" aria-hidden="true"><i class="bi bi-fire"></i></div>
-              <p class="electricity-promo-card__text">Book piped gas and manage household utilities</p>
-            </article>
-            <article class="electricity-promo-card electricity-promo-card--gift">
-              <div class="electricity-promo-card__icon" aria-hidden="true"><i class="bi bi-gift-fill"></i></div>
-              <p class="electricity-promo-card__text">Explore offers on bill payments and recharges</p>
-            </article>
-          </div>
-        </div>
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/services/BillPayments/index">Bill Payments</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Electricity</li>
+        </ol>
+      </nav>
 
-        <h1 class="electricity-page-title">Electricity</h1>
-
-        <div class="electricity-search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-          <input type="search" id="electricityBillerSearch" placeholder="Search for your provider" autocomplete="off" aria-label="Search by biller name" />
-        </div>
-
-        <p class="electricity-recent-label">Recently paid</p>
-        <p class="electricity-recent-empty">No recent payments yet.</p>
-
-        <h2 class="electricity-all-heading">All billers</h2>
-        <ul class="electricity-biller-list" id="electricityBillerList">
-          <li data-biller="adani electricity mumbai limited"><span class="electricity-biller-logo electricity-biller-logo--c0" aria-hidden="true">AE</span><span class="electricity-biller-name">Adani Electricity Mumbai Limited</span></li>
-          <li data-biller="ajmer vidyut vitran nigam avvnl"><span class="electricity-biller-logo electricity-biller-logo--c1" aria-hidden="true">AV</span><span class="electricity-biller-name">Ajmer Vidyut Vitran Nigam Limited (AVVNL)</span></li>
-          <li data-biller="apcpdcl andhra pradesh central power"><span class="electricity-biller-logo electricity-biller-logo--c2" aria-hidden="true">AP</span><span class="electricity-biller-name">APCPDCL - Andhra Pradesh Central Power Distribution Co. Ltd.</span></li>
-          <li data-biller="bescom bangalore electricity supply"><span class="electricity-biller-logo electricity-biller-logo--c3" aria-hidden="true">BE</span><span class="electricity-biller-name">Bangalore Electricity Supply Co. Ltd. (BESCOM)</span></li>
-          <li data-biller="bses rajdhani power limited"><span class="electricity-biller-logo electricity-biller-logo--c4" aria-hidden="true">BR</span><span class="electricity-biller-name">BSES Rajdhani Power Limited</span></li>
-          <li data-biller="tata power delhi"><span class="electricity-biller-logo electricity-biller-logo--c5" aria-hidden="true">TP</span><span class="electricity-biller-name">Tata Power - Delhi</span></li>
-          <li data-biller="bses yamuna power limited"><span class="electricity-biller-logo electricity-biller-logo--c6" aria-hidden="true">BY</span><span class="electricity-biller-name">BSES Yamuna Power Limited</span></li>
-          <li data-biller="best mumbai"><span class="electricity-biller-logo electricity-biller-logo--c7" aria-hidden="true">BT</span><span class="electricity-biller-name">Brihanmumbai Electric Supply and Transport (BEST)</span></li>
-          <li data-biller="mseb maharashtra state electricity"><span class="electricity-biller-logo electricity-biller-logo--c0" aria-hidden="true">MS</span><span class="electricity-biller-name">MSEDCL - Maharashtra State Electricity Distribution Co. Ltd.</span></li>
-          <li data-biller="tata power mumbai"><span class="electricity-biller-logo electricity-biller-logo--c1" aria-hidden="true">TM</span><span class="electricity-biller-name">Tata Power Mumbai Distribution</span></li>
-          <li data-biller="torrent power ahmedabad"><span class="electricity-biller-logo electricity-biller-logo--c2" aria-hidden="true">TA</span><span class="electricity-biller-name">Torrent Power Ltd. (Ahmedabad)</span></li>
-          <li data-biller="torrent power surat"><span class="electricity-biller-logo electricity-biller-logo--c3" aria-hidden="true">TS</span><span class="electricity-biller-name">Torrent Power Ltd. (Surat)</span></li>
-          <li data-biller="ugvcl uttar gujarat vij"><span class="electricity-biller-logo electricity-biller-logo--c4" aria-hidden="true">UG</span><span class="electricity-biller-name">Uttar Gujarat Vij Company Ltd. (UGVCL)</span></li>
-          <li data-biller="pgvcl paschim gujarat vij"><span class="electricity-biller-logo electricity-biller-logo--c5" aria-hidden="true">PG</span><span class="electricity-biller-name">Paschim Gujarat Vij Company Ltd. (PGVCL)</span></li>
-          <li data-biller="dgvcl dakshin gujarat vij"><span class="electricity-biller-logo electricity-biller-logo--c6" aria-hidden="true">DG</span><span class="electricity-biller-name">Dakshin Gujarat Vij Company Ltd. (DGVCL)</span></li>
-          <li data-biller="mgvcl madhya gujarat vij"><span class="electricity-biller-logo electricity-biller-logo--c7" aria-hidden="true">MG</span><span class="electricity-biller-name">Madhya Gujarat Vij Company Ltd. (MGVCL)</span></li>
-          <li data-biller="tangedco tamil nadu generation distribution"><span class="electricity-biller-logo electricity-biller-logo--c0" aria-hidden="true">TG</span><span class="electricity-biller-name">Tamil Nadu Generation and Distribution Corporation (TANGEDCO)</span></li>
-          <li data-biller="kseb kerala state electricity"><span class="electricity-biller-logo electricity-biller-logo--c1" aria-hidden="true">KE</span><span class="electricity-biller-name">Kerala State Electricity Board (KSEB)</span></li>
-          <li data-biller="hescom hubli electricity supply"><span class="electricity-biller-logo electricity-biller-logo--c2" aria-hidden="true">HE</span><span class="electricity-biller-name">Hubli Electricity Supply Company Ltd. (HESCOM)</span></li>
-          <li data-biller="cesc kolkata"><span class="electricity-biller-logo electricity-biller-logo--c3" aria-hidden="true">CE</span><span class="electricity-biller-name">CESC Limited - Kolkata</span></li>
-          <li data-biller="wbseb west bengal state electricity"><span class="electricity-biller-logo electricity-biller-logo--c4" aria-hidden="true">WB</span><span class="electricity-biller-name">WBSEDCL - West Bengal State Electricity Distribution Co. Ltd.</span></li>
-          <li data-biller="dvvnl dakshinanchal vij uttar pradesh"><span class="electricity-biller-logo electricity-biller-logo--c5" aria-hidden="true">DV</span><span class="electricity-biller-name">Dakshinanchal Vidyut Vitran Nigam Ltd. (DVVNL)</span></li>
-          <li data-biller="puvvnl purvanchal vij uttar pradesh"><span class="electricity-biller-logo electricity-biller-logo--c6" aria-hidden="true">PV</span><span class="electricity-biller-name">Purvanchal Vidyut Vitran Nigam Ltd. (PUVVNL)</span></li>
-          <li data-biller="mvvnl madhyanchal vij uttar pradesh"><span class="electricity-biller-logo electricity-biller-logo--c7" aria-hidden="true">MV</span><span class="electricity-biller-name">Madhyanchal Vidyut Vitran Nigam Ltd. (MVVNL)</span></li>
-          <li data-biller="npcl noida power"><span class="electricity-biller-logo electricity-biller-logo--c0" aria-hidden="true">NP</span><span class="electricity-biller-name">Noida Power Company Ltd. (NPCL)</span></li>
-          <li data-biller="jvvnl jaipur vij vitran"><span class="electricity-biller-logo electricity-biller-logo--c1" aria-hidden="true">JV</span><span class="electricity-biller-name">Jaipur Vidyut Vitran Nigam Ltd. (JVVNL)</span></li>
-          <li data-biller="jodhpur vij vitran"><span class="electricity-biller-logo electricity-biller-logo--c2" aria-hidden="true">JD</span><span class="electricity-biller-name">Jodhpur Vidyut Vitran Nigam Ltd. (JDVVNL)</span></li>
-          <li data-biller="chhattisgarh state power"><span class="electricity-biller-logo electricity-biller-logo--c3" aria-hidden="true">CS</span><span class="electricity-biller-name">Chhattisgarh State Power Distribution Co. Ltd. (CSPDCL)</span></li>
-          <li data-biller="tsnpdcl telangana northern power"><span class="electricity-biller-logo electricity-biller-logo--c4" aria-hidden="true">NT</span><span class="electricity-biller-name">TSNPDCL - Northern Power Distribution Co. of Telangana Ltd.</span></li>
-          <li data-biller="tsspdcl telangana southern power"><span class="electricity-biller-logo electricity-biller-logo--c5" aria-hidden="true">TS</span><span class="electricity-biller-name">TSSPDCL - Southern Power Distribution Co. of Telangana Ltd.</span></li>
-          <li data-biller="mescom mangalore electricity supply"><span class="electricity-biller-logo electricity-biller-logo--c6" aria-hidden="true">ME</span><span class="electricity-biller-name">Mangalore Electricity Supply Company Ltd. (MESCOM)</span></li>
-          <li data-biller="pspcl punjab state power"><span class="electricity-biller-logo electricity-biller-logo--c7" aria-hidden="true">PS</span><span class="electricity-biller-name">PSPCL - Punjab State Power Corporation Ltd.</span></li>
-          <li data-biller="hpseb himachal pradesh"><span class="electricity-biller-logo electricity-biller-logo--c0" aria-hidden="true">HP</span><span class="electricity-biller-name">HPSEBL - Himachal Pradesh State Electricity Board Ltd.</span></li>
-        </ul>
-
-        <div class="electricity-proceed-wrap">
-          <button type="button" class="electricity-proceed-btn">Proceed</button>
-        </div>
-
-        <section class="electricity-faq" aria-labelledby="electricity-faq-heading">
-          <h2 id="electricity-faq-heading">Frequently asked questions</h2>
-          <div class="accordion" id="electricityFaq">
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#electricityFaq1" aria-expanded="false" aria-controls="electricityFaq1">
-                  How can I pay my electricity bill online?
-                </button>
-              </h3>
-              <div id="electricityFaq1" class="accordion-collapse collapse" data-bs-parent="#electricityFaq">
-                <div class="accordion-body">
-                  Select your electricity distribution company, enter your consumer number or account ID as shown on your bill, verify the bill amount, and pay using UPI, debit/credit card, net banking, or wallet.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#electricityFaq2" aria-expanded="false" aria-controls="electricityFaq2">
-                  Is it safe to pay electricity bill online?
-                </button>
-              </h3>
-              <div id="electricityFaq2" class="accordion-collapse collapse" data-bs-parent="#electricityFaq">
-                <div class="accordion-body">
-                  Payments are processed over secure channels. Always confirm you are on the official Varnarc flow, check the biller name and amount before paying, and keep your transaction ID or receipt for your records.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#electricityFaq3" aria-expanded="false" aria-controls="electricityFaq3">
-                  What if payment is successful but my bill is not updated?
-                </button>
-              </h3>
-              <div id="electricityFaq3" class="accordion-collapse collapse" data-bs-parent="#electricityFaq">
-                <div class="accordion-body">
-                  Discom systems can take time to reflect payment. Save your receipt and transaction reference. If the discom does not update after the usual window, contact support with those details for reconciliation.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#electricityFaq4" aria-expanded="false" aria-controls="electricityFaq4">
-                  Can I pay for multiple electricity connections?
-                </button>
-              </h3>
-              <div id="electricityFaq4" class="accordion-collapse collapse" data-bs-parent="#electricityFaq">
-                <div class="accordion-body">
-                  Yes. Complete payment for one consumer number, then start a new payment for another connection or repeat the flow for additional accounts.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+      <%- include('../../../components/services/hub/forms/billpayments/electricity_form', {
+        panelSlug: 'electricity',
+        hubEmbed: false
+      }) %>
     </div>
   </section>
 
-<%- include('../../../components/landing/footer') %>
-<%- include('../../../components/landing/scripts') %>
-<script>
-(function () {
-  var input = document.getElementById("electricityBillerSearch");
-  var list = document.getElementById("electricityBillerList");
-  if (!input || !list) return;
-  input.addEventListener("input", function () {
-    var q = String(input.value || "").trim().toLowerCase();
-    var items = list.querySelectorAll("li");
-    for (var i = 0; i < items.length; i++) {
-      var li = items[i];
-      var key = (li.getAttribute("data-biller") || li.textContent || "").toLowerCase();
-      li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
-    }
-  });
-})();
-</script>
+  <%- include('../../../components/landing/footer') %>
+  <%- include('../../../components/landing/scripts') %>
 </body>
 
 </html>

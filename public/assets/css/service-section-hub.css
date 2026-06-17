@@ -15,6 +15,31 @@
   line-height: 1.3;
 }
 
+.quickai-section-hub .hub-panel-header__title {
+  color: #0a2e52;
+}
+
+.quickai-section-hub .hub-panel-header__help {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 50%;
+  color: #6b7280;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 1rem;
+  height: 2rem;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  width: 2rem;
+}
+
+.quickai-section-hub .hub-panel-header__help:hover {
+  border-color: #86b7fe;
+  color: #0071e3;
+}
+
 /* —— Vertical tabs (resp-vtabs pattern) —— */
 .quickai-section-hub #verticalTab .resp-tabs-list {
   list-style: none;
@@ -49,6 +74,20 @@
 .quickai-section-hub #verticalTab .resp-tabs-list li span img {
   height: 1.1rem;
   object-fit: contain;
+  width: 1.1rem;
+}
+
+.quickai-section-hub #verticalTab .resp-tabs-list li span .hub-nav-icon {
+  background-color: currentColor;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 1.1rem;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
   width: 1.1rem;
 }
 
@@ -98,7 +137,11 @@
 }
 
 .quickai-section-hub .resp-tabs-container .hub-tab-panel.is-active {
-  display: block;
+  display: block !important;
+}
+
+.quickai-section-hub .resp-tabs-container .hub-tab-panel.is-active[hidden] {
+  display: block !important;
 }
 
 .quickai-section-hub .resp-tabs-container .form-label {
@@ -168,17 +211,7 @@
   border-color: #86b7fe;
 }
 
-.quickai-section-hub .btn-primary {
-  background-color: #0071e3;
-  border-color: #0071e3;
-  font-weight: 600;
-  padding: 0.65rem 1rem;
-}
-
-.quickai-section-hub .btn-primary:hover {
-  background-color: #005bb5;
-  border-color: #005bb5;
-}
+/* Primary buttons: see varnarc-buttons.css */
 
 /* —— Right promo banners —— */
 .quickai-section-hub .hub-promo-col img {

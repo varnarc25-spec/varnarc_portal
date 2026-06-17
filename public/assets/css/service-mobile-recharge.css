@@ -448,12 +448,7 @@
     color: #334155;
 }
 
-.service-mobile-recharge-page .btn-recharge-continue:disabled,
-.service-mobile-recharge-page .btn-recharge-continue.is-disabled {
-    opacity: 0.45;
-    pointer-events: none;
-    cursor: not-allowed;
-}
+/* Disabled continue button: see varnarc-buttons.css */
 
 .service-mobile-recharge-page .recharge-sticky-cta {
     display: none;
@@ -533,37 +528,40 @@
 
 /* Prepaid / Postpaid */
 .service-mobile-recharge-page .recharge-type-toggle {
+    align-items: center;
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
     flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin-bottom: 1.25rem;
 }
 
-.service-mobile-recharge-page .recharge-type-toggle .form-check {
-    padding: 0;
-    margin: 0;
-    min-height: auto;
-}
-
-.service-mobile-recharge-page .recharge-type-toggle .form-check-input {
-    width: 1.1rem;
-    height: 1.1rem;
-    margin-top: 0.2rem;
-    border-color: #adb5bd;
+.service-mobile-recharge-page .recharge-type-toggle__option {
+    align-items: center;
     cursor: pointer;
+    display: inline-flex;
+    gap: 0.5rem;
+    margin: 0;
+    min-height: 1.5rem;
 }
 
-.service-mobile-recharge-page .recharge-type-toggle .form-check-input:checked {
-    background-color: var(--recharge-accent);
-    border-color: var(--recharge-accent);
+.service-mobile-recharge-page .recharge-type-toggle__input {
+    accent-color: var(--recharge-accent, #0071e3);
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 1.125rem;
+    margin: 0;
+    vertical-align: middle;
+    width: 1.125rem;
 }
 
-.service-mobile-recharge-page .recharge-type-toggle .form-check-label {
+.service-mobile-recharge-page .recharge-type-toggle__label {
+    color: #334155;
+    cursor: pointer;
     font-size: 0.95rem;
     font-weight: 500;
-    color: #334155;
-    padding-left: 0.35rem;
-    cursor: pointer;
+    line-height: 1.25;
+    margin: 0;
+    padding: 0;
 }
 
 .service-mobile-recharge-page .service-recharge-form .form-label {
@@ -687,23 +685,7 @@
     font-size: 0.8rem;
 }
 
-.service-mobile-recharge-page .btn-recharge-continue {
-    background: linear-gradient(180deg, var(--recharge-primary-light) 0%, var(--recharge-primary) 100%);
-    border: none;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.85rem 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(10, 61, 98, 0.35);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.service-mobile-recharge-page .btn-recharge-continue:hover {
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(10, 61, 98, 0.4);
-}
+/* Primary continue button: see varnarc-buttons.css */
 
 /* Promo banner + carousel */
 .service-mobile-recharge-page .service-recharge-banner {
@@ -923,6 +905,22 @@
 }
 
 /* Mobile recharge page form (other service pages keep amount padding for “View plans”) */
+/* Hub tab: full mobile recharge form inside Recharge index */
+.quickai-section-hub .service-mobile-recharge-page.hub-tab-panel .service-recharge-hero {
+    padding: 0;
+}
+
+.quickai-section-hub .service-mobile-recharge-page.hub-tab-panel .service-recharge-card {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.quickai-section-hub .service-mobile-recharge-page.hub-tab-panel .service-recharge-info {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 0.5rem;
+}
+
 .service-mobile-recharge-page #mobile-recharge-form .service-recharge-amount-wrap .form-control {
     padding-right: 0.85rem;
 }

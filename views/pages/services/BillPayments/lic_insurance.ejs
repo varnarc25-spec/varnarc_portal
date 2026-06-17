@@ -1,6 +1,6 @@
 <% var pageTitle = 'LIC / Insurance'; %>
 <% var pageDescription = 'Pay insurance premiums online on Varnarc — select your insurer and complete payment securely.'; %>
-<% 
+<%
   var _play = typeof playStoreHref !== 'undefined' && playStoreHref ? playStoreHref : '';
   var _ios = typeof appStoreHref !== 'undefined' && appStoreHref ? appStoreHref : '';
   var downloadHref = _play || _ios || '#';
@@ -9,6 +9,8 @@
 <html lang="en">
 
 <%- include('../../../components/landing/head') %>
+<link rel="stylesheet" href="/assets/css/electricity-page.css" />
+<link rel="stylesheet" href="/assets/css/hub-quick-access.css" />
 <link rel="stylesheet" href="/assets/css/loan-repayment-page.css" />
 
 <body class="landing-page service-item-page">
@@ -18,7 +20,7 @@
 
   <section class="section-space service-item-section loanrep-service-section">
     <div class="container text-start py-4">
-      <div class="loanrep-section-inner" id="insSectionInner">
+      <div class="loanrep-section-inner" id="licSectionInner">
         <div class="loanrep-promo-wrap">
           <div class="loanrep-promo-scroll" tabindex="0" role="region" aria-label="Offers and shortcuts">
             <article class="loanrep-promo-card loanrep-promo-card--accent">
@@ -26,12 +28,12 @@
               <a href="/services/BillPayments/index" class="loanrep-promo-card__btn">Pay bills</a>
             </article>
             <article class="loanrep-promo-card loanrep-promo-card--muted">
-              <p class="loanrep-promo-card__title">Never miss a premium — renew health &amp; life policies on time</p>
+              <p class="loanrep-promo-card__title">Never miss a premium — renew LIC &amp; life policies on time</p>
               <a href="/services/BillPayments/lic_insurance" class="loanrep-promo-card__btn">Pay premium</a>
             </article>
             <article class="loanrep-promo-card loanrep-promo-card--muted">
-              <p class="loanrep-promo-card__title">Consumer durable offers — check EMI tenures</p>
-              <a href="/services/FinancialHub/index" class="loanrep-promo-card__btn">Check offer</a>
+              <p class="loanrep-promo-card__title">Pay full premium or a specific amount — your choice</p>
+              <a href="/services/BillPayments/lic_insurance" class="loanrep-promo-card__btn">Get started</a>
             </article>
             <article class="loanrep-promo-card loanrep-promo-card--muted">
               <p class="loanrep-promo-card__title">DTH recharge — flat cashback on select packs</p>
@@ -40,88 +42,14 @@
           </div>
         </div>
 
-        <div class="loanrep-pay-web">
-          <label class="loanrep-pay-web__title" for="insProviderSearch">Pay on Web</label>
-          <input type="search" id="insProviderSearch" class="loanrep-search-input" placeholder="Search your provider" autocomplete="off" aria-label="Search your insurance provider" />
-        </div>
+        <%- include('../../../components/services/hub/forms/insurance/lic_insurance_form', {
+          panelSlug: 'lic-insurance',
+          hubEmbed: false
+        }) %>
 
-        <section class="loanrep-providers-block" aria-labelledby="ins-top-heading">
-          <h2 id="ins-top-heading" class="loanrep-section-title">Top service providers</h2>
-          <ul class="loanrep-providers list-unstyled mb-0 loanrep-filter-list" id="insTopList">
-            <li data-provider="bajaj allianz life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">BA</span><span class="fw-semibold">Bajaj Allianz Life Insurance</span></li>
-            <li data-provider="lic"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">LI</span><span class="fw-semibold">LIC</span></li>
-            <li data-provider="hdfc life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">HL</span><span class="fw-semibold">HDFC Life Insurance</span></li>
-            <li data-provider="icici prudential life"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">IP</span><span class="fw-semibold">ICICI Prudential Life Insurance</span></li>
-            <li data-provider="sbi life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">SB</span><span class="fw-semibold">SBI Life Insurance</span></li>
-            <li data-provider="max life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">MX</span><span class="fw-semibold">Max Life Insurance</span></li>
-          </ul>
-        </section>
-
-        <section class="loanrep-providers-block" aria-labelledby="ins-all-heading">
-          <h2 id="ins-all-heading" class="loanrep-section-title">All service providers</h2>
-          <ul class="loanrep-providers list-unstyled mb-0 loanrep-filter-list" id="insAllList">
-            <li data-provider="aditya birla sun life"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">AB</span><span class="fw-semibold">Aditya Birla Sun Life Insurance</span></li>
-            <li data-provider="aegon life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">AE</span><span class="fw-semibold">Aegon Life Insurance</span></li>
-            <li data-provider="ageas federal life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">AF</span><span class="fw-semibold">Ageas Federal Life Insurance</span></li>
-            <li data-provider="bajaj allianz life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">BA</span><span class="fw-semibold">Bajaj Allianz Life Insurance</span></li>
-            <li data-provider="bharti axa life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">BX</span><span class="fw-semibold">Bharti AXA Life Insurance</span></li>
-            <li data-provider="canara hsbc life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">CH</span><span class="fw-semibold">Canara HSBC Life Insurance</span></li>
-            <li data-provider="edelweiss tokio life"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">ET</span><span class="fw-semibold">Edelweiss Tokio Life Insurance</span></li>
-            <li data-provider="exide life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">EX</span><span class="fw-semibold">Exide Life Insurance</span></li>
-            <li data-provider="future generali india life"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">FG</span><span class="fw-semibold">Future Generali India Life Insurance</span></li>
-            <li data-provider="hdfc life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c1" aria-hidden="true">HL</span><span class="fw-semibold">HDFC Life Insurance</span></li>
-            <li data-provider="icici prudential life"><span class="loanrep-biller-logo loanrep-biller-logo--c3" aria-hidden="true">IP</span><span class="fw-semibold">ICICI Prudential Life Insurance</span></li>
-            <li data-provider="indiafirst life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">IF</span><span class="fw-semibold">IndiaFirst Life Insurance</span></li>
-            <li data-provider="kotak mahindra life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c2" aria-hidden="true">KO</span><span class="fw-semibold">Kotak Mahindra Life Insurance</span></li>
-            <li data-provider="lic"><span class="loanrep-biller-logo loanrep-biller-logo--c0" aria-hidden="true">LI</span><span class="fw-semibold">LIC</span></li>
-            <li data-provider="pnb metlife india insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">PM</span><span class="fw-semibold">PNB MetLife India Insurance</span></li>
-            <li data-provider="reliance nippon life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c5" aria-hidden="true">RN</span><span class="fw-semibold">Reliance Nippon Life Insurance</span></li>
-            <li data-provider="sbi life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c4" aria-hidden="true">SB</span><span class="fw-semibold">SBI Life Insurance</span></li>
-            <li data-provider="star union dai-ichi life"><span class="loanrep-biller-logo loanrep-biller-logo--c6" aria-hidden="true">SU</span><span class="fw-semibold">Star Union Dai-ichi Life Insurance</span></li>
-            <li data-provider="tata aia life insurance"><span class="loanrep-biller-logo loanrep-biller-logo--c7" aria-hidden="true">TA</span><span class="fw-semibold">Tata AIA Life Insurance</span></li>
-          </ul>
-        </section>
-
-        <div id="insBillPanel" class="loanrep-bill-panel" aria-hidden="true">
-          <div class="loanrep-bill-panel__head">
-            <p class="loanrep-bill-panel__provider">Selected provider: <span id="insSelectedName"></span></p>
-            <button type="button" class="loanrep-change-provider" id="insChangeProvider">Change provider</button>
-          </div>
-          <div class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="insPayUsing">Pay using</label>
-            <select id="insPayUsing" class="loanrep-loan-input loanrep-loan-input--secondary" aria-label="How you will identify your policy">
-              <option value="dob_mobile_policy">DOB (DD-MM-YYYY)/Customer Mobile Number</option>
-              <option value="policy_mobile">Policy Number &amp; Customer Mobile Number</option>
-            </select>
-          </div>
-          <div id="insDobWrap" class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="insDob">DOB (DD-MM-YYYY)</label>
-            <input type="text" id="insDob" class="loanrep-loan-input" maxlength="10" placeholder="DD-MM-YYYY" autocomplete="bday" aria-describedby="insDobHint" />
-            <p id="insDobHint" class="loanrep-loan-hint">Please enter Date of Birth in the format DD-MM-YYYY (for example 12-05-1995)</p>
-          </div>
-          <div class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="insMobile">Customer Mobile Number</label>
-            <input type="tel" id="insMobile" class="loanrep-loan-input loanrep-loan-input--secondary" maxlength="10" inputmode="numeric" pattern="[0-9]*" autocomplete="tel" aria-describedby="insMobileHint" />
-            <p id="insMobileHint" class="loanrep-loan-hint">Please enter Mobile Number of 10 digits</p>
-          </div>
-          <div class="loanrep-loan-field">
-            <label class="loanrep-loan-label" for="insPolicy">Policy Number</label>
-            <input type="text" id="insPolicy" class="loanrep-loan-input loanrep-loan-input--secondary" maxlength="20" autocomplete="off" aria-describedby="insPolicyHint" />
-            <p id="insPolicyHint" class="loanrep-loan-hint">Please enter Policy Number between 10 - 20 characters</p>
-          </div>
-          <div class="loanrep-consent">
-            <input type="checkbox" id="insConsent" />
-            <label for="insConsent">I hereby authorize <strong id="insConsentInsurerName"></strong> and Varnarc to access future bills and to facilitate the provision of bill reminders.</label>
-          </div>
-          <div class="loanrep-fetch-wrap">
-            <button type="button" class="loanrep-fetch-btn" id="insFetchBill" disabled>Fetch your bill</button>
-          </div>
-          <p class="loanrep-fetch-status" id="insFetchStatus" role="status" aria-live="polite"></p>
-        </div>
-
-        <section class="loanrep-app-strip" aria-labelledby="ins-app-heading">
+        <section class="loanrep-app-strip mt-4" aria-labelledby="lic-app-heading">
           <div>
-            <h2 id="ins-app-heading" class="loanrep-app-strip__title">Continue on the app</h2>
+            <h2 id="lic-app-heading" class="loanrep-app-strip__title">Continue on the app</h2>
             <p class="loanrep-app-strip__sub">Download the app to redeem your rewards</p>
             <% if (_play && _ios) { %>
             <p class="small text-muted mb-0 mt-2">
@@ -134,16 +62,16 @@
           <a class="loanrep-download-btn" href="<%= downloadHref %>"<% if (downloadHref !== '#') { %> rel="noopener noreferrer" target="_blank"<% } %> aria-label="Download the Varnarc app">Download</a>
         </section>
 
-        <section class="loanrep-faq" aria-labelledby="ins-faq-heading">
-          <h2 id="ins-faq-heading">Frequently asked questions</h2>
-          <div class="accordion" id="insFaq">
+        <section class="loanrep-faq" aria-labelledby="lic-faq-heading">
+          <h2 id="lic-faq-heading">Frequently asked questions</h2>
+          <div class="accordion" id="licFaq">
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#insFaq1" aria-expanded="false" aria-controls="insFaq1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#licFaq1" aria-expanded="false" aria-controls="licFaq1">
                   How do I pay my insurance premium on Varnarc?
                 </button>
               </h3>
-              <div id="insFaq1" class="accordion-collapse collapse" data-bs-parent="#insFaq">
+              <div id="licFaq1" class="accordion-collapse collapse" data-bs-parent="#licFaq">
                 <div class="accordion-body">
                   Select your insurer, choose how you identify the policy (date of birth and mobile, or policy number and mobile), enter the details shown on your policy document, fetch the bill, and complete payment. Keep your policy number handy for verification.
                 </div>
@@ -151,23 +79,23 @@
             </div>
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#insFaq2" aria-expanded="false" aria-controls="insFaq2">
-                  When will my premium payment reflect with the insurer?
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#licFaq2" aria-expanded="false" aria-controls="licFaq2">
+                  Can I pay a partial premium amount?
                 </button>
               </h3>
-              <div id="insFaq2" class="accordion-collapse collapse" data-bs-parent="#insFaq">
+              <div id="licFaq2" class="accordion-collapse collapse" data-bs-parent="#licFaq">
                 <div class="accordion-body">
-                  Most insurers credit the payment within minutes to one working day. Save your transaction ID and receipt until your policy shows as paid. If the status does not update, contact the insurer with your policy number and share the same via Raise a request.
+                  After fetching your bill, choose <strong>Pay specific amount</strong> and enter the amount you wish to pay (within the limits shown). Insurer rules for partial premiums vary — check your policy or statement after payment.
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#insFaq3" aria-expanded="false" aria-controls="insFaq3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#licFaq3" aria-expanded="false" aria-controls="licFaq3">
                   Why is my policy not found when I fetch the bill?
                 </button>
               </h3>
-              <div id="insFaq3" class="accordion-collapse collapse" data-bs-parent="#insFaq">
+              <div id="licFaq3" class="accordion-collapse collapse" data-bs-parent="#licFaq">
                 <div class="accordion-body">
                   Check that the mobile number matches the one registered with the insurer, the policy number has no spaces or typos, and the date of birth format is DD-MM-YYYY exactly as on records. Some group or corporate policies may need to be paid through a different channel — your insurer can confirm.
                 </div>
@@ -189,235 +117,7 @@
 
 <%- include('../../../components/landing/footer') %>
 <%- include('../../../components/landing/scripts') %>
-<script>
-(function () {
-  var input = document.getElementById("insProviderSearch");
-  var lists = document.querySelectorAll("#insSectionInner .loanrep-filter-list");
-  var sectionInner = document.getElementById("insSectionInner");
-  var panel = document.getElementById("insBillPanel");
-  var selectedNameEl = document.getElementById("insSelectedName");
-  var consentInsurerEl = document.getElementById("insConsentInsurerName");
-  var payUsing = document.getElementById("insPayUsing");
-  var dobWrap = document.getElementById("insDobWrap");
-  var dobInput = document.getElementById("insDob");
-  var mobileInput = document.getElementById("insMobile");
-  var policyInput = document.getElementById("insPolicy");
-  var consentCb = document.getElementById("insConsent");
-  var fetchBtn = document.getElementById("insFetchBill");
-  var fetchStatus = document.getElementById("insFetchStatus");
-  var changeBtn = document.getElementById("insChangeProvider");
-  var selectedLi = null;
-
-  function allProviderLis() {
-    return document.querySelectorAll("#insTopList li, #insAllList li");
-  }
-
-  function isLiVisible(li) {
-    return li && li.style.display !== "none";
-  }
-
-  function getDisplayName(li) {
-    var span = li.querySelector(".fw-semibold");
-    return span ? span.textContent.trim() : String(li.textContent || "").trim();
-  }
-
-  function payMode() {
-    return payUsing && payUsing.value === "policy_mobile" ? "policy_mobile" : "dob_mobile_policy";
-  }
-
-  function isValidMobile(v) {
-    return /^[0-9]{10}$/.test(String(v || ""));
-  }
-
-  function isValidDob(s) {
-    if (!/^\d{2}-\d{2}-\d{4}$/.test(String(s || "").trim())) return false;
-    var p = String(s).trim().split("-");
-    var d = parseInt(p[0], 10);
-    var m = parseInt(p[1], 10);
-    var y = parseInt(p[2], 10);
-    if (m < 1 || m > 12 || d < 1 || d > 31 || y < 1900 || y > 2100) return false;
-    var dt = new Date(y, m - 1, d);
-    return dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d;
-  }
-
-  function isValidPolicy(v) {
-    var t = String(v || "").trim();
-    return t.length >= 10 && t.length <= 20;
-  }
-
-  function syncFetchState() {
-    if (!fetchBtn || !mobileInput || !policyInput || !consentCb) return;
-    var mode = payMode();
-    var mobOk = isValidMobile(mobileInput.value);
-    var polOk = isValidPolicy(policyInput.value);
-    var dobOk = mode === "policy_mobile" ? true : isValidDob(dobInput ? dobInput.value : "");
-    fetchBtn.disabled = !mobOk || !polOk || !dobOk || !consentCb.checked;
-  }
-
-  function updatePayModeUi() {
-    if (!dobWrap || !dobInput) return;
-    var mode = payMode();
-    if (mode === "policy_mobile") {
-      dobWrap.classList.add("d-none");
-      dobInput.value = "";
-      dobInput.classList.remove("loanrep-loan-input--invalid");
-    } else {
-      dobWrap.classList.remove("d-none");
-    }
-    syncFetchState();
-  }
-
-  function clearFieldInvalid() {
-    if (dobInput) dobInput.classList.remove("loanrep-loan-input--invalid");
-    if (mobileInput) mobileInput.classList.remove("loanrep-loan-input--invalid");
-    if (policyInput) policyInput.classList.remove("loanrep-loan-input--invalid");
-  }
-
-  function clearSelection() {
-    if (selectedLi) selectedLi.classList.remove("is-selected");
-    selectedLi = null;
-    if (panel) {
-      panel.classList.remove("is-visible");
-      panel.setAttribute("aria-hidden", "true");
-    }
-    clearFieldInvalid();
-    if (dobInput) dobInput.value = "";
-    if (mobileInput) mobileInput.value = "";
-    if (policyInput) policyInput.value = "";
-    if (payUsing) payUsing.value = "dob_mobile_policy";
-    updatePayModeUi();
-    if (consentCb) consentCb.checked = false;
-    if (fetchStatus) fetchStatus.textContent = "";
-    syncFetchState();
-  }
-
-  function showPanelFor(li) {
-    if (!panel || !li) return;
-    if (selectedLi) selectedLi.classList.remove("is-selected");
-    selectedLi = li;
-    selectedLi.classList.add("is-selected");
-    var name = getDisplayName(li);
-    if (selectedNameEl) selectedNameEl.textContent = name;
-    if (consentInsurerEl) consentInsurerEl.textContent = name;
-    clearFieldInvalid();
-    if (dobInput) dobInput.value = "";
-    if (mobileInput) mobileInput.value = "";
-    if (policyInput) policyInput.value = "";
-    if (payUsing) payUsing.value = "dob_mobile_policy";
-    updatePayModeUi();
-    if (consentCb) consentCb.checked = false;
-    if (fetchStatus) fetchStatus.textContent = "";
-    panel.classList.add("is-visible");
-    panel.setAttribute("aria-hidden", "false");
-    syncFetchState();
-    try {
-      li.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    } catch (e) {
-      li.scrollIntoView(false);
-    }
-    window.setTimeout(function () {
-      if (payUsing) payUsing.focus();
-    }, 150);
-  }
-
-  function initListA11y() {
-    var lis = allProviderLis();
-    for (var j = 0; j < lis.length; j++) {
-      lis[j].setAttribute("tabindex", "0");
-      lis[j].setAttribute("role", "button");
-    }
-  }
-
-  if (input && lists.length) {
-    input.addEventListener("input", function () {
-      var q = String(input.value || "").trim().toLowerCase();
-      for (var L = 0; L < lists.length; L++) {
-        var items = lists[L].querySelectorAll("li");
-        for (var i = 0; i < items.length; i++) {
-          var li = items[i];
-          var key = (li.getAttribute("data-provider") || li.textContent || "").toLowerCase();
-          li.style.display = !q || key.indexOf(q) !== -1 ? "" : "none";
-        }
-      }
-      if (selectedLi && !isLiVisible(selectedLi)) clearSelection();
-    });
-  }
-
-  if (sectionInner) {
-    sectionInner.addEventListener("click", function (e) {
-      var li = e.target && e.target.closest ? e.target.closest("#insTopList li, #insAllList li") : null;
-      if (!li || !isLiVisible(li)) return;
-      showPanelFor(li);
-    });
-    sectionInner.addEventListener("keydown", function (e) {
-      if (e.key !== "Enter" && e.key !== " ") return;
-      var li = e.target && e.target.closest ? e.target.closest("#insTopList li, #insAllList li") : null;
-      if (!li || !isLiVisible(li)) return;
-      e.preventDefault();
-      showPanelFor(li);
-    });
-  }
-
-  if (changeBtn) {
-    changeBtn.addEventListener("click", function () {
-      clearSelection();
-      if (input) input.focus();
-    });
-  }
-
-  if (payUsing) {
-    payUsing.addEventListener("change", function () {
-      updatePayModeUi();
-    });
-  }
-
-  if (dobInput) {
-    dobInput.addEventListener("input", function () {
-      dobInput.classList.remove("loanrep-loan-input--invalid");
-      syncFetchState();
-    });
-  }
-  if (mobileInput) {
-    mobileInput.addEventListener("input", function () {
-      mobileInput.value = String(mobileInput.value || "").replace(/\D/g, "").slice(0, 10);
-      mobileInput.classList.remove("loanrep-loan-input--invalid");
-      syncFetchState();
-    });
-  }
-  if (policyInput) {
-    policyInput.addEventListener("input", function () {
-      policyInput.classList.remove("loanrep-loan-input--invalid");
-      syncFetchState();
-    });
-  }
-  if (consentCb) consentCb.addEventListener("change", syncFetchState);
-
-  if (fetchBtn) {
-    fetchBtn.addEventListener("click", function () {
-      var mode = payMode();
-      var okDob = mode === "policy_mobile" ? true : isValidDob(dobInput ? dobInput.value : "");
-      var okMob = isValidMobile(mobileInput ? mobileInput.value : "");
-      var okPol = isValidPolicy(policyInput ? policyInput.value : "");
-      if (dobInput) dobInput.classList.toggle("loanrep-loan-input--invalid", mode !== "policy_mobile" && !okDob);
-      if (mobileInput) mobileInput.classList.toggle("loanrep-loan-input--invalid", !okMob);
-      if (policyInput) policyInput.classList.toggle("loanrep-loan-input--invalid", !okPol);
-      if (!okMob || !okPol || (mode !== "policy_mobile" && !okDob)) {
-        if (fetchStatus) {
-          if (!okDob && mode !== "policy_mobile") fetchStatus.textContent = "Please enter a valid date of birth in DD-MM-YYYY format.";
-          else if (!okMob) fetchStatus.textContent = "Please enter a valid 10-digit mobile number.";
-          else if (!okPol) fetchStatus.textContent = "Policy number must be between 10 and 20 characters.";
-        }
-        return;
-      }
-      if (!consentCb || !consentCb.checked) return;
-      if (fetchStatus) fetchStatus.textContent = "Bill fetch will connect to your checkout when this flow is integrated.";
-    });
-  }
-
-  initListA11y();
-  updatePayModeUi();
-})();
-</script>
+<script src="/assets/js/hub-lic-insurance-wallet.js" defer></script>
 </body>
 
 </html>

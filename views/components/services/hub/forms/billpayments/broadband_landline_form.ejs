@@ -1,0 +1,74 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "broadband_landline";
+  var title =
+    typeof panelTitle !== "undefined" && panelTitle
+      ? String(panelTitle)
+      : "Pay your Broadband Bill";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/BillPayments/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var idLabel =
+    typeof serviceIdLabel !== "undefined" && serviceIdLabel
+      ? String(serviceIdLabel)
+      : "Broadband Id";
+  var ctaText =
+    typeof ctaText !== "undefined" && ctaText
+      ? String(ctaText)
+      : "Continue to Pay Bill";
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="hub-tab-panel is-active">
+<% } %>
+  <%- include('../../panel-header', { panelTitle: title, panelSlug: slug, href: href }) %>
+  <form class="hub-service-form" action="<%= href %>" method="get" novalidate>
+    <div class="mb-3">
+      <label class="form-label" for="op-<%= slug %>">Your Operator</label>
+      <select class="form-select" id="op-<%= slug %>" name="operator" required>
+        <option value="" selected disabled>Select Your Operator</option>
+        <option value="act">ACT Fibernet</option>
+        <option value="airtel">Airtel Broadband</option>
+        <option value="alliance">Alliance Broadband Services Pvt. Ltd.</option>
+        <option value="hathway">Hathway Broadband</option>
+        <option value="netplus">Netplus Broadband</option>
+        <option value="777">777 Network Broadband</option>
+        <option value="aaa">AAA Internet Services Pvt Ltd</option>
+        <option value="acns">ACNS Pvt Ltd</option>
+        <option value="bsnl">BSNL Broadband</option>
+        <option value="jio">Jio Fiber</option>
+        <option value="mtnl">MTNL Broadband</option>
+        <option value="tikona">Tikona</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="svc-<%= slug %>"><%= idLabel %></label>
+      <input
+        type="text"
+        class="form-control"
+        id="svc-<%= slug %>"
+        name="accountId"
+        placeholder="Enter Your <%= idLabel %>"
+        autocomplete="off"
+        required
+      />
+    </div>
+    <%- include('../amount-field', { slug: slug, href: href, showPlans: false, amountLabel: 'Amount' }) %>
+    <div class="d-grid mt-4">
+      <button type="submit" class="btn btn-primary"><%= ctaText %></button>
+    </div>
+  </form>
+</div>

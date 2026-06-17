@@ -1,0 +1,327 @@
+<%
+  var slug =
+    typeof panelSlug !== "undefined" && panelSlug
+      ? String(panelSlug)
+      : "insurance-accident";
+  var hubEmbed = typeof hubEmbed === "undefined" ? true : !!hubEmbed;
+  var href =
+    typeof hubHrefForPanel === "function"
+      ? hubHrefForPanel(slug)
+      : "/services/Insurance/index";
+  var active =
+    hubEmbed && typeof panelIsActive === "function" ? panelIsActive(slug) : true;
+  var searchId = "accident-insurer-search-" + slug;
+  var topInsurers = [
+    { key: "hdfc ergo", initials: "HE", name: "HDFC ERGO", color: "c1" },
+    { key: "icici lombard", initials: "IL", name: "ICICI Lombard", color: "c3" },
+    { key: "bajaj allianz general", initials: "BA", name: "Bajaj Allianz General", color: "c2" },
+    { key: "tata aig", initials: "TA", name: "Tata AIG General", color: "c4" },
+  ];
+  var allInsurers = [
+    { key: "hdfc ergo", initials: "HE", name: "HDFC ERGO", color: "c1" },
+    { key: "icici lombard", initials: "IL", name: "ICICI Lombard", color: "c3" },
+    { key: "bajaj allianz general", initials: "BA", name: "Bajaj Allianz General", color: "c2" },
+    { key: "tata aig", initials: "TA", name: "Tata AIG General", color: "c4" },
+    { key: "reliance general", initials: "RG", name: "Reliance General Insurance", color: "c5" },
+    { key: "sbi general", initials: "SG", name: "SBI General Insurance", color: "c0" },
+    { key: "national insurance", initials: "NI", name: "National Insurance", color: "c6" },
+    { key: "new india assurance", initials: "NA", name: "New India Assurance", color: "c7" },
+    { key: "oriental insurance", initials: "OI", name: "Oriental Insurance", color: "c0" },
+    { key: "united india insurance", initials: "UI", name: "United India Insurance", color: "c3" },
+    { key: "future generali", initials: "FG", name: "Future Generali India", color: "c2" },
+    { key: "cholamandalam ms", initials: "CM", name: "Cholamandalam MS General", color: "c5" },
+  ];
+%>
+<% if (hubEmbed) { %>
+<div
+  class="hub-tab-panel service-insurance-hub-page electricity-hub-panel accident-insurance-hub-panel<%= active ? ' is-active' : '' %>"
+  data-hub-panel="<%= slug %>"
+  id="hub-panel-<%= slug %>"
+  role="tabpanel"
+  data-insurance-hub data-insurance-product="accident"
+  <% if (!active) { %> hidden<% } %>
+>
+<% } else { %>
+<div class="service-insurance-hub-page electricity-hub-panel accident-insurance-hub-panel is-active" data-insurance-hub data-insurance-product="accident">
+<% } %>
+
+  <%- include('../../panel-header', { panelTitle: 'Personal Accident Insurance', panelSlug: slug, href: href }) %>
+
+  <div class="ai-calculator-section mb-4" id="accident-calculators-<%= slug %>">
+    <div class="ai-calculator-bar" role="toolbar" aria-label="Insurance calculators">
+      <button type="button" class="ai-calculator-btn" data-ai-calc-tab="premium">
+        <i class="bi bi-calculator" aria-hidden="true"></i> Premium calculator
+      </button>
+      <button type="button" class="ai-calculator-btn" data-ai-calc-tab="cover">
+        <i class="bi bi-shield-check" aria-hidden="true"></i> Cover calculator
+      </button>
+      <button type="button" class="ai-calculator-btn" data-ai-calc-tab="benefits">
+        <i class="bi bi-list-check" aria-hidden="true"></i> Benefit checker
+      </button>
+    </div>
+
+    <div class="ai-calculator-panel" data-ai-calc-panel="premium">
+      <p class="ai-calculator-panel__title">Estimate your annual premium</p>
+      <div class="row g-2">
+        <div class="col-sm-4">
+          <label class="form-label small mb-1" for="ai-prem-age-<%= slug %>">Age</label>
+          <input type="number" class="form-control form-control-sm" id="ai-prem-age-<%= slug %>" data-ai-calc-prem-age min="18" max="70" value="32" />
+        </div>
+        <div class="col-sm-4">
+          <label class="form-label small mb-1" for="ai-prem-occ-<%= slug %>">Occupation</label>
+          <select class="form-select form-select-sm" id="ai-prem-occ-<%= slug %>" data-ai-calc-prem-occ>
+            <option value="salaried">Salaried</option>
+            <option value="professional">Professional</option>
+            <option value="self">Self-employed</option>
+            <option value="student">Student</option>
+            <option value="homemaker">Homemaker</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label class="form-label small mb-1" for="ai-prem-cover-<%= slug %>">Cover amount</label>
+          <select class="form-select form-select-sm" id="ai-prem-cover-<%= slug %>" data-ai-calc-prem-cover>
+            <option value="500000">₹5 lakh</option>
+            <option value="1000000" selected>₹10 lakh</option>
+            <option value="2500000">₹25 lakh</option>
+            <option value="5000000">₹50 lakh</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="btn btn-sm btn-primary mt-2" data-ai-calc-prem-run>Calculate premium</button>
+      <p class="ai-calculator-result mb-0" data-ai-calc-prem-out>Tap calculate to see an indicative premium.</p>
+    </div>
+
+    <div class="ai-calculator-panel" data-ai-calc-panel="cover" hidden>
+      <p class="ai-calculator-panel__title">How much cover do you need?</p>
+      <label class="form-label small mb-1" for="ai-cover-income-<%= slug %>">Monthly income (₹)</label>
+      <input type="number" class="form-control form-control-sm mb-2" id="ai-cover-income-<%= slug %>" data-ai-calc-cover-income min="5000" step="1000" placeholder="e.g. 50000" />
+      <button type="button" class="btn btn-sm btn-primary" data-ai-calc-cover-run>Suggest cover</button>
+      <p class="ai-calculator-result mb-0" data-ai-calc-cover-out>We recommend cover worth about 2× your annual income.</p>
+    </div>
+
+    <div class="ai-calculator-panel" data-ai-calc-panel="benefits" hidden>
+      <p class="ai-calculator-panel__title">What’s included in your plan?</p>
+      <label class="form-label small mb-1" for="ai-benefit-plan-<%= slug %>">Plan type</label>
+      <select class="form-select form-select-sm mb-2" id="ai-benefit-plan-<%= slug %>" data-ai-calc-benefit-plan>
+        <option value="essential">Essential PA</option>
+        <option value="standard" selected>Standard Shield</option>
+        <option value="comprehensive">Comprehensive Care</option>
+      </select>
+      <div data-ai-calc-benefit-out></div>
+    </div>
+  </div>
+
+  <div class="electricity-hub-pay-web mb-4" data-insurance-step="pick">
+    <div class="ai-highlights" aria-label="Why personal accident cover">
+      <div class="ai-highlight">
+        <strong>24×7 protection</strong>
+        <span>Covers accidents at home, work, or while travelling — not just on the road.</span>
+      </div>
+      <div class="ai-highlight">
+        <strong>Affordable premiums</strong>
+        <span>Plans from ₹299/year. No medical tests for many standard policies.</span>
+      </div>
+      <div class="ai-highlight">
+        <strong>Family security</strong>
+        <span>Lump-sum payout helps your family manage hospital bills and daily expenses.</span>
+      </div>
+    </div>
+
+    <p class="service-recharge-value-prop mb-3">
+      Compare leading insurers, use our calculators above, then pick a provider to get a personalised accident
+      insurance quote in minutes — secure checkout and policy support on Varnarc.
+    </p>
+
+    <div class="electricity-hub-search-wrap">
+      <input
+        type="search"
+        class="electricity-hub-search-input"
+        id="<%= searchId %>"
+        data-insurance-insurer-search
+        placeholder="Search insurer"
+        autocomplete="off"
+        aria-label="Search insurer"
+      />
+      <button type="button" class="electricity-hub-search-clear" data-insurance-search-clear aria-label="Clear search" hidden>
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <section class="electricity-hub-providers-section" aria-labelledby="ai-top-<%= slug %>">
+      <h3 id="ai-top-<%= slug %>" class="electricity-hub-section-title">Top insurers</h3>
+      <ul class="electricity-hub-providers list-unstyled mb-0" data-insurance-insurer-list="top">
+        <% topInsurers.forEach(function (p) { %>
+        <li data-biller="<%= p.key %>">
+          <button type="button" class="electricity-hub-provider-btn" data-insurance-insurer="<%= p.key %>">
+            <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+            <span class="electricity-hub-provider-name"><%= p.name %></span>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="electricity-hub-providers-section electricity-hub-providers-section--spaced" aria-labelledby="ai-all-<%= slug %>">
+      <h3 id="ai-all-<%= slug %>" class="electricity-hub-section-title">All insurers</h3>
+      <ul class="electricity-hub-providers list-unstyled mb-0" data-insurance-insurer-list="all">
+        <% allInsurers.forEach(function (p) { %>
+        <li data-biller="<%= p.key %>">
+          <button type="button" class="electricity-hub-provider-btn" data-insurance-insurer="<%= p.key %>">
+            <span class="electricity-hub-provider-logo electricity-hub-provider-logo--<%= p.color %>" aria-hidden="true"><%= p.initials %></span>
+            <span class="electricity-hub-provider-name"><%= p.name %></span>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+  </div>
+
+  <div data-insurance-step="quote" hidden>
+    <button type="button" class="electricity-hub-back btn btn-link p-0 mb-3" data-insurance-back>
+      <i class="bi bi-arrow-left me-1" aria-hidden="true"></i> Change insurer
+    </button>
+
+    <p class="electricity-hub-selected-provider mb-3">
+      <span class="electricity-hub-selected-provider__label">Insurer</span>
+      <span class="electricity-hub-selected-provider__name" data-insurance-selected-insurer>—</span>
+    </p>
+
+    <div class="service-recharge-hero text-start">
+      <p class="service-recharge-value-prop mb-3 mb-lg-4">
+        One accident can change everything. Get a cash benefit for accidental death or disability, hospital cash,
+        and more — tailored to your age and occupation.
+      </p>
+
+      <div class="service-recharge-panel">
+        <div class="service-recharge-card">
+          <h2 class="text-6 mb-2">Get your accident cover quote</h2>
+          <p class="service-recharge-card__sub">
+            Choose a plan below, enter your details, and see your premium instantly. No spam — we use your details
+            only for the quote and policy issuance.
+          </p>
+
+          <ol class="recharge-flow-steps mb-4" aria-label="Quote progress">
+            <li class="recharge-flow-steps__segment is-active" data-step="plan">
+              <span class="recharge-flow-steps__label">Pick plan</span>
+            </li>
+            <li class="recharge-flow-steps__segment" data-step="details">
+              <span class="recharge-flow-steps__label">Your details</span>
+            </li>
+            <li class="recharge-flow-steps__segment" data-step="quote">
+              <span class="recharge-flow-steps__label">Get quote</span>
+            </li>
+          </ol>
+
+          <p class="small fw-semibold text-secondary mb-2">Recommended plans</p>
+          <div class="ai-plan-grid" data-ai-plan-grid>
+            <button type="button" class="ai-plan-card" data-ai-plan-card="essential">
+              <p class="ai-plan-card__name">Essential PA</p>
+              <p class="ai-plan-card__cover">₹5 lakh accidental cover</p>
+              <p class="ai-plan-card__price">from ₹299/yr</p>
+            </button>
+            <button type="button" class="ai-plan-card" data-ai-plan-card="standard">
+              <p class="ai-plan-card__name">Standard Shield</p>
+              <p class="ai-plan-card__cover">₹10 lakh + hospital cash</p>
+              <p class="ai-plan-card__price">from ₹549/yr</p>
+            </button>
+            <button type="button" class="ai-plan-card" data-ai-plan-card="comprehensive">
+              <p class="ai-plan-card__name">Comprehensive Care</p>
+              <p class="ai-plan-card__cover">₹25 lakh + riders</p>
+              <p class="ai-plan-card__price">from ₹1,299/yr</p>
+            </button>
+          </div>
+          <input type="hidden" name="planKey" value="standard" data-ai-plan-key />
+
+          <form class="service-recharge-form" data-insurance-quote-form novalidate>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="ai-name-<%= slug %>">Full name</label>
+                <input type="text" class="form-control" id="ai-name-<%= slug %>" data-insurance-name autocomplete="name" required />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label" for="ai-age-<%= slug %>">Age</label>
+                <input type="number" class="form-control" id="ai-age-<%= slug %>" data-insurance-age min="18" max="70" required />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label" for="ai-occ-<%= slug %>">Occupation</label>
+                <select class="form-select" id="ai-occ-<%= slug %>" data-insurance-occupation>
+                  <option value="salaried">Salaried</option>
+                  <option value="professional">Professional</option>
+                  <option value="self">Self-employed</option>
+                  <option value="student">Student</option>
+                  <option value="homemaker">Homemaker</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="ai-mobile-<%= slug %>">Mobile number</label>
+              <input type="tel" class="form-control" id="ai-mobile-<%= slug %>" data-insurance-mobile inputmode="numeric" maxlength="10" autocomplete="tel" required />
+              <span class="input-hint">10-digit Indian mobile for quote and policy documents.</span>
+            </div>
+
+            <div class="recharge-trust-compact" aria-label="Trust highlights">
+              <span class="recharge-trust-chip"><i class="bi bi-shield-fill-check"></i> IRDAI-regulated partners</span>
+              <span class="recharge-trust-chip"><i class="bi bi-file-earmark-medical"></i> Easy claims support</span>
+              <span class="recharge-trust-chip"><i class="bi bi-lock-fill"></i> Secure data</span>
+              <span class="recharge-trust-chip"><i class="bi bi-headset"></i> Expert assistance</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-2" data-insurance-get-quote disabled>
+              Get instant quote
+            </button>
+            <p class="small text-muted text-center mt-2 mb-0">
+              <a href="mailto:support@varnarc.com">support@varnarc.com</a> ·
+              <a href="tel:+919739723973">+91 973 972 3973</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <section class="service-recharge-info mt-4" id="accident-info-tabs">
+      <ul class="nav nav-tabs" id="accidentInfoTab-<%= slug %>" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tab-ai-cover-<%= slug %>" data-bs-toggle="tab" data-bs-target="#pane-ai-cover-<%= slug %>" type="button" role="tab">Why accident cover</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-ai-claims-<%= slug %>" data-bs-toggle="tab" data-bs-target="#pane-ai-claims-<%= slug %>" type="button" role="tab">Claims</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-ai-why-<%= slug %>" data-bs-toggle="tab" data-bs-target="#pane-ai-why-<%= slug %>" type="button" role="tab">Why Varnarc</button>
+        </li>
+      </ul>
+      <div class="tab-content pt-4" id="accidentInfoTabContent-<%= slug %>">
+        <div class="tab-pane fade show active" id="pane-ai-cover-<%= slug %>" role="tabpanel" tabindex="0">
+          <p class="mb-3">
+            Personal accident insurance pays a fixed benefit if you suffer accidental death or disability. Unlike
+            motor insurance, it follows <em>you</em> — whether you are commuting, at work, or at home. It is one of the
+            most affordable ways to protect your family’s finances.
+          </p>
+          <p class="mb-0">
+            Use the <strong>Premium calculator</strong> and <strong>Cover calculator</strong> at the top to estimate
+            cost and right sum insured before you buy.
+          </p>
+        </div>
+        <div class="tab-pane fade" id="pane-ai-claims-<%= slug %>" role="tabpanel" tabindex="0">
+          <p class="mb-3">
+            In case of an accident, notify the insurer with policy number, FIR or hospital papers where applicable,
+            and ID proof. Most claims are settled within a few working days once documents are complete.
+          </p>
+          <p class="mb-0">
+            Varnarc support can guide you through documentation — email
+            <a href="mailto:support@varnarc.com">support@varnarc.com</a> with your policy details.
+          </p>
+        </div>
+        <div class="tab-pane fade" id="pane-ai-why-<%= slug %>" role="tabpanel" tabindex="0">
+          <p class="mb-3">
+            Compare multiple insurers in one place, use built-in calculators, and complete purchase with transparent
+            pricing. We partner with trusted general insurers so you get genuine policies, not junk leads.
+          </p>
+          <p class="mb-0">
+            Questions? See our <a href="/#faq">FAQ</a> or <a href="/pages/term-conditions">terms</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,199 @@
+/**
+ * Varnarc customer UI — unified button styles (landing + services).
+ * Load after style.css so these tokens override theme defaults.
+ */
+.landing-page {
+  --vn-btn-primary-bg: #0071e3;
+  --vn-btn-primary-hover: #005bb5;
+  --vn-btn-primary-active: #004a94;
+  --vn-btn-disabled-bg: #e5e7eb;
+  --vn-btn-disabled-border: #d1d5db;
+  --vn-btn-disabled-color: #9ca3af;
+  --vn-btn-radius: 0.5rem;
+  --vn-btn-font-weight: 600;
+  --vn-btn-font-size: 1rem;
+  --vn-btn-padding-y: 0.75rem;
+  --vn-btn-padding-x: 1rem;
+  --vn-btn-min-height: 3rem;
+  --vn-btn-outline-color: #6b7280;
+  --vn-btn-outline-border: #ced4da;
+  --vn-btn-outline-hover-bg: #f8fafc;
+}
+
+/* Primary CTAs — shared block */
+.landing-page .btn.btn-primary,
+.landing-page a.btn.btn-primary,
+.landing-page button.btn-primary:not(.btn-close):not(.btn-link):not(.quantity-left-minus):not(.quantity-right-plus),
+.landing-page .btn.btn-recharge-continue,
+.landing-page .btn.btn-electricity-continue,
+.landing-page .btn.mt-send-continue-btn,
+.landing-page .btn.mt-self-proceed-btn,
+.landing-page .btn.mt-self-pay-final-btn,
+.landing-page .btn.mt-self-add-ac-btn,
+.landing-page .btn.bf-btn-primary,
+.landing-page .btn.btn-refer-earn,
+.landing-page .btn.btn-subscribe,
+.landing-page .electricity-proceed-btn,
+.landing-page .landing-primary-cta-btn.btn,
+.landing-page .intro-hero-cta__primary.btn {
+  background-color: var(--vn-btn-primary-bg) !important;
+  border: 1px solid var(--vn-btn-primary-bg) !important;
+  border-radius: var(--vn-btn-radius) !important;
+  box-shadow: none;
+  color: #fff !important;
+  font-size: var(--vn-btn-font-size);
+  font-weight: var(--vn-btn-font-weight);
+  line-height: 1.25;
+  min-height: var(--vn-btn-min-height);
+  padding: var(--vn-btn-padding-y) var(--vn-btn-padding-x);
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.landing-page .btn.btn-primary:hover:not(:disabled):not(.disabled),
+.landing-page a.btn.btn-primary:hover,
+.landing-page button.btn-primary:hover:not(:disabled):not(.disabled):not(.btn-close):not(.btn-link),
+.landing-page .btn.btn-recharge-continue:hover:not(:disabled):not(.disabled):not(.is-disabled),
+.landing-page .btn.btn-electricity-continue:hover:not(:disabled),
+.landing-page .btn.mt-send-continue-btn:hover:not(:disabled),
+.landing-page .btn.mt-self-proceed-btn:hover:not(:disabled),
+.landing-page .btn.mt-self-pay-final-btn:hover:not(:disabled),
+.landing-page .btn.mt-self-add-ac-btn:hover,
+.landing-page .btn.bf-btn-primary:hover,
+.landing-page .btn.btn-refer-earn:hover,
+.landing-page .btn.btn-subscribe:hover:not(:disabled),
+.landing-page .electricity-proceed-btn:hover:not(:disabled),
+.landing-page .landing-primary-cta-btn.btn:hover,
+.landing-page .intro-hero-cta__primary.btn:hover:not(:disabled) {
+  background-color: var(--vn-btn-primary-hover) !important;
+  border-color: var(--vn-btn-primary-hover) !important;
+  color: #fff !important;
+  filter: none;
+  transform: none;
+}
+
+.landing-page .btn.btn-primary:active:not(:disabled),
+.landing-page .btn.btn-recharge-continue:active:not(:disabled):not(.is-disabled),
+.landing-page .btn.mt-self-proceed-btn:active:not(:disabled),
+.landing-page .electricity-proceed-btn:active:not(:disabled) {
+  background-color: var(--vn-btn-primary-active) !important;
+  border-color: var(--vn-btn-primary-active) !important;
+}
+
+.landing-page .btn.btn-primary:disabled,
+.landing-page .btn.btn-primary.disabled,
+.landing-page .btn.btn-primary[disabled],
+.landing-page button.btn-primary:disabled,
+.landing-page button.btn-primary[disabled],
+.landing-page button.btn-primary.disabled,
+.landing-page .btn.btn-recharge-continue:disabled,
+.landing-page .btn.btn-recharge-continue.is-disabled,
+.landing-page .btn.btn-recharge-continue[disabled],
+.landing-page .btn.mt-send-continue-btn:disabled,
+.landing-page .btn.mt-send-continue-btn[disabled],
+.landing-page .btn.mt-self-proceed-btn:disabled,
+.landing-page .btn.mt-self-proceed-btn[disabled],
+.landing-page .btn.mt-self-proceed-btn.disabled,
+.landing-page button.mt-self-proceed-btn.btn-primary:disabled,
+.landing-page button.mt-self-proceed-btn.btn-primary[disabled],
+.landing-page .money-transfer-self-bank-panel .btn.mt-self-proceed-btn:disabled,
+.landing-page .money-transfer-self-bank-panel .btn.mt-self-proceed-btn[disabled],
+.landing-page .btn.mt-self-pay-final-btn:disabled,
+.landing-page .btn.btn-electricity-continue:disabled,
+.landing-page .electricity-proceed-btn:disabled,
+.landing-page .btn-promo-apply:disabled {
+  background-color: var(--vn-btn-disabled-bg) !important;
+  background-image: none !important;
+  border-color: var(--vn-btn-disabled-border) !important;
+  color: var(--vn-btn-disabled-color) !important;
+  cursor: not-allowed;
+  opacity: 1 !important;
+  pointer-events: none;
+  box-shadow: none !important;
+}
+
+/* Outline / secondary actions */
+.landing-page .btn.btn-outline-secondary,
+.landing-page .btn.btn-outline-primary {
+  border-radius: var(--vn-btn-radius);
+  font-weight: var(--vn-btn-font-weight);
+  min-height: 2.75rem;
+  padding: 0.6rem 1rem;
+}
+
+.landing-page .btn.btn-outline-secondary {
+  border-color: var(--vn-btn-outline-border);
+  color: var(--vn-btn-outline-color);
+}
+
+.landing-page .btn.btn-outline-secondary:hover:not(:disabled) {
+  background-color: var(--vn-btn-outline-hover-bg);
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.landing-page .btn.btn-outline-primary {
+  border-color: var(--vn-btn-primary-bg);
+  color: var(--vn-btn-primary-bg);
+}
+
+.landing-page .btn.btn-outline-primary:hover:not(:disabled) {
+  background-color: rgba(0, 113, 227, 0.08);
+  border-color: var(--vn-btn-primary-hover);
+  color: var(--vn-btn-primary-hover);
+}
+
+/* Hub modals + money transfer tabs */
+.landing-page .mt-cb-pin-modal__actions .btn-primary,
+.landing-page .mt-cb-pin-modal__setup .btn-primary {
+  background-color: var(--vn-btn-primary-bg) !important;
+  border-color: var(--vn-btn-primary-bg) !important;
+  border-radius: var(--vn-btn-radius);
+  font-weight: var(--vn-btn-font-weight);
+}
+
+.landing-page .mt-cb-pin-modal__actions .btn-primary:hover,
+.landing-page .mt-cb-pin-modal__setup .btn-primary:hover {
+  background-color: var(--vn-btn-primary-hover) !important;
+  border-color: var(--vn-btn-primary-hover) !important;
+}
+
+.landing-page .money-transfer-send-panel .mt-send-mode-tabs__btn.is-active {
+  background: var(--vn-btn-primary-bg);
+  border-color: var(--vn-btn-primary-bg);
+  color: #fff;
+}
+
+.landing-page .money-transfer-send-panel .mt-send-mode-tabs__btn:focus-visible {
+  outline: 2px solid var(--vn-btn-primary-bg);
+  outline-offset: 2px;
+}
+
+/* Smaller utility buttons (promo apply, compact dashboard CTAs) */
+.landing-page .btn-promo-apply,
+.landing-page .dashboard-bf-home .bf-btn-primary {
+  min-height: auto;
+  font-size: 0.9rem;
+  padding: 0.55rem 1rem;
+}
+
+.landing-page .btn-promo-apply {
+  background-color: var(--vn-btn-primary-bg) !important;
+  border: 1px solid var(--vn-btn-primary-bg) !important;
+  border-radius: var(--vn-btn-radius);
+  color: #fff !important;
+  font-weight: var(--vn-btn-font-weight);
+}
+
+.landing-page .btn-promo-apply:hover {
+  background-color: var(--vn-btn-primary-hover) !important;
+  border-color: var(--vn-btn-primary-hover) !important;
+  color: #fff !important;
+}
+
+.landing-page .electricity-proceed-btn {
+  font-size: var(--vn-btn-font-size);
+  letter-spacing: normal;
+  min-height: var(--vn-btn-min-height);
+  padding: var(--vn-btn-padding-y) var(--vn-btn-padding-x);
+}
